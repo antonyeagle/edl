@@ -1,0 +1,28 @@
+\paragraph{$n$-Acceptable structures}
+Suppose that $\Gamma$ is a finitely satisfiable set of sentences, and $P_{1},P_{2},\ldots$ is an enumeration of the sentence letters occurring as subsentences of sentences in $\Gamma$. Let $\mathbf{S}_{n}$ be the set consisting of the first $n$ sentence letters in $\Gamma$ under the enumeration, i.e., $\mathbf{S}_{n} = \{P_{1},P_{2},\ldots,P_{n}\}$. ($\mathbf{S}_{0}$ is the empty set.)
+    
+     If $S$ is a set of \lone\ sentences, we say that a structure $\mathscr{C}$ is an \emph{$S$-agreeing variant} of a structure $\mathscr{B}$ iff $|\phi|_{\mathscr{C}}=|\phi|_{\mathscr{B}}$ for all $\phi \in S$.
+    Call an \lone-structure $\mathscr{B}$ \emph{$n$-acceptable} iff, for each finite subset $\Delta \subseteq \Gamma$, $\mathscr{B}$ has a $\mathbf{S}_{n}$-agreeing variant $\mathscr{C}$ which satisfies $\Delta$.
+
+
+Define a series of \lone-structures as follows: \begin{itemize}
+      \item $\mathscr{A}_{0}$ is some arbitrarily chosen structure.
+      \item If $\mathscr{B}$ is an $\mathbf{S}_{n}$-agreeing variant of $\mathscr{A}_{n}$ which assigns $T$ to $P_{n+1}$ and $\mathscr{B}$ is $(n+1)$-acceptable, let $\mathscr{A}_{n+1}$ be $\mathscr{B}$; otherwise let $\mathscr{A}_{n+1}$ be an $\mathbf{S}_{n}$-agreeing variant of $\mathscr{A}_{n}$ which assigns $F$ to $P_{n+1}$.
+    \end{itemize} 
+    
+  \paragraph{Each $\mathscr{A}_{n}$ is $n$-acceptable}  
+    
+We now prove by induction on $n$ that each $\mathscr{A}_{n}$ is $n$-acceptable (i.e, $\mathscr{A}_{0}$ is $0$-acceptable, $\mathscr{A}_{1}$ is $1$-acceptable, and so on). 
+
+Obviously $\mathscr{A}_{0}$ is $0$-acceptable; to be $0$-acceptable is for each finite subset of $\Gamma$ to agree with $\mathscr{A}_{0}$ on the set of sentence letters in $\mathbf{S}_{0}$; since the latter is the empty set, \emph{any} finite subset of $\Gamma$ agrees with $\mathscr{A}_{0}$ on that set.
+
+For the induction step, suppose there is some $\mathscr{A}_{n}$ which is $n$-acceptable, but $\mathscr{A}_{n+1}$ is not. Since by construction, if there was an $(n+1)$-acceptable variant of $\mathscr{A}_{n}$ which assigned $T$ to $P_{n+1}$, $\mathscr{A}_{n+1}$ would be such. So $\mathscr{A}_{n+1}$ must assign $F$ to $P_{n+1}$. But from the induction hypothesis, some finite subset $\Delta\subset \Gamma$ is not satisfied by any $\mathbf{S}_{n+1}$-agreeing variant of $\mathscr{A}_{n+1}$; so $\Delta$ cannot be satisfied by \emph{any} $\mathbf{S}_{n}$-agreeing variant of $\mathscr{A}_{n}$ (since it can't be satisfied by a variant which assigns $T$ to $P_{n+1}$, or one that assigns $F$, and they are the only options), contrary to the assumption that $\mathscr{A}_{n}$ is $n$-acceptable. So $\mathscr{A}_{n+1}$ must in fact be $(n+1)$-acceptable.
+
+
+\paragraph{Compactness Again}
+
+If we let $\mathscr{A}$ be a structure such that, for all $i$, $|P_{i}|_{\mathscr{A}}=|P_{i}|_{\mathscr{A}_{i}}$ (that is, for all $i$, $\mathscr{A}$ agrees with the $i$-th structure $\mathscr{A}_{i}$ on the value it assigns to the $i$-th sentence letter $P_{i}$). 
+
+Suppose $\mathscr{A}$ isn't a model for $\Gamma$. Then there is a $\phi \in \Gamma$ such that $|\phi|_{\mathscr{A}}=F$. Let $P_{k}$ be the highest numbered sentence letter occurring in $\phi$. Then $\mathscr{A}_{k}$ must make $\phi$ true, since $\{\phi\}$ is a finite subset of $\Gamma$ and $\mathscr{A}_{k}$ is $k$-acceptable. But then every $\mathbf{S}_{k}$-agreeing variant of $\mathscr{A}_{k}$ makes $\phi$ true; and $\mathscr{A}$ is one such. Contradiction – $\mathscr{A}$ must satisfy $\Gamma$.
+
+But since $\Gamma$ was arbitrary, we've shown that if $\Gamma$ is finitely satisfiable, then $\Gamma$ is satisfiable. This is compactness.

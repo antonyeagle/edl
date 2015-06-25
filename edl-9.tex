@@ -1,0 +1,391 @@
+
+
+
+	\section{Identity}
+
+	
+	\paragraph{Identity: Syntax and Semantics}
+
+	The language \ltwo\ doesn't have a privileged predicate for identity. Yet such a predicate is very useful in discussing binary relations. 
+
+	We \emph{add} to \ltwo\ a binary predicate `='. We add  new atomic formulae: where $\tau_{1}$ and $\tau_{2}$ are any terms, `$\tau_{1}=\tau_{2}$' is an atomic formula.  We keep the same structures as \ltwo, but give this new predicate a constant semantic value, so that in every \ltwo-structure $\mathscr{A}$, \begin{equation}
+		I_{\mathscr{A}}({=}) = \{\langle x,x\rangle : x \in D_{\mathscr{A}}\} \tag{=}
+	\end{equation}
+	Of course the property that we intend this predicate to express could exist in an \ltwo-structure already; the change is that we now  give it a logically privileged meaning.
+	The satisfaction conditions are: \begin{itemize}
+	\item	$\valsa{\tau_{1}=\tau_{2}}=T$ iff $\langle \valsa{\tau_{1}},\valsa{\tau_{2}}\rangle \in \valsa{{=}}$, i.e., iff $\valsa{\tau_{1}}=\valsa{\tau_{2}}$; i.e., if $\valsa{\tau}$ is the very same object as $\valsa{\kappa}$.
+	\end{itemize}
+
+	Call the language which keeps all the old atomic formulae and formation rules of \ltwo, but adds these atomic formulae, \emph{\lequ}. 
+	
+\paragraph{Some Theorems About Identity}
+
+\begin{theorem}[Theoremhood of Identity]
+	For any constant $\tau$, $\vDash \tau=\tau$. \begin{proof}
+		Suppose $\not\vDash\tau=\tau$ for some $\tau$. Then there is a structure $\mathscr{A}$ such that $\val{\tau=\tau}{A}=F$, iff $\valsa{\tau}\neq\valsa{\tau}$; impossible.
+	\end{proof}
+\end{theorem} \begin{theorem}[Substitution of co-designating terms II]
+	$\tau=\kappa\vDash \phi[\tau/\upsilon] \bicond \phi[\kappa/\upsilon]$. \begin{proof}Fairly immediate from the Substitution of Co-Designating Terms theorem (chapter 5, page \pageref{fivesubcod}). \label{scdc}
+	\end{proof}
+\end{theorem}
+
+\paragraph{The Relation of Identity}
+
+\begin{theorem}[Identity an Equivalence Relation]
+	\begin{itemize}
+		\item $\vDash \forall x x=x$;
+		\item $\vDash \forall x \forall y (x=y \to y=x)$;
+		\item $\vDash\forall x \forall y \forall z ((x=y \wedge y=z) \to x=z)$.
+	\end{itemize} 
+\end{theorem} \begin{theorem}[`Leibniz' Law']
+For any $\phi$ in which at most $\upsilon$ occurs free, $\vDash \forall \upsilon \forall \nu (\upsilon=\nu \to \phi \bicond \phi[\nu/\upsilon])$. 
+ \end{theorem}
+
+		Proofs left for exercises. \emph{Leibniz' Law} usually refers to this \emph{definition} of identity in second order logic: $\forall \upsilon \forall \nu (\upsilon = \nu \bicond \forall \Phi (\Phi(\upsilon) \bicond \Phi[\nu/\upsilon](\nu)))$.
+
+\paragraph{Proofs in \lequ}
+
+To obtain a natural deduction system for \lequ, $ND_{=}$, we \emph{add} to the rules of $ND_{2}$ the rules in Table \ref{tsix}, keeping all other rules. 
+\begin{table}\label{tsix}\begin{center}
+	\begin{tabular}{cc}
+	\begin{prooftree}
+		[\tau=\tau]\justifies \vdots \using \text{=Intro} 
+	\end{prooftree}& \\ \begin{prooftree}
+		\[ \leadsto \phi[\tau/\upsilon]\] \[\leadsto \tau=\kappa\] \justifies \phi[\kappa/\upsilon] \using \text{=Elim-r}
+	\end{prooftree}	& \begin{prooftree}
+			\[ \leadsto \phi[\tau/\upsilon]\] \[\leadsto \kappa=\tau\] \justifies \phi[\kappa/\upsilon] \using \text{=Elim-l}
+		\end{prooftree}	
+	\end{tabular} \end{center}	\caption{New Natural Deduction Rules for \lequ}
+\end{table}
+In =Elim-l and =Elim-r, $\phi$ is a formula in which at most $\upsilon$ occurs free. 
+
+\paragraph{Dispensibility of =Elim-l/=Elim-r}
+
+The two rules =Elim-l and =Elim-r obviously offer very similar resources in proofs. If we could show that $\tau=\kappa \vdash \kappa=\tau$ using just \emph{one} of these rules, we could show the other to be dispensible.
+
+\begin{theorem}[Dispensibility of =Elim-r (or =Elim-l)]
+	In the presence of the rule =Elim-l (respectively, =Elim-r), the functionality of =Elim-r (=Elim-l) can be derived. \begin{proof}{
+		\begin{prooftree} \phi[\tau/\upsilon]\quad \[[\kappa=\kappa] \quad \tau=\kappa \justifies \kappa=\tau \using \text{=Elim-l}.\] \justifies \phi[\kappa/\upsilon] \using \text{=Elim-l}
+		\end{prooftree}
+		
+ This is obviously equivalent to =Elim-r; a similar proof would show the dispensibility of =Elim-l. (Note the use of =Intro.)}
+	\end{proof}
+\end{theorem}
+
+\paragraph{Soundness of \lequ}
+
+\begin{theorem}[\lequ\ is Sound]
+If $\phi$ is a sentence of \lequ, then if $\vdash_{\!\mathcal{L}_{=}} \phi$ then $\vDash \phi$. \begin{proof}
+	 We only need show that proofs extended by the new rules are sound. \begin{itemize}
+		\item We have a proof of $\phi$ on assumption $\tau=\tau$, and apply =Intro to discharge the assumption. Since by the Theoremhood of Identity, $\val{\tau=\tau}{A}=T$ in every structure, and by the induction hypothesis $\val{\phi}{A}=T$ if $\val{\tau=\tau}{A}=T$, clearly $\val{\phi}{A}=T$.
+		\item We have a proof of $\tau=\kappa$ on assumptions $\Gamma$, and a proof of $\phi[\tau/\upsilon]$ on assumptions $\Delta$, and we extend to a proof of $\phi[\kappa/\upsilon]$ using =Elim-r on assumptions $\Gamma\cup\Delta$. By the induction hypothesis, for any $\mathscr{A}$ where $\Gamma\cup\Delta$ is satisfied,  $\val{\tau=\kappa}{A}=T$, and similarly $\val{\phi[\tau/\upsilon]}{A}=T$. By the Substitution of co-designating constants theorem of page \pageref{scdc} and logic, in any such $\mathscr{A}$, $\val{\phi[\kappa/\upsilon]}{A}=T$. 
+	\end{itemize} 
+\end{proof}
+\end{theorem}
+
+\paragraph{Further metalogical results}
+
+It turns out that the proof of completeness of \ltwo\ can be extended to provide a completeness proof for \lequ. \begin{theorem}[Completeness of \lequ]
+	If $\vDash \phi$ then $\vdash \phi$.
+\end{theorem}
+In the now familiar way, this can be adapted to a compactness proof.
+
+Since \ltwo\ is not decidable, and \lequ\ contains \ltwo\ as a part, \lequ\ is not decidable either. Obviously the monadic fragment of \lequ\ is decidable (as `$=$' is binary, the monadic fragment is the same as that of \ltwo). A more interesting fragment is \emph{the pure theory of identity} – the fragment where the only atomic formulae are of the form $\tau=\kappa$. This, it turns out, is decidable \citep[329--31]{bosintlo}. 
+
+
+% {
+% \paragraph{The Pure Theory of Identity}
+% 
+% bostock 329--31
+% }
+% 
+% {
+% \paragraph{Decidability of the Pure Theory of Identity}
+% 
+% 
+% }
+% 
+% {
+% \paragraph{Decidability of \lequ}
+% 
+% 
+% }
+
+
+\section{Numerical Quantification and the Theory of Definite Descriptions}
+\paragraph{Numerical Quantification: `At Least'}
+
+The ordinary interpretation of the sentence $\exists x Px$ is that there are one or more things which satisfy $P$. Obviously, $\exists x \exists y Px \wedge Py$ does not express that there are two or more things which satisfy $P$, because $x$ and $y$ may take the same values under a variable assignment. To express that there are at least two $P$s, we need to guarantee the \emph{distinctness} of the values of the variables. We can do this using identity: \begin{equation*}
+	\exists x \exists y ((Px \wedge Py) \wedge \neg x=y).
+\end{equation*}
+  Similarly, \begin{equation*}
+  	\exists x \exists y \exists z ((Px \wedge Py \wedge Pz)\wedge (\neg x=y \wedge \neg y=z \wedge \neg x=z))
+  \end{equation*} expresses that there are \emph{at least three} distinct $P$s. Let $\exists_{n}\phi$ express that there are at least $n$ things which satisfy $\phi$.
+
+\paragraph{Numerical Quantification: `At Most', `Exactly'}
+
+Just as for `at least', so we can formalise `there are at most $n$ $P$s'. Under what circumstances are there at most $n$ things? Just in case, if we chose $n+1$ times, we would have to have chosen some of the things twice: some of things chosen would have to be identical.  So we formalise `there are at most $2$ $P$s' as \begin{equation*}\forall x \forall y \forall z ((Px \wedge Py \wedge Pz) \to (x=y \vee x=z \vee y=z)).
+	\end{equation*}
+Formalise `there are at most $n$ $\phi$s' as $\forall_{n} x \phi$. Then we can say that \emph{there are exactly $n$ $\phi$} as \begin{equation*}
+	\exists_{n} x \phi \wedge \forall_{n} x \phi.
+\end{equation*} There will be more or less concise ways of expressing this claim.
+
+\paragraph{Definite Descriptions}
+
+The \lequ\ sentence $Pa$ is often a good translation of simple English sentences of subject-predicate form. Yet some sentences, with this apparent form, cannot be translated in this way. Consider `The fourth-oldest college is a college'. While `the fourth-oldest college' is a referring expression, denoting a particular item in the domain, it seems a bad idea to formalise this by a constant $a$. For one thing, the English sentence is a tautology, but the proposed formalisation is not. So some English  expressions which, like constants, denote an object in the domain, shouldn't be formalised by constants. It is notable that `the fourth-oldest college' doesn't name a particular college (Exeter) – it \emph{describes} it. A \emph{definite description} designates a particular thing by giving a description that the thing – and \emph{only} that thing – satisfies. We will look again at the relation between constants of \ltwo/\lequ\ and English referring expressions in Chapter 8.
+
+So `the strongest man in the world' designates that person who satisfies the property of being a man stronger than any other. `Strongest' entails uniqueness, and this is generally true for definite descriptions: they fail to refer if more than one thing satisfies the description (so `the college on Turl St' fails, because there are three such). \emph{Indefinite} descriptions, such as `a strong man', do not require uniqueness.
+
+Definite descriptions also seem to require existence of the thing they describe: the definite description `the present king of France' fails because \emph{nothing} satisfies that description.
+
+\paragraph{Definite Descriptions and Numerical Quantification}
+
+Putting these ideas together, we might say that the definite description `the $P$' refers to the unique existing thing that is $P$. But we know how to express that there is one and only one $P$, using numerical quantification – so we can say that `the $P$ is $Q$', because we can say that there is one and only one $P$, and it is $Q$. Where $\phi,\psi$ are expressions in which at most $\upsilon$ occurs free, let us introduce the notation $\dd \upsilon: \phi$ to denote `the $\upsilon$ such that $\phi$', or simply, `the $\phi$'. One could permit this expression can take the place of a constant, so if $\psi\tau$ is well-formed, so is $\psi(\dd \upsilon: \phi)$; the latter says `the $\phi$ is $\psi$'. Given our resources, though, we needn't add this to the language, or deal with the complications that ensue, for this expression can be defined:  \begin{definition}[Definite Descriptions]
+	$\psi(\dd \upsilon: \phi) \eqdf \exists \upsilon (\psi \wedge \forall \nu \phi[\nu/\upsilon] \bicond \upsilon=\nu)$.
+\end{definition}
+This, essentially, is \emph{Russell's analysis of the logical form of definite descriptions}. 
+
+\paragraph{Descriptions and Scope}
+
+One reason to suspect that definite descriptions aren't just ordinary names – and a corresponding reason to reject the descriptivist account of the meaning of the constants of natural language – is that descriptions, unlike names, have \emph{scope}. Consider \begin{description}
+	\item [(*)]  The prime minister has always been Australian.
+\end{description} In \lequ, there is no non-truth-functional operator `it always has been that $\phi$'. We can mimic this (or maybe it is not mimicking) by \emph{quantifying over times}. Let $t$ be `now', $\prec$ be `is earlier than', $P$ be `is prime minister at', and $A$ be `is Australian'. (*) has two readings: \begin{align*}
+	\forall x (x \prec t \to \exists y ((Pyx \wedge \forall z (Pzx \bicond y=z)))\wedge Ay);\\
+	\exists y ((Pyt \wedge \forall z (Pzt \bicond y=z))\wedge \forall x (x \prec t \to Ay)).
+\end{align*} The first says: always the prime minster, whoever they've been, has been Australian at the time of their prime ministership; the second says the present prime minister has always been Australian.
+
+(Very similar results can be seen in \emph{modal} contexts of possibility and necessity. We can again mimic the behaviour of the operator `possibly' as an existential quantifier over `possible worlds', and `necessarily' (like `always') as a universal quantifier.)
+
+The problem is that in the case of names we seem \emph{not} to see these scope problems. For this claim has only one reading: \begin{description}
+	\item [(\dag)] Kevin Rudd has always been Australian.
+\end{description}The existence of scopes for definite descriptions, is some evidence for the fact that they are really quantifier expressions. 
+
+Yet there are some disanalogies. Consider \begin{description}
+	\item [(\ddag)] The present king of France is bald.
+\end{description} According to Russell's theory, this is \emph{false} – existence fails. But we may not share that intuition; this claim may strike us as neither true nor false, or having a false presupposition and thus unassessable.
+
+
+\paragraph{Alternative Theories of Descriptions}
+
+Strawson used our uncertain intuitions about (\ddag) to argue that descriptions are often used referentially, \begin{quotation}
+	to mention 	or refer to some individual person or single object\ldots, in the course 	of doing what we should normally describe as making a statement 
+	about that person [or] object. 
+\end{quotation} When uttering a referring expression, one \emph{presupposes} the existence of the thing. But when our intentions go awry, and we have presupposed something false, the utterance fails to have a truth value.
+
+One truly weird way of dealing with (\ddag) is due to Meinong. This is to suppose that definite descriptions always pick out something, but sometimes the things picked out do not exist! Rather, according to Meinong, they \emph{subsist}. Meinongianism apaprently handles one type of problematic definition description with ease:
+\begin{description}
+	\item [(\P)] The present king of France does not exist.
+\end{description} 
+But one might legitimately query whether a real success has been achieved here. For Meinong, apparently empty definite descriptions, like the present king of France, do function referentially: they pick out merely subsisting entities. But then Meinong offers us an explanation as to why we cannot use existential generalisation (the English analogue of the \ltwo\ rule $\exists$-intro) on such singular terms. For we manifestly cannot use it, else the true claim (\P) would entail this false claim:
+\begin{description}
+	\item [(!)] There is something that does not exist.
+\end{description} 
+
+
+
+\section{Compactness and Cardinality}
+\paragraph{`There are $n$ things' and infinity}
+
+We saw before that there is a set of \lequ\ sentences satisfiable only in infinite domains.  If $R$ is a transitive asymmetric relation (both of which properties are expressible by an \lequ\ sentence), then $\forall x \exists y Rxy$ will be satisfiable in no finite domain. Can we give a set of sentences satisfiable in \emph{all and only} infinite domains?
+
+Using the resources for numerical quantification, define $\mathbf{n}$ as $\exists_{n} x (x=x)$. Then $\mathbf{3}$ says there are at least three things.
+
+ Consider the set $\mathbf{N} = \{\mathbf{n} : n \in \mathbb{N}\}$. $\mathbf{N}$ is not satisfiable in any finite domain: suppose it were satisfiable in domain of size $m$, then where $n=m+1$, $\mathbf{n}$ would be false and  because $\mathbf{n} \in \mathbf{N}$, $\mathbf{N}$ is not satisfied. So $\mathbf{N}$ is satisfiable only in infinite domains. Moreover, in every infinite domain, $\mathbf{N}$ is satisfied. (exercise). 
+
+$\mathbf{N}$ is thus an `axiomatisation of infinity'. It is a consequence of compactness that there is no single \lequ\ sentence which is an axiom of infinity (exercise).
+
+
+
+
+\paragraph{Finitude Undefinable}
+
+Since there is at least one sentence of \lequ\ true only in infinite domains, perhaps there is a sentence of \lequ\ true only in \emph{finite} domains? Perhaps surprisingly, there is not.\begin{theorem}[Finitude Undefinable]
+There is no set of \lequ-sentences satisfiable in all and only finite domains. \begin{proof}
+	{Suppose $FIN$ is a set of \lequ\ sentences true in all and only finite domains. $FIN \cup \mathbf{N}$ must be unsatisfiable; by compactness, where $\Gamma$ is a finite subset of $FIN$ and $\Delta$ is a finite subset of $\mathbf{N}$, $\Gamma \cup \Delta$ is unsatisfiable. As $\Delta$ is a finite subset of $\mathbf{N}$, there is some greatest $\mathbf{n}\in\Delta$; in any model $\mathscr{A}$ with a domain of size greater than $n$, $\Delta$ is satisfiable in $\mathscr{A}$. Since $\Gamma\cup\Delta$ is unsatisfiable, $\Gamma$ is unsatisfiable in any such model $\mathscr{A}$, so there is a model with a finite domain (any such $\mathscr{A}$) in which $FIN$ is unsatisfiable, contrary to assumption. So there is no such $FIN$.}\end{proof}\end{theorem}
+
+
+\paragraph{L\"owenheim-Skolem Theorem}
+
+\begin{theorem}[The L\"owenheim-Skolem Theorem]
+	If $\Gamma$ is a set of sentences of \lequ\ which has an infinite model $\mathscr{A}$ (of size $\omega_{\alpha}$), then \begin{description}
+			\item [Upward] $\Gamma$ has a model for every infinite size $\omega_{\beta} > \omega_{\alpha}$.
+			\item [Downward] $\Gamma$ has a countable model.
+	\end{description} \begin{proof}
+		{\emph{Upward:} Extend the language for $\Gamma$ to $\mathcal{L}^{+}$ by adding new constants $C$ such that size of $C$ is $\omega_{\beta}$.  Consider the set of $\mathcal{L}^{+}$ sentences $\Gamma^{*} = \Gamma \cup {c_{i}\neq c_{j}: i\neq j, c_{i},c_{j}\in C}$. Since $\Gamma$ is satisfiable, every finite subset of $\Gamma^{*}$ is satisfiable – by compactness (for this uncountable language!), $\Gamma^{*}$ has a model, and the model must have cardinality $\omega_{\beta}$.
+	
+		\emph{Downward:} too complex to be covered here, unfortunately – see, e.g., \citet[chs.\ 12--13]{bbjcomlo}.}
+			\end{proof}
+\end{theorem}
+
+
+% {
+% \paragraph{Downward L\"owenheim-Skolem Theorem}
+% 
+% An \lequ-sentence is in \emph{Skolem Normal Form} (SNF) iff it is a prenex sentence with only universal quantifiers. \begin{lemma}[Skolemization]
+% 	Every sentence of \lequ\ is equisatisfiable with a SNF sentence. \begin{proof}
+% 		For every sentence of \lequ\ $\phi$, there is a $\exists\forall$ sentence $\psi$ such that $\vDash\phi$ iff $\vDash\psi$ (exercise). By many uses of $\exists$Elim, there is a $\psi'$ that is satisfiable iff $\psi$ is. $\psi'$ is the \emph{Skolemisation} of $\phi$.
+% 	\end{proof}
+% \end{lemma}
+% \begin{theorem}[Downward L\"owenheim-Skolem]
+% 	\begin{proof}
+% 		{\em $\Gamma$ is satisfiable. Let $\Gamma'$ be the Skolemisation of $\Gamma$. Then $\Gamma'$ is satisfiable. Proof to follow that $\Gamma'$ and thus $\Gamma$ has a countable model.}
+% 	\end{proof}
+% \end{theorem}
+% 
+% 
+\paragraph{Overspill}
+
+\begin{theorem}[Overspill]
+	If a set of sentences has an arbitrarily large finite model, it has a countable model. \begin{proof}
+		{Let $\Gamma$ have arbitrarily large finite models. Let $\Gamma' = \Gamma \cup \mathbf{N}$. Any finite subset of $\Gamma'$ is a subset of $\Gamma\cup\Delta$, where $\Delta$ is a finite subset of $\mathbf{N}$, with a greatest $\mathbf{n} \in \Delta$. Since $\Gamma$ has arbitrarily large models, $\Gamma\cup\Delta$ has a model. But then every finite subset of $\Gamma'$ has a model; by Compactness, $\Gamma'$ has a model. And by the downward L\"owenheim-Skolem theorem, it has a countable model \citep[147]{bbjcomlo}.)
+		}
+	\end{proof}
+\end{theorem}
+
+\paragraph{Skolem's Paradox}
+
+The L\"owenheim-Skolem theorem says that no first-order theory can restrict itself to models of one infinite cardinality.  But set theory is a  first-order theory: the L\"owenheim-Skolem theorm says it has a (presuambly unintended) countable model, but set theory itself entails that there are uncountable sets! This is \emph{Skolem's paradox}.
+
+The resolution of the `paradox' is to note that set theory \begin{quotation}
+	 only ``says'' that [some set] $S$ is nondenumerable in a \emph{relative} sense: the sense that the members of $S$ cannot 
+	be put in one-to-one correspondence with a subset of $\mathbb{N}$ by any $R$ \emph{in the model}. 
+	A set $S$ can be ``nondenumerable'' in this \emph{relative} sense and yet be denumerable 
+	``in reality''. This happens when there \emph{are} one-to-one correspondences between 
+	$S$ and $\mathbb{N}$ but all of them lie outside the given model. What is a ``countable'' set 
+	from the point of view of one model may be an uncountable set from the point of 
+	view of another model.  \citep[465]{putmodre}
+\end{quotation}
+
+
+
+% {
+% \paragraph{}
+% 
+% The key here is the fact that "There is no weakest Axiom of Infinity" is a
+% corollary of Trakhtenbrot's theorem that the set of first-order formulas
+% valid in FINITE models (i.e. whose negations are not FINITELY satisfiable)
+% is undecidable. This follows from G\"{o}del 1931. There is no complete
+% axiomatization of the Pi-1-1 sentences of arithmetic (i.e., the set of
+% Pi-1-1 truths is not r.e.). A proper initial segment of the natural
+% numbers, however, can be thought of as a finite model. So, (*), if finite
+% satisfiability was decidable, we'd have have a way of proving arbitrary
+% Pi-1-1 truths of arithmetic: just carry out the decision procedure and note
+% that no finite model knocks out the candidate sentence! (The fiddly bit,
+% (*), has to do with a bit of change to the sentence: finite segments of
+% omega are not closed under addition and multiplication, so what we would
+% have to test in finite models was a variant: put a bound on the initial
+% universal quantifiers of the Pi-1-1 sentence (using a new constant), and
+% check that the bounded sentence holds in models that go enough higher than
+% the bound to include denotations for all the terms appearing.)
+% }
+
+\section{Further Directions of Research and Study in Logic}
+
+We could now proceed to extend, or alter our logic, in quite a few ways:
+\begin{description}
+	\item [Enriching] We could add still further to \lequ\ or \lone, introducing \emph{modal operators} like `necessarily' and `possibly', \emph{temporal operators} like `it was the case that', or even moral operators like `it ought to be that', or stronger conditionals like the \emph{counterfactual} `If it had been the case that $\phi$, it would have been the case that $\psi$'. Then we can prove results about these enriched systems.
+	\item [Altering]  Some complain that $\neg\neg \phi \not \vDash \phi$; these \emph{intuitionists} want to revise our logic. \emph{Free logic} permits constants to lack a designation in a model, and \emph{universally free logic} abandons the requirement that the domain be non-empty; these of course will also revise our logic as given.
+	\item [Advancing] We could augment our languages in another way too, perhaps introducing \emph{function symbols} – operators on terms that yield terms – like $+$ or $\times$. We can then formalise languages of interest – most famously \emph{arithmetic}, in the \emph{Peano axioms}, and prove various things about them. In this way we can build up to one of the most celebrated results of twentieth century logic: \begin{theorem}[G\"odel Incompleteness Theorems]
+	If $T$ is a consistent, finitely axiomatisable theory able to express elementary arithmetic, then \begin{itemize}
+		\item $T$ cannot prove every arithmetical truth;
+		\item $T$ cannot prove its own consistency (i.e., cannot prove an arithmetical sentence that is true iff $T$ is consistent). (This second result obviously entails the first given that $T$ is consistent.)
+	\end{itemize}
+\end{theorem}
+The proof is sadly beyond us. 
+\end{description}
+
+In the next chapter, we will look at some of the philosophical issues arising for the logic we have introduced. In particular, we will look at how well the operator $\to$ matches the English conditional, and how well the semantics of designators and relations for \ltwo\ matches  similar constructions in English. We'll also reexamine the sequent $\phi,\neg\phi\vdash\psi$.
+
+{\small
+\subsection*{Further Reading}
+\addcontentsline{toc}{subsection}{Further Reading}
+
+Russell's famous paper on definite descriptions is \citet{rusonde}; the nearly as famous response by Strawson is \citet{stronre}.  A good overall source is \citet{sep-descriptions}. 
+
+ One much-discussed philosophical analysis of the consequences of the L\"owenheim-Skolem theorem is \citet{putmodre}. This article is very controversial! One response is \citet{lewputpa}.
+
+On modal, temporal, etc., logics, a good treatment is by \citet{bevpospa}; a very elegant recent examination of these topics an the topicof non-classial logic generally is \citealt{burphilo}.  Free logics are treated by \citet[\S\S 8.4--8.7]{bosintlo}, and \citet{lamfrelo}.
+
+
+ A good text on the further development of metamathematics is \citealt{bbjcomlo}.
+
+
+
+
+
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+
+\begin{enumerate}
+\item Prove the theorem called `Substitution of co-designating constants' from page \pageref{scdc}.
+\item Prove the following \begin{enumerate}
+	\item $\vDash \forall x x=x$;
+		\item $\vDash \forall x \forall y (x=y \to y=x)$;
+		\item $\vDash\forall x \forall y \forall z ((x=y \wedge y=z) \to x=z)$.
+\end{enumerate}	
+\item \begin{enumerate}
+	\item Show that in the presence of {=}Elim, $\exists$Elim and $\exists$Intro, the rule {=}Intro can be replaced by this rule (where $\tau$ is a constant): \begin{equation*}
+		\begin{prooftree}
+			[\exists \upsilon \upsilon = \tau] \justifies \vdots \using {=}\text{Intro\dag} 
+		\end{prooftree}
+	\end{equation*}
+\item What would be the effect of adopting, instead of our rule =Intro, this rule (in the presence of the other rules of $ND_{2}$): \begin{equation*}
+	\begin{prooftree}
+	\phi	\justifies \tau = \tau \using \text{=Intro*}
+	\end{prooftree}
+\end{equation*}
+\item Can we replace both {=}Intro and {=}Elim by this pair of rules, in the presence of the other rules of $ND_{2}$ ($\phi$ is a formula in which at most $\upsilon$ occurs free): \begin{center}
+	\begin{tabular}{cc}
+		\begin{prooftree}
+			\phi[\tau/\upsilon] \justifies \exists \upsilon (\upsilon=\tau \wedge \phi) \using {=}\text{Intro\ddag}
+		\end{prooftree}
+		&
+		\begin{prooftree}
+		 \exists \upsilon (\upsilon=\tau \wedge \phi) \justifies \phi[\tau/\upsilon]  \using {=}\text{Elim\ddag}
+		\end{prooftree}
+	\end{tabular}
+\end{center}
+\end{enumerate}
+\item Suppose $\phi$ is a formula in which at most $\upsilon$ occurs free, and in which $\nu$ does not occur at all.  \begin{enumerate}
+	\item Show that $\vDash \forall \upsilon \forall \nu (\upsilon=\nu \to \phi \bicond \phi[\nu/\upsilon])$. 
+	\item Suppose for \emph{every} formula $\phi$ with just $\upsilon$ free, not itself involving identity, and any constants $\tau$, $\kappa$, we could show that $\val{\phi[\tau/\upsilon]}{A} = \val{\phi[\kappa/\upsilon]}{A}$. Could we then show that $\val{\tau=\kappa}{A}=T$? (This is intended to mimic as best we can the second-order quantification over properties in the definition of identity: the question is, does it work in the right way?) 
+\end{enumerate}
+\item \begin{enumerate}
+\item  Show that  $\exists_{n+1}x Px \equiv \exists x (Px \wedge \exists_{n} y (Py \wedge \neg x=y))$.
+	\item Define $\forall_{\tilde{n}}x\phi$ as $\neg\exists_{n}x\neg\phi$. Give an English translation of $\forall_{\tilde{n}}xPx$.
+\end{enumerate} 
+
+\item In the analysis of definite descriptions, $\exists \upsilon (\psi \wedge (\forall \nu \phi[\nu/\upsilon] \bicond \upsilon=\nu))$,  could we replace the `$\bicond$' by `$\to$'? If not, why? What about in this formulation: $\exists \upsilon (\psi \wedge (\forall \nu \upsilon=\nu \bicond \phi[\nu/\upsilon]))$?
+\item Give appropriate analyses in \lequ\ of these claims, being sure to point out any cases of ambiguity, and commenting on other issues: \begin{enumerate}
+	\item The number of planets is necessarily eight.
+	\item The prime minister must be an honest person.
+	\item There used to be  a Labor prime minister.
+\end{enumerate}
+\item What is the best way to formalise `$x$ exists' in \lequ? What are the difficulties with a Russellian analysis of (\P) `The present king of France does not exist'?
+\item Can the Russellian analysis of descriptions deal with the following sentences? \begin{enumerate}
+	\item `The beer is all gone.'
+	\item `He is tall, handsome, and the love of my life.'
+	\item `She is the proud owner of a Rolls Royce.'
+\end{enumerate}
+\item Can we use identity and quantification to express `there are exactly as many $P$s as $Q$s'?
+\item \begin{enumerate}\item Show that the infinite set of sentences $\mathbf{N}$ is satisfied in every infinite domain.
+\item Show that there is no single \lequ-sentence which is satisfied in $\mathscr{A}$ iff $\mathbf{N}$ is satisfied in $\mathscr{A}$.
+\end{enumerate}
+\item A \emph{permutation} on $S$ is a one-one function $\pi$ from $S$ to $S$. If $\mathscr{A}$ is a model, where $\pi$ is a function from the domain of $\mathscr{A}$ to itself, let the permutation $\pi(\mathscr{A})$ be this model \begin{itemize}
+	\item $D_{\mathscr{A}}=D_{\pi(\mathscr{A})}$.
+	\item For any term $\tau$, $I_{\pi(\mathscr{A})}(\tau) = \pi(I_{\mathscr{A}}(\tau)$.
+	\item For any $n$-ary predicate $\Phi$, $$I_{\pi(\mathscr{A})}(\Phi) = \{\langle \pi(x_{1}),\ldots,\pi(x_{n})\rangle:\langle x_{1},\ldots, x_{n}\rangle \in I_{\mathscr{A}}(\Phi)\}.$$
+\end{itemize}  \begin{enumerate}
+	\item Show the \emph{Permutation Theorem}: for any sentence $\phi$, and permutation $\pi$, $\val{\phi}{A} = \val{\phi}{\pi(A)}$.
+	\item Consider this passage: \begin{quotation}
+		the Permutation Theorem shows that, even if we can somehow discount the problems raised by the [Skolem's paradox and the L\"owenheim-Skolem Theorem], and settle on models with one fixed domain as those which can truly claim to be abstractions of the world – even then, there are as many different reference relations holding between the subsentential expressions of $T$'s language and the world as there are nontrivial permutations of the fixed domain, all of which underwrite the truth of exactly the same sentences, and, hence, equally subserve the truth of the theses of $T$. There being no basis for preference between these reference relations, realism's doctrine that there is a unique, privileged such relation is apparently discredited. \citep[53--4]{taymodtrr}
+	\end{quotation}Assess and evaluate this argument. Do you accept the conclusion? If not, why not?
+\end{enumerate}
+ \end{enumerate}
+
+
+}
+
+
+

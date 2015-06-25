@@ -1,0 +1,378 @@
+
+
+
+
+\section{Semantics for \lone}
+
+To complete our specification of \lone, we need to provide some account of the intended meanings of sentences of \lone. In natural languages each expression has a specific meaning, and makes a specific contribution to the sentences in which it appears. Our language will differ from natural language in this respect. For we will not insist on any one fixed interpretation of the sentence letters of the language.\footnote{We resist the assignment of any fixed meaning to the sentence letters for practical reasons. If we wish to use our logical languages to model natural language arguments, it would be tedious indeed to have to figure out which sentence letter translates the natural language sentences we are considering. (Is it $P_{371}$?) So we allow the meaning of the sentence letters to be fixed anew in each application.} However, the meanings we assign to the logical connectives will resemble more closely the kinds of meanings in natural languages: the meanings of connectives will make a fixed contribution, alongside the syntax, to determining the meanings of complex sentences.
+
+\paragraph{Truth Values}The meanings we assign to sentences in \lone\ are very minimal: they are \emph{truth values}.An interpretation of the language will  associate with every sentence of \lone\ a truth value such that the truth-value of a sentence depends on its semantically relevant structure and the truth-values of its constituents.  Such an interpretation is called a \emph{compositional semantics}: it identifies the meaning of a sentence with the conditions under which the sentence is true, and specifies those conditions by showing how the semantic values (truth values) of a complex sentence are determined by its structure and the semantic values of its parts.
+
+\paragraph{Classical Valuations} In classical logic, there are two truth values: $T$ and $F$ (sometimes written $1$ and $0$, sometimes written $\top$ and $\bot$). We may say, then, that our semantics will provide a classical valuation of all the sentences in \lone.
+\begin{definition}[Valuation]
+	A \emph{valuation} of a syntax is an assignment of values (of some sort of other) to the sentences of that syntax. A \emph{classical valuation} is a valuation in which the values are either $T$ or $F$, and in which each sentence has exactly one value assigned to it.
+\end{definition}
+We can express what we said about classical valuations more concisely using the language of functions: a classical valuation is a total function from the set of sentences of a language into the set of truth values. We may also use it to define a new notion: 
+	\begin{definition}[\lone-Structure]
+		An \emph{\lone-structure} is a (total) function from the set of sentence letters of \lone\ into the set of classical truth values $\{T,F\}$.
+	\end{definition}
+
+	A valuation need not be compositional, in the sense that there need not be any rules governing which sentences get which truth values. But ours will be, and we can use the rules governing the construction of complex sentences to extend an \lone\ structure to a full classical valuation for \lone.
+\begin{definition}[\lone-valuation]\label{value}
+		When $\mathscr{A}$ is any \lone-structure, $\val{\cdot}{A}$ is a valuation function from the set of \lone\ sentences to the set of truth values $\{T, F\}$ iff it meets these conditions: \begin{enumerate}
+			\item If $\phi$ is a sentence letter, $\val{\phi}{A} = \mathscr{A}(\phi)$.
+			\item $\val{\neg \phi}{A} = T$ if and only if (iff) $\val{\phi}{A}= F$.
+			\item $\val{\phi \wedge \psi}{A} = T$ iff $\val{\phi}{A}=T$ and $\val{\psi}{A}=T$.
+			\item $\val{\phi \vee \psi}{A} = T$ iff $\val{\phi}{A}=T$ or $\val{\psi}{A}=T$ (or both).
+			\item $\val{\phi \to \psi}{A} = T$ iff $\val{\phi}{A}=F$ or $\val{\psi}{A}=T$ (or both).
+			\item $\val{\phi \bicond \psi}{A} = T$ iff $\val{\phi}{A}=\val{\psi}{A}$.
+		\end{enumerate}
+	\end{definition}
+
+\begin{definition}[Agreement of Structures]
+	When $S$ is a set of \lone\ sentence letters, let us say that two \lone\ structures $\mathscr{A}$ and $\mathscr{B}$ \emph{agree} on $S$ iff for each $\phi$ in $S$, $\mathscr{A}(\phi) = \mathscr{B}(\phi)$. 
+\end{definition}
+Since the value of a sentence is determined by the values of its constituents, it is obvious that if $\psi$ is any \lone\ sentence, if two \lone\ structures $\mathscr{A}$ and $\mathscr{B}$ agree on the sentence letters in $\psi$, then $\val{\psi}{A}=\val{\psi}{B}$.  
+
+\paragraph{Falsity clauses} Here is another example of proof by induction on complexity of sentences. Recall the definition of a valuation. It told us under what circumstances a sentence of a given form was true in a valuation. Why didn't we also need to state when a sentence was false? Because a sentence is false iff it is not true:
+\begin{theorem}[Falsity is Untruth]
+		$\val{\phi}{A}=0$ iff $\val{\phi}{A}\neq 1$.
+		\begin{proof}
+			{\em Base case:} $\phi$ is a sentence letter. Because $\mathscr{A}$ is a function, if $\val{\phi}{A}=0$ then $\val{\phi}{A} \neq 1$. Because $\mathscr{A}$ is into and total, if $\val{\phi}{A}\neq 1$ then $\val{\phi}{A}=0$.
+
+			{\em Induction step:} Suppose $\phi$ is a sentence, but is complex, and that the theorem holds for the constituents of $\phi$. We show two illustrative cases: \begin{enumerate}
+				\item Suppose $\phi = \neg \psi$. Then $\val{\phi}{A}=0$ iff $\val{\neg \psi}{A}=0$, iff $\val{\psi}{A} = 1$, iff $\val{\psi}{A}\neq 0$ iff $\val{\neg\psi}{A}\neq 1$ iff $\val{\phi}{A}\neq 1$.
+				\item Suppose $\phi = (\psi \vee \chi)$. Then $\val{\phi}{A} = 0$ iff $\val{\psi \vee \chi}{A}=0$ iff $\val{\psi}{A}=0$ and $\val{\chi}{A}=0$ iff $\val{\psi}{A}\neq 1$ and $\val{\chi}{A} \neq 1$ iff  $\val{\psi\vee\chi}{A}\neq 1$ iff $\val{\phi}{A}\neq 1$.
+			\end{enumerate}
+		\end{proof}
+	\end{theorem}
+
+\section{Truth Tables}
+
+One way of representing \lone\ structures – or at least, representing as much of them as matters – is using a truth table. Consider any finite set of \lone\ sentences,  $\Gamma$. Since each sentence in $\Gamma$ is also only finitely long, there are at most finitely many sentence letters occurring in $\Gamma$. The values assigned to each of these sentence letters, in accordance with Definition \ref{value}, determines the values assigned to every sentence in $\Gamma$.
+
+Since there are only finitely many sentence letters in $\Gamma$, each of which is assigned either $T$ or $F$ by our structures, it is clear there are only finitely many ways of assigning truth values to the sentence letters. (In fact, if there are $n$ sentence letters, there are $2^n$ ways of assigning them truth values.) So we can write down – in principle – each of those ways of assigning truth values in a \emph{truth table}. This table summarises the truth values of the sentences in $\Gamma$ across all possible \lone-structures. 
+
+\paragraph{Constructing Truth Tables} For each sentence letter that appears in some sentence within $\Gamma$, inscribe a column. For each way of assigning truth values to sentence letters, inscribe a row, by putting a truth value under the appropriate column. It is obvious that each row of the truth table corresponds to a class of structures: namely, a class of structures that all agree on the sentence letters in $\Gamma$. (They will disagree over other sentence letters, but since they are not relevant to determining the truth value of any sentence in $\Gamma$, who cares?) For any way of assigning truth-values to sentence letters in $\Gamma$, there is some row of the truth table that agrees with that assignment. Now add a column for each sentence in $\Gamma$, and for each row, inscribe under the sentence the value assigned to that sentence by any structure corresponding to that row. (Since all such structures agree on the sentence letters in the sentence, they will all agree on what they assign to the sentence too, so it doesn't matter which one we pick.) 
+
+So, for instance, suppose $\Gamma$ is this interesting set of \lone\ sentences: $$\left\{\neg P, (P\wedge Q), (P\vee Q), (P \to Q), (P\bicond Q)\right\}.$$ The truth table for this set of sentences is pictured in Table \ref{tt}. 
+
+\begin{table}[t]
+	\centering
+	\begin{tabular}{cc|ccccc}
+\toprule
+$P$ & $Q$ & $\neg P$ & $(P\wedge Q)$ & $(P\vee Q)$ & $(P \to Q)$ & $(P\bicond Q)$	\\
+\midrule
+T & T & F & T & T & T & T \\
+T & F & F & F & T & F & F \\
+F & T & T & F & T & T & F \\
+F & F & T & F & F & T & T \\
+\bottomrule
+	\end{tabular}
+	\caption{Truth Table for the Standard Connectives\label{tt}}
+\end{table}
+
+
+\section{Satisfaction, Entailment, and other Semantic Notions}
+
+Many conceptions of logic have it that logic is fundamentally about \emph{consequence}: what it is for some sentences to follow from one another, in virtue of the logical form of the sentences involved \citep{brlc}. But what is consequence? We may characterise it semantically as follows: some sentences of \lone\ have another sentence as a consequence if the former sentences \emph{entail} the latter sentence. And we may characterise entailment, and a number of other semantic relations between sentences, using the notions we've already introduced.
+\begin{definition}[Satisfaction]
+	Suppose $\Gamma$ is a (possibly empty, possibly infinite) set of sentences of \lone, and $\mathscr{A}$ is a \lone-structure, such that $\val{\gamma}{A}=T$ for every sentence $\gamma\in\Gamma$. In that case, $\mathscr{A}$ \emph{satisfies} $\Gamma$, or $\mathscr{A}$ is a \emph{model} of $\Gamma$.	
+	\end{definition}
+\begin{definition}[Entailment]
+	A set of sentences $\Gamma$ \emph{(semantically) entails} a sentence $\phi$ iff every \lone-structure which satisfies $\Gamma$ also satisfies $\phi$. Notation: $\Gamma \vDash \phi$.
+\end{definition}
+\begin{definition}[Tautology]		
+	$\phi$ is a \emph{tautology} iff every \lone\ structure satisfies $\{\phi\}$. A tautology is sometimes called a \emph{logical truth}. 
+\end{definition}
+\begin{theorem}
+	If $\phi$ is a tautology, then for any set of sentences $\Gamma$, $\Gamma \vDash \phi$ – even if \,$\Gamma$ is the empty set, which contains no sentences at all.
+\end{theorem}
+This theorem explains the fact that we often write `$\vDash \phi$' to mean that $\phi$ is a tautology.
+
+If no \lone-structure satisfies $\Gamma$,  $\Gamma$ is \emph{unsatisfiable}, or \emph{semantically inconsistent}, which we write $\Gamma\vDash$. (Accordingly, a set of sentences is \emph{semantically consistent} iff it is satisfiable.) If $\Gamma = \{\phi\}$ and $\Gamma \vDash$,  $\phi$ is a \emph{contradiction}.
+\begin{theorem}
+	$\phi$ is a tautology iff $\neg\phi$ is a contradiction.
+	\begin{proof}
+		$\phi$ is a tautology iff $\val{\phi}{A} =T$ in every \lone\ structure $\mathscr{A}$. By Definition \ref{value}, this is the case iff $\val{\neg\phi}{A}=F$ in every \lone\ structure $\mathscr{A}$; iff no \lone\ structure satisfies $\{\neg\phi\}$, i.e., $\neg\phi$ is a contradiction. 
+	\end{proof}
+\end{theorem}
+
+
+\paragraph{Validity and Necessity}An \emph{argument} involves a set of sentences $\Gamma$, its \emph{premises}, and a single sentences $\phi$ as its conclusion. An argument is \emph{(logically) valid} iff  $\Gamma$  entails $\phi$. 
+
+ Sometimes one sees a purported definition of validity along these lines: that an argument is valid iff it is \emph{impossible} for its premises all to be true while its conclusion is false \citep[19]{sweetreas}. That is, if there is no possible situation in which the premises are true and the conclusion false. While there are some similarities between \lone-structures and possible situations, this sort of definition of validity should be resisted. We can think of a possible situation as specified by a description of a \emph{way things could have been}. Importantly, the description will be in a certain actual language, which we need to hold fixed in order for it to do its descriptive job. But an \lone-structure is, in some ways, precisely the opposite of this. It is a way of interpreting the sentence letters of \lone, holding fixed the world at which those reinterpreted sentences are to be evaluated. In many cases it makes no difference whether we consider a sentence $P$ to be evaluated at a possible situation in which what $P$ says obtains, or to be evaluated at actuality under an interpretation which makes it true. But there are cases in which it matters. Consider this argument: \begin{quotation}
+	Sylvester is a child;
+
+	Therefore, Sylvester is not an adult.
+\end{quotation}
+The premise \emph{necessitates} the conclusion, for there is no possible world in which a child is an adult. But this argument isn't logically valid; for under a reinterpretation of the non-logical vocabulary ‘adult’ on which it means ‘child’, the premise is actually true and the (reinterpreted) conclusion actually false. The premise guarantees the truth of the conclusion, in part because of what the non-logical expressions ‘adult’ and ‘child’ actually mean. But in logic, we are interested in arguments where the premises guarantee the truth of the conclusion in virtue only of the meanings of the logical expressions involved \citep{tarski}.
+
+
+
+
+ \section{Entailment and the Connectives}
+\begin{theorem}[Conjunction and Satisfaction]
+	If\, $\Gamma = \{\gamma_{1},\ldots,\gamma_{n}\}$, then for every \lone\ structure $\mathscr{A}$, $\mathscr{A}$ satisfies $\Gamma$ iff $\val{(\gamma_{1}\wedge\ldots\wedge\gamma_{n})}{A}=T$.\label{cone}
+\end{theorem}
+
+\begin{definition}[Equivalence]
+	If $\phi \vDash \psi$ and $\psi\vDash\phi$, $\phi$ and $\psi$ are \emph{logically equivalent}.
+\end{definition}
+\begin{theorem}[Equivalence and Biconditional]	
+		$\phi$ and $\psi$ are logically equivalent iff $\vDash \phi \bicond \psi$.
+		\begin{proof}
+		$\phi\vDash\psi$ iff every structure in which $\phi$ has the value $T$ is one in which $\psi$ also has the value $T$, and \emph{vice versa}. That is, iff in every structure $\mathscr{A}$, $\val{\phi}{A}=\val{\psi}{A}$. That holds in turn, by Definition \ref{value}, iff $\val{\phi\bicond\psi}{A}=T$ in every structure, and $\phi\bicond\psi$ is a tautology.
+		\end{proof}
+	\end{theorem}		
+
+\paragraph{Deduction Theorem}
+	Let the notation `$\Gamma,\phi \vDash \psi$' abbreviate $\Gamma \cup\{\phi\} \vDash \psi$.\begin{theorem}[Deduction]\label{ded} $\Gamma \vDash (\phi \to \psi)$. 
+\begin{proof}
+$\Gamma, \phi \vDash \psi$ iff  every \lone-structure which satisfies $\Gamma\cup\{\phi\}$ also satisfies $\{\psi\}$. That holds iff there is no structure $\mathscr{A}$ in which $\Gamma$ is satisfied and in which $\val{\phi}{A}=T$ and $\val{\psi}{A}=F$. By Definition \ref{value}, there is no structure $\mathscr{A}$ in which $\Gamma$ is satisfied while $\val{\phi\to\psi}{A}=F$, i.e., $\Gamma\vDash\phi\to\psi$.
+\end{proof}
+\end{theorem}
+This permits us to say that an argument $\gamma_{1},\ldots,\gamma_{n} \vDash \phi$ is valid iff $\vDash ((\gamma_{1} \wedge \ldots \wedge \gamma_{n})\to \phi)$ – i.e., that an argument with finitely many premises is valid iff the corresponding conditional is a tautology.\begin{corol}
+	An argument from premises $\Gamma$ to conclusion $\phi$ is valid iff the conditional with the conjunction of the premises in $\Gamma$ as antecedent, and $\phi$ as consequent, is a tautology. That is $\Gamma\vDash\phi$ iff $\vDash (\gamma_{1}\wedge\ldots\wedge\gamma_{n}) \to \phi$. \begin{proof}
+		Obvious from Theorem \ref{cone} and Theorem \ref{ded}.
+	\end{proof}
+\end{corol}
+
+
+
+
+\section{Structural Rules}\label{twostruct}
+
+The expression ‘$\Gamma \vDash \phi$’ is known as a \emph{sequent}. This sequent is correct if $\Gamma$ does entail $\phi$. There are a set of rules, each of which can be justified from the definitions above, that governs correctness-preserving transformations of one sequent into another. These rules are known as \emph{structural rules}. Theorems justifying three standard structural rules follow (where $\Gamma, \Delta$ are sets of premises): \begin{theorem}[Permutation] $\Gamma, \psi,\chi,\Delta \vDash \phi$ iff $\Gamma, \chi,\psi,\Delta \vDash \phi$ (premise order doesn't matter).\end{theorem}
+\begin{theorem}[Contraction]$\Gamma, \psi,\psi, \Delta \vDash \phi$ iff $\Gamma, \psi,\Delta \vDash \phi$ (duplicate premises don't matter).
+\end{theorem}
+\begin{theorem}
+	[Weakening] If $\Gamma \vDash \phi$, then $\Gamma, \psi \vDash	\phi$.
+	\begin{proof}
+		Note that every structure which satisfies all of $\Gamma$ and also $\{\psi\}$ also satisfies $\Gamma$; as every structure satisfying $\Gamma$ satisfies $\phi$, every structure satisfying $\Gamma, \psi$ satisfies $\phi$.
+	\end{proof}
+\end{theorem}
+The structural rules are so-called because they don't depend on the meaning of any connectives, but only on the definition of entailment and the underlying set theory governing the behaviour of sets of premises. Interesting non-classical logics can arise when one varies the structural rules, which may even be done while retaining classical valuations \citep{restsub}. 
+
+\paragraph{Cut, Transitivity and Contraposition}
+
+\begin{theorem}[Cut] If $\Gamma, \psi \vDash \phi$ and $\Gamma \vDash \psi$, then $\Gamma \vDash \phi$. \begin{proof}
+	Assume that $\Gamma, \psi \vDash \phi$. If every structure in which $\Gamma$ is satisfied is one in which $\{\psi\}$ is satisfied, then it is clear that the set of structures
+	which make $\Gamma, \psi$ true is just the set of structures which makes 
+	$\Gamma$ true. Given that all the former satisfy $\phi$, so must all the latter: $\Gamma \vDash \phi$.
+\end{proof}
+\end{theorem}
+\begin{theorem}[Transitivity]
+	If $\Gamma \vDash \psi$ and $\psi \vDash \phi$, then $\Gamma \vDash \phi$.
+\end{theorem}
+
+\begin{theorem}[Contraposition]
+$\phi \vDash \psi$ iff $\neg \psi \vDash \neg \phi$.
+	
+\end{theorem}
+
+
+
+
+\section{Substitution}
+
+\paragraph{Formality of Logic} The notions of logical validity and entailment in \lone\ are \emph{formal}: it is in virtue of the form of the premises that they entail the conclusion of a valid argument. But what does it mean to say that logic is formal? Here's one thing it could mean: take a sentence of the language, and replace some of its constituents with others of the same category, while preserving the logical structure of the sentence. These two sentences have the same form. If we can prove some sort of equivalence between the two sentences, we will have shown that what matters in the language is form, rather than the particular constituents of a given sentence. 
+
+This is something you will have relied on implicitly in earlier logic courses: how could it be that for example $P$ and $P\to Q$ entail $Q$, yet $R$ and $R \to P_{1}$ fail to entail $P_{1}$? But we should prove it explicitly, to make sure that our implicit assumptions aren't leading us astray.
+
+In the case of \lone, the substituable constituents are sentence letters, and the logical structure is given by the logical connectives.
+\begin{definition}[Uniform Substitution]If $\Gamma$ is a set of sentences, $\theta$ a sentence, and $s$ a sentence letter, then write $\Gamma[\theta/s]$ for the set of sentences that results by \emph{uniformly substituting} $\theta$ for every occurrence of $s$ in every sentence in $\Gamma$. (If $s$ doesn't occur in $\Gamma$, then $\Gamma[\phi/s]=\Gamma$.) Likewise, let $\phi[\theta/s]$ be the sentence that results from replacing every occurrence of $s$ in $\phi$ by $\theta$.
+\end{definition}
+
+\begin{definition}[Substitution Instance]
+	If  $\phi = \psi[\theta/s]$, for some $\theta,s$, then $\phi$ is called a \emph{substitution instance} of $\psi$.
+\end{definition}
+
+We now show a useful lemma. \begin{lemma}[Substitution]\label{sublem}
+	Suppose $\phi$ and $\theta$ are sentences, and $s$ a sentence letter. For any structure $\mathscr{A}$, define a structure: $$\mathscr{A}^{\star}(\alpha) = 	\val{\alpha[\theta/s]}{A} = \begin{cases} \mathscr{A}(\alpha) \quad\text{iff}\quad \alpha \neq s \\
+	\val{\theta}{A} \quad\text{iff}\quad \alpha = s.
+		\end{cases}$$ Then $\val{\phi}{A^{\star}}= \val{\phi[\theta/s]}{A}$. 
+\begin{proof}	The new structure $\mathscr{A}^{\star}$ is just like $\mathscr{A}$, with the possible exception that it assigns to $s$ what $\mathscr{A}$ assigns to $\theta$.
+
+\emph{Base case}: If $\phi$ is a sentence letter, then the result follows by construction of $\mathscr{A}^{\star}$.\\
+		\emph{Induction step}: If $\phi$ is complex, and the theorem holds for less complex claims, then the result follows. I show one case: where $\phi$ is a conjunction of two simpler constituents. The induction hypothesis is that  $\val{\phi_{i}}{A^{\star}} = \val{\phi_{i}[\theta/s]}{A}$ where $\phi_{i}$ are constituents of $\phi$.
+By the semantic rules for the valuation function, and the induction hypothesis, \begin{align*}
+	\val{\phi}{A^{\star}} = T &\text{iff} \val{(\phi_{1} \wedge \phi_{2})}{A^{\star}} = T\\ &\text{iff} \val{\phi_{1}}{A^{\star}}=\val{\phi_{2}}{A^{\star}}=T\\ &\text{iff} \val{\phi_{1}[\theta/s]}{A}=\val{\phi_{2}[\theta/s]}{A}=T\\ &\text{iff} \val{\phi_{1}[\theta/s] \wedge \phi_{2}[\theta/s]}{A}=T\\ &\text{iff} \val{(\phi_{1} \wedge \phi_{2})[\theta/s]}{A}=T.
+\end{align*}
+The desired result follows: $\val{\phi}{A^{\star}} = \val{\phi[\theta/s]}{A}$. \emph{Mutatis mutandis} for the other connectives. 
+\end{proof} 
+\end{lemma}
+
+
+With this lemma in hand, we can establish further results about substitution.
+\begin{theorem}[Substitution of Material Equivalents]
+	If $\val{\theta}{A} = \mathscr{A}(s)$, then $\val{\phi}{A} = \val{\phi[\theta/s]}{A}$. \begin{proof}
+		If $\val{\theta}{A} = \mathscr{A}(s)$, then $\mathscr{A}=\mathscr{A}^{\star}$; applying Theorem \ref{sublem}, the result follows immediately.
+	\end{proof}
+\end{theorem}
+\begin{theorem}[Substitution of Sentence Letters]\label{substitution} If $\Gamma$ entails $\phi$, then so too $\Gamma[\theta/s] \vDash \phi[\theta/s]$, for any $\theta, s$.
+\begin{proof}
+	Now suppose for \emph{reductio} that $\Gamma \vDash \phi$, but $\Gamma[\theta/s] \nvDash \phi[\theta/s]$. In that case, there is a structure $\mathscr{B}$ such that for each $\gamma \in \Gamma$, $\val{\gamma[\theta/s]}{B}=T$, but $\val{\phi[\theta/s]}{B}=F$.
+
+	By the Substitution theorem \ref{sublem}, there is therefore a structure $\mathscr{B}^{\star}$ such that for each $\gamma \in \Gamma$, $\val{\gamma}{B^{\star}}=T$ and $\val{\phi}{B^{\star}}=F$. But in that case, $\Gamma \nvDash \phi$ after all, since there is an \lone\ structure where the premises are true and the conclusion false, contradicting our \emph{reductio} supposition, which must have been wrong.
+\end{proof}
+\end{theorem}
+\paragraph{Generalised Substitition and Formal Logic} A generalisation of Theorem \ref{substitution} is also provable. The notation ‘$\phi[\beta/\alpha][\gamma/\beta]$’ is to represent the uniform substitution, first, of $\beta$ for $\alpha$ throughout $\phi$, and \emph{then} the substitution of $\gamma$ for $\beta$ throughout the resulting formula. It is clear that $\phi[\beta/\alpha][\gamma/\beta] = \phi[\gamma/\alpha]$, as long as $\beta$ didn't already occur as a subsentence of $
+\phi$. \begin{theorem}[General Substitution]\label{generalsub}
+	When $\Gamma$ is finite, if $\Gamma \vDash \phi$, then also $\Gamma[\theta/\chi] \vDash \phi[\theta/\chi]$, for any $\theta, \chi$. \begin{proof}
+		Suppose for \emph{reductio} that $\Gamma \vDash \phi$, but there is a sentence letter $s$ \emph{not occurring in $\Gamma$ or $\phi$} such that $\Gamma[s/\chi] \nvDash\phi[s/\chi]$. There must be a structure $\mathscr{B^{\star}}$ such that for each $\gamma \in \Gamma$, $\val{\gamma[s/\chi]}{B^{\star}}=T$, but $\val{\phi[s/\chi]}{B^{\star}}=F$.
+		By theorem \ref{sublem}, there is therefore a structure $\mathscr{B}$ such that for each $\gamma \in \Gamma$, $\val{\gamma}{B}=T$ and $\val{\phi}{B}=F$.\footnote{This is because for any sentence $\gamma$ in which $s$ does not occur, $\gamma = \gamma[s/\chi][\chi/s]$.} But in that case, $\Gamma \nvDash \phi$ after all, contradiction: so our supposition must have been wrong. So in fact for any sentence letter $s$ not occurring in $\Gamma$ or $\phi$, when $\Gamma \vDash \phi$, $\Gamma[s/\chi] \vDash \phi[s/\chi]$. 
+But since there are infinitely many sentence letters and each of the finitely many members of $\Gamma$ and $\phi$ contains only finitely many sentence letters, we may always find such a `new' $s$.  
+
+	Now we may apply Theorem \ref{substitution} to show that $\Gamma[s/\chi][\theta/s] \vDash \phi[s/\chi][\theta/s]$. But this latter sequent just is $\Gamma[\theta/\chi] \vDash \phi[\theta/\chi]$.
+	\end{proof}
+\end{theorem}
+Theorem \ref{generalsub} establishes the formality of logic.\footnote{The reasoning is actually a little subtle: what happens when $\Gamma$ is infinite? Then we cannot be assured that there is some new sentence letter occurring in neither $\phi$ nor $\Gamma$. The Compactness Theorem \ref{compact}, which we will prove in chapter \ref{c4}, assures us that: whenever $\Gamma \vDash \phi$, then there is some finite subset $\Gamma^{-}$ such that $\Gamma^{-} \vDash \phi$, and then we can apply Theorem \ref{generalsub}. But don't worry about this wrinkle until then; we rarely come across arguments with infinitely many premises in everyday life….} We propose that $\phi$ shares a logical form with $\psi$ if there exist $\chi,\xi$ such that $\psi = \phi[\chi,\xi]$.\footnote{So $P \wedge Q$ shares a logical form with $P \wedge P$ – but not \emph{vice versa}, since uniform substitution into $P \wedge P$ cannot produce $P \wedge Q$. We could get sharing of logical form to be a symmetric relation if we liberalised the notion of substitution to include substititions of some but not all instances of a particular subsentence.} Any valid argument, when we uniformly and systematically substitute one constituent sentence for another throughout, will transform into another argument of the same logical form; and that second argument will also be valid. Since $P, P\to Q \vDash Q$, accordingly so too $R, (R \to \neg R) \vDash \neg R$, which is a substitution instance of the former argument. But as this example shows, while we retain validity, we need not retain \emph{soundness}. Soundness is not a matter of form, but the particular interpretation of a sentence of a given form. 
+
+\paragraph{Equivalence Revisited}
+There is one case where soundness is \emph{guaranteed} to be preserved: if what is substituted for one another are logically equivalent sentences. \begin{theorem}[Equivalents] \label{equivalents}
+	 If $\Gamma \vDash \phi$ is sound, then so is any sequent $\Gamma[\theta/\chi] \vDash \phi[\theta/\chi]$ where $\theta$ and $\chi$ are logically
+	equivalent. \begin{proof}
+Left for exercise.\end{proof}
+\end{theorem}
+
+Define a \emph{subsentence} of $\phi$ as any sentence which occurs within $\phi$ (i.e., if one decomposes the sentence successively in accordance with the syntax, every subsentence will appear at some stage). 
+
+\begin{theorem}[Equivalence]\label{tequiv}
+	If $\phi$ is a subsentence of $\chi$, and $\chi' = \chi[\psi/\phi]$. Then $\phi \bicond \psi \vDash \chi \bicond \chi'.$
+	\begin{proof} \emph{Base case}: Suppose $\chi=\phi$. Then $\chi'=\psi$, and obviously $\phi\bicond\psi\vDash\phi\bicond\psi$.
+	
+	\emph{Induction step}: Suppose $\chi$ is complex, e.g., $\chi = \neg \gamma$, and $\phi\bicond\psi \vDash \gamma\bicond\gamma'$. For any structure, $\val{\alpha\bicond\beta}{A} = \val{\neg\alpha \bicond \neg\beta}{A}$, so $\phi\bicond\psi \vDash \neg\gamma\bicond\neg(\gamma')$. But since $\neg\gamma=\chi$, and $\neg(\gamma')=(\neg\gamma)'=\chi'$, the result follows. (The other cases are left for exercises.)
+	\end{proof}
+\end{theorem}
+
+\section{Truth-functions}
+
+
+\begin{definition}[Truth Function]A \emph{truth function} $f_{n}$ is any total function from ordered sequences of $n$ truth values into the set of truth values $\{T,F\}$. \end{definition}
+Suppose $S$ is a set of $n$ sentence letters, $\{s_{1},\ldots,s_{n}\}$. Since every \lone\ structure $\mathscr{A}$ assigns truth values to these sentence letters, we can understand an $n$-place truth function $f_{n}$ as yielding a truth value given a set of sentence letters in a given structure: \[f_{n}\left(\val{s_{1}}{A},\ldots,\val{s_{n}}{A}\right) \in \{T,F\}.\] Since every structure agrees in assignment of truth values with one row of a truth table for sentence letters in $S$, an $n$-place truth function can be thought of as a function from rows of the truth table for $S$ to truth values. But, of course, a \emph{column} of a truth table precisely represents a function from rows to truth values!
+
+\paragraph{Expression}
+\begin{definition}[Expression]
+A sentence $\phi$ \emph{expresses} a truth function $f_{n}$ iff at least the sentence letters $s_{1},\ldots,s_{n}$ occur in $\phi$,\footnote{Why the `at least' formulation? This is because $(P \wedge \neg P) \vee Q$ is false in every structure, so is false on every row, so expresses the constant one-place truth function $\mathbf{f}$ (Table \ref{t1tf}).} and for every \lone\ structure $\mathscr{A}$, $$f\left(\val{s_{1}}{A},\ldots,\val{s_{n}}{A}\right) = f(\mathscr{A}(s_{1}),\ldots,\mathscr{A}(s_{n}))= \val{\phi}{A}.$$
+\end{definition}
+
+Every \lone\ sentence expresses a truth-function. (The converse principle, that every truth-function is expressed by some sentence, will be proved in chapter \ref{c4} when we talk about \emph{expressive adequacy}.) For the rules on valuations (Definition \ref{value}) assign every sentence a truth value in every structure, so the valuation rules determines a function $f_{\phi}$ from structures to truth values for each sentence $\phi$. We've already seen some sentences which express interesting truth functions above: those  sentences expressing the truth functions associated with the connectives of \lone (Table \ref{tt}). 
+
+\paragraph{How Many Truth Functions?}
+\begin{theorem}
+	There are $2^{2^{n}}$ $n$-place truth functions.\label{ntf}
+	\begin{proof}
+		There are $2^{n}$ distinct sequences of truth values of length $n$, each of which is an input to an $n$-place truth function. Each of these sequences can be given $T$ or $F$ as its value. If one function assigns a different value to a given input than another function, they are different functions. So there are at least $2^{2^{n}}$ different truth functions (one for each way of assigning $F$s and $T$s to sequences of truth values of length $n$). And if $f$ and $g$ have the same value for every input, then $f$ and $g$ are the same function. (By extensionality of the underlying sets.) So there are exactly $2^{2^{n}}$ different $n$-place truth functions.
+	\end{proof}
+\end{theorem}
+Consider the 1-place truth functions. By Theorem \ref{ntf}, there are 4 such functions, outlined in Table \ref{t1tf}. They are the \emph{constant} functions $\mathbf{t}$ and $\mathbf{f}$, which yield the same value for every argument; the \emph{identity} function $\mathbf{i}$, which yields as value the argument; and the \emph{negation} function $\mathbf{n}$, which yields the opposite truth value. 
+\begin{table}[t]
+	\centering
+	\begin{tabular}{c|cccc}
+		\toprule
+		& $\mathbf{t}$ & $\mathbf{f}$ & $\mathbf{i}$ & $\mathbf{n}$ \\
+		\midrule
+		$T$ & $T$ & $F$ & $T$ & $F$ \\
+		$F$ & $T$ & $F$ & $F$ & $T$ \\
+		\bottomrule
+	\end{tabular}
+	\caption{The four 1-place truth functions\label{t1tf}}
+\end{table}
+
+
+\paragraph{Truth-Functional Connectives}
+\begin{definition}[Truth-functional Connective]\label{tfc}
+	A \emph{truth-functional connective} is an $n$-place connective $\oplus$ such that there exists a $n$-place truth function $f$ such that, for any $\phi_{1},\ldots,\phi_{n}$, $$\val{\oplus(\phi_{1},\ldots,\phi_{n})}{A} = f\left(\val{\phi_{1}}{A},\ldots,\val{\phi_{n}}{A}\right),$$ i.e., if $\oplus(\phi_{1},\ldots,\phi_{n})$ expresses some truth function $f$. 
+\end{definition}
+It is evident from Table \ref{tt}  that each of the connectives of \lone\ are truth-functional connectives, so \lone\ is a \emph{truth-functional language}. We've already encountered the 1-place truth function corresponding to the negation connective: it is $\mathbf{n}$ from Table \ref{t1tf}. For another example: let $\mathbf{k}$ be the 2-place truth function defined as follows: $$\mathbf{k}(x,y) = \begin{cases} T \quad\text{if}\quad x = y = T;\\
+F \quad\text{otherwise}.\end{cases}$$ As can be readily verified, this truth-function is expressed by $P \wedge Q$ (and by $Q \wedge R$, and $P_{17} \wedge R_{101}$, etc., etc.), and so is the truth function corresponding to \emph{conjunction}. Here are three other two-place functions we may name:
+\begin{align*}
+	\mathbf{a}(x,y) &= \begin{cases} F \quad\text{if}\quad x =  y = F;\\ 
+T \quad\text{otherwise}.\end{cases}\\
+ \mathbf{c}(x,y) &= \begin{cases} F \quad\text{if}\quad x = T \neq y;\\
+T \quad\text{otherwise}.\end{cases}\\
+\mathbf{e}(x,y) &= \begin{cases} T \quad\text{if}\quad x = y;\\
+F \quad\text{otherwise}.\end{cases}
+\end{align*}
+
+It is easy to verify which connectives in Table \ref{tt} express these truth-functions.
+
+\paragraph{Non-Truth Functional Connectives} Consider the natural language connective `necessarily', i.e., the connective that, given a sentence $\phi$, yields a sentence \cquote{\text{Necessarily }\phi}. If $\phi$ is false in a structure, that obviously guarantees that \cquote{\text{Necessarily }\phi} is false in that structure too (assuming the standard meaning for ‘Necessarily’). But if $\phi$ is true in a structure, that doesn't tell us whether \cquote{\text{Necessarily }\phi} is true in that structure: for some truths are necessary, others merely contingent. So to deal with the `Necessarily' operator, we will have to introduce some further technology than we have available in \lone\ structures and classical valuations. That is the topic taken up by \emph{modal logic} – see the discussion at the end of chapter \ref{c8}. We already can see, however, one expressive limitation of \lone\ as compared to English: for English includes non-truth-functional connectives like `necessarily', `probably', `typically', etc., and \lone\ does not. Every sentence in \lone\ has its truth value determined by the valuation rules, and the valuation rules only make use of truth functions.
+
+\paragraph{Revisiting the Semantics} We could use our truth-functions to express the semantics for our language in another form, giving this alternative definition of a valuation. \begin{definition}[Alternative \lone-valuation]
+	When $\mathscr{A}$ is any \lone-structure, the valuation function generated by $\mathscr{A}$ is this function\label{val2}: $$\val{\phi}{A} = \begin{cases}
+		\mathscr{A}(\phi) \quad\text{if $\phi$ is a sentence letter};\\
+		\mathbf{n}\left(\val{\psi}{A}\right) \quad\text{if}\quad \phi = \neg\psi;\\
+		\mathbf{k}\left(\val{\psi}{A},\val{\chi}{A}\right) \quad\text{if}\quad \phi = (\psi \wedge \chi);\\ 
+		\mathbf{a}\left(\val{\psi}{A},\val{\chi}{A}\right) \quad\text{if}\quad \phi = (\psi \vee \chi);\\
+		\mathbf{c}\left(\val{\psi}{A},\val{\chi}{A}\right) \quad\text{if}\quad \phi = (\psi \to \chi);\\
+		\mathbf{e}\left(\val{\psi}{A},\val{\chi}{A}\right) \quad\text{if}\quad \phi = (\psi \bicond \chi).\\ 
+	\end{cases}$$
+\end{definition} This definition is obviously equivalent to that in Definition \ref{value}, in that both definitions determine the same valuation of all the sentences of the language given the same initial structure.
+
+
+
+
+
+\begin{definition}[Base]
+Let $\val{\cdot}{A}$ be a classical valuation. A \emph{base} $\mathfrak{B}$ for $\val{\cdot}{A}$ is a triple $\langle V, \mathbb{O}, c\rangle$ where $V$ is a set of elements, $\mathbb{O}$ a set of operators on $V$ (functions such that their domain and range are both $V$ – recall chapter \ref{c2}), and $c$ is a function from the set of connectives of \lone, $\{\neg,\wedge,\vee,\to,\bicond\}$, into $\mathbb{O}$, such that \begin{itemize}
+	\item $\val{\phi}{A} \in V$, for any \lone\ sentence $\phi$;
+	\item for any sentences $\phi_{1},\ldots,\phi_{n}$, and any $n$-ary connective $\oplus$, $$\val{\oplus\left(\phi_{1},\ldots,\phi_{n}\right)}{A,L} = c(\oplus)\left(\val{\phi_{1}}{A,L},\ldots,\val{\phi_{n}}{A,L}\right).$$
+\end{itemize} \citep[27]{bevpospa}
+\end{definition}
+Informally, a base for a valuation is a set of values $V$, a set of truth-functions $\mathbb{O}$, and a mapping that takes connectives of the language to the truth-functions they express (Definition \ref{tfc}). A base for \lone\ is this: let $V = \{0,1\}$, $\mathbb{O} = \{\mathbf{n},\mathbf{k},\mathbf{a},\mathbf{c},\mathbf{e}\}$, and let $c$ be the function that maps $\neg$ to $\mathbf{n}$, $\wedge$ to $\mathbf{k}$, \emph{etc}.
+
+
+
+
+{\small
+
+
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+
+\begin{enumerate}
+	\item Show that $\Gamma \vDash \phi$ iff $\Gamma \cup \{\neg \phi\} \vDash$.
+
+	\item State what features the truth table for $\Gamma \cup \{\phi,\psi\}$ will possess when \begin{enumerate}
+		\item $\Gamma$ entails $\phi$;
+		\item $\Gamma$ is consistent;
+		\item $\phi$ is a contradiction;
+		\item $\phi$ and $\psi$ are logically equivalent.
+	\end{enumerate}
+	
+\item \begin{enumerate}
+	\item Prove Transitivity.
+	\item Prove Contraposition.
+	\item Prove this rule, related to Cut: if $\Gamma \vDash \phi$, and $\phi,\Delta \vDash \psi$, then $\Gamma,\Delta \vDash \psi$.
+\end{enumerate} 
+
+\item Show the remaining clauses of the induction step for the proof of the theorem `No Need for Falsity Clauses' for the cases where the complex sentence is of the forms: \begin{enumerate}
+	\item $(\phi \wedge \psi)$;
+	\item $(\phi \to \psi)$;
+	\item $(\phi \bicond \psi)$.
+\end{enumerate}
+
+
+\item Prove Equivalents (Theorem \ref{equivalents}).
+
+\item \begin{enumerate}
+	\item Prove the remaining induction cases in the proof of Equivalence (Theorem \ref{tequiv}).
+	\item As a corollary of the Equivalence Theorem, prove that if $\vDash \phi\bicond\psi$ and $\phi$ is a subsentence of $\chi$, then $\vDash \chi \bicond \chi[\psi/\phi]$.
+\end{enumerate}
+
+\item Show that, if $\phi,\psi \vDash \chi$ is a false sequent,
+it has a substitution instance $\phi',\psi' \vDash \chi'$, in which 
+$\phi'$ and $\psi'$ are tautologies and $\chi'$ is
+inconsistent. (Note: by `substitution instance' in the question, you are to understand a sequent that results from one \emph{or more} uniform substitutions of sentence letters. It follows from General Substitution [Theorem \ref{generalsub}] that successive chains of uniform substitutions never allow one to transform a correct sequent to an incorrect one.)
+
+\item  Show that if there are $n$ sentence letters in $\Gamma$, the truth table for $\Gamma$ has $2^{n}$ lines.
+
+\item Prove that two sentences are logically equivalent iff they express the same truth-function.
+
+\item Consider the deprived language which has the same syntactic formation rules and semantics as $\mathcal{L}_{1}$, but only contains the connectives $\neg$ and $\bicond$. Show that, in this language, every sentence is logically equivalent to a sentence in which no occurrence of $\neg$ has $\bicond$ in its scope.
+\end{enumerate}
+
+}

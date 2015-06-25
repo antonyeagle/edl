@@ -1,0 +1,356 @@
+
+
+\section{Proofs in \ltwo}
+\paragraph{Proofs in \ltwo}
+
+In the case of \lone, a proof procedure was not strictly speaking necessary. Every sentence of \lone\ has only finitely many sentence letters, so a truth table will need only to specify finitely many rows to capture what is true in every \lone-structure.
+
+But in \ltwo\ we don't have anything like a truth-table: one cannot simply survey a finite number of cases to represent all the structures. (Intuitively, this is because of the introduction of quantification – now a sentence may depend for its truth on the way infinitely many things are, so surveying only finitely many of them won't suffice.) Brute force checking of semantic sequents is not possible. 
+
+Thus the introduction of a proof technique, to enable the derivation of some \ltwo\ claims from others, is crucial. Once more, we use natural deduction; again, we abuse notation at let $\vdash$ stand for \emph{provability in \ltwo}.
+
+\paragraph{Natural Deduction}
+
+The rules for the natural deduction system $ND_{2}$ include all of those from the original system $ND$. As \ltwo\ includes all of \lone, everything provable in $ND$ is also provable in $ND_{2}$. But we include new rules to cover the quantifiers, laid out in Table \ref{tfive}. Throughout, let $\phi[\tau/\upsilon]$ be the result of replacing \emph{free} occurrences of variable $\upsilon$ in $\phi$ by a constant $\tau$.
+\begin{table}\label{tfive}
+ 	\centering
+	\begin{tabular}{ccp{4cm}}
+	\begin{prooftree}
+	\forall \upsilon \phi
+ \justifies \phi[\tau/\upsilon] \using{{\forall}\text{Elim}}
+\end{prooftree} & \begin{prooftree}
+	\[\leadsto \phi[\tau/\upsilon]\] \justifies \forall \upsilon \phi \using{{\forall}\text{Intro}}
+\end{prooftree} &{\footnotesize Provided $\tau$ doesn't occur in $\phi$ or in any undischarged assumption in the proof of $\phi[\tau/\upsilon]$.}\\[10pt]
+\begin{prooftree}
+	\phi[\tau/\upsilon] \justifies \exists \upsilon \phi \using{\exists\text{Intro}} 
+\end{prooftree} &
+\begin{prooftree}
+	\[ [\phi[\tau/\upsilon]] \leadsto \psi\]
+	\[  \leadsto \exists \upsilon\phi\] \justifies \psi \using{\exists\text{Elim}} 
+\end{prooftree} &{\footnotesize Provided $\tau$ doesn't occur in $\exists\upsilon\phi$, in $\psi$, or in any undischarged assumption other than $\phi[\tau/\upsilon]$ in the proof of $\psi$.}
+	\end{tabular} \caption{New Natural Deduction Rules for \ltwo}
+ \end{table}
+
+\paragraph{Some Elementary Theorems About $ND_{2}$}
+
+Many of the theorems for $ND$ continue to hold. For example, the proof of the  \emph{deduction theorem} in $ND$ relied only on the arrow rules, so carry directly over to $ND_{2}$.
+
+\begin{theorem}[Cut]
+	If $\Gamma \vdash \phi$ and $\phi,\Delta\vdash \psi$ then $\Gamma, \Delta\vdash\psi$. \begin{proof}
+		We cannot, as in $ND$, simply chain the proofs together, because $\Gamma$ may contain a constant $\tau$ which, in the proof that $\phi,\Delta\vdash\psi$, is used in an application of $\exists$Elim or $\forall$Intro (of course $\tau$ cannot appear in $\phi$ or $\Delta$ given the correctness of $\Delta,\phi\vdash\psi$). So we need to show that there is \emph{another}  proof of $\Delta,\phi\vdash\psi$ which doesn't involve any such $\tau$. I leave this for an exercise.
+	\end{proof}
+\end{theorem}	
+
+\paragraph{Proofs and Connectives}
+
+ The natural deduction proofs of many sequents involving sentences with given connectives involve only the rules for those connectives. For example, the sequent $\forall x\exists y(Px \wedge Qx) \vdash \exists y \forall x (Px\wedge Qx)$ can be proved entirely using the rules for conjunction and the quantifiers.
+
+ But this is not true in general. Consider this: $\forall	x (P \vee Qx)\vdash P \vee \forall x Qx$. (Proof below.)
+
+This proof cannot be carried out using just the rules for disjunction and the quantifiers. 
+
+The situation is very similar to a case in an earlier problem (Chapter 4, 1.(e), page \pageref{fouronee}) where the natural deduction rules for $\to$ did not suffice to prove every tautology involving  $\to$ as its only connective. 
+
+
+
+\paragraph{Proof of $\forall	x (P \vee Qx)\vdash P \vee \forall x Qx$}
+
+~\\[6pt]
+
+\hskip-0.75cm
+ {\footnotesize\begin{prooftree}
+ \[
+\[
+ \[ 
+ \[
+ \forall x (P \vee Qx) \justifies P \vee Qa \using \forall\text{Elim}\]
+  \[[P]	\[   [\neg (P \vee \forall x Qx)] 
+ \[ [P] \justifies P \vee \forall x Qx \using \vee\text{Intro}\]
+ 	\justifies \neg P \using \neg\text{Elim}\]
+\justifies Qa \using \neg\text{Elim}\]  
+[Qa]
+ \justifies Qa \using \vee\text{Elim}\]
+ \justifies \forall x Qx \using \forall\text{Intro} \]
+ \justifies P \vee \forall Qx \using \vee\text{Intro}\] 
+ [\neg (P \vee \forall x Qx)] \justifies P \vee \forall x Qx \using \neg\text{Elim}
+\end{prooftree}}
+
+
+\paragraph{Some Proof Theory: Uniqueness of $\exists$}
+
+Some philosophers have wanted to maintain that there are at least two senses of the English word `exists'. (They have wanted to do this typically to distinguish a committal from a non-committal sense, so they can accept the truth of claims like `there are at lest two prime numbers less than 8' and `there are at least two cities smaller than London', while being committed to cities, and avoiding committment to such mysterious entities as numbers.) But these philosophers have typically also desired to speak a language including both quantifiers;  or at least to be able to translate between the two languages.
+There is however a fairly straightforward theorem which shows that this situation is not possible: if there are two quantifiers which both meet the minimal requirements to be an existential quantifier, those quantifiers are logically equivalent. \begin{theorem}[\citealt{harwhasol}] If there are two quantifiers $\exists_{1}$ and $\exists_{2}$ in a language, both governed by the standard introduction and elimination rules for the quantifiers, then $\exists_{1}\upsilon\phi$ is logically equivalent to $\exists_{2}\upsilon\phi$. \begin{proof}
+	Assuming that we have introduction and elimination rules for the two quantifiers, we can give the following natural deduction proof:
+	\begin{equation*}
+		\begin{prooftree}
+			\exists_{1}\upsilon\phi \[ [\phi[\tau/\upsilon]] \justifies \exists_{2}\upsilon\phi \using \exists_{2}\text{Intro}\] \justifies \exists_{2}\upsilon\phi \using \exists_{1}\text{Elim}
+		\end{prooftree}	
+	\end{equation*}
+	
+	Obviously a precisely similar proof will show that $\exists_{2}\upsilon\phi \vdash\exists_{1}\upsilon\phi$. 
+\end{proof}
+\end{theorem}
+
+Unless, then, we wish to introduce two different sorts of names, two different sorts of predicates, etc., we cannot simply introduce two quantifiers into a language – not, at least, if they are to meet the minimal conditions that quantifiers should, namely, being characterised by our introduction and elimination rules.
+
+\section{Soundness of \ltwo}
+\paragraph{Soundness}
+
+We are now in possession of a proof system $ND_{2}$, which characterises a provability turnstile $\vdash$. We now wish to show that this system is \emph{sound} with respect to the semantics for \ltwo\ we introduced in the last chapter. That is, we wish to prove \begin{theorem}[Soundness]
+	If $\Gamma \vdash \phi$ then $\Gamma \vDash \phi$.
+\end{theorem}
+As $ND_{2}$ extends $ND$, and the rules of $ND$ remain sound (verification of this is left to an exercise), we just need to show that the new rules – the quantifier rules – are sound. We also still know that the base case $\phi\vdash\phi$ is sound. So we just consider proofs extended by the quantifier rules.
+\paragraph{Soundness of \ltwo: $\forall$Elim and $\exists$Intro}
+
+Suppose $\Gamma \vdash \phi$, where $\phi$ is obtained from an earlier proof by the use of the $\forall$Elim rule, and so is of the form $\psi[\tau/\upsilon]$. Then there was a proof on the assumption $\Gamma$ of $\forall \upsilon \psi$.
+
+By the induction hypothesis, $\Gamma \vDash \forall \upsilon \psi$. So every structure which makes all the members of $\Gamma$ true, makes $\forall \upsilon \psi$ true. By theorem \ref{ueei} (proved on page \pageref{ueei}), $\forall \upsilon \psi \vDash \psi[\tau/\upsilon]$. Since $\psi[\tau/\upsilon]=\phi$, $\phi$ will be true in every structure which makes $\Gamma$ true, i.e., $\Gamma \vDash \phi$.
+
+ The proof for $\exists$Intro is similar. I leave it for an exercise.
+
+
+\paragraph{Soundness of \ltwo: $\forall$Intro and $\exists$Elim}
+
+
+
+The trickier case is if $\Gamma\vdash\phi$ which was obtained from $\exists$Elim. From a proof of $\exists \nu \psi$ on assumptions $\Delta$, and a proof of $\phi$ on assumptions $\Theta,\psi[\tau/\nu]$, we obtain a proof of $\phi$ on assumption $\Gamma=\Delta\cup\Theta$ (with appropriate restriction on where $\tau$ occurs). 
+Since $\Delta\subseteq\Gamma$, we have $\Gamma\vdash \exists \nu \psi$, and by the induction hypothesis, $\Gamma \vDash \exists \nu \psi$. 
+
+Since $\Theta\subseteq\Gamma$, we have $\Gamma,\psi[\tau/\nu] \vdash \phi$, and by the induction hypothesis $\Gamma,\psi[\tau/\nu] \vDash \phi$.
+By theorem \ref{uiee} (proved on page \pageref{uiee}), $\Gamma, \exists \nu\psi \vDash \phi$. And by the Cut theorem, $\Gamma\vDash \phi$.
+ 
+The soundness of $\forall$Intro is similarly demonstrated; I leave it for an exercise.
+
+
+
+\section{Completeness of \ltwo}
+\paragraph{Completeness}
+
+ \begin{theorem}[Completeness of \ltwo]
+	If $\Gamma \vDash \phi$, $\Gamma \vdash \phi$.
+\end{theorem}The proof extends the proof of completeness for \lone, roughly like this: \begin{itemize}
+	\item First, show that, e.g., if $\Gamma$ is a maximal consistent set,  then $\exists \upsilon\phi \in \Gamma$ iff $\phi[\tau/\upsilon]\in \Gamma$ for some constant $\tau$. (This is analogous to the other closure properties we showed.)
+	\item Second, show that every maximal consistent set of \ltwo-sentences is satisfiable.
+	\item Finally, show that if $\Gamma \not\vdash\phi$, there is a maximal consistent set $\Gamma^{+}$ such that $\Gamma \cup \{\neg\phi\}\subseteq \Gamma^{+}$ – since it is maximal, $\Gamma^{+}$ is satisfiable, so there is a model where all of $\Gamma$ is true and $\phi$ is false, so $\Gamma\not\vDash\phi$. By contraposition, this shows completeness.
+\end{itemize}
+We won't prove this theorem here; the details are involved.
+
+\paragraph{Compactness}
+
+\begin{theorem}[Compactness]
+	If $\Gamma$ is any set of \ltwo\ sentences, then $\Gamma$ is satisfiable iff every finite subset of $\Gamma$ is satisfiable.
+\end{theorem}Again, compactness is  a consequence of the finitude of proofs and the Completeness Theorem. A direct proof, like that we gave for \lone\ in Chapter 3, is more difficult in \ltwo, and again beyond the scope of this course.
+
+
+Compactness has the consequence that certain relations are undefinable. In English, the infinitely many sentences of the form `$x$ is \emph{not} a predecessor of\ldots a predecessor of $y$' entail `$x$ is not less than $y$', but no finite subset does – but their translation into the compact language \ltwo\ must therefore fail. This is because the relation between predecessor and less than is not definable in \ltwo.
+
+
+% {
+% \paragraph{Proof of Compactness Using K\"onig's Lemma}
+% 
+%  (following notes on the formalization of logic, pp.\ 154--5.)
+% }
+
+
+
+
+\section{Decidability and Undecidability}
+\paragraph{Completeness and Decidability}
+
+
+
+\begin{theorem}[\ltwo\ is positively decidable]
+ If $\vDash\phi$, then there is an effective procedure demonstrating that.  \begin{proof}
+		{Completeness shows that if $\phi$ is a theorem, there is a proof of it. By brute force, we can generate finite proofs and spit out a proof of $\phi$ if one is to be had. Since the set of sentences of \ltwo\ is countable, and since every proof is of finite length, consider the proofs of length $n$ which involve only the first $m$ \ltwo\ sentences. For each pair $\langle m,n\rangle$ there are only finitely many such proofs; we can effectively produce them. Since the set of pairs of integers are countable (exercise), there is an enumeration of those pairs, hence we can effectively produce any finite proof.
+		But every theorem $\phi$ is proved by some such finite proof; so at some finite point in the enumeration, we will reach an $m$ greater than the numbers of all the members of a proof of $\phi$, and at some finite point spit out a proof of $\phi$ of length less than $n$.}
+	\end{proof}
+\end{theorem}
+
+
+
+\paragraph{Undecidability}
+
+\begin{theorem}
+	\ltwo\ is \emph{negatively undecidable}: if $\phi\not\vDash$, no effective procedure exists which will show that for any $\phi$ in a finite time.
+\end{theorem} Considering the effective procedure for positive decidability, we can see why this won't stop after a finite time (the proof of $\neg\phi$ might always be achieved using the next pair to be considered); but maybe there is another method that will terminate?  
+
+There is not.  One way of helping to make this thought persuasive is to consider a particular incorrect sequent:  $\forall x \exists y Pxy \vDash Paa$. One can certainly give a counterexample to this (let the domain be the natural numbers, and `$P$' be interpreted as `$<$'). But is there an effective procedure for producing such counterexamples?
+
+
+\paragraph{The Halting Problem}
+
+~\boxer{The Halting Problem}{If $S$ is a finite set of instructions, can we give an effective procedure that determines whether  it is the case that those instructions, carried out on some acceptable input, will \emph{terminate} after a finite time with some output?}
+
+ Consider some enumeration of the set of finite sets of instructions; the halting problem, if soluble, will entail the existence of an effectively computable function $h(i)$ that yields $1$ if the $i$-th set of instructions halts with a defined output on input $i$, and $0$ otherwise (i.e., $h(i) =0$ if the $i$-th set of instructions determines a function which is undefined on input $i$). Can there be such a function $h$?
+
+
+\paragraph{Sketch of Insolubility of the Halting Problem}
+
+If there were such a function $h$, we could effectively compute the function $g(i) = 0$ if the $i$-th set of instructions is undefined on input $i$, and undefined otherwise. We could define $g$ by adding to the instructions that compute $h$ the last instruction: if $h(i)$ outputs $1$, then check if $h(i)$ outputs $1$. This last instruction will send give an infinite loop if $h(i)$ is equal to 1, rendering $g(i)$ undefined; but if $h(i)=0$, then $g(i)=0$ too. 
+
+But $g$, if effectively computable, will be specified by a finite set of instructions; let it be $j$-th in our list. Then $g(j)=0$ iff $g(j)$ is undefined, so it is undefined; but then $g(j)$ must be defined. Contradiction; so there is no such $g$, and therefore no such $h$. The \emph{self-halting problem} is insoluble, and therefore so is the halting problem.
+
+For a more humorous proof sketch, see \citet{pulscolos}.
+
+\paragraph{Undecidability and the Halting Problem}
+
+It turns out that the undecidability of \ltwo\ is closely related to the Halting problem. For there is a way of associating to each set of instructions $i$ an \emph{argument} in \ltwo\ such that the $i$-th set of instructions halts on input $i$ iff the argument is valid. So 	if there was an effective test for invalidity of an argument in \ltwo, the halting problem would be solvable. Since it is insoluble, we have
+ \begin{theorem}[Undecidability of \ltwo]
+\ltwo\ is not decidable.
+\end{theorem}
+The translation essentially involves \emph{binary} predicates (Jeffrey \S 8.7) and sentences in which (sometimes) a universal quantifier is essentially in the scope of an existential quantifier. So we might wonder: are there fragments of \ltwo\ that are decidable? 
+
+
+
+\paragraph{Prenex Normal Form}
+
+A sentence $\phi$ of \ltwo\ is in \emph{prenex normal form} iff no quantifier in $\phi$ occurs in the scope of any truth-functor (all quantifiers are in a block). 
+\begin{theorem}[PNF]
+	Every sentence of \ltwo\ is equivalent to a sentence in prenex normal form.
+\begin{proof}
+	{The proof will be work by showing that if $\phi$ is some sentence, any quantifier which occurs somewhere in the middle of $\phi$ can be `moved' to the left. The idea is to show these equivalences: \begin{enumerate}
+		\item $\neg\forall\upsilon\phi \equiv \exists \upsilon\neg \phi$; (basically shown by Theorem \ref{qi})
+		\item $\neg \exists\upsilon\phi \equiv \forall \upsilon\neg\phi$; (basically shown by Theorem \ref{qi})
+		\item $\psi \wedge \forall \upsilon \phi \equiv \forall\upsilon(\psi\wedge\phi)$ ($\upsilon$ not free in $\psi$).
+		\item $\psi \wedge \exists \upsilon \phi \equiv \exists\upsilon(\psi\wedge\phi)$ ($\upsilon$ not free in $\psi$).
+	\end{enumerate} Etc. The full proof is left for an exercise.}
+\end{proof}\end{theorem}
+
+
+\paragraph{Decidability of $\forall\exists$-sentences}
+
+An \emph{$\forall\exists$-sentence} is a sentence in PNF in which all universal quantifiers precede all existential quantifiers.
+
+\begin{theorem}[Decidability of $\forall\exists$-sentences]
+	There exists an effective procedure which establishes the validity of any valid $\forall\exists$-sentence, and the invalidity of any invalid $\forall\exists$-sentence.
+\end{theorem} 
+
+The proof is as follows. We show how to reduce the question of validity of a $\forall\exists$-sentence to the question of validity of a related quantifier-free sentence; and such quantifier-free sentences of \ltwo\ are decidable. For convenience, I abbreviate $\forall x_{1} \ldots \forall x_{n}$ as $\forall x_{1}\ldots x_{n}$, and similarly for $\exists$.
+
+\paragraph{Lemma on Quantifier-Free Sentences}
+
+\begin{lemma}[Quantifier-Free Sentences] \label{qfs}
+	If $\phi$ is a sentence of \ltwo, which is not a (substitution instance of a) truth-functional tautology, then there is a structure $\mathscr{A}$ in which $\val{\phi}{A}=F$ and either (i) if $\phi$ contains no constants, the domain of $\mathscr{A}$ has one element; or (ii) otherwise, $\mathscr{A}$ has an element in its domain for each distinct constant occurring in $\phi$ and no other elements, and each constant in $\phi$ is assigned a distinct element of the domain.  \begin{proof}
+		{Hint: if $\phi$ is not a truth-functional tautology, there is an assignment of truth-values to atomic sentences in $\phi$ that mimics an \lone-structure; and  we can construct an \ltwo-structure $\mathscr{A}$ which agrees with that pseudo-\lone-structure on its assignment to atomic sentences.}
+	\end{proof}
+\end{lemma}
+A corollary is that quantifier-free sentences of \ltwo\ are decidable, since the truth-table test decides truth-functional tautologies. 
+
+\paragraph{$\exists$-sentences}
+
+\begin{theorem}[Constant-free $\exists$-sentences]
+	If $\phi$ is a quantifier-free formula which contains only the variables $\nu_{1},\ldots, \nu_{n}$ and which contains no constants, then $\vDash \exists \nu_{1}\ldots\nu_{n} \phi$ iff $\vDash \phi[\tau/\nu_{1},\ldots,\tau/\nu_{n}]$. \begin{proof}
+		{\emph{R to L:} Repeated applications of Existential Introduction (Theorem \ref{ueei}) yield $\phi[\tau/\nu_{1},\ldots,\tau/\nu_{n}] \vDash \exists \nu_{1}\ldots\nu_{n} \phi$. By Cut, the result follows.
+		
+		 \emph{L to R:} If $\not\vDash \phi[\tau/\nu_{1},\ldots,\tau/\nu_{n}]$, then by Lemma \ref{qfs}, there is a structure with a  one-element domain $\mathscr{A}$ where it is false.  If $\val{\exists \nu_{1},\ldots\nu_{n} \phi}{A}=T$, there is a variable assignment $\alpha$ such that $\valsa{\phi}=T$; but this variable assignment must assign $\valsa{\tau}$ to each variable (there is only one element in the domain), so $\valsa{\phi[\tau/\nu_{1},\ldots,\tau/\nu_{n}]}=T$, contradiction. (Using Theorem \ref{ssev}.)}
+	\end{proof}
+\end{theorem}
+These $\exists$-sentences are \emph{equi-decidable} with quantifier-free sentences.
+
+\begin{theorem}[Arbitrary $\exists$-sentences]
+	If $\phi$ is a quantifier free formula containing only $\tau_{1},\ldots,\tau_{n}$ and $\nu_{1},\ldots,\nu_{m}$, then $$\vDash\exists \nu_{1}\ldots\nu_{m}\phi \quad\text{iff}\quad \vDash \bigvee (\phi[\tau_{i}/\nu_{j}]),$$ where $\bigvee (\phi[\tau_{i}/\nu_{j}])$ is the disjunction of \emph{all} the ways of substituting the constants $\tau_{1},\ldots,\tau_{n}$ for the variables $\nu_{1},\ldots,\nu_{m}$.
+\end{theorem}
+
+I leave the proof of this for an exercise; it is along the same lines as the proof of the proof for constant-free $\exists$-sentences.
+
+Now we have shown that an arbitrary sentence involving only existential quantification is valid iff some quantifier-free sentence is valid, and since the latter is decidable, so is the former. Now we just need to show that any $\forall\exists$-sentence is valid iff some $\exists$-sentence is valid.
+
+
+\paragraph{$\forall\exists$-Sentences}
+
+\begin{theorem}[$\forall\exists$-sentences and $\exists$-sentences]
+	If $\tau_{1},\ldots,\tau_{m}$ don't occur in $\phi$, then $$\vDash \forall \upsilon_{1}\ldots\upsilon_{m}\exists\nu_{1}\ldots\nu_{n}\phi \quad\text{iff}\quad \vDash\exists\nu_{1}\ldots\nu_{n}\phi[\tau_{1}/\upsilon_{1},\ldots,\tau_{m}/\upsilon_{m}].$$ \begin{proof} 
+		{\emph{L to R:} By repeated applications of $\forall$-Elimination (Theorem \ref{ueei}), we have \begin{equation*}
+			\forall \upsilon_{1}\ldots\upsilon_{m}\exists\nu_{1}\ldots\nu_{n}\phi \vDash \exists\nu_{1}\ldots\nu_{n}\phi[\tau_{1}/\upsilon_{1},\ldots,\tau_{m}/\upsilon_{m}],
+		\end{equation*}from which the result follows by Cut.
+		
+		\emph{R to L:} Because $\Gamma$ is empty, and $\tau_{1},\ldots,\tau_{m}$ don't occur in $\phi$, we can use $\forall$-Introduction (Theorem \ref{uiee}) repeatedly to show the theorem.}
+	\end{proof}
+\end{theorem}
+So any $\forall\exists$-sentence is equi-valid with some quantifier-free sentence.
+
+\paragraph{Elementary Quantifications and Monadic Sentences}
+
+A sentence is an \emph{elementary quantification} iff no quantifier occurs in the scope of any other. Some sentences won't be equivalent to any elementarily quantified sentence – e.g., $\forall x\exists y Rxy$ can't be put into that form.
+
+An \ltwo\ sentence is \emph{monadic} iff it contains at most unary (one-place) predicates.
+
+\begin{lemma}[Monadic and Elementary Sentences]
+	Every monadic sentence of \ltwo\ is equivalent to some elementary quantification. \begin{proof}
+		Left as a problem. The general idea is: since we have no binary predicates, each bound variable in a sentence is associated with a unique quantifier, and we can `drive in' the quantifiers so that it binds only its own variable.
+	\end{proof}
+\end{lemma}
+
+\paragraph{Corollary: Monadic \ltwo\ decidable}
+
+\begin{theorem}[Monadic \ltwo\ sentences]
+	If $\phi$ is a monadic sentence of \ltwo, it is equivalent to a $\forall\exists$-sentence. \begin{proof}
+		Suppose $\phi$ is a monadic sentence.  We can effectively produce a an elementary quantification $\phi'$, logically equivalent to $\phi$.   But switching the order of any quantifiers in that driven in sentence can't change the truth-value (exercise). And so we can reorder the quantifiers in $\phi'$ to get another logically equivalent sentence $\phi''$ that is $\forall\exists$. Each step is effective: monadic \ltwo\ is decidable.
+	\end{proof}
+\end{theorem}
+
+{\small
+\subsection*{Further Reading}
+\addcontentsline{toc}{subsection}{Further Reading}
+
+Further discussion of the Harris Theorem is in \citet{mcgtherue}.
+
+The completeness proof was first established by G\"odel in his 1929 doctoral thesis; the proof sketched here follows the later proof of \citet{hencomfio}.  The technique of associating (in)valid arguments with (un)defined computable functions mentioned in the proof of undecidability is involved. An elementary version is in \citet[ch. 7--8]{jefforlos}. A more sophisticated version is in \citet[ch. 1--8]{bbjcomlo}. The connection between decidability and the halting problem was shown by Church and Turing, independently: Turing's result is in \citet{turoncon}.  This technique for proving decidability of $\forall\exists$-sentences is in \citet[\S 3.9]{bosintlo}. He provides an alternative decision procedure for monadic \ltwo\ in \S 3.8.
+
+
+
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+\begin{enumerate}
+\item Prove, using the hints in the chapter, the Cut Theorem: that if $\Gamma\vdash\phi$ and $\Delta,\phi\vdash\psi$, then $\Gamma,\Delta\vdash\psi$.
+\item Explain why we could have used this rule instead of our $\forall$Intro: \begin{center}
+	\begin{tabular}{cp{5cm}}
+		\begin{prooftree}
+			\[\leadsto \phi\] \justifies \forall \upsilon \phi[\upsilon/\tau] \using{{\forall}\text{Intro}}
+		\end{prooftree} &{\footnotesize Provided $\tau$ doesn't occur in any undischarged assumption in the proof of $\phi$.}
+	\end{tabular}
+\end{center}  
+\item Let $\psi$ be the result of substituting $\upsilon$ for \emph{all} occurrences of $\tau$ in $\phi$. Show that this rule is not sound (i.e., not truth-preserving) \begin{quotation}
+	If $\Gamma,\phi \vdash \chi$ then $\Gamma,\exists \upsilon \psi \vdash \chi$, provided $\tau$ does not occur in $\Gamma$ or in $\chi$.
+\end{quotation} Can you think of a way of amending the rule to make it sound? \emph{(Hint: Theorem \ref{fivesubcod}}.)
+\item Verify that all the rules of $ND$ are sound with respect to the \ltwo\ semantics.
+\item \begin{enumerate}
+	\item Show that the rule $\exists$Intro is sound with respect to the \ltwo\ semantics.
+	\item Show that the rule $\forall$Intro is sound with respect to the \ltwo\ semantics.
+\end{enumerate}
+\item Explain why one cannot define the relation `$x$ is an ancestor of $y$' in terms of the relation `$x$ is a parent of $y$'. What resources could be added to the language to allow this to be defined?
+\item Sketch the proof that for any finite set of \ltwo\ sentences, we can effectively produce every proof that uses only sentences in that set.
+\item Assuming that $\wedge,\neg,\vee$ are the only truth functional connectives in $\phi$: \begin{enumerate}
+	\item Show that, where $\upsilon$ is not free in $\psi$, that $\psi \wedge \forall\upsilon\phi \equiv \forall\upsilon(\psi \wedge \phi)$.
+	\item Show that, where $\upsilon$ is not free in $\psi$, that $\psi \wedge \exists\upsilon\phi \equiv \exists\upsilon(\psi \wedge \phi)$.
+	\item Show that, where $\upsilon$ is not free in $\psi$, that $\psi \vee \forall\upsilon\phi \equiv \forall\upsilon(\psi \vee \phi)$.
+	\item Show that, where $\upsilon$ is not free in $\psi$, that $\psi \vee \exists\upsilon\phi \equiv \exists\upsilon(\psi \vee \phi)$.	
+	\item Show that $\forall \upsilon \phi \wedge \forall \upsilon\psi \equiv \forall\upsilon(\phi\wedge\psi)$.
+	\item Show that $\exists \upsilon \phi \vee \exists \upsilon\psi \equiv \exists\upsilon(\phi\vee\psi)$.
+	\end{enumerate}
+	\item \begin{enumerate}
+		\item Using the results in problem 8, plus the results on the interdefinability of quantifiers from week 5, prove the PNF theorem for the fragment of \ltwo\ without arrow or biconditional.
+		\item Prove the PNF in the following stronger form: \begin{quotation}
+			For every sentence $\phi$ in the arrow and biconditional-free fragment of \ltwo, there is a logically equivalent sentence $\phi'$ in PNF \emph{that has no more connectives than $\phi$}.\end{quotation} 
+		\item Can we extend the stronger result to the full language \ltwo?
+	\end{enumerate}
+	\item Prove the Lemma on Quantifier-Free Sentences.
+	\item Prove the Theorem for Arbitrary $\exists$-Sentences.
+	\item Suppose that $\phi$ is a monadic \ltwo\ sentence containing only $\wedge,\vee,\neg$ as connectives in addition to quantifiers.\begin{enumerate}
+		\item Show that we can construct a sentence $\phi'$ logically equivalent to $\phi$ in which no quantifier occurs in the scope of any other – i.e., an elementary quantification. (Consider exercises 8.(a--f), and recalling facts about DNF and CNF, thinking particularly about giving a CNF `equivalent' of an open formula in DNF and \emph{vice versa}.)
+		\item Show that $\forall \upsilon \phi \wedge \forall \upsilon \psi \equiv \forall \upsilon \phi \wedge \forall \nu \psi[\nu/\upsilon]$ (and similarly for disjunction, and other combinations of universal and existential quantifiers).
+		\item Show that for any elementary quantification $\phi'$ we can construct a logically equivalent sentence $\phi''$ in which any quantifier in $\phi'$ is brought to the front and has scope over the others. (Tip: remember to use the result proved in 12.(b).)
+		\item Show, using these results, that there is a $\forall\exists$ sentence equivalent to any such monadic $\phi$.
+	\end{enumerate}
+\item Prove that there is no sentence $\phi$ which contains just one occurrence of some two-place connective, just one occurrence of any quantifier, which is in PNF and is equivalent to $P \bicond \forall x Qx$. Is there any connective other than $\bicond$ for which this also holds? Why?
+\item The \emph{Cantor Pairing Function} is this function from $\mathbb{N}\times \mathbb{N}$ to $\mathbb{N}$: \begin{equation*}
+	\pi(\langle x,y\rangle) = \dfrac{(x+y)(x+y+1)}{2}+y.
+\end{equation*} Show that this function has an inverse (i.e., a function from natural numbers to pairs of natural numbers). Show therefore that $\pi$ is one-one and onto, and that the set of pairs of natural numbers is countable. (Hint: show that, given some $z$, we can reconstruct a unique $x$ and $y$ from it such that $\pi(\langle x,y\rangle)=z$.)
+ \end{enumerate}
+
+}
+
+	
+
+

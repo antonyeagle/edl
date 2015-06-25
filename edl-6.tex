@@ -1,0 +1,550 @@
+
+
+\section{Natural Deduction Proofs}
+\paragraph{Proof}
+
+In the last chapter, we saw that using truth tables was a decidable method for evaluating sequents, but it is cumbersome and inelegant. Here, we consider elegant and powerful \emph{proof systems} for propositional logic.
+
+A \emph{proof} in the informal sense is something which establishes the truth of some claim. Our proofs are structures made out of sentences of \lone, with the following desirable properties: \begin{itemize}
+	\item Each step in the proof involves an obviously correct rule.
+	\item Whenever the earlier sentences are true, the later sentences will be also; so the terminal conclusion of a proof should always be true whenever the assumptions are.
+	\item All the logical truths should have a proof.
+\end{itemize}
+
+In this chapter, we'll see that there do exist proofs that meet these conditions for \lone; and thus that we can establish various claims in \lone\ without needing to consider all the \lone-structures.
+
+\paragraph{Natural Deduction: Assumptions and $\vdash$}
+
+The first proof system is the \emph{natural deduction} system introduced in The Logic Manual. 
+
+In this system, every proof begins with \emph{assumptions}. \emph{Any sentence may be an assumption.} A proof terminates with a \emph{conclusion}. 
+
+ Whenever there is a correctly constructed proof that $\phi$, on the basis of assumptions $\gamma_{1},\ldots,\gamma_{n}$, we write this \emph{syntactic sequent}: {$$\gamma_{1},\ldots,\gamma_{n}\vdash\phi.$$} This is to be read `$\phi$ is \emph{provable from} $\gamma_{1},\ldots,\gamma_{n}$', or `$\gamma_{1},\ldots,\gamma_{n}$ \emph{syntactically entail(s)} $\phi$'. If $\phi$ can be proved with no assumptions at all, we write $\vdash\phi$; in that case, we say that $\phi$ is a \emph{theorem}.
+
+Any sentence $\phi$ may be assumed; applying no rules at all, the proof therefore terminates with $\phi$. So $\phi\vdash\phi$; not perhaps the most interesting result, but nevertheless intuitively correct.
+
+
+
+
+\paragraph{Natural Deduction Rules}
+
+ As any assumption is a proof on its own, our rules are rules for constructing new proofs from existing proofs, often (but not always) retaining the assumptions of the existing proofs.
+
+Some rules permit an assumption to be \emph{discharged}. Suppose you have a proof of $\phi$ on the basis of assumption $\gamma$.  You thus show that \emph{if} you had a proof of $\gamma$, \emph{then} you could construct a proof of $\phi$; and this on its own is a proof of $\gamma\to\phi$, \emph{whether or not $\gamma$ is actually true}. The assumption $\gamma$ has been discharged.
+ Note that $\gamma$ needn't be used, or even occur in the proof, to be discharged: the rules entitle one to discharge \emph{every} occurence of a sentence – even if there are none!
+
+ We can consider two types of obvious rules: those which construct a proof of a new sentence of less complexity than sentence proved by the existing proof(s), and those which construct a proof of a sentence of increased complexity. We call the first type of rule \emph{elimination} rules, and the second type \emph{introduction} rules.
+
+
+
+
+{
+\paragraph{Natural Deduction Rules for $\mathcal{L}_{\neg,\to}$}
+Let us consider for the moment the fragment of \lone\ involving only $\neg$ and $\to$, $\mathcal{L}_{\neg,\to}$. We have in this fragment four rules, laid out in Table \ref{tfour}, elimination rules and introduction rules for each connective. I write $[\gamma]$ to show that the rule permits the assumption $\gamma$ to be discharged.
+ \begin{table}\label{tfour}
+ 	\centering
+	\begin{tabular}{cc}
+	
+	\begin{prooftree}
+	\[ [\gamma] \leadsto \phi
+	\]
+ \justifies \gamma\to\phi \using{{\to}\text{Intro}}
+\end{prooftree} & \begin{prooftree}
+	\gamma \to \phi \qquad \gamma \justifies \phi \using{{\to}\text{Elim}}
+\end{prooftree}\\[30pt]
+\begin{prooftree}
+	\[ [\phi] \leadsto \psi\]
+	\[ [\phi] \leadsto \neg\psi\] \justifies \neg\phi \using{\neg\text{Intro}} 
+\end{prooftree} &
+\begin{prooftree}
+	\[ [\neg\phi] \leadsto \psi\]
+	\[ [\neg\phi] \leadsto \neg\psi\] \justifies \phi \using{\neg\text{Elim}} 
+\end{prooftree}
+	\end{tabular} \caption{Natural Deduction Rules for $\mathcal{L}_{\neg,\to}$}
+ \end{table}
+Call this system of rules, plus the rules about assumptions, $ND_{\neg,\to}$.
+
+\paragraph{Deduction Theorem for $ND_{\neg,\to}$}
+
+\begin{theorem}[Deduction Theorem] $\Gamma \vdash \psi \to \phi$ iff $\Gamma,\psi \vdash \phi$.\end{theorem}
+Suppose $\Gamma,\psi \vdash \phi$. Then we can apply $\to$Intro as follows: 
+	\begin{equation*}
+		\begin{prooftree}
+\[\Gamma, [\psi] \leadsto \phi\] 
+			\justifies \psi \to \phi \using{\to}\text{Intro}
+				\end{prooftree}
+	\end{equation*}
+	
+Therefore, $\Gamma\vdash\psi\to\phi$. Similarly, suppose $\Gamma\vdash\psi\to\phi$: \begin{equation*}
+	\begin{prooftree}
+		\[\Gamma \leadsto \psi\to\phi\] 
+		\qquad \psi \justifies \phi \using {\to}\text{Elim}
+	\end{prooftree}
+\end{equation*} That is, $\Gamma,\psi\vdash\phi$. 
+
+
+\paragraph{$\neg$Elim can be replaced by $\neg\neg$Elim}
+
+Consider the rule: \begin{equation*}
+	 \begin{prooftree}\neg\neg\phi \justifies \phi \using \neg\neg\text{Elim}
+	\end{prooftree}
+\end{equation*}
+This rule can obviously be derived from our rules: the correctness of the syntactic sequent $\neg\neg\phi \vdash \phi$ is demonstrated by this proof: \begin{equation*}
+	\begin{prooftree}
+		\neg\neg\phi \quad [\neg\phi] \justifies \phi \using \neg\text{Elim} 
+	\end{prooftree}
+\end{equation*}   But with $\neg\neg$Elim we can show the rule $\neg$Elim is redundant, using $\neg$Intro: \begin{equation*}
+	\begin{prooftree}
+\[		\[[\neg \phi] \leadsto \psi\]\quad \[[\neg\phi] \leadsto \neg\psi\] \justifies \neg\neg\phi \using \neg\text{Intro} \] \justifies \phi\using\neg\neg\text{Elim}
+	\end{prooftree}
+\end{equation*} 
+
+
+\section{Soundness}
+\paragraph{Soundness and Completeness}
+
+A proof system $P$ in a given language is \emph{sound} with respect to a semantic interpretation of the language just in case whenever there is a proof which establishes $\Gamma \vdash_{P} \phi$, it is the case that $\Gamma \vDash \phi$.
+
+A proof system $P$ in a given language is \emph{complete} with respect to a semantic interpretation of the language just in case whenever it is the case that $\Gamma \vDash \phi$, there is a proof which establishes $\Gamma \vdash_{P} \phi$.
+
+In this section and the next, we will show that the natural deduction system $ND_{\neg,\to}$ just introduced is \emph{sound and complete} for the standard semantics of $\mathcal{L}_{\neg,\to}$. Given the expressive adequacy of $\mathcal{L}_{\neg,\to}$, that also shows the completeness of the natural deduction system with respect to \lone; to show the soundness of that system, we also need to show that the other rules of the system $ND$ are also sound.
+
+
+\paragraph{Soundness of $ND_{\neg,\to}$}
+
+\begin{theorem} The Rules of $ND_{\neg,\to}$ are sound.
+\begin{proof} Suppose that $\Gamma \vdash \phi$. We show by induction on the complexity of proofs that $\Gamma \vDash \phi$.
+
+\emph{Base case}: The least complex proof is a single node, $\phi$, establishing $\phi \vdash \phi$. In this case, any structure which assigns $T$ to $\phi$ clearly assigns $T$ to $\phi$, so $\phi\vDash\phi$, i.e., $\Gamma\vDash\phi$.
+
+\emph{Induction step}: Suppose $\Gamma\vdash\phi$, established by applying one of the natural deduction rules to some previously obtained proofs to obtain a proof of $\phi$. There are four cases: 
+ \begin{description}
+	\item [$\to$Elim] From a proof of $\psi$ on assumptions $\Delta$, and a proof of $\psi\to\phi$ on assumptions $\Theta$, obtain a proof of $\phi$ on assumption $\Gamma=\Delta\cup\Theta$. By the induction hypothesis, $\Delta \vDash \psi$ and $\Theta \vDash \psi\to\phi$, so every structure which makes all of the members of $\Gamma$ true, makes $\psi$ and $\psi\to\phi$ true, and therefore $\phi$ must be true in all such structures, showing that $\Gamma\vDash\phi$.
+	\item [$\to$Intro] From a proof of $\phi$ on assumptions $\Gamma \cup \{\psi\}$, apply $\to$Intro to obtain a proof of $\psi\to\phi$ on assumption $\Gamma$ (discharging $\psi$). But since by hypothesis $\Gamma,\psi \vDash\phi$, by the deduction theorem, $\Gamma \vDash \psi\to\phi$.
+	\item [$\neg$Elim] From a proof of $\psi$ on assumptions $\Gamma,\neg\phi$ and a proof of $\neg\psi$ on assumptions $\Gamma,\neg\phi$, obtain a proof of $\phi$ on assumptions $\Gamma$, discharging $\neg\phi$. Since $\Gamma,\neg\phi \vDash \psi$ and $\Gamma,\neg\phi\vDash\neg\psi$, it follows that $\Gamma,\neg\phi\vDash$; therefore $\Gamma\vDash\phi$.
+		\item [$\neg$Intro] From a proof of $\psi$ on assumptions $\Gamma,\phi$ and a proof of $\neg\psi$ on assumptions $\Gamma,\phi$, obtain a proof of $\neg\phi$ on assumptions $\Gamma$, discharging $\phi$. Since $\Gamma,\phi \vDash \psi$ and $\Gamma,\phi\vDash\neg\psi$, it follows that $\Gamma,\phi\vDash$; therefore $\Gamma\vDash\neg\phi$.
+\end{description}
+Thus all the rules preserve soundness; no proof in $ND_{\neg,\to}$ can be constructed other than using these rules; so $ND_{\neg,\to}$ is sound. \end{proof}\end{theorem}
+
+
+
+
+\section{Completeness}
+\paragraph{Consistency}
+
+A set of sentences $\Gamma$ is called \emph{(syntactically) consistent} iff $\Gamma\not\vdash\neg(\phi\to\phi)$. Otherwise it is \emph{inconsistent}, also written $\Gamma\vdash$. Equivalently, consider this proof:
+\begin{equation*}
+	\begin{prooftree}
+		\[ \Gamma \leadsto \neg(\phi \to \phi)\] 
+		\[[\phi] \justifies \phi\to\phi \using \to\text{Intro}\] 
+		\justifies \psi \using \neg\text{Elim}
+	\end{prooftree}
+\end{equation*} If we have a proof of $\neg(\phi\to\phi)$, we have a proof of arbitrary $\psi$ from the assumption $\Gamma$; so we can say that $\Gamma$ is consistent iff there is a sentence \emph{not provable} from $\Gamma$. 
+
+A set of sentences $\Gamma$ is \emph{maximally consistent} iff it is consistent and for any $\phi$, if $\phi\notin\Gamma$, then $\Gamma,\phi\vdash$ (one cannot add any more sentences while remaining consistent).
+\paragraph{Properties of Maximal Consistent Sets: Deductive Closure}
+
+\begin{lemma}[Deductive Closure]
+	If $\Gamma$ is a maximal consistent set, then if $\Gamma \vdash \phi$, then $\phi \in \Gamma$. \begin{proof}
+	{	 Suppose that $\Gamma\vdash\phi$, but $\phi\notin\Gamma$. Since $\Gamma$ is maximal consistent, $\Gamma,\phi\vdash \neg(\phi\to\phi)$. Using $\to$Intro and discharging $\phi$, we see that $\Gamma\vdash\phi\to(\neg(\phi\to\phi))$. But now use $\to$Elim, and obtain $\Gamma\vdash\neg(\phi\to\phi)$ i.e., $\Gamma$ is inconsistent.}
+	\end{proof}
+\end{lemma} 
+}
+
+{
+ \paragraph{Properties of Maximal Consistent Sets: Negation Completeness}
+
+\begin{lemma}[Negation Completeness]
+	If $\Gamma$ is a maximal consistent set, then $\neg\phi \in \Gamma$ iff $\phi \notin\Gamma$. \begin{proof}
+	{ L to R:	If both $\phi$ and $\neg\phi$ were in $\Gamma$, we could prove $\neg(\phi\to\phi)$ by an application of $\neg$Elim, showing $\Gamma$ inconsistent. 
+		
+		R to L: If $\phi\notin\Gamma$, then  $\Gamma,\phi\vdash\neg(\phi\to\phi)$: 
+		 \begin{equation*}
+			\begin{prooftree}
+				\[\Gamma, [\phi] \leadsto \neg(\phi\to\phi)\]
+				\[[\phi] \justifies \phi\to\phi\using \to\text{Intro}\]
+				\justifies \neg\phi \using\neg\text{Intro}
+			\end{prooftree}
+		\end{equation*}  Therefore, $\Gamma\vdash\neg\phi$; by Deductive Closure Lemma, $\neg\phi\in\Gamma$.}
+	\end{proof} 
+\end{lemma}
+ 
+
+\paragraph{Properties of Maximal Consistent Sets: Conditional Completeness}
+
+\begin{lemma}[Conditional Completeness]
+	If\, $\Gamma$ is any maximal consistent set, then	$\phi\to\psi\in\Gamma$ iff whenever $\phi\in\Gamma$, it follows that $\psi\in\Gamma$.
+	\begin{proof}
+{	L to R:	Suppose $\phi\to\psi\in\Gamma$. Then $\Gamma\vdash\phi\to\psi$; and if $\phi\in\Gamma$, then $\Gamma\vdash\phi$. Apply $\to$Elim, and establish $\Gamma\vdash\psi$, i.e., $\psi\in\Gamma$.
+		
+		R to L: Suppose that whenever $\phi\in\Gamma$, $\psi\in\Gamma$. Consider two cases: \begin{enumerate}
+			\item $\phi\in\Gamma$. So $\Gamma=\Gamma\cup\{\phi\}$. Moreover, $\psi\in\Gamma$, so $\Gamma,\phi\vdash\psi$. Apply $\to$Intro and discharge $\phi$ to show $\Gamma\vdash \phi\to\psi$.
+			\item $\phi\notin\Gamma$. Then $\Gamma,\phi\vdash\neg(\phi\to\phi)$. But then $\Gamma,\phi \vdash\psi$ (by a similar proof as just above); applying $\to$Intro and discharge $\phi$, $\Gamma\vdash\phi\to\psi$.
+		\end{enumerate}
+}		
+	\end{proof} 
+\end{lemma}
+
+\paragraph{Properties of Maximal Consistent Sets: Satisfiability}
+
+\begin{theorem}[Maximal Consistent Sets Satisfiable]
+	Every maximal consistent set is satisfiable (i.e., has a model).\begin{proof}
+	{	Suppose $\Gamma$ is a maximal consistent set in $\mathcal{L}_{\to,\neg}$. For $s$ a sentence letter, define a structure $\mathscr{A}$: {$\mathscr{A}(s) = T$ iff $s\in\Gamma$}.
+			
+			For any $\phi$, $\val{\phi}{A}=T$ iff $\phi\in\Gamma$. Proof by induction on complexity of sentences. The base case, $\phi$ a sentence letter, is immediate. 
+		
+	Suppose $\phi$ is complex. There are two cases: \begin{enumerate}
+		\item $\phi=\neg\psi$. $\phi\in\Gamma$ iff $\psi\notin\Gamma$, by Negation Completeness; iff by the induction hypothesis, $\val{\psi}{A}=F$; iff by the clause on $\neg$, $\val{\phi}{A}=T$.
+		\item $\phi=(\psi\to\chi)$. $\phi\in\Gamma$ iff if $\psi\in\Gamma$ then $\chi\in\Gamma$ (by Conditional Completeness); iff if $\val{\psi}{A}=T$ then $\val{\chi}{A}=T$; iff $\val{\phi}{A}=T$.
+	\end{enumerate} }\end{proof}
+\end{theorem} 
+
+\paragraph{Completeness}
+
+\begin{theorem}[Completeness for $\mathcal{L}_{\neg,\to}$]
+	If $\Gamma\vDash\phi$, then $\Gamma\vdash\phi$. \begin{proof}
+		{ We prove the \emph{contrapositive}. So assume that $\Gamma\not\vdash\phi$. (Assuming that $\Gamma$ itself is consistent; if it is not, then clearly the theorem holds fairly trivially.)
+		
+		We'll construct a maximal consistent set $\Gamma^{+}$, a \emph{superset} of $\Gamma$, such that $\Gamma^{+}\not\vdash\phi$.  By consistency of $\Gamma^{+}$, $\phi\notin\Gamma^{+}$; by the Negation Completeness lemma, $\neg\phi\in\Gamma^{+}$.
+		
+		But by the Satisfiability Theorem, $\Gamma^{+}$ has a model, $\mathscr{A}$. Since $\Gamma\subseteq\Gamma^{+}$, for all $\gamma\in\Gamma$, $\val{\gamma}{A}=T$; but since $\neg\phi\in\Gamma^{+}$, $\val{\neg\phi}{A}=T$, so $\val{\phi}{A}=F$. So $\Gamma\not\vDash\phi$, as required.
+		
+		We now show how to construct $\Gamma^{+}$ from $\Gamma$, completing the proof.
+		}
+	\end{proof}
+\end{theorem}
+
+\paragraph{The Construction of Maximal Consistent $\Gamma^{+}$}
+
+Supposing $\Gamma\not\vdash\phi$, construct $\Gamma^{+}$ as follows. \begin{enumerate}
+	\item Enumerate the sentences of $\mathcal{L}_{\neg,\to}$, $\{\sigma_{1},\sigma_{2},\ldots\}$. 
+	\item Let $\Gamma_{0}=\Gamma$.
+	\item \begin{equation*}
+		\Gamma_{n+1} = \begin{cases}
+			\Gamma_{n}\cup\{\neg\sigma_{n+1}\} &\text{if } \Gamma_{n},\sigma_{n+1}\vdash\phi;\\
+			\Gamma_{n}\cup\{\sigma_{n+1}\} &\text{otherwise (i.e., if $\Gamma_{n},\sigma_{n+1}\not\vdash\phi$)}.
+		\end{cases}
+	\end{equation*}
+	\item Let $\Gamma^{+}=\bigcup_{i} \Gamma_{i}$.
+\end{enumerate}
+It is clear that \emph{$\Gamma\subseteq\Gamma^{+}$}. It is also clear that \emph{$\Gamma^{+}\not\vdash\phi$}, for at no stage was a sentence added to any $\Gamma_{n}$ that permitted a proof of $\phi$. 
+
+Finally, $\Gamma^{+}$ is a \emph{maximal consistent set}, since (by construction), for every $\sigma_{i}$, either $\sigma_{i}\in\Gamma^{+}$ or $\neg\sigma_{i}\in\Gamma^{+}$.  Thus $\Gamma^{+}$ has the properties required to prove Completeness stated just above.
+
+}
+
+
+
+{
+\paragraph{Completeness for \lone}
+
+We've shown the Completeness Theorem for the restricted language $\mathcal{L}_{\neg,\to}$. But by Expressive Adequacy, any sentence of \lone\ can be expressed in $\mathcal{L}_{\neg,\to}$. So we can assure ourselves that any truth function expressible in \lone\ can be expressed in $\mathcal{L}_{\neg,\to}$, and any valid argument in \lone\ has a corresponding provably correct sequent in $\mathcal{L}_{\neg,\to}$.
+
+For completeness of \lone, we cannot rest there. What if the rules of \lone\ don't suffice to show the equivalence of some arbitrary \lone\ sentence $\phi$ with a sentence only involving $\neg$ and $\to$? In that case, while a sentence logically equivalent to $\phi$ is provable, $\phi$ may not be.
+
+We thus need additional lemmas showing that maximal consistent sets \begin{itemize}
+	\item Contain $\phi \wedge \psi$ iff they contain both $\phi$ and $\psi$;
+	\item Contain $\phi \vee \psi$ iff they contain at least one of $\phi$ or $\psi$;
+	\item Contain $\phi \bicond \psi$ iff they contain $\phi$ iff they contain $\psi$.
+\end{itemize} 
+ Then the Satisfiability Theorem must be extended to include these new cases; and the remainder of the theorem is proved as above.
+
+
+
+
+
+
+\paragraph{Compactness  Again}
+
+Consideration of the nature of natural deduction proofs should convince you that any conclusion $\phi$ drawn on the basis of assumptions $\Gamma$ can be constructed by some finite application of the rules to finitely many sentences in $\Gamma$. Provability is essentially a finite notion: proofs are things that can be \emph{constructed}.
+
+This observation, informal though it is, \emph{can} be made precise, to yield another proof of the \emph{Compactness theorem}. Since, by Completeness, every correct semantic sequent $\Gamma\vDash$ is provable, and every proof is a finite object using only finitely many members of $\Gamma$, then by Soundness there is a correct semantic sequent $\Gamma'\vDash$ where $\Gamma'$ is a finite subset of $\Gamma$. 
+
+
+
+
+\section{A Little More Proof Theory}
+
+`Proof theory' is the mathematical examination of proofs conceived of as mathematical objects in their own right. In this section we explore a little of what this involves. We've already seen one some proof theory in section 1 of this chapter, where we showed the redundancy of the proof rule $\neg$Elim in the presence of $\neg\neg$Elim, and vice versa.
+
+\paragraph{The Language $\mathcal{L}_{DP}$}
+
+Consider the language $\mathcal{L}_{DP}$ which contains all sentence letters, and all sentences involving only the connectives $\wedge,\to$, and also contains a \emph{sentential constant} $\bot$. A sentential constant is syntactically like a sentence letter, but (unlike sentence letters) it gets a constant interpretation in every structure – in this case, for any structure $\mathscr{A}$, $|\bot|_{\mathscr{A}}=F$. The atomic sentences of $\mathcal{L}_{DP}$ thus include $\bot$ and all sentence letters; complex sentences are then built up in the usual way. 
+
+\paragraph{Translating between $\mathcal{L}_{DP}$ and \lone} It's clear that the \lone\ sentence `$\neg \phi$' expresses the same truth function as the $\mathcal{L}_{DP}$ sentence `$\phi \to \bot$' (consideration of a truth table will suffice to show this). 
+Using this translation, we can give $\mathcal{L}_{DP}$-versions of the natural deduction rules for $\neg$ in \lone, as seen in Table \ref{negldp}.
+\begin{table}
+	\centering
+	\begin{tabular}{cc}
+		\begin{prooftree}
+			\[[\phi] \leadsto \psi\] \[[\phi] \leadsto \psi \to \bot\] \justifies \phi \to \bot \using{\neg\text{Intro}_{DP}}
+		\end{prooftree}	&	\begin{prooftree}
+					\[[\phi\to\bot] \leadsto \psi\] \[[\phi\to\bot] \leadsto \psi \to \bot\] \justifies \phi \using{\neg\text{Elim}_{DP}}
+				\end{prooftree}		
+	\end{tabular}\caption{Negation rules in $\mathcal{L}_{DP}$\label{negldp}}
+\end{table}
+
+With the negation rules as specified, we can prove this: \begin{theorem}[Alternative Negation Rules for $\mathcal{L}_{DP}$] \label{altneg}
+ $\Pi$ is a proof of some sequent in the language $\mathcal{L}_{DP}$ that makes a use $u$ of one of the Table \ref{negldp} versions of Halbach's rules iff there is another proof $\Pi'$ of the same sequent which replaces that use $u$ by a construction which only uses this rule for $\neg$ (together with the  rules for  $\to$):
+	\begin{equation*}
+		\begin{prooftree}
+	\[	[\phi \to \bot] \leadsto \bot\] \justifies \quad\phi\quad \using{\bot_{\mathsf{C}}}
+		\end{prooftree}
+	\end{equation*} \begin{proof}
+	\emph{If:} There are two cases. Case 1: Suppose $\Pi$ is a proof that makes use of $\neg$Intro$_{DP}$. Then we can replace that use by the following construction, which yields another proof $\Pi'$ which uses only the rules for $\to$:
+	\begin{equation*}
+			\begin{prooftree}
+					\[\[[\phi] \leadsto \psi\] \[[\phi] \leadsto \psi \to \bot\] \justifies\bot \using{\to\text{Elim}}\]\justifies\phi\to\bot\using{\to\text{Intro}} 
+			\end{prooftree}
+	\end{equation*}
+	Case 2: Suppose $\Pi$ is a proof that makes use of $\neg$Elim$_{DP}$. Then we can replace that use by the following construction, which yields another proof $\Pi'$ which uses only the new rule $\bot_{\mathsf{C}}$ and the rule $\to$Elim:
+\begin{equation*}
+		\begin{prooftree}
+				\[	\[[\phi\to\bot] \leadsto \psi\] \[[\phi\to\bot] \leadsto \psi \to \bot\] \justifies \bot \using{\to\text{Elim}}							
+				\] \justifies \phi \using{\bot_{\mathsf{C}}}
+				\end{prooftree}
+\end{equation*}
+
+\emph{Only if}: Suppose $\Pi$ is a proof which makes use of the new rule $\bot_{\mathsf{C}}$. Then we may replace that use by the following construction which uses only the old rules for $\to$ and $\neg$Elim$_{DP}$.
+\begin{equation*}
+	 \begin{prooftree}
+		\[[\phi \to \bot] \leadsto \bot\] \[[\bot]\justifies\bot\to\bot \using{\to\text{Intro}}\]\justifies\phi\using{\neg\text{Elim}_{DP}} 
+	\end{prooftree}
+\end{equation*}								
+	\end{proof}
+\end{theorem} 
+
+
+\paragraph{Reducing Complexity of Proofs}
+
+Return now to the \lone-fragment containing only $\to,\wedge,\neg$. Let the \emph{(degree of) complication} of a sentence be the number of connectives occurring in the sentence (a sentence letter has degree of complication 0, if $\phi$ and $\psi$ have degree of complication $m$ and $n$ respectively, then $(\phi \wedge \psi)$ has degree of complication $m+n+1$, etc.) We can now show: \begin{theorem}[Reducing Complexity of Proofs] \label{redcompl}
+	If $\Pi$ is a proof in Halbach's system for $\mathcal{L}_{\to,\wedge,\neg}$  that $\Gamma \vdash \phi$, in which the most complicated sentence resulting from an application of $\neg$Elim is $\psi$, then (when $\psi$ is not atomic) there is a distinct proof $\Pi'$ of $\Gamma \vdash \phi$ in which the results of all applications of $\neg$Elim are \emph{less complicated} than $\psi$. Indeed, there exists a proof $\Pi^{\dag}$ of that sequent, in which the result of every application of $\neg$Elim is atomic.
+	\begin{proof}
+		Suppose that the most complicated result of $\neg$Elim in $\Pi$ is $\psi$. So part of $\Pi$ looks like this: \begin{equation*}
+			\begin{prooftree}
+				\[\Gamma \quad [\neg \psi] \justifies \leadsto \chi\] \[\Delta \quad [\neg \psi] \leadsto \neg\chi\] \justifies \psi \using{\neg\text{Elim}}
+			\end{prooftree}
+		\end{equation*} $\psi$ is complicated (not a sentence letter), so given there are three connectives in this language,  there are three cases: \begin{enumerate}
+			\item $\psi = \neg \pi$. In which case replace that part of the proof sketched above with this one: \begin{equation*}
+				\begin{prooftree}
+					\[\Gamma \[[\pi] \quad [\neg \pi] \justifies \neg\neg\pi \using{\neg\text{Intro}}\] \leadsto \chi\]
+					\[\Delta  \[[\pi] \quad [\neg \pi] \justifies \neg\neg\pi \using{\neg\text{Intro}}\] \leadsto \neg\chi\] \justifies \neg\pi \using{\neg\text{Intro}}
+				\end{prooftree}
+			\end{equation*}
+		\item $\psi = \pi \wedge \xi$. Proof left for Exercise.
+			\item $\psi = \pi \to \xi$. In which case replace that part of the proof sketched above with this one: \begin{equation*}
+	\hskip-1.5cm			\begin{prooftree}
+				\[	\[\Gamma  \[\[ [\pi \to \xi] \quad [\pi] \justifies \xi \using{\to\text{Elim}}\] \quad [\neg \xi] \justifies \neg(\pi \to \xi) \using{\neg\text{Intro}}\] \leadsto \chi\]
+				\[\Delta \[\[ [\pi \to \xi] \quad [\pi] \justifies \xi \using{\to\text{Elim}}\] \quad [\neg \xi] \justifies \neg(\pi \to \xi) \using{\neg\text{Intro}}\] \leadsto \neg\chi\]
+					 \justifies  \xi \using{\neg\text{Elim}}\]\justifies \pi \to \xi \using{\to\text{Intro}}
+				\end{prooftree}
+			\end{equation*}
+		\end{enumerate}	
+
+Notice that applying these replacements repeatedly to uses of $\neg$Elim in a proof will eventually replace all complex sentences in uses of $\neg$Elim by simpler ones. All sentences of \lone\ are finitely complex, and all proofs involve only finitely many applications of a given rule, this process terminates after a finite time with only atomic sentences as the conclusions of uses of $\neg$Elim. 
+	\end{proof}
+\end{theorem}
+
+It is clear that we can put the results of Theorems \ref{altneg} and \ref{redcompl} together, to establish that, in the system which involves the normal rules for $\wedge$ and $\to$, and has $\bot_{\mathsf{C}}$ as its only other rule, if $\Pi$ is a proof in the system $DP$ that $\Gamma \vdash_{DP}\phi$, then there exists a proof of that sequent, $\Pi^{\dag}$, in which the result of any application of $\bot_{\mathsf{C}}$ is atomic. (I leave the proof as a problem.)
+
+
+
+
+
+
+\section{Axioms}
+\paragraph{Axiomatic Systems}
+
+Another proof system we will now briefly consider is an \emph{axiomatic} (or Hilbert-style) proof system. 
+
+This is familiar in mathematics: one begins with some \emph{axioms} (normally interpreted as `obvious' or `certain' truths), and by applications of some very simple truth-preserving rules of inference, one derives further truths.
+
+If one's axioms are well chosen, one should be able to prove all and only truths about a given subject matter from the axioms characterising that subject matter. This was Euclid's method in the \emph{Elements}: he showed that all and only the truths of Euclidean geometry could be established on the basis of his well chosen axioms.
+
+\paragraph{Axioms for Propositional Logic}
+
+In an axiomatic system, one begins with theorems, the axioms, and applies the rules of inference to preserve theoremhood. 
+
+Our axiom system \L\ is very simple. It has three \emph{axiom-schemata}, in the language $\mathcal{L}_{\neg,\to}$:
+\begin{description}
+	\item [A1] $\lvdash (\phi \to (\psi \to \phi))$;
+	\item [A2]$\lvdash ((\phi \to (\psi \to \chi)) \to ((\phi \to \psi) \to (\phi \to \chi)))$;
+	\item [A3] $\lvdash ((\neg \psi \to \neg \phi) \to (\phi \to \psi))$.
+\end{description}
+Any sentence of $\mathcal{L}_{\neg,\to}$ can be substituted into these axiom schemata to generate an instance of an axiom. Any axiom is a theorem.
+
+The system has one rule (apart from substitution): \emph{\emph{Modus Ponens}}, then rule that if $\lvdash \phi$ and $\lvdash \phi\to\psi$, then $\lvdash\psi$. 
+
+A \emph{proof} in \L\ is any sequence of theorems, each of which is either an axiom or follows by \emph{modus ponens} from earlier theorems.
+
+\paragraph{A Proof in \L}
+
+The system \L\ is  elegant, but proofs in it can be unnatural to say the least: (I annotate lines of the proof with the axiom scheme used.)
+\begin{align*}
+ 1. &\lvdash (P\to((P\to P)\to P)) \to ((P\to(P\to P))\to(P\to P)) & \text{(A2)}\\
+2. &\lvdash (P\to((P\to P)\to P)) &\text{(A1)}\\
+3. &\lvdash ((P\to(P\to P))\to(P\to P)) &\text{(MP 1, 2)}\\
+4. &\lvdash (P \to (P\to P)) & \text{(A1)}\\
+5. &\lvdash (P\to P)&\text{(MP 3, 4)}
+\end{align*} 
+
+This is (apparently) the \emph{shortest} proof of $P \to P$ in \L!
+
+\paragraph{Soundness of \L}
+
+It is a trivial exercise (and hence left for an exercise) to show that \L\ is sound. That is, show: \begin{itemize}
+	\item All the axioms of \L\ are tautologies.
+	\item The rule of \L\ preserves tautologousness.
+\end{itemize}
+
+\paragraph{Equivalence of \L\ and $ND_{\neg,\to}$}
+
+We now show that, perhaps surprisingly, the proof systems \L\ and $ND_{\neg,\to}$ are equivalent – everything that can be proved in one can be proved in the other. This shows, too, that \L\ is sound and complete.
+
+\paragraph{Everything provable in \L\ is provable in $ND$}
+
+\begin{theorem}
+	If $\lvdash\phi$ then $\vdash\phi$.\end{theorem} \begin{proof}
+		{ The proof is straightforward: show that each axiom is provable in $ND$, and show that the rule \emph{modus ponens} is a valid rule in $ND$.
+		
+		The second part is easy; if $\vdash\phi$ and $\vdash\phi\to\psi$, then  appending an instance of $\to$Elim to the preceding proofs is a proof of $\psi$.
+		
+		Then it is just a matter of proving the axioms. I show A1: \begin{equation*}
+			\begin{prooftree}
+				\[ [\phi] \justifies \psi\to\phi \using\to\text{Intro}\]
+				\justifies \phi \to (\psi\to\phi) \using \to\text{Intro}
+			\end{prooftree}
+		\end{equation*}}
+	\end{proof}
+
+
+
+\paragraph{Proofs from Assumptions in \L}
+
+The ugly proof of $\lvdash P\to P$ two paragraphs back shows the benefits of working with \emph{assumptions}. A proof of $\phi$ from assumptions $\Gamma$ in \L\ is a sequence of axioms, \emph{members of $\Gamma$}, or follows from preceding members by \emph{modus ponens}, and the last line of which is $\phi$.
+This is a legitimate notion, because one can show: \begin{theorem}[Deduction Theorem for \L]
+	 $\Gamma\lvdash\phi$ iff for some finite set of sentences $\gamma_{1},\ldots,\gamma_{n}$ actually used in the proof of $\phi$, $\lvdash (\gamma_{1}\to(\gamma_{2} \to \ldots (\gamma_{n} \to \phi)\ldots))$.
+\end{theorem} It suffices to show that $\Gamma,\psi\lvdash\phi$ iff $\Gamma\lvdash\psi\to\phi$. I leave the proof for an exercise.
+}
+
+
+{
+\paragraph{Everything Provable in $ND$ is provable in \L}
+\begin{theorem}
+	If $\vdash \phi$, then $\lvdash \phi$. \begin{proof}
+		{ Induction on length of proofs: we show that the shortest proofs of $ND$ are provable in \L, and	that the rules are provable transitions.
+		
+	Certainly the shortest proof, the single node $\phi$, shows that $\phi\vdash\phi$; but $\phi\lvdash\phi$ is shown by the deduction theorem given $\lvdash \phi\to\phi$.
+	
+	Suppose we extend some existing  proofs by applying the rules of $ND$: \begin{description}
+		\item[$\to$Elim] We have $\Gamma\vdash\phi$ and $\Gamma\vdash\phi\to\psi$, and extend by $\to$Elim. But this is obviously \emph{modus ponens}, so $\Gamma\lvdash\psi$.
+	\end{description}
+The case of $\to$Intro is shown by the deduction theorem. I leave you to show the cases for negation.}	\end{proof}
+\end{theorem}
+}
+
+{\small
+\subsection*{Further Reading}
+\addcontentsline{toc}{subsection}{Further Reading}
+
+Natural deduction was invented  by \citet{geninvinl}, the founder of proof theory. 
+The proof theory of natural deduction systems discussed in section 4 of this chapter is based on \citet[39--41]{pranatde}; he uses Theorems \ref{altneg} and \ref{redcompl}, and the last problem, and proves the famous `cut elimination' theorem for natural deduction, unfortunately a topic beyond the scope of these notes.
+
+
+
+ The axiom system here was developed by Jan \L ukasiewicz, simplifying Frege's system: see \citet[p. 25]{boslogwol}. (The Polish notation used in this article is initially confusing, but has the wonderful feature that it is entirely unambiguous without the use of parentheses.)
+See also \citet[ch. 5--6]{bosintlo}; he gives a direct proof of the completeness of a system based on \L\ at pp.\ 217--9.
+
+
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+
+\begin{enumerate}
+	\item \begin{enumerate}
+\item Devise introduction and elimination rules for a natural deduction system for the language $\mathcal{L}_{\uparrow}$ with the Sheffer Stroke as its only connective, being sure to fully justify your answer. How many such rules do we need?
+	\item Suppose in a system of natural deduction $ND$ for \lone\ we replaced the $\neg$Elim rule by the following, \emph{ex falso quodlibet}: \begin{equation*}
+		\begin{prooftree}
+			\psi \qquad \neg\psi \justifies \phi \using \text{EFQ}
+		\end{prooftree}
+	\end{equation*}
+\begin{enumerate}
+	\item Is the resulting system $ND'$ equivalent (in terms of what can be proved) to the original system? (Justify your answer; it is somewhat difficult to prove conclusively, but give some reasons for your view.)
+	\item What happens if we, in addition, replace $\neg$Intro by the following rule, \emph{tertium non datur}, yielding the system $ND''$? \begin{equation*}
+		\begin{prooftree}
+			\[[\phi] \leadsto \psi\] \[[\neg\phi] \leadsto \psi\] \justifies \psi \using\text{TND}
+		\end{prooftree}
+	\end{equation*}
+\end{enumerate}	
+\item Consider the natural deduction system $ND_{\to,\vee}$ for the language $\mathcal{L}_{\to,\vee}$ in which the only connectives are $\to,\vee$. Suppose we introduce to the language the zero-place propositional constant $\bot$, and add the following rules to the proof system, yielding $ND_{\to,\vee,\bot}$: \begin{equation*}
+	\begin{prooftree}
+		\bot \justifies \phi \using\bot
+	\end{prooftree}\qquad
+	\begin{prooftree}
+		\[[\phi \to \bot] \leadsto \bot\]
+		\justifies \phi \using \text{C}
+	\end{prooftree}
+\end{equation*}\begin{enumerate}
+	\item Give a natural translation between $\mathcal{L_{\to,\vee,\bot}}$  and $\mathcal{L}_{\to,\vee,\neg}$.
+	\item Using that translation, can you show that the proof system $ND_{\to,\vee,\bot}$ just introduced is equivalent to the natural deduction system $ND_{\to,\vee,\neg}$ involving just Halbach's rules for $\to$, $\vee$ and $\neg$?
+	\end{enumerate}
+\item A mystery connective $\oplus$ has the following introduction and elimination rules: 
+
+\begin{equation*}
+	\begin{prooftree}
+		\phi\oplus\psi \justifies \psi \using\oplus\text{Elim}
+	\end{prooftree}\qquad \begin{prooftree}
+		\phi \justifies \phi\oplus\psi \using\oplus\text{Intro}
+	\end{prooftree}
+\end{equation*}
+
+\begin{enumerate}
+	\item Show that no system containing a connective defined by these rules is sound. 
+	\item What limits should be placed on the ability of introduction and elimination rules to define or characterise the inferential role of a connective in light on this result? (This question invites discussion, not a definitive answer. You may wish to consult \citet{prirunint}.)
+	\end{enumerate}
+	\item  Relatedly to 1.(d).ii: \label{fouronee}\begin{enumerate}
+		\item Check, by means of truth tables, that $(((P\to Q)\to P)\to P)$ is a tautology.	
+		\item Give a natural deduction proof of $(((P\to Q)\to P)\to P)$.
+		\item Every valid argument involving only sentences containing $\wedge$ as their only connective can be proved valid using just the rules $\wedge$Intro and $\wedge$Elim. In that sense, $\wedge$ is completely characterised by its introduction and elimination rules. What do the previous results show about $\to$ in this connection?
+\end{enumerate}
+\end{enumerate}
+\item Using the model soundness proof for the restricted natural deduction system $ND_{\neg,\to}$, show, by analysing proofs constructed using the remaining rules of the full Halbach system $ND$, that the system $ND$ is sound.
+\item The Completeness proof for $\mathcal{L}_{\neg,\to}$ relied on various lemmas concerning the behaviour of maximal consistent sets with regard to  the connectives $\neg$ and $\to$. Show that \begin{enumerate}
+	\item analogous lemmas hold for $\wedge$, $\vee$ and $\bicond$.
+	\item the Satisfiability Theorem holds for the full language \lone.
+	\item  the full Natural Deduction system is complete for \lone\ with respect to the intended semantics.
+\end{enumerate}  
+\item \begin{enumerate}
+	\item Show that the axiomatic system \L\ introduced is sound.
+	\item Show that the axioms A2 and A3 of \L\ are provable in natural deduction: \begin{enumerate}
+		\item A2. $\lvdash ((\phi \to (\psi \to \chi)) \to ((\phi \to \psi) \to (\phi \to \chi)))$;
+		\item A3. $\lvdash ((\neg \psi \to \neg \phi) \to (\phi \to \psi))$.
+	\end{enumerate}
+\end{enumerate}
+\item Suppose that $\Gamma,\psi\lvdash\phi$, shown by a proof $\Pi$. Define the \emph{$\psi$-transform} of $\Pi$, written $\Pi^{\psi}$, as the sequence that results from prefixing `$\psi\to$' to the front of every sentence in $\Pi$. Show that each sentence in $\Pi^{\psi}$ is provable from assumptions $\Gamma$ in \L. Since obviously $\psi$ appears on $\Pi$, $\psi\to\psi$ appears on $\Pi^{\psi}$, and that is provable from $\Gamma$. So you need to show that \begin{enumerate}
+		\item the prefixed axioms (i.e., those $\psi\to\delta$ in $\Pi^{\psi}$ where $\delta$ is an axiom) are provable from $\Gamma$ (hint: use A1);
+		\item the prefixed assumptions (i.e., those $\psi\to\gamma$ in $\Pi^{\psi}$ where $\gamma \in\Gamma$) are provable from $\Gamma$;
+		\item If $\chi$ followed by \emph{modus ponens} from early claims in $\Pi$, $\psi\to\chi$ follows from earlier prefixed claims in $\Pi^{\psi}$ (hint: use A2).
+	\end{enumerate}
+ Using these results, show the deduction theorem for \L.
+\item Show the other cases for the equivalence of $ND$ and \L:\footnote{These proofs are quite elusive; I propose treating this question as optional.}  \begin{enumerate}
+	\item Show that if $\Gamma,\phi\lvdash\psi$ and $\Gamma,\phi\lvdash\neg\psi$, then $\Gamma\lvdash \neg\phi$.
+	\item Show that if $\Gamma,\neg\phi\lvdash\psi$ and $\Gamma,\neg\phi\lvdash\neg\psi$, then $\Gamma\lvdash \phi$. (Equivalently, show that if $\Gamma\lvdash\neg\neg\phi$, then $\Gamma\lvdash\phi$.)
+\end{enumerate} 
+\item A fellow student argues as follows: \begin{quotation}
+	If the Natural Deduction system introduced by Halbach is complete, then whenever $\Gamma \vDash \phi$, there is a proof that shows $\Gamma \vdash \phi$. But proofs are finite; so if $\Gamma$ is infinite, there is no proof that $\Gamma \vdash \phi$ – so the system is not complete!
+\end{quotation} How should you respond?
+\item Prove the omitted case (where the complex sentence is a conjunction) in the proof of Theorem \ref{redcompl}.
+\item Show  that, in the system which involves the normal rules for $\wedge$ and $\to$, and has $\bot_{\mathsf{C}}$ as its only other rule, if $\Pi$ is a proof in the system $DP$ that $\Gamma \vdash_{DP}\phi$, then there exists a proof of that sequent, $\Pi^{\dag}$, in which the result of any application of $\bot_{\mathsf{C}}$ is atomic.
+\end{enumerate}
+
+
+
+
+
+}
+
+
+
+
+

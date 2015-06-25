@@ -1,0 +1,156 @@
+
+
+\section{Strings and Quotation}
+
+\paragraph{The Alphabet of \lone}
+The language \lone\ contains an \emph{alphabet}, consisting of the following three types of characters: \begin{enumerate}
+	\item \emph{Sentence letters} $P,Q,R,P_{1},Q_{1},R_{1},P_{2},Q_{2},R_{2},\ldots$.
+	\item  \emph{Logical connectives}: $\neg, \wedge, \vee, \to, \bicond$.\footnote{The notation I use for the logical connectives is standard, but there are a couple of other standards too. One very common variant is to use `\&' for `$\wedge$'. \citet[25]{bevpospa} use `\sim' where we use `¬', `$\supset$' where we use `$\to$', and `\equiv' where we use `$\bicond$'.}
+	\item \emph{Parentheses}: $(,)$
+\end{enumerate}
+No character falls into more than one category; that is, e.g., no sentence letter is also a connective. Also, no character in any category is identical to any other character in that category: e.g., `$\wedge$' is distinct from `$\neg$'.
+
+Using this alphabet, we will now define the syntax, or grammar, of \lone. That is, we will give rules which tell us which combinations of symbols form grammatical \emph{sentences}. To do this, we will have to talk \emph{about} sentence letters and sentences. Two devices of reference to strings will enable us to do this clearly.
+
+\begin{definition}[String]
+	A \emph{string} in a language $\mathcal{L}$ is any finite ordered sequence of characters from the alphabet of $\mathcal{L}$.
+\end{definition}
+ I use lowercase Greek letters – $\phi, \psi, \chi$ and so on – as \emph{variables} for strings (see Appendix \ref{greek}). 
+
+ There is a convenient way that our metalanguage – English – allows us to name strings. The convention is this. If $\phi$ is a string in \lone, then the English expression consisting of left quotation mark, followed by the string $\phi$, followed by the right quotation mark, is the name of $\phi$ \citep[397]{richard}.\footnote{Of course, ‘$\phi$’ – the expression consisting of an instance of this lowercase letter of the Greek alphabet – is also being used, temporarily, to refer to that string, but it is a variable, not a name. Compare the pronoun `him' with the name ‘Antony’, both of which can be used by you to refer to me, but the former only does so temporarily and under special circumstances.} 
+
+\paragraph{Corner Quotes} A problem with this convention is that we are limited in our ability to quantify into quotation, which we will want to do in specifying our syntax. Here's an example to clarify what I mean by this. Suppose we wanted to be more precise about what a sentence letter is. We might say something like this: \begin{description} \item[Sentence Letters]
+	A sentence letter is an instance of one of the following: `$P_{n}$', `$Q_{n}$', `$R_{n}$', for $n\geqslant 0$. 
+\end{description}
+But this doesn't work: for, according to our convention, `$P_{n}$' is the name of the string that contains a capital italic instance of the 16th letter of the alphabet, followed by a lowercase subscripted italic instance of the 14th letter of the alphabet. The `$n$' that occurs in the string is being mentioned, not used, so is not a variable that can be governed by the condition `$n\geqslant 0$'. We can get around this, by introducing a device due to \citet[§6]{quine}: \emph{corner quotes}. 
+
+Here's how they work. If $\phi$ is a string, the expression $\cquote{\phi}$ is the quotation name of that string – i.e., it consists of the left quote mark, the string itself, then the right quote mark. (So if $\phi$ is a string, \cquote{\phi} is a name of the string, while `$\phi$' is the name of the variable that – temporarily – denotes the string.) Crucially, this construction allows variables to do their job: in forming \cquote{\phi}, we replace the variable by whatever it happens to denote, rather than talking about the variable itself. Now we can see how to fix up our definition of sentence letters:
+\begin{definition}[Sentence Letters]
+ 	A symbol is a sentence letter iff it is an instance of one of the following: \cquote{P_{n}}, \cquote{Q_{n}}, or \cquote{R_{n}}, for $n \geqslant 0$. For simplicity, we write `$P$' for `$P_{0}$'. 
+ \end{definition}
+This can all seem a bit complicated, but we need to be precise if we are going to be sure that we can prove what we need to prove about our language. Pedantry is almost always a virtue in logic.
+
+But one also needs to know when pedantry becomes the enemy of clarity. So in what follows, I'll often drop quotes and corner quotes when there is no chance of confusion. In particular, since the object language expressions of \lone\ are not ordinary English expressions, it won't be confusing in general if I write things like: `$P_{17}$ is a sentence letter' rather than the strictly correct `{`$P_{17}$'} is a sentence letter'. 
+
+
+\section{Sentences}
+
+Making use of corner quotes and variables over strings of \lone, we may now specify our \emph{syntax}. We do it by specifying which things are the (grammatical) sentences of our language.
+	\begin{definition}[Sentences of \lone]
+		\label{lone} The \emph{sentences} of \lone\ are those strings in the smallest collection including all strings satisfying these two conditions:
+		\begin{enumerate}
+			\item All sentence letters are sentences of \lone.
+			\item If $\phi$ and $\psi$ are sentences of \lone, then so are: \begin{itemize}
+				\item $\cquote{\neg \phi}$;
+				\item $\cquote{(\phi \wedge \psi)}$;
+				\item $\cquote{(\phi \vee \psi)}$;
+				\item $\cquote{(\phi \to \psi)}$; and
+				\item $\cquote{(\phi \bicond \psi)}$. 
+			\end{itemize}
+		\end{enumerate} 
+	\end{definition}
+To say that the sentences are strings in the \emph{smallest collection} including all strings satisfying the condition means this: every string satisfying the conditions is in the smallest collection of them, and no extra strings are in it. So, in effect, we are saying: the sentences include those strings which meet the conditions, and no other string that doesn't meet the conditions is a sentence. 
+
+\paragraph{Some Useful Terminology } \begin{definition}[Arity]
+	The \emph{arity} of a connective is the number of constituent sentences the connective requires to form a grammatical sentence.
+\end{definition} `$\neg$' is called a \emph{unary} connective; it makes a sentence when it is supplied with one sentence. `$\wedge$', `$\vee$', etc., are called \emph{binary} connectives, because they make a sentence when supplied with two sentences, which they connect together (hence the name). \lone\ does not involve ternary or higher arity connectives. 
+
+\begin{definition}[Scope]
+		The \emph{scope} of an occurrence of a connective in a sentence $\phi$ is the occurrence of the smallest subsentence of $\phi$ that contains this occurrence of the connective.
+\end{definition}
+So in the sentence $((P\wedge Q) \vee R)$, the scope of $\wedge$ is $(P \wedge Q)$. 
+
+\begin{definition}[Main Connective]
+	The \emph{main connective} of a sentence is the connective (if there is any) which is in the scope of no other; alternatively, whose scope is the whole sentence.
+\end{definition}
+
+
+
+\paragraph{Syntax} The foregoing suffices to specify the syntax of our language \lone. The language contains an alphabet, which includes a set of sentence letters, and a set of connectives, and some other punctuation. And it contains a \emph{syntax}, that is, a set of rules specifying which strings constructed from the alphabet are well-formed sentences. A language contains a syntax, but to complete our specification of the language we will also need to talk about the meanings of sentences, or its \emph{semantics}; we look at the semantics of \lone\ in chapter \ref{c3a}.
+
+\paragraph{Abbreviatory Conventions} When writing sentences of \lone, we will usually from now on drop parentheses in accordance with the following conventions \citep[\S2.3]{hallogma}. Note these are only conventional abbreviations: they form no part of the official syntax, but are just for our own convenience. \begin{enumerate}
+	\item The \emph{outermost} pair of parentheses of a sentence may be dropped; that is, we may write `$P \vee Q$' in place of the official `$(P \vee Q)$'.
+	\item If $\oplus$ is one of the binary connectives `$\vee$', `$\wedge$' of \lone\ (that is, `$\oplus$' is a variable over binary connectives), then we may write any sentence of the form \cquote{((\phi \oplus \psi)\oplus \chi)} as \cquote{(\phi\oplus\psi\oplus\chi)}.
+\end{enumerate}
+We may combine these conventions, dropping the outer parentheses to yield \cquote{\phi\oplus\psi\oplus\chi}. Be careful: the conventions are designed to ensure that one can get back the original sentence without ambiguity. Since $P \vee Q \vee R$ can is a legitimate abbreviation of $((P \vee Q) \vee R)$ in accordance with the conventions, it \emph{cannot} be used to abbreviate $(P \vee (Q \vee R))$. That latter sentence can only be abbreviated to $P \vee (Q \vee R)$. 
+
+
+
+\section{Proofs About Syntax}
+
+
+We can be quite precise about the syntax of \lone. For an example of what we can show, consider this result: \begin{theorem}[Parenthesis Matching]\label{thmpm}	If $\phi$ is a formula of \lone, then if $\phi$ contains any left parenthesis `(', then it terminates with a right parenthesis `)', which is paired with the leftmost left parenthesis in $\phi$ \citep[\S 2, Theorem 1]{sep-logic-classical}. \begin{proof}
+		By clause (3) of Definition \ref{lone}, every sentence is built up from the sentence letters using the subclauses of clause (2) of Definition \ref{lone}. Sentence letters have no parentheses (as no sentence letter is also a parenthesis). Parentheses are introduced only in subclauses involving `$\wedge$', `$\vee$', `$\to$', and `$\bicond$', and each time they are introduced as a matched set. So at any stage in the construction of a sentence, the parentheses are paired off. Moreover, each newly introduced pair of parentheses will be the leftmost and rightmost characters in a sentence. Since the only complex sentences not formed from these parenthesis-introducing rules are formed by negating existing sentences, and negation introduces a new character only at the left. So any complex formula which contains any parenthesis terminates in a right parenthesis, which is matched to the leftmost left parenthesis.
+	\end{proof}
+\end{theorem}
+Now, this isn't particularly interesting on its own; it's fairly obvious from the rules for the construction of sentences. However, it's important for two reasons. First, it shows how to construct a proof in the metalanguage: a systematic argument that a certain claim – the theorem – is correct. This is a fairly informal proof of this sort, and things will get a bit more precise later in semester, but it is illustrative of the kind of thing we'll do. Second, we can use this theorem in proving further theorems. For example: \begin{theorem}[Prefix-free]\label{prefix} Let $\phi,\psi$ be nonempty strings, such that $\cquote{\phi\psi}$ (i.e., $\phi$ followed by $\psi$) is a sentence. Then $\phi$ is \emph{not} a sentence \citep[\S 2, Theorem 5]{sep-logic-classical}.
+  	\begin{proof} Either $\phi$ contains at least one parenthesis, or it does not.
+
+  		By Theorem \ref{thmpm}, if $\phi$ contains any parentheses, its leftmost parenthesis is matched to the terminal parenthesis in $\psi$. Since every sentence has the same number of left and right parentheses (convince yourself that this is true), and $\cquote{\phi\psi}$ is a sentence, and $\psi$ is non-empty, that means $\phi$ must contain more left parentheses than right parentheses, and is therefore not a sentence. 
+
+  		So now suppose $\phi$ does not contain any parentheses. If it is a sentence, it must either be a sentence letter, or a negated sentence letter. If it is either of these categories, and yet $\cquote{\phi\psi}$ is a sentence, $\psi$ must be empty; but it's not. So it cannot be a sentence.
+
+  		So, either way, $\phi$ is not a sentence of \lone. 
+  	\end{proof}
+  \end{theorem}
+Informally, what Theorem \ref{prefix} shows is that no sentence of \lone\ is an initial substring of any other sentence. The set of grammatical sentences is thus \emph{prefix-free}; in this way it is like the set of well-formed phone numbers (in which no phone number is the prefix of any other) or ISBNs.
+
+\section{Proof By Induction on Complexity}
+
+An important sort of inductive argument is \emph{induction on the complexity of sentences}.
+\begin{definition}[Complexity]
+	The complexity of a sentence of \lone\ is the sum of the arities of the connectives occurring in it. (E.g., $\neg P$ has complexity 1, $\neg\neg(P \to Q)$ has complexity 4, etc.)
+\end{definition}
+The complexity of a sentence letter is 0. Since one cannot guarantee that a sentence has two constituents of equal complexity, we must use the strong principle of induction if one wants to induce on complexity. (Also because the complexity of $\phi \oplus \psi$, where $\oplus$ is some binary connective, is the complexity of $\phi$, plus the complexity of $\psi$, plus 2.) 
+
+In effect, we already used proof by induction on complexity in the proof of Theorem \ref{thmpm}: we showed that the atomic sentences had matching parentheses (the base case), and showed that if some constituents had matching parentheses, then the complex sentence formed by applying the further clauses of the syntax added parentheses in the appropriate way (the induction step). 
+
+\begin{theorem}
+Each sentence consists of a string of zero or more negation symbols concatenated with either a sentence letter or a sentence with a binary connective as its main connective.
+\begin{proof}
+	We prove this by strong induction on complexity. Assume that the theorem holds of all subsentences of a given sentence $\phi$, and we'll show it to hold of the whole sentence. There are two possibilities: \begin{enumerate}
+		\item $\phi$ was formed by applying the negation clause of the formation rules, so $\phi = \neg\psi$ for some $\psi$. By the induction hypotheses, $\psi$ consists of a string of zero or more negations concatenated with either a sentence letter or a sentence with a binary main connective. $\phi$ is formed by attaching a negation sign to the front, so $\phi$ is a sentence with \emph{one} or more negations concatenated with either a sentence letter or a sentence with a binary main connective – clearly this satisfies the theorem.
+		\item $\phi$ was formed by applying one of the binary connective clauses of the formation rules. It is thus a sentence with a binary connective as its main connective, prefixed by zero negation symbols, and hence the theorem holds of it.
+	\end{enumerate}	
+\end{proof}\end{theorem}
+
+
+
+\section{The Size of \lone}
+
+How big is the language \lone? That is: what is the size of its set of sentences $S_{\lone}$? There are infinitely many finite strings constructed from the alphabet of \lone\ – we can see this because, obviously, the set of sentence letters $\mathbf{P}=\{P_{n}:n \in \mathbb{N}\}$ is in one-one correspondence with the set of natural numbers, and hence is countably infinite. But $\mathbf{P}\subset S_{\lone}$, so $S_{\lone}$ must be infinite too. The question is: is the size of $S_{\lone}$ countably or uncountably infinite?
+
+Each sentence is finitely long – we can prove this by induction on complexity, since at each complexity stage, we only form finitely long sentences from previously formed finite sentences, and there is never a stage at which an infinite sentence is formed. So each sentence of \lone\ is a finite sequence. Moreover, while our alphabet is infinite (we are treating each sentence letter as a distinct syntactically indivisible entity, at least at our level of analysis),\footnote{We need not do this, of course: we could use the alphabet consisting of $P$, $Q$, $R$, and the digits $0,\ldots, 9$ to treat the sentence letters themselves as finite strings drawn from a finite alphabet. But as we'll see, this doesn't make any difference to the size of the set of sentences of \lone.} it is nevertheless countable. We can set up some standard enumeration of the alphabet: perhaps associate the parentheses with $0$ and $1$, the connectives with numbers $2$–$6$, and the sentence letters with the subsequent numbers. 
+
+This means of associating numbers with items in our alphabet is in effect a \emph{code}, which turns strings of \lone\ into corresponding sequences of natural numbers. And it turns out this entails the set of sentences of \lone\ is only countably infinite:
+ \begin{lemma}[Key Lemma]
+	There is a one-one correspondence between finite sequences of natural numbers and the set of natural numbers $\mathbb{N}$.
+	\begin{proof}
+		For each $l$, there are countably many finite sequences of length $l$. For we can map any given sequence to a unique natural number, as follows: if $p_{k}$ is the $k$-th prime number, we map the sequence  $\langle n_{1}, \ldots, n_{l}\rangle$ to the product of the first $l$ primes, each prime $p_{i}$ raised to the power of $n_{i}$: $$\mathsf{code}(\langle n_{1}, \ldots, n_{l}\rangle) = p_{1}^{n_{1}}\times\ldots\times p_{l}^{n_{l}}.$$ Since the coding function $\mathsf{code}$ is one-one, by the fundamental theorem of arithmetic \citep[§V.14]{fundta}, it has an inverse, which is from a the natural numbers \emph{onto} the set of finite sequences of length $l$, which is thus an enumeration, and hence the latter set is countable.
+		
+		The set of all finite sequences of natural numbers is the union of every set of finite sequences of natural numbers of fixed length. (I.e., it is the union of: the set of such sequences of length 1, the set of such sequences of length 2, …) There are countably many such sets (because finite lengths are natural numbers). So the set of all finite sequences is a countable union of countable sets; by Theorem \ref{countu}, the set of all finite sequences of natural numbers is countable. 
+	\end{proof}
+\end{lemma}  
+By the Key Lemma, and the fact that we can model strings of \lone\ as finite sequences of natural numbers, there is a one-one correspondence between arbitrary  finite strings of the alphabet of \lone\ and a countable set. Since the set of sentences of \lone\ $S_{\lone}$ is a strict subset of the set of finite strings of the alphabet of \lone\, the cardinality of $S_{\lone}$ is no greater than countable (by Theorem \ref{cardleq}), and since it is infinite, it must therefore be countably infinite. 
+
+	
+	{\small
+
+
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+
+\begin{enumerate}
+	\item  \citealp[\S 2]{sep-logic-classical}: \begin{enumerate}
+		\item Prove that if $\phi$ is a non-atomic \lone\ sentence, then there is exactly one formation clause from Definition \ref{lone} that could have been applied to existing sentences to produce $\phi$. 
+		\item Using this result, show that every sentence of \lone\ is \emph{uniquely readable} – that is, each sentence can be produced from the sentence letters in accordance with the formation clauses in exactly one way. \emph{(Hint: use the fact that no character is identical to any other. You'll need to show that it is not the case that, e.g., $(\phi \vee \psi)$ is the same sentence as $(\chi \wedge \xi)$.)}
+	\end{enumerate}
+	 
+	\item Sentences of \lone can be modelled as sequences of elements from $\mathcal{SL} \cup \{(,),\neg,\wedge,\vee,\to,\bicond\}$. Using Theorem \ref{countu} and Exercise 7  from chapter \ref{c2}, show that the set $\mathcal{S}$ of sentences of \lone\ is countable. 
+	
+\end{enumerate}
+
+}
+
+

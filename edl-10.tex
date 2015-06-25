@@ -1,0 +1,505 @@
+
+
+\section{Conditionals}
+
+\paragraph{`If $\phi$, $\psi$' and $\to$}
+So far we have rendered the English conditional construction `If $\phi$, $\psi$' using the \emph{material conditional} $\to$. You may be worried, as others have worried before you, that this is not an accurate rendering. For, you may think, it is implausible that `If $\phi$, $\psi$' is true whenever $\psi$ is true. Consider: \begin{description}
+	\item [A] The Tigers  will not lose every game this season;
+	\item [B] The Tigers will make it to the finals;
+	\item [C] Therefore, if the Tigers lose every game this season, they will make it to the finals.
+ \end{description}
+If `if $\phi$, $\psi$' is $\phi \to \psi$, this argument should be valid (it is an instance of the valid form $\phi,\psi \vDash \neg\phi \to \psi$). But this argument does not strike us as valid. 
+
+\paragraph{Can we do better in our logic?}
+The first question we should address is: is there a better option in \lone? And it seems that there is not. Suppose that `If $\phi$, $\psi$' is expressed by some truth function $f(|\phi|,|\psi|)$. One thing is definitely true; if $|\phi|=T$ and $|\psi|=F$, we want $f(|\phi|,|\psi|)=F$. This leaves us with 8 possible two-place truth-functions. Another thing we want is \emph{asymmetry}: there exists at least one structure $\mathscr{A}$ where $f(|\phi|_{\mathscr{A}},|\psi|_{\mathscr{A}})\neq f(|\psi|_{\mathscr{A}},|\phi|_{\mathscr{A}})$. This rules out four further functions (it rules out all those where $f(F,T)=F$), leaving us with four. Since we've just suggested in our discussion of the boxed argument above that it is undesirable for the truth of a conditional to follow from the truth of the consequent or the falsity of the antecedent, it would surely be even worse if the conditional were \emph{equivalent} to the consequent or the negation of the antecedent. This rules out two of our remaining truth functions, leaving us with just two: $\to$ and a function $g$ (expressed by $\neg(\psi\to\phi)$). But $g(T,T)=F$, hardly what we want from a conditional. So the only truth-function which satisfies minimal conditions necessary to count as a conditional is $\to$.
+
+\paragraph{Meaning as characterised by proof rules}
+Of course, this is not a strong argument – that $\to$ is better than other candidates is no argument that $\to$ is itself adequate! But we can offer better considerations. Given that our proof system for \lone\ is sound and complete, there is a sense in which those rules – collectively – govern or fix the meaning of the connectives. No other rules are necessary to ensure the right things are provable, the things which correspond exactly to the meaning of the connectives.
+
+Things may not be much different in natural languages. Of course we don't have soundness and completeness proofs, because we have neither a fully spelled out semantics nor a formal proof system for natural language. But we do have characteristic patterns of inference for the connectives of English. Some of these patterns of inference look remarkably like those for the formal connectives of \lone, notably the rules governing `and'. (This is some motivation behind the nomenclature of `natural deduction' – it is natural in the sense that it formalises intuitively fundamental characteristic patterns of inference for the corresponding operators.)
+
+Whatever else we might want to say about the English conditional connective `if $\phi$, $\psi$', it seems it should obey these rules: \begin{description}
+	\item [\emph{Modus Ponens}]  If you have established $\phi$, and you have established  `if $\phi$, $\psi$', then you can on that basis establish $\psi$.
+	\item [Conditional Proof] If $\psi$ can be established, conditional on the assumption that $\phi$, then you can establish `if $\phi$, $\psi$' without need of that assumption. 
+\end{description}
+It is obvious that something which didn't obey these rules would be quite unlike a conditional. A conditional helps us neatly summarise reasoning from assumptions, store it, and then use it when those assumptions come true – conditional proof captures the first part, and \emph{modus ponens} the last.
+But if, as seems very plausible, these two rules capture the English conditional, then we can offer an argument that the English conditional is $\to$. \\ ~\boxer{If $\phi$, $\psi$ iff $\phi \to \psi$}{\emph{Only If}: Suppose that if $\phi$, $\psi$. Assume $\phi$. By \emph{modus ponens}, $\psi$. By $\to$Intro, $\phi\to\psi$, discharging the assumption.
+
+\emph{If}: Suppose that $\phi \to \psi$. This is equivalent to $\neg \phi \vee \psi$. Assume $\phi$. By disjunctive syllogism, $\psi$. By conditional proof, it follows that if $\phi$, $\psi$, without need of the assumption.}
+
+`Disjunctive syllogism' is the rule that from $\phi \vee \psi$ and $\neg \phi$ one can infer $\psi$. (A problem asks you to show that this is valid derived rule in the system \lone; it is obviously a good rule for the English `or'.) 
+
+\paragraph{Replying to the apparent counterexamples – Grice}
+If this argument works, we're wrong to think that the cases where $\to$ doesn't seem to behave like `If\ldots then' are genuine counterexamples. But we need to say something about those cases.
+
+The explanation offered is that, even though these sentences are true, they \emph{conversationally implicate} something false, and that is what we are responding to. The notion of conversational implicature was introduced by Grice, who noted that many utterance seem to communicate more than what is strictly said, and gave a series of principles that he argued govern what is communicated by an utterance, based on what strictly it means \citep{grilogco}. One classic example is this: `some philosophers have beards'. An utterance of this sentence conversationally implicates that not all philosophers have beards, and that is what something most people will assume the speaker to be committed to in their utterance. Yet this is not a consequence of the utterance: `some philosophers have beards; in fact, all of them do!' can perfectly well be true, and is no contradiction. 
+
+\paragraph{The Maxim of Quantity}
+The principle Grice invokes to explain this implicature is his `Maxim of Quantity' – simply put, this is the principle that cooperative speakers be as informative as they can be. A hearer, without good reason to think otherwise, will assume that a speaker is being cooperative, and hence that when the speaker utters a claim, it is also the most informative claim the speaker is in a position to responsibly utter. One measure of informativeness is this: If $\phi$ entails $\psi$, then $\phi$ is at least as informative than $\psi$ (for it carries the information that $\psi$, and perhaps additional information too if $\psi$ does not entail $\phi$). Since `All philosophers have beards' entails `some philosophers have beards', someone who utters the latter utters something less informative than they could utter, if in fact they thought that all philosophers have beards. Since they are cooperative and did not utter the stronger claim, therefore, the hearer infers that the speaker did not believe the stronger claim. So the hearer now knows that the speaker must believe that some but not all philosophers have beards, and the speaker therefore communicates that not all philosophers have beards to the hearer.
+
+\paragraph{Applying Quantity to conditionals}
+  
+The material conditional is equivalent to a disjunction $\neg \phi \vee \psi$. Any disjunct of a disjunction entails the disjunction, so contains more information. So an utterance of a disjunction implicates that neither disjunct is believed by the speaker. So if it is apparent that the speaker \emph{does} believe either disjunct – either through being committed to the consequent, or rejecting the antecedent, of the relevant material conditional – we should be struck by the fact that the speaker has communicated an apparent contradiction. In the case of the Tigers above, the speaker who utters both the premises and conclusion of this argument communicates that they believe the consequent, and also utters the conditional which conversationally implicates that the speaker does not believe the consequent. So the hearer has a contradiction communicated to them – little wonder, then, that these sentences sound so bad! But – and this is the crucial part – nothing in this explanation of the badness of the conditional is \emph{semantic}. Nothing in this explanation undermines the idea that the truth conditions of the English conditional construction are the same as those for the material conditional. This is all to do with what we standardly take ourselves to be able to infer from an utterance of a sentence with those semantics, and what goes wrong here is that inference, not the semantics.
+
+\paragraph{Trickier Cases}
+
+All is not smooth sailing for the material conditional account of `If $\phi$, $\psi$'. I mention two trickier cases: \begin{enumerate}
+	\item There seem to be cases where conditional proof goes wrong – most noticeably, in the case of assumptions made that explicitly contradict other things we believe. This is especially apparent in so called \emph{counterfactual} conditionals – those (at least at first glance) that involve conditional reasoning about circumstances that do not obtain. So consider the (apparently true) counterfactual `If Univ had never existed, Exeter would have been the third oldest college'. The conditional proof rationale for this is: if we can derive the consequent from the assumption that Univ never existed and other things, then we can derive the conditional from those other things alone. Yet since Univ's existence is known to us, adding that assumption to our prior beliefs gives an inconsistent set of assumptions, from which any consequent whatever follows. But `If Univ had never existed, Catz would have been the third oldest college' is clearly false, though it should be derivable on exactly the same grounds. What we need to do, apparently, is modify which of our prior beliefs can be retained when reasoning from this contrary-to-fact assumption – there is a large literature on how best to do this, starting with \citet{lewcount}.
+\item There seem to be cases where the Gricean explanation should make a conditional sound bad, but in which it does not. Consider: `You won't fail EDL. Even if you do, you will pass on the resit.' The first sentence of this little speech is a denial of the antecedent of the following conditional, so the conditional should sound bad. But it sounds fine. The word `even' may be held responsible; but it is now up to the Gricean to explain how it interferes with the ordinary Gricean mechanisms.
+\end{enumerate}
+
+
+\section{Entailment}
+
+Another problematic feature of \lone\ (somewhat related to the foregoing by the deduction theorem) are the so-called \emph{paradoxes of entailment}. These are the following valid sequents: \begin{itemize}
+	\item $\phi, \neg\phi \vDash \psi$;
+	\item $\phi \vDash \psi \vee \neg \psi$.
+\end{itemize}
+But, some have objected, these are terrible inferences – we should never conclude, on the basis of contradictory premises, anything; and while it may be safe to conclude a tautology from any premises, that is hardly a good argument to persuade someone that the conclusion is a tautology. 
+
+\paragraph{Relevance} Critics of these sequents have maintained that the failure here is one of \emph{relevance}. The arguments may be valid in the narrow sense, because there is no structure which satisfies the premises without also satisfying the conclusion (in the former case, because no structure satisfies the premises; in the latter, because every structure satisfies the conclusion). But validity in this narrow sense is too narrow – what we ordinarily understand to be a successful valid argument excludes these trivial cases of validity. The conclusion in a \emph{genuinely} valid argument – these critics say – should follow from, and be relevant to, the premises.
+
+\paragraph{The Lewis Argument} Yet there is a very simple argument, using ordinary English reasoning which is apparently impeccable, to support these `problematic' sequents. It is known as the Lewis argument, after C. I. Lewis, one of its modern rediscoverers. \\ ~\boxer{The Lewis Argument}{~
+
+\begin{tabular}{lll}
+	1. &  $\phi$ & Assumption\\
+	2. &  $\phi$ or $\psi$ & Disjunction introduction, 1\\
+	3. &  $\neg \phi$ & Assumption \\
+	4. &  $\psi$ &  Disjunctive syllogism, 2, 3
+\end{tabular}\\}
+
+This argument seems to show that, even ordinarily, this form of apparently irrelevant argument is valid. And who could object to disjunction introduction or disjunctive syllogism, which seem like about the most basic things one can safely say about disjunction.
+
+\paragraph{The relevantist response – reject Disjunctive Syllogism} The relevantist has a response to this argument – reject disjunctive syllogism. For, they say, it goes wrong in precisely this circumstance. The inference works normally because, given a true disjunction with one false disjunct, we can infer to the truth of the other disjunct \emph{without} checking to see whether it is true. (Disjunctive syllogism was called `the dog' by its Stoic inventors, because `even a dog uses this form of inference when it comes to a fork in the road, sniffs down one branch, and not finding the scent there immediately takes off down the other branch, without stopping to sniff' \citep[99--100]{burphilo}.) But in this case, $\phi$  is also an assumption – so the fact that $\phi \vee \psi$ has a disjunct whose denial is an assumption doesn't entail $\psi$. If there are cases where we can have inconsistent assumptions, like this, we should expect disjunctive syllogism to go wrong.
+
+\paragraph{Dialethism} Some truly radical support for this line of argument can be found from the \emph{dialethist} position that some sentences are \emph{both} true and false. If $\phi$ is one such sentence, then both assumptions can be true ($\phi$ because it is true, $\neg\phi$ because $\phi$ is false). But $\psi$, since it is arbitrary, can be chosen to be a plain falsehood, giving a situation  which is a counterexample to disjunctive syllogism. Dialethists motivate their non-standard semantics by appeal to particular problem cases that don't seem to admit of any other solution. The best known is \begin{description}
+	\item [L] L is false.
+\end{description} The sentence L displayed above says of itself that it is false. If it is true, then L is false (as that is what it says). But if it is false, then what it says is false, so it must be true. So L is true iff it is false. The dialethist takes this proof at face value – L is both true and false. But, despite the great difficulties more standard approaches to the Liar paradox L have, few have found dialethism compelling (though it has surprisingly able defenders). 
+
+ \paragraph{Inconsistent belief} Dialethism is too incredible to convincingly motivate the rejection of disjunctive syllogism. A weaker motivation is found in reasoning about what we believe. If you are like me, you probably have some inconsistent beliefs that you are not aware of. It is absurd to say that I therefore believe everything, just because I have beliefs that entail everything. So it seems, the set of my beliefs is not plausibly closed under classical entailment (that is, the set of my beliefs does not contain everything which is  entailed by some things in my set of beliefs). Disjunctive syllogism seems to fail for my beliefs; just because $\phi\vee\psi$ and $\neg\phi$ are among my beliefs does not mean that $\psi$ is one of my beliefs; for $\phi$ may be one of my beliefs as well. The logic of belief, it may be said, is relevant. (The original application of this kind of idea was to simple inference-drawing computers – if they are not aware of when the body of information input contains a contradiction, you should not allow them to draw conclusions using full classical logic.) The problem with all this is that it doesn't really seem like logic any more. There are no counterexamples to disjunctive syllogism, that is, structures where $\phi\vee\psi$ and $\neg\phi$ are true but $\psi$ is false. Rather, there are cases where \emph{according to my beliefs} $\phi \vee \psi$ and $\neg\phi$ are true, and also \emph{according to my beliefs} $\psi$ is not true. But it is already well-known that, when we have a non-truth-functional operator like `according to my beliefs', it won't generally be true that classically valid sequents remain correct when each sentence in the sequent is in the scope of the operator. (Think of the non-truth-functional operator `possibly': $\phi, \psi \vDash \phi \wedge \psi$ is correct, `possibly $\phi$, possibly $\psi \vDash$ possibly $\phi \wedge \psi$' is not correct – think of the case where $\psi$ = `the coin toss lands heads', $\phi$ = `the coin toss lands tails'.) 
+
+
+
+\section{Designators}
+\paragraph{Designators in \ltwo\ and English}
+
+The formal properties of \ltwo\ have been established; now we begin a relatively informal investigation into the possible connections between the semantics of \ltwo\ and the semantics of English.
+
+We begin in this section with a discussion of \emph{designation} in both languages.
+
+\paragraph{Direct Reference}
+
+\ltwo\ embodies a particularly simple view of the meaning of a constant.
+
+ ~\boxer{Direct Reference}{The meaning of a name (constant) is simply the object denoted by the name, so that the meaning of $a$ in $\mathscr{A}$ is just $\val{a}{A}$.}
+
+This is to be contrasted with the thesis of \emph{rigid designation}, which is the thesis that the thing denoted by a name is the same in every possible situation. It may seem that this doesn't hold in \ltwo, because if $\mathscr{A}\neq\mathscr{B}$, then it may be that  $I_{\mathscr{A}}(a)\neq I_{\mathscr{B}}(a)$. But for all that it may hold; the crucial fact to recognise is whether, \emph{in a given situation}, when we consider what is possible for $a$, we consider what is possible for what $a$ refers to – in every situation in which that thing exists. Since \ltwo\ has no resources for discussing possibility, it is a moot point whether or not rigid designation holds for it. 
+
+
+
+
+
+\paragraph{Names and Direct Reference in English}
+
+For names in English, like `Antony Eagle' or `Aristotle', there is no straightforward semantics for names as there is for constants in \ltwo.
+
+On the one hand, there is considerable syntactic and semantic evidence that names in English function rather like the constants of \ltwo. Consider \begin{description}
+	\item [S] Antony Eagle is lecturing now.
+\end{description}  S is true  iff the thing \textbf{Antony Eagle}, designated by `Antony Eagle', has the property \textbf{lecturing} denoted by `is lecturing', \textbf{now}, i.e., at the time designated by (this use of) `now'. These seem remarkably like the clauses for the satisfaction of atomic formulae of \ltwo; in that sense it looks like the meaning of `Antony Eagle' is just the thing it refers to.
+
+\paragraph{Objection to Direct Reference: Informative Identities}
+
+~\boxer{Informative Identities}{If `Hesperus' denotes Hesperus, and `Phosphorus' denotes Phosphorus, then, since Hesperus \emph{is} Phosphorus (both are names for Venus), then the meanings of `Hesperus' and `Phosphorus' are the same. So then why aren't these sentences synonymous?: \begin{itemize}
+		\item Hesperus is Hesperus.
+		\item Hesperus is Phosphorus.
+	\end{itemize}}
+
+This objection trades on the fact that we receive information when told the second claim, but we do not when told the first; hence they must yield different information, and not be synonymous after all. One possible response is to say that \emph{for all we know}, we are in a situation where `Phosphorus' names something other than Venus; and what we are told by the second sentence is a contingent fact about English, namely, that `Phosphorus' means Phosphorus!
+
+\paragraph{Objection to Direct Reference: Empty Names}
+
+~\boxer{Empty Names}{If the meaning of a name is its referent, then `Santa Claus is jolly' is meaningless, yet we judge it to be true. And don't say it is true `in a fiction' – for fictional English is the same as non-fictional English, so if it is meaningless outside of the fiction, it is just as meaningless inside. But set that aside: \emph{negated existentials} show that `Santa Claus' is meaningful, because `Santa Claus does not exist' is straightforwardly true.}
+
+
+
+To be more explicit: `Santa Claus does not exist' apparently expresses a truth. This can be rendered in the language \lequ\ by this translation: `$\neg \exists x (x= a)$', where `$a$' denotes Santa Claus. But since `$a=a$' expresses a logical truth, it follows that `$\exists x (x = a)$' expresses a logical truth of \lequ, denying the apparent truth which we translated. But this looks like a problem in English, as well as in formal languages: since `Santa Claus is identical to Santa Claus' also expresses a truth, the English claim `Something is identical to Santa Claus' is also true. But if something is identical to Santa Claus, Santa Claus does exist. To deny this is to deny claims that seem tautologous in English. 
+
+This is a very serious objection to direct reference theories. Many have chosen to bite the bullet, and accept that such sentences are in fact meaningless. Others have chosen to accept some secondary notion of meaning, like a canonical description associated with the empty name, to play a name-like role in these kind of claims. But there is no consensus on how to deal with this problem.
+
+\paragraph{Objection to Direct Reference: The Role of Descriptions}
+
+~\boxer{The Role of Descriptions}{Many names are simply introduced by descriptions; and certainly what most of us aim to communicate when we use a name is a certain individual satisfying a certain canonical description that the hearer is familiar with – if there were no such description, `how do people ever use names to refer to things at all?' \citep[28]{krinamne}. }
+\begin{itemize}
+	\item \emph{Reference Fixing} Some descriptions are used to establish the reference: `Julius' may be introduced into the language as `the inventor of the zipper'. But it is no part of the meaning: consider the counterfactual situation where Julius gets pipped by his rival.
+	\item \emph{Background knowledge} If one knows a lot about Julius, and one's hearers do too, then one will expect that background knowledge to be useable when one uses the name `Julius'. It may be difficult if not impossible for a speaker themselves to separate the meaning of `Julius' from what they know about Julius.
+\end{itemize}
+
+\paragraph{Opaque Contexts}
+
+ Consider \begin{itemize}
+	\item Lois Lane believes that Superman is Superman;
+	\item Lois Lane believes that Superman is Clark Kent.
+\end{itemize}
+It is fairly clear that in the context `Lois Lane beleives that Superman is $x$', one cannot straightforwardly substitute co-referring expressions into $x$ and get a true sentence. Such \emph{opaque contexts} – those which do not permit substitution \emph{salva veritate} – are a problem for the direct reference theory, of course, but also for other theories that think the objects of belief are propositions concerning the entities one has the belief about. 
+
+Obviously \ltwo\ lacks opaque contexts, as theorems about substitution of co-referring constants proved last time show. This is an expressive weakness of \ltwo\ compared with English.
+
+
+
+\paragraph{Other Designators in English}
+
+There are several other natural language expressions other than names which have a designator role in English. \begin{description}
+	\item [Indexicals] such as `I', `you', `here', `now', `actually'. This class may also include \emph{demonstratives} like `this', `that'.
+	\item [Count Nouns] such as `chair', `boy', `piece of furniture'.
+	\item [Non-Count Nouns] such as `gold', `dirt', `intelligence'.
+	\item [Descriptions] such as `the inventor of the zipper', `the president of the United States'. 
+\end{description}
+
+Count nouns can be handled by the apparatus of quantification in \ltwo, rather than as designating expressions directly. Descriptions we talked about  more fully in Chapter 7.
+
+\paragraph{Indexicals}
+
+The characteristic of an indexical expression is \emph{context sensitivity}. `I' refers to different people when uttered by different people: to me when I say `I am tired', to you if you utter that same string of words. Similarly with other expressions in this category, as they are sensitive to features of context – where the context of an utterance includes the speaker, time, place, etc., of the utterance – and thus may have different referents in different contexts.
+
+Despite the context-sensitivity of indexical \emph{reference}, their meaning appears constant. Distinguish (following Kaplan):  \begin{description}
+	\item [Content] The content of an expression is its semantic value;
+	\item [Character] The character of an expression is a function from context to content.
+\end{description} The thesis is that indexicals have a constant character, but a variable content; and character is plausibly a kind of meaning.
+
+Pronouns – `she', `they', `it' – may perhaps be analysed similarly.
+
+
+
+
+\paragraph{Non-Count Nouns}
+
+Non-count nouns are a certain type of \emph{non-plural} referring expression. One reasonable test is whether `$\mu$'  can be grammatically substituted into the expression `I want some $\mu$'. 
+ These fall into at least two kinds: \begin{description}
+	\item [Mass] Mass nouns, like `gold' or `dirt', denote a kind of stuff or substance, rather than a particular thing. They typically display \emph{cumulative reference}: if `being gold' is true of $a$ and $b$, then it is true of the \emph{sum} $a+b$ which has just $a$ and $b$ as parts.
+	\item [Abstract] Abstract nouns, like `intelligence' or `generosity', which seem to denote \emph{qualities} that something may possess, but can themselves have things predicated of them.  
+\end{description}
+A full treatment of these nouns cannot be carried out in \ltwo; constants referring to qualities, that we naturally translate as predicates like `being gold', may require a \emph{second order} logic, which permits quantification over predicate variables as well as individual variables. 
+
+
+
+
+
+\section{Binary Relations}
+
+
+
+
+\paragraph{Binary Relations}
+
+Binary relations – any subset of $D_{\mathscr{A}}\times D_{\mathscr{A}}$ – have many interesting properties. We can often represent these properties \emph{graphically}, if the domain on which the relation is defined is finite.
+
+\begin{definition}[Finite Graph]
+	A \emph{finite graph} on $D_{\mathscr{A}}$ is a pair $\langle V, E\rangle$ where the set of \emph{vertices} $V$ is $D_{\mathscr{A}}$, $D_{\mathscr{A}}$ is finite, and $E$ is a set of \emph{edges}, directed `arrows' from members of $V$ to members of $V$.
+\end{definition} A graph on $D_{\mathscr{A}}$ \emph{corresponds to} a binary relation $R$ on $D_{\mathscr{A}}$ just in case \begin{enumerate}
+	\item If $\langle x,y\rangle \in R$, then $x\in V$ and $y \in V$.
+	\item If $\langle x,y\rangle \in R$, then there is an arrow from $x$ to $y$ in $E$.
+\end{enumerate}
+
+\paragraph{Reflexivity and Transitivity Represented Graphically}
+
+Consider the domain $D_{\mathscr{A}}=\{1,2,3,4\}$.
+
+\begin{definition}[Reflexive]
+	A relation on $D_{\mathscr{A}}$ is \emph{reflexive} iff for all $x\in D_{\mathscr{A}}$, $\langle x,x\rangle\in R$. 
+\end{definition}Graphically, that means, as in the figure on the left in Figure \ref{fone}, that each vertex has an arrow pointing to itself. A relation is \emph{irreflexive} iff no vertex has an arrow pointing to itself.
+
+\begin{definition}[Transitive]
+	A relation on $D_{\mathscr{A}}$ is \emph{transitive} iff for all $x,y,z\in D_{\mathscr{A}}$, if both $\langle x,y\rangle\in R$ and $\langle y,z\rangle\in R$, then also $\langle x,z\rangle\in R$.
+\end{definition} Graphically, that means, as in the figure on the right in Figure \ref{fone}, that whenever there is an indirect sequence of arrows between two vertices, there is also a `shortcut'. A relation is \emph{intransitive} iff there is never a shortcut.
+
+\begin{figure}
+\begin{center}
+	{~\xymatrix{1 \ar@(ur,dr)[lr]  & 2 \ar@(ur,dr)[lr] \\
+	3 \ar@(ur,dr)[lr] & 4 \ar@(ur,dr)[lr] }\qquad\qquad}{\xymatrix{1  & 2 \ar[l] \\ 3 \ar[ur]
+		\ar[u] & 4 \ar[l] \ar[ul] \ar[u] 
+		}}
+\end{center}	\caption{Reflexivity and Transitivity\label{fone}}
+\end{figure}
+
+
+\paragraph{Symmetry Represented Graphically}
+
+\begin{definition}[Symmetric]
+	A relation $R$ on $D_{\mathscr{A}}$ is \emph{symmetric} iff whenever $\langle x,y\rangle \in R$, then $\langle y,x\rangle \in R$.
+\end{definition} Graphically, this means (as on the left in Figure \ref{ftwo}) that whenever there is an arrow from one vertex to another, there will be a return arrow. A relation is \emph{asymmetric} iff there are no returning arrows at all.
+
+\begin{definition}[Anti-symmetric]
+	A relation is \emph{anti-symmetric} iff whenever $\langle x,y\rangle \in R$ and $\langle y,x\rangle \in R$, then $x=y$ (sometimes this is known as \emph{weak asymmetry}).
+\end{definition} Graphically, this means (as on the right in Figure \ref{ftwo}) that the only `returning' arrows are loops.
+
+\begin{figure}
+\begin{center}
+	~{\xymatrix{1 \ar@/^/[r]  & 2 \ar@/^/[l] \ar@/^/[d] \\
+	3 \ar@/^/[r] & 4 \ar@/^/[l] \ar@/^/[u] }\qquad\qquad}{\xymatrix{1 \ar@(ul,dl)[lr]  & 2 \ar[l] \\ 3 \ar[ur]
+		\ar[u] & 4 \ar@(dl,dr)[lr] \ar[l] \ar[ul] \ar[u] 
+		}}
+\end{center}	\caption{Symmetry\label{ftwo}}
+\end{figure}
+
+We need to clearly distinguish non-reflexivity from irreflexivity: the former is just the failure of reflexivity, i.e., at least one object in the domain doesn't bear $R$ to itself, while the latter involves every object in the domain not bearing $R$ to itself. Likewise, we need to distinguish non-transitivity from intransitivity, and non-symmetry from asymmetry \emph{and} antisymmetry. 
+
+The observant reader will have noticed that, while we defined \emph{reflexive on $D$}, \emph{symmetric on $D$}, etc., the only definition which actually mentions $D$ is the definition of reflexivity. All the other definitions are \emph{conditional} in form: they say, if certain pairs are in the relation, then certain other pairs will be too. We needn't specify a domain to check whether these conditionals hold of any relation. But to check whether a relation is reflexive, we need not only the ordered pairs of the relation, but also what the domain is, so we can see if any members of the domain are missing from the relation. (Reflexivity is an extrinsic property of a relation, relative to a domain; the others are intrinsic properties.)
+
+
+\paragraph{Equivalence Relations}
+
+\begin{definition}[Equivalence Relation]
+	If $R$ on $D_{\mathscr{A}}$ is reflexive, transitive, and symmetric, then it is an \emph{equivalence relation}. 
+\end{definition}
+
+An equivalence relation divides up the domain into \emph{equivalence classes}, every member of which bears the relation to every other member of it. The relation `is the same height as' is an equivalence relation on the domain of all people; we say that it \emph{induces a partition} on the domain of people, sorting them into groups which are uniform with respect to height.
+
+The most obvious equivalence relation is the identity relation; it is reflexive by definition, and moreover symmetric and transitive; since there are \emph{never} arrows from any $x$ to any distinct $y$, it follows that every time there are such arrows, there are return arrows and shortcuts. (Notice that the identity relation is both symmetric and anti-symmetric.)
+
+Any relation on the empty set is also trivially an equivalence relation. While every empty relation is trivially symmetric and transitive, it will generally fail to be reflexive unless the domain is empty too.
+
+\paragraph{Connectedness}
+
+First, we define a (directed) path: \begin{definition}[Path]
+	There is a \emph{path} from $x$ to $y$ in $R$ iff there exists a sequence $z_{1},\ldots,z_{n}$ such that $\langle x,z_{1}\rangle \in R$ and
+	$\langle z_{1},z_{2}\rangle \in R$ and \ldots and $\langle z_{n},y\rangle \in R$.
+\end{definition}
+Now we may define: \begin{definition}[Strong Connectedness]
+ 	$R$ on $D$ is \emph{connected} iff for any $x \in D$ and $y \in D$, such that $x$ and $y$ are distinct, then there is a path from $x$ to $y$ in $R$. 
+ \end{definition}
+ There is another property of binary relations, sometimes called \emph{weak
+connectedness}, which holds iff for any nodes on the graph of $R$, $x$ and $y$, there is
+some path that joins $x$ to $y$ moving only along arrows (perhaps in
+the `backwards' direction). For any binary relation $S$, let $S^{*}$ be the relation defined by $\langle x,y\rangle \in S^{*}$ iff $\langle x,y\rangle \in S$ or $\langle y,x\rangle \in S$. \begin{definition}[Weak Connectedness]
+	A relation $R$ is weakly connected on $D$ iff  $R^{*}$ is connected on $D$.
+\end{definition} 
+
+There is an even stronger condition than connectedness: \begin{definition}[Totality]
+  A relation $R$ on $D$ is \emph{total} iff for any $x$ and $y$, either $\langle x,y\rangle \in R$ or $\langle y,x\rangle \in R$.
+\end{definition}\begin{theorem}\label{tot}
+  If $R$ is total, then $R$ is reflexive.
+  \begin{proof}
+     If $R$ is total, then for any $x$ and $y$, either $\langle x,y\rangle \in R$ or $\langle y,x\rangle \in R$. Suppose $x=y$; then either either $\langle x,x\rangle \in R$ or $\langle x,x\rangle \in R$. Therefore, $\langle x,x\rangle \in R$, i.e., $R$ is reflexive.
+   \end{proof} 
+\end{theorem}
+
+\paragraph{Inverse and Complement Relations}
+
+Given a relation $R$ on $D$, we can define two interesting further relations: \begin{definition}[Inverse]
+Given a relation $R$, its \emph{inverse} $R^{-1}$ is defined to be this set: $\left\{\langle y,x\rangle:\langle x,y\rangle \in R\right\}$. \end{definition}
+\begin{definition}[Complement]
+Given a relation $R$ on $D$, its \emph{complement} $R'$ on $D$ is defined to be this set: $D \times D \setminus R$ (i.e., the set of all ordered pairs of elements of the domain \emph{not} in $R$.)
+ \end{definition} Note that complement is always with respect to the underlying domain, whereas we can define an inverse relation just with reference to the original relation.
+
+\begin{theorem}[Property Preservation]
+	If $R$ is reflexive then $R^{-1}$ is reflexive and $R'$ is irreflexive; if $R$ is symmetric then $R^{-1}$ and $R'$ are symmetric; if $R$ is transitive then $R^{-1}$ is transitive; if $R$ is connected then $R^{-1}$ is connected.
+\begin{proof}
+	I prove one case: reflexivity. If $R$ is reflexive, then for all $x \in D_{\mathscr{A}}$, $\langle x,x\rangle \in R$. By definition of inverse, then, all $\langle x,x\rangle \in R^{-1}$; i.e., $R^{-1}$ is also reflexive.  By definition of complement, \emph{no} $\langle x,x\rangle \in R'$; so $R'$ is irreflexive.
+\end{proof}\end{theorem}
+
+
+
+\paragraph{Orderings}
+\begin{definition}[Ordering]
+	A relation $R$ on $D_{\mathscr{A}}$ is a \begin{description}
+		\item [Partial order] iff it is reflexive, transitive, and anti-symmetric (e.g., $\subseteq$ on a set of sets; see figure \ref{fthree});
+		\item [Strict Partial Order] iff it is transitive and asymmetric (i.e., $\subset$);
+		\item [Total Order] iff it is a total partial ordering (i.e., $\leqslant$ on $\mathbb{N}$). Also sometimes known as a \emph{linear order};
+		\item [Strict Total Order] iff it is a total strict partial order (i.e., $<$).
+	\end{description} 
+\end{definition}
+
+\begin{figure}
+	\centering ~{\xymatrix{ \{A,B\} \ar@(ul,dl)[]_{\subseteq}   &
+	\{A\}\ar[l]^{\subseteq} \ar@(dr,ru)[]_{\subseteq}\\
+	 \{B\}
+	\ar[u]_{\subseteq} \ar@(ul,dl)[]_{\subseteq}
+	& \emptyset \ar@(dr,ru)[]_{\subseteq} \ar[u]^{\subseteq} \ar[l]_{\subseteq}
+	\ar[ul]_{\subseteq} 
+	}
+	}\caption{Partial ordering of a set of sets by $\subseteq$\label{fthree}}
+\end{figure}
+
+As defined above, a total order is reflexive, transitive, antisymmetric, and total. By Theorem \ref{tot}, a total order is reflexive. So we could have defined a total order as one that is total, transitive, and antisymmetric.
+
+\paragraph{Well-Orderings}
+
+Suppose $R$ is a total order on $D_{\mathscr{A}}$. If $\langle x,y\rangle\in R$, then we say $x$ \emph{precedes} $y$. If $\langle x,y\rangle \in R$ and $x\neq y$ and there does not exist a $z$ such that $\langle x,z\rangle \in R$ and $\langle z,y\rangle \in R$, then $x$ \emph{immediately precedes} $y$. (We can give exactly similar definitions for \emph{succeeds}.)
+
+An element $x$ of $D_{\mathscr{A}}$ is \emph{minimal} iff there is no distinct $y$ that precedes $x$. An element $x$ is \emph{least} if it precedes \emph{every distinct} $y \in D_{\mathscr{A}}$. (Corresponding definitions can be given for maximality and greatest.)
+
+\begin{definition}[Well-ordering]
+  $R$ is a well-ordering of $D$ iff it is total and every non-empty subset $d$ of $D$ has a least member under $R$.
+\end{definition} Example: $\leqslant$ is a well-ordering of the natural numbers $\mathbb{N}$. Here is another well-ordering of $\mathbb{N}$: \begin{equation}
+  x \preccurlyeq y \quad\text{iff}\quad \begin{cases}
+    \text{$x$ is even and $y$ is odd}\\
+    \text{$x$ and $y$ are even and $x\leqslant y$}\\
+    \text{$x$ and $y$ are odd and $x\leqslant y$}\\
+  \end{cases}
+\end{equation} The order induced by $\preccurlyeq$ yields $0, 2, 4, \ldots, 1, 3, 5, \ldots$. In this ordering, every subset of $\mathbb{N}$ has a $\preccurlyeq$-least element. Notice, however, that $1$ is not least, but it has no immediate predecessor. 
+
+While $\leqslant$ well-orders $\mathbb{N}$, it does not well-order the positive and negative integers $\mathbb{Z}$. Here is a well-ordering of $\mathbb{Z}$: $x \leqslant_{\text{abs}} y$ iff either (i) $|x|\leqslant |y|$ or (ii) $|x|=|y|$ and $x\leqslant y$, where `$|x|$' here denotes the absolute value of $x$.  This induces the order $0,-1,1,-2,2,\ldots$.
+
+
+ 
+ \paragraph{Expressing Properties of Binary Relations in \ltwo$_{=}$}
+ 
+ We can use formulae of \ltwo\ to express various properties of relations on an entire domain. For example \begin{description}
+ 	\item [Reflexivity] A relation $R$ is reflexive on $D_{\mathscr{A}}$ iff $R = \val{P^{2}}{A}$ and\\ $\val{\forall x P^{2}xx}{A}=T$. 
+\item [Transitivity] A relation $R$ is transitive on $D_{\mathscr{A}}$ iff $R = \val{P^{2}}{A}$ and $$\val{\forall x \forall y \forall z (P^{2}xy \wedge P^{2}yz) \to P^{2}(xz)}{A}=T.$$ 
+\item [Symmetry] A relation $R$ is symmetric on $D_{\mathscr{A}}$ iff $R = \val{P^{2}}{A}$ and\\ $\val{\forall x \forall y  (P^{2}xy \to P^{2}yz}{A}=T$. 
+ \end{description}
+
+\paragraph{Relations in English and \ltwo: Intension and Extension}
+
+Is the semantic value of an English predicate expression a property or relation as those are interpreted in \ltwo-structures?
+
+The property `is a person' on the domain of Oxford students is the same property as `is a student'; but even though they coincide in their members, we do not think these predicates are synonymous. We may distinguish the property given \begin{itemize}\item \emph{in extension}, by the list of things which satisfy it; or \item \emph{in intension}, by a rule.\end{itemize} On this domain, two different rules give the same extension; and intuitively in English the meaning is the property given intensionally.
+
+\paragraph{Relations in English and \ltwo: Sparse and Abundant Properties}
+
+
+ \emph{Any} set of pairs is a binary relation. Yet this means that `is identical to' is just as legitimate a relation as `is within 21 metres of'; whereas we think the former is a more fundamental and non-accidental relation than the latter. We may think that the `real' properties are sparse and fundamental, and the abundant predicates like `grue' and `within 21 metres of' are less so, and do not correspond to genuine properties – but \ltwo\ hardly allows us to draw that distinction.
+
+So despite the fact that `grue' and `green' are both meaningful predicates of English, we want to give quite different things to be their semantic values – perhaps just a set of things for `grue', but a real property \textbf{greenness} to be the semantic value of `green'.
+
+Despite these problems, the case against English having a similar semantics for predicates to \ltwo\ is rather weaker than that against English having a similar semantics for designators.
+
+
+{\small
+\subsection*{Further Reading}
+\addcontentsline{toc}{subsection}{Further Reading}
+
+
+\citet{bevpospa} and \citet{burphilo}, cited in the last chapter, provide useful material on relevant and conditional logics. On the topic of the English conditional, both indicative and counterfactual, a good guide is \citet{benphiguc}. In addition to the work of Grice cited above, \citet{sep-implicature} is a useful source. The best defence of dialethism is \citet{priinco}; the application of relevant logic to inconsistent data sets is \citet{belusefov}.  
+
+A wonderful book on names and description is \citet{krinamne}. A modern classic: amazingly, it is more or less a transcription of a series of lectures originally delivered without notes. A useful source on empty names is \citet{capempna}. The topic of empty names is one main topic of another famous series of lectures by \citet{krirefex}.
+
+
+
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+
+\begin{enumerate}
+	
+	\item 	\begin{enumerate} \item Show that the following rules of inference are acceptable in our framework: \begin{enumerate}
+		\item \emph{Modus Ponens}: If $\vDash \phi$ and $\vDash \phi \to \psi$, then $\vDash \psi$.
+				\item \emph{Disjunctive Syllogism}: If $\vDash \phi \vee \psi$ and $\vDash \neg \phi$, then $\vDash \psi$.
+				\item \emph{Reductio ad Absurdum}: If $\phi \vDash \psi$ and $\phi \vDash \neg \psi$ then $\vDash \neg \phi$. \end{enumerate}
+	\item
+		 In our system each acceptable rule of inference has a corresponding correct semantic sequent (for example, the sequent $\phi, (\phi \to \psi) \vDash \psi$ corresponds to  \emph{modus ponens}). Consider now this rule of inference in English: if $\phi$ is a truth of logic, then `Necessarily, $\phi$' is too.  Is this rule intuitively correct? Is the corresponding sequent `$\phi \vDash_{\text{English}} \text{Necessarily } \phi$' intuitively correct?
+		\end{enumerate}
+
+		\item \begin {enumerate} \item John argues that, since $\phi$ and $\psi$ together entail (in English)
+		$\psi$, if follows that $\psi$ entails `if $\phi$, $\psi$'. Evaluate John's argument.
+
+		\item Mary claims that `if $\phi$, $\psi$' entails `if $\neg \psi$, $\neg
+		\phi$'. Evaluate Mary's claim.
+		\item Show how it would be possible to use John's conclusion and
+		Mary's claim to argue that `$\phi \to \psi$' entails `if $\phi$,
+		$\psi$'.
+		\item Give an argument that `if $\phi$,$\psi$' is a truth-functional connective in English. Do you see any difficulties with your argument?
+
+		\end{enumerate}	
+	
+\item Say that $\phi \vDash \psi$ is a \emph{perfect} sequent iff it is correct, and $\phi$ is satisfiable, and	$\psi$ is not a tautology. Say that a sequent is \emph{perfectible} iff it is a substitution instance of a perfect sequent. \begin{enumerate}
+	\item Show that there must be a sentence letter in common between $\phi$ and $\psi$ is a perfectible sequent. (Hint: use the Craig Interpolation Theorem (page \pageref{thmcraig}), plus properties of substitution.)
+	\item Give examples to show that perfectible entailment is not transitive (i.e., that there are cases where $\phi$ perfectibly entails $\psi$, where $\psi$ perfectibly entails $\chi$, but where $\phi$ does not perfectibly entail $\chi$.)
+	\item Which of the structural rules of \S\ref{twostruct} (page \pageref{twostruct}) are perfectibly inappropriate (i.e., take perfectible sequents to non-perfectible sequents.)?
+\end{enumerate}
+	
+	
+\item Which of the relations expressed by the following English predicates are equivalence relations: \begin{enumerate}
+	\item `$x$ and $y$ attend the same lectures', on the domain of Oxford students.
+	\item `$x$ is studying the same subject as $y$', on the domain of Oxford students.
+	\item `$x$ entails $y$', on the domain of sentences of \ltwo.
+	\item `$x$ is logically equivalent to $y$', on the domain of sentences of \ltwo.
+	\item `If $\{x\}$ is consistent, then $\{x\}\cup \{y\}$ is consistent' on the domain of sentences of \ltwo.
+\end{enumerate}
+\item Prove the following: \begin{enumerate}
+\item If $R$ is irreflexive, then $R'$ is reflexive.
+	\item If $R$ is symmetric, then $R^{-1}$ is symmetric.
+	\item If $R$ is symmetric, then $R'$ is symmetric.
+	\item If $R$ is transitive, then $R^{-1}$ is transitive.
+	\item If $R$ is connected, then $R^{-1}$ is connected.
+	\item If $R$ is asymmetric and non-empty, then $R'$ is non-symmetric.
+\end{enumerate}
+\item \begin{enumerate}
+	\item If $R$ is transitive, is $R'$ transitive?
+	\item If $R$ is connected, is $R'$ connected?
+	\item If $R$ is antisymmetric, is $R'$ symmetric?
+	\item If $R$ is transitive and non-empty, is $R'$ is transitive?
+\end{enumerate}
+\item If $R$ is defined on the empty domain, 
+    can it be reflexive? Can it be irreflexive? What about
+    transitivity and symmetry?
+\item What is wrong with the following argument that reflexivity is a consequence of symmetry and transitivity? \begin{quote}
+	If $\langle x,y\rangle \in R$, then $\langle y,x\rangle\in R$ since we assume $R$ is symmetric. If both $\langle x,y\rangle\in R$ and $\langle y,x\rangle \in R$, then since $R$ is transitive, $\langle x,x\rangle\in R$ – so $R$ is reflexive.
+\end{quote} (After \citealt[p.\ 52]{pmwmatmel}.)
+\item \begin{enumerate}
+	\item Can a relation be asymmetric and reflexive?
+	\item Can a relation 
+	    be transitive, non-symmetric and irreflexive?
+	\item 	Can a relation 
+		    be connected and irreflexive?
+\end{enumerate}  
+\item \begin{enumerate}
+	\item Show that $\forall x \forall y (\neg x=y\to (Pxy \vee Pyx) \equiv \forall x \forall y (x=y \vee Pxy \vee Pyx)$. 
+	\item A relation $R$ satisfies \emph{trichotomy} iff, for all $x$ and $y$, at most one of these three holds: $Rxy$, $Ryx$, or $x=y$. Is every trichotomous relation connected? Under what circumstances is a connected relation trichotomous?
+\end{enumerate} 
+\item
+ Show by suitable reasoning that
+    in a finite domain, for any \emph{partial order} $R$,  $\exists x \forall y (Ryx \to
+    x=y)$. Give a counterexample to this condition in an infinite domain. 
+
+\item Show that a well-ordering of $D$ is a total ordering
+    of $D$, but not \emph{vice versa}.
+\item Give a graph, on some non-empty domain, of a relation $R$
+	which satisfies this condition:
+	$\forall x \forall y (Rxy \to \exists z ((x \neq z) \wedge (y \neq
+	z) \wedge Rxz))$. Can you give an example of a relation which
+	satisfies this condition (being sure to specify the domain)?
+	
+	
+
+
+
+\item Prove that \begin{enumerate}
+	\item If $x$ is a least member under an ordering $R$, then it is the unique least member.
+	\item The set of natural numbers $\mathbb{N}$ is well-ordered by $<$.
+	\item The set of (positive and negative) integers $\mathbb{Z}$ is \emph{not} well-ordered by $<$.
+	\item There exists orderings with no maximal elements.
+\end{enumerate}
+
+\item A relation $R$ is \emph{dense} iff whenever $\langle x,y\rangle \in R$, there exists a $z$ such that $\langle x,z\rangle \in R$ and $\langle z,y\rangle \in R$. Prove that on the domain of the natural numbers $\mathbb{N}$, the greater-than relation $>$ is not dense; but that on the domain of the positive rationals (i.e., numbers of the form $\frac{n}{m}$ where $n,m \in \mathbb{N}$), it is dense.
+
+\item Let $D = \{1,2,3,5,6,10,15,30\}$. Let $R$ be the relation on $D$ defined by \begin{equation*}
+	R = \{\langle x,y\rangle: x\text{ divides $y$ without remainder}\}.
+\end{equation*}\begin{enumerate}
+	\item Show that $R$ is a weak partial order but not a total order.
+	\item Draw the graph of $R$, and identify any minimal, maximal, least or greatest elements.
+	\item Do the same for the set $\wp \{a,b,c\}$, using the relation $\subseteq$ on that domain.
+\end{enumerate}
+
+\item	We might normally expect `is similar to' to be a symmetric relation: after all, if there is a respect in which $a$ is similar to $b$, then $b$ must be similar to $a$ in that very same respect. But many people seem to judge that similarity is \emph{not} symmmetric: \begin{quote}
+		When people are asked to make comparisons between a highly familiar object and a less familiar one, their responses reveal a systematic asymmetry: The unfamiliar object is judged as more similar to the familiar one than vice versa. For example, people who know more about the USA than about Mexico judge Mexico to be more similar to the USA than the USA is to Mexico. \citep[520]{kunsocco}
+	\end{quote} (You might think also of the fact that it is much more natural to say that children resemble their parents, than that parents resemble their children.)
+
+	Can you provide a rationale for these psychological results? Do they indicate that people are systematically mistaken about the meaning of the relational predicate `is similar to', or do they indicate that our theory of similarity in terms of matching respects of similarity is incorrect?
+
+\end{enumerate}
+
+}
+
+
+
+	
+
+
+
+
+
+
+
+

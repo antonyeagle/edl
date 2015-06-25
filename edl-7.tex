@@ -1,0 +1,325 @@
+
+
+
+
+
+\section{Syntax of \ltwo}\label{ltwo}
+\paragraph{\ltwo}
+
+We now have a good grip on \lone. But many valid arguments in English \emph{can't} be captured by a propositionally valid argument. 
+
+ One reason for this is the lack of \emph{non-truth-functional} connectives in \lone\ (consider English `possibly', `it will be that', `it ought to be that', or even `$S$ knows that'). We are not going to remedy this lack now. 
+
+Another reason for the inability of \lone\ to capture valid arguments is that the analysis \lone\ provides of an English sentence stops at the truth-functional structure of the sentence. But English sentences have additional \emph{internal structure} which arguments may make use of.
+
+Consider: `John loves James; therefore, John loves someone'. This is valid, but the best \lone\ formalisation is the incorrect sequent: $P\vDash Q$. The validity of this argument depends on the internal structure of the sentences. So now we look at a logic with the resources to formalise this additional structure.
+
+\paragraph{The Syntax of \ltwo: \lone\ alphabet and Predicate Letters}
+
+The alphabet of \ltwo – the constituents out of which \ltwo-sentences may be formed – includes the alphabet of \lone. So it contains infinitely many sentence letters, as well as the logical connectives $\neg,\vee,\wedge,\to,
+\bicond$, and the parentheses $($, $)$.
+
+The alphabet of \ltwo\ contains  \emph{predicate letters}. A predicate letter has \emph{argument places} (intuitively, representing the number of designators or variables required to make a grammatical formula). The number of argument places of a predicate letter is called its \emph{arity}. For each arity $n \geqslant 0$, we introduce infinitely many predicate letters: $P^{n},Q^{n},R^{n},P^{n}_{1},Q^{n}_{1},R^{n}_{1},\ldots$. Where $n=0$, we omit the index. (So any expression of the form $P^{n}_{k}, Q^{n}_{k}$, or $R^{n}_{k}$, where $n$, $k$ are either missing or a numeral `$1$', `$2$', etc. will be a predicate letter.)
+
+  We permit zero-place predicate letters, and identify these with the sentence letters of \lone. 
+
+\paragraph{The Syntax of \ltwo: Constants, Variables, Quantifiers}
+
+The alphabet of \ltwo\  includes infinitely many \emph{constants}, $a,b,c,a_{1},b_{1},c_{1},\ldots$.
+
+\ltwo\ also contains infinitely many \emph{variables}, $x,y,z,x_{1},y_{1},z_{1},\ldots$.
+
+And \ltwo\ contains infinitely many \emph{quantifiers}, $\forall \upsilon$ and $\exists \upsilon$, where $\upsilon$ is any variable. $\forall$ is the \emph{universal} quantifier; $\exists$ is the \emph{existential} (sometimes, \emph{particular}) quantifier.
+
+  Variables and constants are collectively known as \emph{terms}.
+
+\paragraph{Atomic Formulae and Formulae  of \ltwo}
+
+\begin{definition}[Atomic Formula]
+	If $\Phi^{n}$ is a predicate letter of arity $n\geqslant 0$, and $\tau_{1},\ldots,\tau_{n}$ are $n$ terms (not necessarily all distinct), then $\Phi\tau_{1}\ldots\tau_{n}$ is an \emph{atomic formula} of \ltwo.
+\end{definition} It follows that all sentence letters are atomic formulae.
+
+\begin{definition}[Formula]~
+	
+	\begin{enumerate}
+		\item Any atomic formula is a formula of \ltwo.
+		\item If $\phi$ and $\psi$ are formulae of \ltwo, then so are $\neg\phi$, $(\phi\vee\psi)$, $(\phi\wedge\psi)$, $(\phi \to \psi)$, and $(\phi\bicond\psi)$.
+		\item If $\forall\upsilon$ and $\exists\upsilon$ are quantifiers and $\phi$ is a formula, then so are $\forall\upsilon \phi$ and $\exists\upsilon \phi$.
+		\item Nothing else is a formula of \ltwo.
+	\end{enumerate}
+\end{definition}We permit brackets and the arity of predicate letters to be dropped in accordance with Halbach, \S 4.4.
+
+\paragraph{Free and Bound Occurrences of Variables}
+
+\begin{definition}[Free and Bound Variable Occurrences]~
+	
+\begin{enumerate}
+	\item All variable occurrences in atomic formulae are free.
+	\item If some variables occur freely in $\phi$ and $\psi$, they remain free in $\neg\phi$, $(\phi\vee\psi)$, $(\phi\wedge\psi)$, $(\phi\to\psi)$, and $(\phi\bicond\psi)$. 
+	\item No occurrence of $\upsilon$ is free in $\forall \upsilon \phi$ or $\exists \upsilon \phi$; all other variable occurrences in $\phi$ remain free in $\forall \upsilon \phi$. 
+\end{enumerate}
+A variable occurrence is \emph{bound} iff it is not free.
+\end{definition}
+
+A variable \emph{occurs freely} in $\phi$ iff there is at least one free occurrence of that variable in $\phi$. If a variable occurs freely in $\phi$, $\phi$ is an \emph{open formula}.
+
+\begin{definition}[Sentence of \ltwo]
+An \ltwo-formula	$\phi$ is a \emph{sentence} (or `closed formula') of \ltwo\ iff no variable occurs freely in $\phi$. 
+\end{definition}  
+
+
+\section{Semantics of \ltwo}
+\paragraph{Semantics for \ltwo: Domains}
+
+As in \lone, the idea is to specify meanings (or \emph{extensions}) for the basic parts of the language, and systematically show how the meaning of complex expressions depends on the meanings of the parts and their relations. But now we have sub-sentential constituents of formulae, which cannot be assigned truth-values as their extensions, so \lone\ structures cannot suffice for \ltwo.
+
+ We begin with the notion of a \emph{domain} $D$. This is a non-empty set of objects – any objects – from which are drawn the \emph{semantic values} of constants. (So the meaning of a constant will be an object.) The meaning of a predicate letter will be a \emph{property} or \emph{relation} on the domain. For our purposes, a subset of the domain will suffice for a property (intuitively, those  things in the domain which have the property); and a subset of $D\times D$ will suffice for a 2-place relation. In general, then, the semantic value of a $n$-ary predicate letter will be a subset of $D\underbrace{\times\ldots\times}_{n} D = D^{n}$.
+
+\paragraph{\ltwo\ Structures and Variable Assignments}
+
+\begin{definition}[\ltwo-Structure]
+	An \ltwo-structure $\mathscr{A}$ is an ordered pair $\langle D, I\rangle$ where $D$ (`the domain') is any \emph{non-empty} set, and $I$ (`the interpretation') is a function \begin{itemize}
+		\item which assigns an element of $D$ to every constant;
+		\item which assigns a subset of $D^{n}$ to every predicate letter of arity $n>0$;
+		\item and which assigns a truth value ($T$ or $F$) to any predicate letter of arity $0$ (sentence letter).
+	\end{itemize}
+\end{definition} Variables do not have a fixed extension, even in a particular structure. But they may be `temporarily' assigned semantic values: \begin{definition}[Variable Assignment] A \emph{variable assignment} $\alpha$ over $\mathscr{A}$ is a function which assigns each variable in \ltwo\ a member of $D_{\!\mathscr{A}}$.
+	\end{definition}
+
+\paragraph{Semantic Values of Simple Expressions}
+
+Let us extend the notation $\val{\cdot}{A}$ to mean the semantic value of any \ltwo\ expression in structure $\mathscr{A}$. 
+
+For formulae not involving variables, the assignment of semantic values (in particular, truth values) to complex formulae in a given structure will be straightforward. But what to do about variables – in particular, assigning semantic values to open formulae (those with free variables) and quantified formulae – poses some delicate issues. Here I use an approach due to Tarski;  later  I explore some alternatives.
+
+Begin by defining, for structure $\mathscr{A}$ and variable assignment $\alpha$, $\valsa{\phi}=I_{\!\mathscr{A}}(\phi)$ for all $\phi$ in the domain of $I_{\!\mathscr{A}}$. (All constants, and predicate letters, including sentence letters, thus receive a semantic value at this stage.) The variables of \ltwo\ get the obvious interpretation: $\valsa{\upsilon}=\alpha(\upsilon)$.
+We now assign truth values to the formulae of \ltwo.
+
+\paragraph{Satisfaction}
+
+\begin{definition}[Satisfaction]
+Supposing $\phi,\psi$ to be formulae of \ltwo, $\upsilon$ a variable, $\mathscr{A}$ a \ltwo-structure, and $\alpha$ a variable assignment over $\mathscr{A}$. We say that $\alpha$ \emph{satisfies} $\phi$ under $\mathscr{A}$, $\valsa{\phi}=T$, as follows: \begin{itemize}
+	\item $\valsa{\Phi\tau_{1}\ldots\tau_{n}}=T$ iff $\langle \valsa{\tau_{1}},\ldots,\valsa{\tau_{n}}\rangle \in \valsa{\Phi}$, where $\Phi$ is a $n$-ary predicate letter ($n>0$), and each $\tau_{i}$ is a term.
+	\item $\valsa{\neg\phi}=T$ iff $\valsa{\phi}=F$.
+	\item $\valsa{\phi\wedge\psi}=T$ iff $\valsa{\phi}=\valsa{\psi}=T$.
+	\item $\valsa{\phi\vee\psi}=T$ iff $\valsa{\phi}=T$ or $\valsa{\psi}=T$.
+	\item $\valsa{\phi\to\psi}=T$ iff $\valsa{\phi}=F$ or $\valsa{\psi}=T$.
+	\item $\valsa{\phi\bicond\psi}=T$ iff $\valsa{\phi}=\valsa{\psi}$.
+	\item $\valsa{\forall \upsilon\phi}=T$ iff $\vals{\phi}{A}{\beta}=T$ for all variable assignments $\beta$ over $\mathscr{A}$ differing from $\alpha$ \emph{at most} in their assignment to $\upsilon$.
+		\item $\valsa{\exists \upsilon\phi}=T$ iff $\vals{\phi}{A}{\beta}=T$ for at least one variable assignment $\beta$ over $\mathscr{A}$ differing from $\alpha$ \emph{at most} in their assignment to $\upsilon$.
+\end{itemize}
+\end{definition}
+
+\paragraph{Explaining Satisfaction}
+
+The definition of satisfaction may appear puzzling at first.
+
+The clause for atomic formulae is fairly straightforward. A variable assignment satisfies an atomic formula in a structure just in case the ordered sequence of the  objects which are the semantic values of the constants and variables, under that assignment, have the property or stand in the  relation which is the semantic value of the predicate letter. 
+
+The quantifier clauses are also fairly clear: \begin{itemize}
+	\item A universally quantified sentence $\forall \upsilon \phi$ is satisfied just in case $\phi$ is satisfied in every variable assignment that holds everything fixed except possibly the semantic value of $\upsilon$ – i.e., no matter what $\upsilon$ denotes, $\phi$ is satisfied.
+	\item An existentially quantified sentence $\exists \upsilon \phi$ is satisfied just in case $\phi$ is satisfied in at least one variable assignment that holds everything fixed except possibly the semantic value of $\upsilon$ – i.e., there is a semantic value for $\upsilon$ on which $\phi$ is satisfied.	
+\end{itemize}
+
+\paragraph{Truth}
+
+The notion of truth is then defined in terms of satisfaction:
+\begin{definition}[Truth]
+	A sentence $\phi$ is \emph{true} in $\mathscr{A}$ iff $\valsa{\phi}=T$ for every variable assignment $\alpha$ over $\mathscr{A}$. 
+\end{definition}
+
+
+Notice that while open formulae can be always satisfiable, they cannot be true – that property is reserved for sentences. (If we had not restricted the notion, the open formula $Px\vee\neg Px$, which is assigned true under every variable assignment, would count as true – yet intuitively, at most it expresses a truth conditional on any constant is substituted for $x$, not unconditionally as a sentence does.)
+
+
+\section{Some Semantic Theorems About \ltwo}
+\paragraph{Semantic Sequents for \ltwo}
+
+We now extend the semantic turnstile $\vDash$ to \ltwo. With the new definition of satisfaction and truth in a model in hand, we can define the old notions in much the same way: \begin{enumerate}
+	\item If $\phi$ is true in all \ltwo-structures, $\phi$ is a \emph{tautology} or  \emph{logical} truth, written $\vDash\phi$.
+	\item If $\phi$ is true in no \ltwo-structure, $\phi$ is a \emph{contradiction}, written $\phi\vDash$.
+	\item A set $\Gamma$ of \ltwo\ sentences is \emph{semantically consistent} iff there is some \ltwo-structure in which each $\gamma\in\Gamma$ is true; otherwise $\Gamma$ is inconsistent, written $\Gamma\vDash$.
+	\item $\phi$ is \emph{logically equivalent} to $\psi$ iff both sentences are true in the same \ltwo-structures, written $\phi\equiv\psi$. (Some logicians use this symbol to represent the object language biconditional connective, which we represent by $\leftrightarrow$ – do not be confused.)
+\end{enumerate}
+
+\begin{definition}[Validity in \ltwo]
+	An argument from $\Gamma$ to $\phi$ is \emph{valid} ($\Gamma$ entails $\phi$) iff in every \ltwo-structure in which each $\gamma\in\Gamma$ is true, $\phi$ is true also. We write again $\Gamma\vDash\phi$.
+\end{definition}
+
+\paragraph{Some Theorems About Entailment in \ltwo}
+
+Many of the theorems about $\vDash$ we proved for \lone\ in Chapter 2 still hold, with exactly the same proofs. \begin{description}
+\item [Structural Rules] All the structural rules (Permutation, Weakening, and Contraction) still hold.
+	\item [Cut] If $\Gamma,\phi\vDash\psi$ and $\Gamma\vDash\phi$, then $\Gamma\vDash\psi$.
+	\item [Transitivity] If $\Gamma\vDash\phi$ and $\phi\vDash\psi$, then $\Gamma\vDash\psi$.
+	\item [Contraposition] If $\phi\vDash\psi$ iff $\neg\psi\vDash\neg\phi$.
+	\item [Deduction Theorem] $\Gamma,\phi\vDash\psi$ iff $\Gamma\vDash\phi\to\psi$.
+\end{description} We now prove some theorems that depend on the new machinery we've introduced.
+
+\paragraph{Quantifier Interdefinability}
+
+\begin{theorem}[Interdefinable Quantifiers]\label{qi}
+For all structures $\mathscr{A}$, and all variable assignments $\alpha$, \begin{itemize}
+	\item $\valsa{\forall\upsilon\phi}=\valsa{\neg\exists\upsilon\neg\phi}$;
+	\item $\valsa{\exists\upsilon\phi}=\valsa{\neg\forall\upsilon\neg\phi}$.
+\end{itemize} \begin{proof}
+	{ I show only the first case. $\valsa{\forall\upsilon\phi}=T$ iff for \emph{all} $\upsilon$-variant assignments $\beta$, $\vals{\phi}{A}{\beta}=T$; iff $\vals{\neg\phi}{A}{\beta}=F$; iff $\valsa{\exists\upsilon\neg\phi}=F$ (if not, there would be a $\beta$ where $\vals{\neg\phi}{A}{\beta}=T$); iff $\valsa{\neg\exists\upsilon\neg\phi}=T$.}
+\end{proof}	 
+\end{theorem}
+
+\paragraph{Substitution of Co-Designating Terms}\label{fivesubcod}
+
+\begin{theorem}[Substitution of Co-Designators]
+	Let $\tau_{1}$ and $\tau_{2}$ be terms, and let $\phi[\tau_{2}/\tau_{1}]$ be the formula which results from substituting $\tau_{2}$ for at least some free occurrences of $\tau_{1}$ in $\phi$, where none of those occurrences is in the scope of $\forall\tau_{2}$ or $\exists\tau_{2}$ (let constants vacuously occur free). Then, for any structure $\mathscr{A}$ and any variable assignment $\alpha$: If $\valsa{\tau_{1}}=\valsa{\tau_{2}}$, then $\valsa{\phi}=\valsa{\phi[\tau_{2}/\tau_{1}]}$.
+		\begin{proof} By induction on length of formulae. 
+			
+			\emph{Base case}: Suppose $\phi$ is an atomic formula, $\Phi\theta_{1}\ldots\theta_{n}$, where perhaps some $\theta_{i}=\tau_{1}$. But $\valsa{\Phi\theta_{1}\ldots\theta_{n}}=T$ iff $\langle\valsa{\theta_{1}},\ldots,\valsa{\tau_{1}},\ldots,\valsa{\theta_{n}}\rangle \in \valsa{\Phi}$; since $\valsa{\tau_{1}}=\valsa{\tau_{2}}$, $\langle\valsa{\theta_{1}},\ldots,\valsa{\tau_{2}},\ldots,\valsa{\theta_{n}}\rangle \in \valsa{\Phi}$, i.e., $\valsa{\phi[\tau_{2}/\tau_{1}]}=T$.
+
+
+\emph{Induction step}: Suppose $\phi$ is complex, and the theorem holds for $\psi,\chi$ less complex than $\phi$ and \emph{each} variable assignment $\alpha$ over $\mathscr{A}$. We consider some representative cases, leaving others for exercises: \begin{itemize}
+	\item For the first case, suppose $\phi = \neg\psi$. It follows from the induction hypothesis that $\valsa{\neg\psi}=T$ iff $\valsa{\neg\psi[\tau_{2}/\tau_{1}]}=T$; by the clause on negation, that holds iff $\valsa{(\neg\psi)[\tau_{2}/\tau_{1}]}=T$, i.e., iff $\valsa{\phi[\tau_{2}/\tau_{1}]}=T$.
+	\item Suppose $\phi=\psi\vee\chi$.  $\valsa{\psi\vee\chi}=T$ iff either $\valsa{\psi}=T$ or $\valsa{\chi}=T$; by the induction hypothesis, iff $\valsa{\psi[\tau_{2}/\tau_{1}]}=T$ or $\valsa{\chi[\tau_{2}/\tau_{1}]}=T$; by substitution, iff $\valsa{(\psi\vee\chi)[\tau_{2}/\tau_{1}]}=T$, i.e., iff $\valsa{\phi[\tau_{2}/\tau_{1}]}=T$.
+	\item Suppose $\phi = \forall \upsilon \psi$. $\valsa{\forall\upsilon\psi}=T$ iff for any variable assignment $\beta$ which agrees with $\alpha$ except perhaps on $\upsilon$, $\vals{\psi}{A}{\beta}=T$. By the induction hypothesis, and the fact that it holds for all variable assignments, that holds iff $\vals{\psi[\tau_{2}/\tau_{1}]}{A}{\beta}=T$ (note here we use the assumption that $\tau_{1}$ doesn't occur in the scope of any quantifier that would bind $\tau_{2}$). That holds iff $\valsa{\forall\upsilon\psi[\tau_{2}/\tau_{1}]}=T$ (again, it is required $\upsilon\neq\tau_{2}$), i.e., iff $\valsa{\phi[\tau_{2}/\tau_{1}]}=T$.  
+\end{itemize}\end{proof}	\end{theorem}
+
+\paragraph{Satisfaction of Sentences}
+
+\begin{theorem}[Satisfaction of Sentences] \label{ssev}
+	If $\phi$ is a \ltwo-sentence, then for every structure $\mathscr{A}$ and all variable assignments $\alpha$, $\beta$, $\valsa{\phi}=\vals{\phi}{A}{\beta}$.	
+ \begin{proof}
+	by induction on complexity. \emph{Base case}: $\phi$ is an atomic formula. It is a sentence, so no variables occur in $\phi=\Phi\tau_{1}\ldots\tau_{n}$; since constants receive a constant interpretation in $A$, if $\phi$ is satisfied by any variable assignment it is satisfied by any other.
+
+			\emph{Induction step:} Suppose the theorem holds for less complex sentences $\psi$ and all variable assignments over $\mathscr{A}$. The only interesting cases are the quantifiers, so let $\phi=\forall \upsilon\chi$.
+ \begin{enumerate}
+			\item $\chi$ is a sentence (so the quantification is vacuous). Then for any $\alpha,\beta$ $\valsa{\chi}=\vals{\chi}{A}{\beta}$, so $\valsa{\forall\upsilon\chi}=\vals{\forall\upsilon\chi}{A}{\beta}$.
+			\item $\chi$ is not a sentence; since $\phi$ is, only $\upsilon$ occurs free in $\chi$. Suppose for some $\alpha,\beta$, $\valsa{\phi}\neq\vals{\phi}{A}{\beta}$. Without loss of generality, suppose $\valsa{\phi}=T$. Then for every variable assignment $\gamma$ differing from $\alpha$ at most on $\upsilon$, $\vals{\chi}{A}{\gamma}=T$.
+			
+			But for at least one variable assignment $\delta$ differing from $\beta$ on at most $\upsilon$, $\vals{\chi}{A}{\delta}=F$. 
+			
+			Let $\tau$ not occur in $\chi$, and let $\vals{\tau}{A}{\delta}=\vals{\upsilon}{A}{\delta}$. Then by the Substitution of Terms Theorem, $\vals{\chi}{A}{\delta}=\vals{\chi[\tau/\upsilon]}{A}{\delta}=F$. By the induction hypothesis, for \emph{every} $\gamma$, $\vals{\chi[\tau/\upsilon]}{A}{\gamma}=F$. In particular, for some $\gamma^{*}$ which is like $\alpha$ except that it assigns $\val{\tau}{A}$ to be the extension of $\upsilon$, $\vals{\chi[\tau/\upsilon]}{A}{\gamma^{*}}=F$. But since $\vals{\tau}{A}{\gamma^{*}}=\vals{\upsilon}{A}{\gamma^{*}}$, $\vals{\chi}{A}{\gamma^{*}}=F$; contradicting our assumption that every $\upsilon$-variant of $\alpha$ satisfied $\chi$. So there is no case where $\valsa{\phi}\neq\vals{\phi}{A}{\beta}$. 
+		\end{enumerate}	\end{proof}	\end{theorem}
+		
+
+
+\paragraph{Quantifiers: Universal Elimination/Existential Introduction}
+
+\begin{theorem}\label{ueei}
+Suppose $\phi$ is a formula in which only $\upsilon$ occurs free, and $\tau$ any constant. Then: \begin{itemize}
+	\item $\forall\upsilon\phi \vDash \phi[\tau/\upsilon]$;
+	\item $\phi[\tau/\upsilon]\vDash \exists\upsilon\phi$.
+\end{itemize} \begin{proof}
+	 I only show the second. Suppose that $\mathscr{A}$ is a structure in which $\phi[\tau/\upsilon]$ is true. Then in every variable assignment $\alpha$ according to which $\valsa{\tau}=\valsa{\upsilon}$, $\valsa{\phi[\tau/\upsilon]}=\valsa{\phi}$ (by the substitution of co-designating terms).  There will be such a variable assignment $\alpha$; so by the clause for $\exists$, $\val{\exists\upsilon\phi}{A}=T$.
+	
+\end{proof}
+\end{theorem}
+
+\paragraph{Quantifiers: Universal Introduction/Existential Elimination}
+
+\begin{theorem}\label{uiee}
+	Suppose $\phi$ is a formula in which at most $\upsilon$ occurs free, and $\tau$ any constant \emph{not occurring in $\Gamma$ or $\phi$}. Then: \begin{itemize}
+		\item If $\Gamma \vDash \phi[\tau/\upsilon]$, then $\Gamma\vDash\forall\upsilon\phi$.
+		\item If $\Gamma,\phi[\tau/\upsilon]\vDash \psi$ then
+	 $\Gamma,\exists\upsilon\phi\vDash\psi$, provided $\tau$ does not occur in $\psi$.
+	\end{itemize} \begin{proof}
+	  Suppose that every structure $\mathscr{A}$ which makes $\Gamma$ true makes $\phi[\tau/\upsilon]$ true. $\tau$ does not occur in $\Gamma$, so every structure $\mathscr{A}'$ just like $\mathscr{A}$ except perhaps in the value of $I_{\mathscr{A}'}(\tau)$ also makes all of $\Gamma$ true. Then $\phi[\tau/\upsilon]$ is true in \emph{every} such $\tau$-variant structure $\mathscr{A}'$. 	
+	Suppose $\beta$ is a variable assignment where $\vals{\phi}{A}{\beta}=F$. There is some $\mathscr{A}'$ where $I_{A'}(\tau)=\vals{\upsilon}{A}{\beta}$, so $\val{\phi[\tau/\upsilon]}{A'}=F$. Contradiction; there is no such variable assignment, so $\forall\upsilon\phi$ is true in every structure $\mathscr{A}$ which makes all of $\Gamma$ true.
+
+\end{proof}
+\end{theorem}
+
+\paragraph{Substitution of Equivalent Formulae}
+
+\begin{theorem}[Substitution of Equivalent Formulae]
+	Suppose $\phi$ and $\psi$ are formulae, in which $\upsilon_{1},\ldots,\upsilon_{n}$ occur free. Suppose $\delta$ is a some sentence in which $\phi$ occurs as a subformula. Then $\forall\upsilon_{1}\ldots\forall\upsilon_{n}(\phi\bicond\psi)\vDash \delta \bicond \delta[\psi/\phi]$. \begin{proof}
+In every structure $\mathscr{A}$ in which $\forall\upsilon_{1}\ldots\forall\upsilon_{n}(\phi\bicond\psi)$ is true, $\phi\bicond\psi$ is satisfied by every variable assignment agreeing on variables except possibly the $\upsilon_{i}$s.  But clearly if for every variable assignment $\alpha$ $\valsa{\phi}=\valsa{\psi}$, a straightforward induction on complexity of $\delta$ will establish the result.
+	\end{proof}
+\end{theorem}
+
+
+
+
+\section{Alternative Semantics for \ltwo}
+\paragraph{Semantics only for sentences}
+
+\emph{Objection}: `\emph{Why are open formulae being assigned truth values at all? They don't express any proposition, and we should only assign truth to formulae which can express propositions: sentences.}'
+
+The easiest way to secure this result is as follows: \begin{itemize}
+	\item  Redefine formulae of \ltwo\ so that no open formula is a formula at all. We will thus alter the formation rules so that we do not add quantifiers to bind variables in open formulae, but rather to (i) \emph{substitute} a variable $\xi$ for one
+or more occurrences of some constant $\tau$ in $\phi$; (ii) say that $\forall\xi\phi[\xi/\tau]$ and $\exists\xi\phi[\xi/\tau]$ are formulae.
+\item Replace the semantic clauses involving satisfaction with something like this:
+\begin{itemize}\item $\val{\forall\xi \phi}{A} = T$  iff  for every
+	individual $i \in D_{\mathscr{A}}$, and every structure $\mathscr{A}'$ just like $\mathscr{A}$ except perhaps in the semantic value of $\tau$,
+	if $\val{\tau}{A'}=i$, then $\val{\phi[\tau/\xi]}{A'}=T$.
+\end{itemize}
+This alternative semantics gives a \emph{recursion on truth} \label{fiverectr} rather than satisfaction.
+\end{itemize}
+
+\paragraph{`Substitutional' Quantification}
+
+\emph{Objection}: `\emph{I like the idea that universal quantification is kind of like an infinite conjunction of all of its instances. Do we need to make the confusing detour through variable assignments?}'
+
+Here is the idea behind this objection. What $\forall x Px$ really means is that whatever constant $a$ one substitutes for $x$, $Pa$ will be true. This is made more precise as follows: where $\phi$ is a formula with at most $\upsilon$ free, \begin{itemize}
+	\item $\val{\forall \upsilon \phi}{A}=T$ iff for any constant $\tau$, $\val{\phi[\tau/\upsilon]}{A}=T$.
+\end{itemize}
+These alternative truth conditions quickly go awry if there are unnamed objects in the domain. For instance, in an uncountable domain (like the real numbers), as there are only countably many constants in \ltwo, there are entities which cannot be the semantic value of any constant. Suppose we enumerate the constants $a_{i}$, letting $I_{\mathscr{A}}(a_{i})=i$. Then on the domain of the real numbers, since every constant denotes an integer, $\forall x (\text{Integer}(x))$ looks like it will be true in $\mathscr{A}$ on the substitutional reading; yet this is highly counterintuitive.
+
+\paragraph{Truth for Open Formulae}
+
+\emph{Objection}: `\emph{Wait! We do have the resources to explain the truth of an open formula: it is true whenever it is true under every variable assignment. So why be so restrictive?}'
+
+On this proposal, $\vDash \phi$ iff $\phi$ is true in every structure under every variable assignment. In effect, therefore, an open formula $\phi$ with free variables $\upsilon_{1},\ldots,\upsilon_{n}$ will be a tautology iff its \emph{universal closure} (the result of binding all free variables with universal quantifiers) $\forall\upsilon_{1}\ldots\forall\upsilon_{n}\phi$ is a tautology.
+
+Yet this is problematic; for then this will be a correct sequent: \begin{equation*}
+	Px \vDash \forall x Px.
+\end{equation*}
+But the deduction theorem then fails! For \begin{equation*}
+	\vDash Px\to \forall x Px \qquad\text{iff}\qquad \vDash\forall x (Px \to \forall x Px),
+ \end{equation*} and the right hand side sequent is clearly incorrect.
+
+{\small
+\subsection*{Further Reading}
+\addcontentsline{toc}{subsection}{Further Reading}
+
+ Tarski's original definition of satisfaction and truth can be found in \citet{tarcontrf}. (This is a translation of his 1936 paper.) \citet[\S\S 3.4--3.6]{bosintlo}  gives a semantics, and proves many theorems, in which the basic semantic clauses involve recursion on truth rather than satisfaction.  \citet{kriisthp} contains an interesting though technical discussion of the merits and problems with the substitutional intepretation of the quantifiers.
+
+
+
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+
+\begin{enumerate}
+	\item Suppose we define a sentence $\phi$ to be \emph{true}$^{\star}$ in $\mathscr{A}$ iff $\valsa{\phi}=T$ for at least one variable assignment $\alpha$ over $\mathscr{A}$. Show that $\phi$ is true in $\mathscr{A}$ iff it is  true$^{\star}$ in $\mathscr{A}$.
+	\item Prove that, for all structures $\mathscr{A}$ and variable assignments $\alpha$, $\valsa{\exists\upsilon\phi}=\valsa{\neg\forall\upsilon\neg\phi}$.
+	\item Prove that if $\upsilon$ is not free in $\phi$, $\valsa{\forall\upsilon\phi}=\valsa{\phi}$. If $\phi$ is a sentence, show that $\phi$ and $\forall\upsilon\phi$ are logically equivalent.
+	\item Prove that, if $\upsilon$ and $\nu$ are variables,  $\phi$ a formula not containing $\upsilon$, and $\phi[\upsilon/\nu]$ the formula that results from replacing \emph{every} occurence of $\nu$ in $\phi$ with $\upsilon$ – \emph{even those that occur in quantifiers $\forall\nu$, $\exists\nu$} – then for any structure $\mathscr{A}$ and any variable assignment $\alpha$, there exists a variable assignment $\beta$ on $\mathscr{A}$ such that $\valsa{\phi}=\vals{\phi[\upsilon/\nu]}{A}{ \beta}$.
+		\item Prove that, for any structure $\mathscr{A}$, if $\Phi$ and $\Psi$ are $n$-ary predicate letters such that $\val{\Phi}{A}=\val{\Psi}{A}$, $\phi$ a formula, and $\phi[\Psi/\Phi]$ the formula that results from replacing \emph{every} occurrence of $\Phi$ in $\phi$ with $\Psi$, then for any variable assignment $\alpha$ over $\mathscr{A}$, $\valsa{\phi}=\valsa{\phi[\Psi/\Phi]}$. Then prove that, if $\phi$ is a sentence, $\phi$ is true in $\mathscr{A}$ iff $\phi[\Psi/\Phi]$ is true in $\mathscr{A}$.
+	\item	Suppose $\phi$ is a formula in which only $\upsilon$ occurs free, and $\tau$ any constant. Prove that $\forall\upsilon\phi \vDash \phi[\tau/\upsilon]$.
+	\item Suppose $\phi$ is a formula in which at most $\upsilon$ occurs free, and $\tau$ any constant \emph{not occurring in $\Gamma$ or $\phi$}. Prove that
+	if $\Gamma,\phi[\tau/\upsilon]\vDash \psi$ then
+	 $\Gamma,\exists\upsilon\phi\vDash\psi$, provided $\tau$ does not occur in $\psi$.
+\item Show that, if $\tau$ and $\theta$ are any constants: \begin{enumerate}
+	\item If $\Gamma\vDash\phi$ then $\Gamma[\tau/\theta]\vDash \phi[\tau/\theta]$.
+	\item If $\Gamma\vDash$ then $\Gamma[\tau/\theta]\vDash$.
+\end{enumerate}
+\item 	Suppose $\phi$ and $\psi$ are any formulae, in which possibly (but not necessarily) $\upsilon_{1},\ldots,\upsilon_{n}$ occur free. Suppose $\delta$ is a some sentence in which $\phi$ occurs as a subformula.  Using induction on complexity of $\delta$, establish the result that  $\forall\upsilon_{1}\ldots\forall\upsilon_{n}(\phi\bicond\psi)\vDash \delta \bicond \delta[\psi/\phi]$. (Hint: you might want to consider an induction showing joint satisfiability of any formulae $\gamma$ and $\gamma[\psi/\phi]$.)
+\item Show that $\forall\xi(\phi\bicond\psi)\vDash\forall\xi\phi\bicond\forall\xi\psi$. 
+\item Give a full specification of the alternative formation rules for a language \ltwo$'$ in which there are no open formulae. Show that the sentences of \ltwo\ are the formulae of \ltwo$'$.
+\item Give a semantic clause for $\exists$ on the alternative semantics using \emph{recursion on truth} as specified on page \pageref{fiverectr}.
+\item Show the following: \begin{enumerate}
+	\item $\forall x (Px \wedge Qx) \equiv \forall x Px \wedge \forall x Qx$;
+	\item $\exists x (Px \wedge Qx) \vDash \exists x Px \wedge \exists x Qx$. Why not vice versa?
+	\item $\exists y \forall x Pxy \vDash \forall x \exists y Pxy$. Why not vice versa?
+\end{enumerate}
+\item If $\upsilon_{1}\ldots\upsilon_{n}$ is a sequence of variables, let $\forall \upsilon_{1}\ldots\upsilon_{n}$ be the string of quantifiers $\forall\upsilon_{1}\ldots\forall\upsilon_{n}$. Let $\mathcal{P}$ be an arbitrary permutation of the order of a sequence. Show that $\forall \upsilon_{1}\ldots\upsilon_{n} \phi \equiv \forall\mathcal{P}\upsilon_{1}\ldots\upsilon_{n} \phi$.
+\item Explain why the `objectual' reading of the quantifiers (i.e., the standard one) has no difficulty with universal quantification over an uncountable domain.
+\end{enumerate}
+
+}
+
+
+
+
+
+
+

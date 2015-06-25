@@ -1,0 +1,365 @@
+
+
+\section{Sets}
+
+A \emph{set} is a collection of objects. Like a collection, it is a single thing, not a plurality. If $X$ is a set, the objects in $X$ are called its \emph{elements} or \emph{members}. We write $x \in X$ for `$x$ is an element of $X$' (and $y \notin X$ for `$y$ is not an element of $X$').
+
+ Sets are \emph{individuated} by their members; or as we sometimes say, sets are individuated purely \emph{extensionally}. There must be something to a set over and above its members – otherwise it would be simply a plurality identical to those members. But whatever that ‘something’ is, it is minimal enough that there cannot be two distinct sets which share the same members.Therefore, if $X$ and $Y$ name sets which have all and only the same members, $A = B$. So we can specify a set by listing the members, conventionally in curly braces: $X = \{x_{1},...,x_{n},…\}$. (But sets differ from \emph{sequences}: two distinct sequences can have the same members as long as they occur in a different order in the two sequences.)
+
+A set is not \emph{composed} of its members in any straightforward sense. We can see this most easily in the case of a \emph{singleton} set, a set with just one member. Clearly $x \in \{x\}$; but since $x$ itself need not be a set, $x \notin x$. Since sets are individuated by their members, and since $\{x\}$ has a member that $x$ does not, $x\neq\{x\}$.
+
+\paragraph{Axioms} The standard approach to set theory is to take this informal conception of a set as a collection, and set down \emph{axioms} that characterise the behaviour of sets. We've already seen one of the standard axioms of so-called Zermelo-Fraenkel set theory : the axiom of \emph{extensionality}: \begin{axiom}[Extensionality]
+  For any sets $X$ and $Y$, if for all objects $x$, $x\in X$ iff $x\in Y$, then $X=Y$.
+\end{axiom} I will below mention various axioms, the basic starting points of modern set theory, but we will largely proceed in an informal way. In particular, I will not be offering proofs from the axioms of all the set theoretic principles I state below.
+
+\paragraph{Sets in Sets} One thing is worth being explicit about at the outset. \emph{Sets can have other sets as members.} We might be used to thinking of collections as collections of material objects (rocks, china plates, etc.) But since a set is not identical to its members, and we can talk about and quantify over sets, they are also objects available to be the members of further sets. We might \emph{start} with the non-sets, or \emph{ur-elements} as they are sometimes known; but once we make sets of them, we can then make further sets which include sets as members, and then further sets involving sets of sets, etc. This is the so-called \emph{iterative conception of a set}.
+
+
+\paragraph{Defining Sets}
+
+We've seen one way to define a set: list the members. But what if there are too many to list? 
+
+One thing we can do is define sets \emph{inductively}. This means: given a base case, and a \emph{generating relation}, we define a set that includes the base case, and anything related to a member of the set by the generating relation, and   nothing else (the \emph{closure condition}). Here's an example. \begin{definition}[Your Ancestors] 
+   \emph{Base case:} Your mother and father are ancestors.\\ \emph{Generating Relation:} Any parent of an ancestor is an ancestor.\\ \emph{Closure Condition:} Nothing else is an ancestor of you.
+ \end{definition}
+
+Let $A_{ae}$ be the set of my ancestors. Any member of $A_{ae}$ is a parent of a parent of\ldots a parent of me, with $n >0$ occurences of `a parent of'. The property `is an ancestor of AE' is called the \emph{ancestral} of the property `is a parent of AE'. And more generally we can say that the relation $R$ `$x$ is an ancestor of $y$' is the ancestral of the relation `$x$ is a parent of $y$'. Note that the set $A_{ae} = \{x: R(x,ae)\}$
+
+Alternatively, we can specify a set by stating a condition $F$ that the members all satisfy, typically in some formal mathematical language. Then we can specify the set of things $x$ such that each $x$ is $F$. We write this $\{x: F(x)\}$. If $Y = \{x:F(x)\}$, then $y \in Y$ iff $F(y)$. But in fact any collection of items forms a set: there needn't be a natural condition all the members satisfy.
+
+ Not just any condition will define a set. Consider the condition $F = x \notin x$. This defines a set $\mathbf{R} = \{x: x\notin x\}$, the set of all non-self-membered things.
+
+ Is $\mathbf{R}$ a member of $\mathbf{R}$? Assume $\mathbf{R} \in \mathbf{R}$. Then $\mathbf{R}$ must meet the defining condition $F$, so that $\mathbf{R} \notin \mathbf{R}$. But since $\mathbf{R}$ cannot both be and not be a member of itself, the assumption must be wrong. So $\mathbf{R}\notin \mathbf{R}$. But then $\mathbf{R}$ does meet $F$, and therefore $\mathbf{R} \in \mathbf{R}$. A contradiction follows. This is known as \emph{Russell's paradox}.
+
+The problem is assuming that \emph{any} condition at all defines a set. The alternative is simple: to assume that, \emph{if we are given a set $X$}, then any condition at all will \emph{separate} the members of $X$ into those which meet the condition and those which do not. That is: for any set $X$, and any condition $F$, there will exist a set $Y$ which contains everything which is both a member of $X$ and satisfies $F$. This is the axiom of \emph{separation}.
+
+
+\paragraph{Relations Between Sets}
+
+\begin{definition}[Subset] A set $X$ is a {\em subset} of $Y$, written
+   $X \subseteq Y$ if every
+    member of $X$ is also a member of $Y$: for every $x$, if $x \in X$
+    then $x \in Y$. $X$ is a {\em strict subset} (or {\em proper
+    subset}) of $Y$ if $X
+    \subseteq Y$ and $Y \not\subseteq X$ (written `$X \subset
+Y$').\end{definition}
+
+Trivially, for all sets $X$, $X\subseteq X$. It also follows that if $X \subseteq Y$ and $Y \subseteq X$ then $X=Y$ (easy). And also if $X \subseteq Y$ and $Y \subseteq Z$ then $X \subseteq Z$.
+
+\begin{definition}[Relative Complement] If $X$ and $Y$
+	are sets, then $X \setminus Y$ is the set of all members of $X$ which
+	are {\em not} members of $Y$, called the {\em relative complement} of
+	$Y$ with respect to $X$. If $X$ and $Y$ exist, then $X\setminus Y$ exists: $X \setminus Y = \{x: x\in X \wedge x \notin Y\}$.\end{definition}
+
+
+\begin{definition}[Union] If $X$ and $Y$ are sets, then $X \cup Y$
+    (read `the {\em union} of $X$ and $Y$') is the set which contains 
+    all the
+    members of $X$ and all the members of $Y$. If $X$ and $Y$ exist, $X\cup Y$ exists: $X \cup Y = \{x:x\in X \vee x \in Y\}$. 
+
+If $\mathbf{X}=X_{1},\ldots,X_{n},\ldots$ is a set of sets, $\bigcup \mathbf{X} = X_{1} \cup \ldots \cup X_{n} \cup \ldots$.
+\end{definition}
+The existence of unions is supported by this axiom: \begin{axiom}[Unions]
+  Suppose $\mathbf{X}$ is any set of sets (i.e., a set with only other sets as its members). For any such $\mathbf{X}$, there is a set $Y$ such that, for any $z$, $z\in Y$ iff $z$ is a member of one of the members of $\mathbf{X}$.  
+\end{axiom} That is, $Y$ is the set containing all the things which are in any of the sets in $\mathbf{X}$. Since if $A$ and $B$ are sets, there is a set $\{A,B\}$, it follows from the axiom of Unions that there is a set which contains all the members of $A$ and all the members of $B$. By extensionality, there is just one such set; we call it $A \cup B = \bigcup\{A,B\}$.
+
+
+\begin{definition}[Intersection] If $X$ and $Y$ are sets, the set $X
+    \cap Y$ which contains only members of both is called the {\em
+    intersection.} If $X$ and $Y$ exist, $X \cap Y$ exists: $X\cap Y = \{x:x\in X \wedge x\in Y\}$.
+
+If $\mathbf{X}=X_{1},\ldots,X_{n},\ldots$ is a set of sets, $\bigcap \mathbf{X} = X_{1} \cap \ldots \cap X_{n} \cap \ldots$.
+\end{definition}
+Note the links in the definition between $\cap$ and `and', and $\cup$ and `or'.
+ 
+
+\paragraph{The Empty Set}
+
+If $X$ is a set, then by the definition of relative complement, $X\setminus X$ is a set. Suppose $X\setminus X$ has a member, $z$.  Then 	$z\in X\setminus X$ iff $z \notin X \text{ and } z \in X$. Contradiction; so $X\setminus X$ has no members. This set is the \emph{empty set}, written $\emptyset$. $Y\setminus Y$ is also empty; by extensionality, $X\setminus X=\emptyset=Y\setminus Y$; there is only one empty set.
+
+The empty set is the collection which has nothing in it. It corresponds to the empty list. While the empty collection has no members, that doesn't mean that it itself is nothing: it is the unique thing which is a set and also has no members. 
+
+ If $X$ is any set, then for any $x$, if $x \in \emptyset$ then $x\in X$ – for the empty set has no members at all. By the definition of subset, therefore, $\emptyset \subseteq X$, for any $X$.
+
+\paragraph{Absolute Complement and the Universal Set}
+
+The empty set is the smallest possible set. Is there a largest set? If there is a \emph{universal set} $\Omega$ – a set which has everything (every individual \emph{and every set}) as a member – we could define something a bit closer to negation than relative complement. We could define: $-X = \Omega \setminus X$; it would be the set of all things which are not in $X$.
+
+This is \emph{not} possible. Suppose there were a universal set. Then the axiom of separation, that if $X$ is a set then there is a set $Y$ which is a subset of $X$ and such that for all $x\in X$ if $F(x)$ then $x\in Y$, will entail a contradiction.\footnote{Hint for exercises: Apply the condition $x\notin x$ to the universal set $\Omega$ in the axiom of separation, and we will construct the Russell set $\mathbf{R}$ perfectly legitimately. Since the Russell set does not exist, something's gone wrong: the only candidate is the assumption that there is a set of everything.} So there is no universal set. (Puzzle: how do we quantify over all sets, as we have been doing, if there is no set big enough to contain them all?)
+
+\paragraph{Power Set}
+
+So far you might think that sets are just collections of individuals (i.e., non-sets). But set theory is much more general than that: anything at all, including other sets, can be gathered into a set.
+One useful set of sets is the \emph{power set} of a set $X$, the set of all subsets of $X$:
+
+ \begin{definition}[Power Set]Given a set $X$, the {\em power set} of $X$, denoted $\wp(X)$, is
+defined: $\wp(X) = \{Y: Y \subseteq X\}$. (It is an axiom of set theory that for any set, its power set exists.)\end{definition} 
+
+Notice that, for any $X$, $\emptyset \in \wp(X)$; and $X \in \wp(X)$. The name `power set' comes from this fact: 
+\begin{theorem} If $X$ has $n$ members, $\wp(X)$ has $2^{n}$ members. 
+	\begin{proof}
+		A subset of $X$ is a set containing perhaps some but not necessarily all the members of $X$. We can specify a subset by saying, of each member of $X$, whether it is in the subset.  Suppose the members of $X$ are $x_{1},\ldots,x_{n}$. Then a finite binary sequence, consisting of $1$s and $0$s, of length $n$ suffices to determine a subset of $X$, by the following principle: let $x_{i}$ be a member of the subset associated with $s$ iff the $i$th place in the sequence $s$ is a $1$. By extensionality, each subset of $X$ corresponds to exactly one such sequence. So how many finite binary sequences of length $n$ are there? Each place $i$ in the sequence can be either $1$ or $0$, so there are $2^{n}$ such sequences. So there are $2^n$ distinct subsets of $X$, and hence $2^{n}$ members of $\wp(X)$. 
+	\end{proof}
+ \end{theorem}
+
+\paragraph{Ordered Pairs and Sequences}
+
+As mentioned above, sets are identical iff they have the same members. How those members happen to be listed is irrelevant: $\{x,y\}=\{y,x\}=\{x,x,y\}$. So if we want to capture the idea of an \emph{ordered sequence}, it cannot be a set – order doesn't matter for sets, and one can't have repeated elements in a set. Yet we can model sequences just using sets.
+
+ \begin{definition}[Ordered Pair] An {\em ordered pair} $\langle x, y\rangle$ is defined as the
+unordered set
+$\bigl\{x,\{x,y\}\bigr\}$.
+\end{definition}
+We need to check whether this definition works. We do so by establishing the fundamental principle of the identity of ordered pairs follows from this definition, namely, that ordered pairs are identical iff they have the same first member, and the same second member.
+\begin{theorem}[Criteria of Identity for Ordered pairs]
+$\langle x,y\rangle = \langle u,v\rangle$ iff $x=u$ and $y=v$.
+\begin{proof}
+	$\langle x,y\rangle = \langle u,v\rangle$ iff $\left\{x,\{x,y\}\right\} = \left\{u,\{u,v\}\right\}$ iff (i) $x=u$ and $\{x,y\} = \{u,v\}$ or (ii) $x=\{u,v\}$ and $\{x,y\}=u$. Since (ii) is not possible – it would entail that $x$ is a member of one of its own members – it must be that (i), which in turn holds iff $x=u$ and $y=v$.
+\end{proof}
+\end{theorem}
+In the proof of this theorem, we had to appeal to the fact that no set is a member of a member of itself.\footnote{Kuratowski's original definition of an ordered pair was this: $\langle x,y\rangle = \{\{x\},\{x,y\}\}$. In proving the criteria of identity for ordered pairs for this alternative definition, we need not appeal to the above-cited fact. (Exercise.)} This obviously holds on the iterative conception of a set. It tacitly relies on this characteristic axiom of Zermelo-Fraenkel set theory: \begin{axiom}[Foundation]
+	 Every non-empty set $X$ contains a member $y$  such that $X \cap y = \emptyset$.
+\end{axiom} (This axiom is also known as \emph{regularity}.) \begin{theorem}
+	No set is a member of itself. \begin{proof}
+		Let $X$ be an arbitrary set. Clearly $X \in \{X\}$. By Foundation, since $\{X\}$ is non-empty, it has a member $y$ such that $\{X\} \cap y = \emptyset$. Since the only member of $\{X\}$ is $X$, it must be that $\{X\} \cap X = \emptyset$. But if $X\in X$, then $X$ and $\{X\}$ do have a member in common – namely, $X$ – and their intersection isn't empty. So $X \notin X$.
+	\end{proof} 
+\end{theorem}
+
+We can extend the idea of an ordered pair to an ordered sequence of any number of elements, as follows: \begin{equation}\langle x_{1}, \ldots,
+x_{i}, \ldots, x_{n}\rangle = \underbrace{\langle\ldots\langle}_{n-1} x_{1}, 
+\underbrace{\ldots,x_{i}\rangle,\ldots,}_{n-2}
+x_{n}\rangle.\end{equation}
+This definition is unwieldy, but we shall simply adopt the notation and forget the background complexities.
+
+\section{Relations and Functions}
+Intuitively, a relation $R$ connects some things (its \emph{relata}). We will model a relation set theoretically as a set of \emph{pairs} of entities such that the first member of the pair bears the relation to the second.  So the set $$\{\langle \text{Melbourne},\text{Victoria}\rangle, \langle \text{Brisbane},\text{Queensland}\rangle,\ldots\}$$ is (part of) the relation of ` –  is the capital city of  – '.
+
+\begin{definition}[Binary Relation]
+	$X$ is a binary relation on a \emph{domain} $D$ iff it is a set that contains nothing except ordered pairs $\langle x,y\rangle$ where $x \in D$ and $y\in D$. ($\emptyset$ contains nothing at all, and so nothing other than ordered pairs, so is a binary relation).
+\end{definition}
+
+
+
+\begin{definition}[Cartesian Product]
+	The \emph{Cartesian product} of sets $X$ and 
+	$Y$, written‘$X \times Y$’, is the set of all pairs $\langle x,y\rangle$
+	such that $x \in X$ and $y \in Y$.
+\end{definition} A relation on $D$ is a subset of $D \times D$.
+
+We discuss binary relations further, from a more metaphysical perspective, in Chapter \ref{c8}.
+
+\paragraph{Functions}
+
+Melbourne and Victoria are related by the `is the capital city of' relation iff `Melbourne' names the same thing as `the capital of Victoria'. The term-forming expression `the capital of  –' denotes a \emph{function}. We'll treat the notion of a function more precisely, as a special kind of relation.
+
+\begin{definition}[Function]
+	$f$ is an $n$-place function iff (i) it is relation on $D$ (ii) and for any sequence $x_{1},\ldots,x_{n}$ of objects from $D$, and any $y,z \in D$, if $\langle x_{1},\ldots,x_{n},y\rangle \in f$ and $\langle x_{1},\ldots,x_{n},z\rangle \in f$, then $y=z$ (i.e., each sequence of things stands in the relation to at most one thing). 
+\end{definition}
+ A $n+1$-place relation which meets this condition is an $n$-place function.
+If $f$ is a unary function (i.e., a binary relation), we write $f(x) = y$ iff $\langle x,y\rangle \in f$. In this case we say $x$ is the \emph{argument} given to $f$, and $y$ the \emph{value} of $f$ given that argument. The fact that, for a given argument, a function has a unique value, justifies our talking of `\emph{the} value of the function for a given argument', and justifies the link to natural language definite descriptions like `the capital of South Australia' as corresponding to a function with an argument – see the discussion of definite descriptions in chapter \ref{c7} for more on this issue.
+
+\begin{definition}[Domain]
+The \emph{domain} (note: different to the domain of a relation) of a function  $f$ is the set $$\mathcal{D}(f)=\{x: \text{there is a $y$ such that } \langle x,y \rangle \in f\}.$$
+\end{definition}
+\begin{definition}[Range]
+	The \emph{range} of $f$ is the set $$\mathcal{R}(f)=\{y: \text{there is a $x$ such that } \langle x,y \rangle \in f\}.$$
+\end{definition}
+
+\begin{definition}[Partial and Total]
+	A function
+$f$ is \emph{partial}  on $X$ if $\mathcal{D}(f) \subset X$; it is \emph{total} if $\mathcal{D}(f) =X$.
+\end{definition}
+
+\paragraph{Operators}
+
+\begin{definition}[Operator]
+	If $f$ is a function, and $\mathcal{R}(f) \subseteq \mathcal{D}(f)$, then $f$ is an \emph{operator}.
+\end{definition}
+Consider the numerical function $\mathsf{sq} = \left\{\langle x,y\rangle: x^{2} = y\right\}$, otherwise written $\mathsf{sq}(x) = x^2$. This generalises in the obvious way to binary functions: if the values of the function are appropriate arguments, it is an operator. An example is the addition function on the domain of integers, $\mathsf{plus} = \left\{\langle x, y, z\rangle : z = x + y\right\}$. This is an arithmetical operator.
+
+Some properties of functions are conveniently illustrated by $\mathsf{plus}$.
+\begin{definition}[Commutative]
+	A binary function $f$ is commutative iff $$f(x,y) = f(y,x).$$  
+\end{definition}
+\begin{definition}[Associative]
+	A binary operator $f$ is associative iff $$f(x,f(y,z)) = f(f(x,y),z).$$ (We need $f$ to be an operator to ensure that it is defined when its values are treated as arguments in this way.)
+\end{definition}
+It is obvious that $\mathsf{plus}$ is both commutative and associative: $x+y=y+x$ and $x+(y+z)=(x+y)+z$. A commutative but not associative operator is $\mathsf{mean}(x,y) = \tfrac{x+y}{2}$. Clearly $\mathsf{mean}(x,y)=\mathsf{mean}(y,x)$. (This follows from the commutativity of $\mathsf{plus}$.) But $\mathsf{mean}(x,\mathsf{mean}(y,z))$ is not in general equal to $\mathsf{mean}(\mathsf{mean}(x,y),z)$. An associative but non-commutative operator is the concatenation operator on strings $\conc$, which takes two strings and joins them into a longer string by appending the second to the first. Clearly $(x\conc y)\conc z = x \conc (y\conc z)$: `te'$\conc$`a' = `tea' = `t'$\conc$`ea'. But $x\conc y$ isn't necessarily $y\conc x$: `tea' isn't `ate'.
+
+
+
+\paragraph{Properties of functions; enumerations}
+
+Suppose $f$ is a total function, and $X$ and $Y$ are some other sets. 
+
+\begin{definition}[Into, Onto, etc.]
+\begin{description}
+	\item [Into] $f$ is a function from $X$ \emph{into} $Y$ iff $\mathcal{D}(f) = X$ and $\mathcal{R}(f)\subseteq Y$.
+	\item [Onto] $f$ is a function from $X$ \emph{onto} $Y$ iff $\mathcal{D}(f) = X$ and $\mathcal{R}(f) = Y$. An \emph{onto} function is also known as a \emph{surjection}.
+	\item [One-One] $f$ is a \emph{one-one} function from $X$ to $Y$ iff $f$ is into and whenever $x\neq y$, $f(x)\neq f(y)$. A one-one function is also known as an \emph{injection}.
+	\item [Bijection] $f$ is a \emph{bijection} from $X$ to $Y$ (or, is a \emph{one-one correspondence}) iff $f$ is one-one and onto.
+\end{description}
+\end{definition}
+Some examples; these are functions from $\mathbb{N}$ to $\mathbb{N}$: \begin{itemize}
+	\item The constant function $f(x) = 1$ is into.
+	\item The function $g(x) = \begin{cases}
+		x/2 \text{ if $x$ is even}\\
+		(x+1)/2 \text{ if $x$ is odd} 
+	\end{cases}$ is onto. (Every natural number is the value of this function for two arguments.)
+	\item The function $h(x)=x^3$ is one-one. (Every natural number has a unique cube, but not every natural number has a natural number cube root.)
+ 	\item The identity function $i(x) = x$ is a bijection.
+\end{itemize}
+
+\begin{definition}[Inverse] If $g$ is a function, it is the \emph{inverse} of $f$ iff  $\mathcal{D}(f)=\mathcal{R}(g)$, $\mathcal{R}(f)=\mathcal{D}(g)$, and for all $x$, $g(f(x))=x$. In that case, we often write $f^{-1}$ for $g$.
+ \end{definition} 
+\begin{theorem}
+	If a function has an inverse, it is one-one.
+\end{theorem}
+\begin{definition}[Partial function]
+ $f$ is a partial function from $X$ to $Y$ iff $\mathcal{D(f)} \subset X$. If $\mathcal{D}(f)=X$, $f$ is a total function from $X$.
+\end{definition}
+\begin{theorem}
+	If $f$ is one-one but not a bijection, $f^{-1}$ is a partial function.
+\end{theorem}
+
+
+\section{Size}
+
+\begin{definition}[Finite]
+  A set $X$ is finite iff there exists a set of natural numbers $N = \{1,\ldots,n\}$ and a bijection $f$ from $X$ to $N$.
+\end{definition} A finite set can be put into one-one correspondence with some initial fragment of the sequence of natural numbers. A set is infinite iff it is not finite. Where there is a bijection between $X$ and $\{1,\ldots,n\}$, $X$ has $n$ members – we say that $X$ has cardinality $n$, $|X|=n$.
+
+Now we will define some further notions useful for talking about \emph{size}.
+\begin{definition}[Enumeration] $f$ is an \emph{enumeration} of $X$ iff $\mathcal{D}(f) \subseteq \mathbb{N}$ (the natural numbers), $\mathcal{R}(f) = X$, and $f$ is onto.
+\end{definition} An enumeration associates each member of $X$ with some number – it corresponds to the intuitive notion of counting a set. (Though since we only require that an enumeration be onto, all sorts of weird `counting' procedures are included: e.g, the constant function from $\mathbb{N}$ onto $\{a\}$ is an enumeration of $\{a\}$.) This gives us the following idea: 
+\begin{definition}[{[Un]}Countable] $X$ is \emph{countable} iff there exists a function which enumerates it; it is \emph{denumerable} iff it is countable and infinite; it is \emph{uncountable} if it is not countable.
+\end{definition}
+Obviously, all finite sets are enumerable, since if $f$ is a bijection showing $X$ to be finite, $f^{-1}$ exists and is an enumeration of $X$. But some infinite sets are countable too: obviously, $\mathbb{N}$ itself (there is a no bijection between $\mathbb{N}$ and some initial subset of $\mathbb{N}$, but the identity function enumerates it).
+
+The notion of cardinality can be extended to infinite sets too \citep[chs. 3, 6]{macsetthl}. \begin{definition}[Equinumerosity]
+	$X$ and $Y$ are \emph{equinumerous} iff there exists a bijection from $X$ to $Y$.
+\end{definition}
+\begin{definition}[Cardinality]\label{card}
+	For each set, $X$ – whether finite or infinite – there exists its cardinality, $|X|$, meeting the following condition: for any $X$ and $Y$, $|X|=|Y|$ iff $X$ and $Y$ are equinumerous.
+\end{definition}
+Certainly treating the natural numbers as cardinals of finite sets meets the condition in Definition \ref{card}. But Definition \ref{card} applies to any sets; it's just that, for the infinite sets, we have no pre-theoretical grasp on what their cardinalities might be. That's okay though: we can characterise them. \begin{definition}[$\leq$]\label{leq}
+	If $\lambda$ and $\mu$ are cardinals, such that $|X|=\lambda$ and $|Y|=\mu$, then $\lambda \leq \mu$ iff there is an injection from $X$ to $Y$. 
+\end{definition}
+\begin{theorem}
+	Let $|Y|=\mu$. Then $\lambda\leq\mu$ iff there exists an $X$ such that $X \subseteq Y$ and $|X|=\lambda$. \begin{proof}
+		Obvious: by Definition \ref{leq}, $\lambda\leq\mu$ iff there is an injection from $X$ to $Y$ iff there is a bijection from $X$ to a subset of $Y$.\label{cardleq}
+	\end{proof}
+\end{theorem}
+\begin{theorem}[Schröder-Bernstein]
+	$\leq$ partially orders the cardinals \citep[38–41]{macsetthl}. 
+\end{theorem}
+
+With the notion of a cardinal, we can prove that there are more sizes of set than finite sizes, because there are more cardinals than just the natural numbers, which are the cardinalities of finite sets. Since there is no bijection from any finite subset of natural numbers to the whole set of natural numbers, the cardinality of the set of natural numbers is not any finite natural number. We introduce $\aleph_{0}$ to name $|\mathbb{N}|$. 
+
+\begin{theorem}[Cantor]\label{cantor}
+For any set $X$, $|X| < |\wp(X)|$.
+\begin{proof}
+	Define a function $f$ such that for all $x \in X$, $f(x) = \{x\}$. Since if $x \in X$, $\{x\} \subseteq X$, $f$ is an injection from $X$ into $\wp(X)$, and hence $|X|\leq|\wp(X)|$ by Definition \ref{leq}.
+	
+	To show that $|X| < |\wp(X)|$, we need to show that $|X| \neq |\wp(X)|$, i.e. (by Definition \ref{card}), that $X$ and $\wp({X})$ are not equinumerous. Let $g$ be any function from $X$ to $\wp(X)$. The domain of $g$ is the members of $X$, and the range are subsets of $X$, precisely the kinds of things members of $X$ can be members of. But not every member of $X$ needs to be a member of the subset of $X$ picked out by $g(x)$. Let us define the set of such things, the $x\in X$ which aren't members of $g(x)$: $$D = \{x \in X : x \notin g(x)\}.$$
+	    Since $D$ consists solely of members of $X$, $D \subseteq X$ and hence $D \in \wp(X)$. If $g$ is a bijection, then there must be some $d \in X$ such that $g(d) = D$. Obviously, then $d \in D$ iff $d \in g(d)$. But by definition of $D$, $d \in D$ iff $d \notin g(d)$. So if $g$ is a bijection, there is some $d$ such that $d \in g(d)$ iff $d \notin g(d)$, and since there obviously is no such $d$, then $g$ cannot be a bijection. Since $g$ was arbitrary, \emph{no} function from $X$ to $\wp(X)$ is a bijection, and therefore $X$ and $\wp(X)$ are not equinumerous.
+  \end{proof}
+\end{theorem} 
+Cantor's theorem shows us that the powerset of a set is always a strictly larger cardinality than the set. We already know that there is one countable infinite set, $\mathbb{N}$. Are there uncountable sets? Yes, obviously: $\wp(\mathbb{N})$: the set of all sets of natural numbers. This allows us to show that another set is uncountable: the real numbers, numbers with arbitrarily many decimal places. Indeed, we can show the following, from which it follows trivially that the set of reals is uncountable. 
+\begin{theorem}[Uncountability of {$[0,1]$}]
+The set of real numbers between 0 and 1 inclusive, $[0,1]$ is uncountable. \begin{proof}
+	(Sketch.) Each subset of $\mathbb{N}$ can be associated with an infinite binary sequence (sequence of $0$s and $1$s): the sequence corresponding to $X \in \wp(\mathbb{N})$ is the one which has a $1$ at position $n$ iff $n \in X$. Each infinite binary sequence corresponds to exactly one real number in $[0,1]$. So there is a bijection from $\wp(\mathbb{N})$ to $[0,1]$, so $|\wp(\mathbb{N})| = |[0,1]|$, and since the former is uncountable, so is the latter.
+\end{proof}
+\end{theorem}
+
+
+A final theorem linking countability and set theory, useful – perhaps – for some exercise or other.
+\begin{theorem}[Countable Unions]\label{countu}
+	If $\mathbf{X} = \{X_{1},\ldots,X_{n},\ldots\}$ is countable, and each $X_{i}$ is countable, then $\bigcup \mathbf{X}$ is countable.
+\end{theorem}
+I sketch the proof.
+Let $P$ be the set of positive prime numbers. This set is in one-one correspondence with $\mathbb{N}$ (for every $n$, there is one and only one $n$-th prime). Since $\mathbf{X}$ is countable, there is a one-one function from $\mathbf{X}$ into the natural numbers, so there is a one-one function $f$ from $\mathbf{X}$ into $P$.
+
+Since each $X_{i}$ is countable, there is a function $g_{i}$ that is a one to one correspondence between $X_{i}$ and a subset of $\mathbb{N}$. Define the function $h_{i}(x) = f(X_{i})^{g_{i}(x)}$. Since every integer has a unique prime decomposition, if $h_{i}\neq h_{j}$ then $\mathcal{R}(h_{i})\cap\mathcal{R}(h_{i})=\emptyset.$
+
+Now define: $h(x) = h_i(x)$ where $x\in X_i$ and $x$ is not a member of any $X_{j}$ where $j < i$. Clearly $\mathcal{D}(h) = \bigcup\mathbf{X}$. Obviously $\mathcal{R}(h) \subseteq \mathbb{N}$. And $h$ is one-one, since each $h_{i}$ is a function and their ranges are disjoint. So $\bigcup\mathbf{X}$ is in one-one correspondence with a subset of $\mathbb{N}$ so is countable. 
+
+{\small
+\subsection*{Further Reading}
+\addcontentsline{toc}{subsection}{Further Reading}
+
+
+Another presentation of the set theory needed for this book can be found in
+ \citet{bevpospa}. A presentation which goes well beyond what we need, but is philosophically nuanced, is
+ \citet{potsetthi}. The iterative conception of a set is discussed by \citet{boolos}.
+
+
+
+\subsection*{Exercises}
+\addcontentsline{toc}{subsection}{Exercises}
+
+\begin{enumerate}
+
+\item Prove: \begin{enumerate}
+	\item If $X \subseteq Y$ and $Y \subseteq X$ then $X=Y$.
+	\item If $X \subseteq Y$ and $Y \subseteq Z$ then $X \subseteq Z$.
+	\item $A \not\subset A$.
+	\item If $A \subset B$ then $B \not\subset A$.
+	\item If $A \subset B$ then $A \subseteq B$.
+\end{enumerate}
+
+\item Prove: \begin{enumerate}
+	\item $A\cap A=A\cup A=A$.
+	\item $A \cap \emptyset = \emptyset$.
+	\item $A \cup \emptyset = A$.
+	\item $A \subseteq B$ iff $A \cap B = A$ iff $A \cup B = B$.
+	\item $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$.
+	\item $A\setminus (A \cap B) = A\setminus B$.
+	\item $A \setminus (B \cap C) = (A\setminus B)\cup(A\setminus C)$.
+\end{enumerate}
+
+\item Prove that if there is a universal set $\Omega$, then the axiom of separation entails a contradiction.
+
+\item Let us define a \emph{Kuratowski ordered pair} $\llbracket x,y\rrbracket$ as the set $\{\{x\},\{x,y\}\}$. Prove that \begin{enumerate} 
+	\item $\llbracket x,y\rrbracket = \llbracket u,v\rrbracket$ iff $x=u$ and $y=v$.
+	\item If $x=y$ then $\llbracket x,y\rrbracket = \{\{x\}\}$.
+\end{enumerate}
+
+\item \begin{enumerate}
+	\item Prove that if $X$ has $n$ members, $\wp(X)$ has $2^{n}$ members.
+	\item Prove that $X \subseteq Y$ iff $\wp(X) \subseteq \wp(Y)$.
+	\item Show, by providing a counterexample, that it is not always true that $\wp(X) \cup \wp(Y) = \wp(X \cup Y)$.
+\end{enumerate}
+
+\item \begin{enumerate}
+	\item Show that $f$ has an inverse function iff it is one-one.
+	\item Give an example of a function that \begin{enumerate}
+		\item is into but is not onto;
+		\item is one-one but is not a bijection;
+		\item has no inverse;
+		\item is its own inverse. 
+	\end{enumerate}
+	\item Under exactly what conditions is the union of two functions itself a function? (I.e., state necessary and sufficient conditions.)
+\item Two sets are said to be \emph{equipollent} iff there is a one-one correspondence between them. Show that $X$ and $\wp(X)$ are not equipollent. 
+	\item Give an example of a set which is \begin{enumerate}
+		\item Countable;
+		\item Denumerable;
+		\item Uncountable. (Hint: use 6.(d) and 6.(e).ii.)
+	\end{enumerate} 
+\end{enumerate} 
+
+
+
+\item \begin{enumerate}
+	\item Show that if $X$ is countable, then if $Y \subseteq X$, $Y$ is countable.
+\item Show that if $X$ and $Y$ are both countable, $X \times Y$ is countable. (Hint: show that the set of ordered pairs of natural numbers is countable.)
+
+\end{enumerate}
+
+
+
+
+
+\end{enumerate}
+}
+
