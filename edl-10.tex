@@ -3,11 +3,14 @@
 \section{Conditionals}
 
 \paragraph{`If $\phi$, $\psi$' and $\to$}
-So far we have rendered the English conditional construction `If $\phi$, $\psi$' using the \emph{material conditional} $\to$. You may be worried, as others have worried before you, that this is not an accurate rendering. For, you may think, it is implausible that `If $\phi$, $\psi$' is true whenever $\psi$ is true. Consider: \begin{description}
-	\item [A] The Tigers  will not lose every game this season;
-	\item [B] The Tigers will make it to the finals;
-	\item [C] Therefore, if the Tigers lose every game this season, they will make it to the finals.
- \end{description}
+So far we have rendered the English conditional construction `If $\phi$, $\psi$' using the \emph{material conditional} $\to$. You may be worried, as others have worried before you, that this is not an accurate rendering. For, you may think, it is implausible that `If $\phi$, $\psi$' is true whenever $\psi$ is true. Consider: 
+\begin{quote}
+	\begin{exe}
+	\ex The Tigers  will not lose every game this season;
+	\ex The Tigers will make it to the finals;
+	\ex Therefore: If the Tigers lose every game this season, they will make it to the finals.
+ \end{exe}
+\end{quote}
 If `if $\phi$, $\psi$' is $\phi \to \psi$, this argument should be valid (it is an instance of the valid form $\phi,\psi \vDash \neg\phi \to \psi$). But this argument does not strike us as valid. 
 
 \paragraph{Can we do better in our logic?}
@@ -23,9 +26,11 @@ Whatever else we might want to say about the English conditional connective `if 
 	\item [Conditional Proof] If $\psi$ can be established, conditional on the assumption that $\phi$, then you can establish `if $\phi$, $\psi$' without need of that assumption. 
 \end{description}
 It is obvious that something which didn't obey these rules would be quite unlike a conditional. A conditional helps us neatly summarise reasoning from assumptions, store it, and then use it when those assumptions come true – conditional proof captures the first part, and \emph{modus ponens} the last.
-But if, as seems very plausible, these two rules capture the English conditional, then we can offer an argument that the English conditional is $\to$. \\ ~\boxer{If $\phi$, $\psi$ iff $\phi \to \psi$}{\emph{Only If}: Suppose that if $\phi$, $\psi$. Assume $\phi$. By \emph{modus ponens}, $\psi$. By $\to$Intro, $\phi\to\psi$, discharging the assumption.
+But if, as seems very plausible, these two rules capture the English conditional, then we can offer an argument that the English conditional is $\to$. More precisely, the argument is that ‘If $\phi$, $\psi$’ is true iff $\phi \to \psi$ is:  \begin{quote}
+	\emph{Only If}: Suppose that if $\phi$, $\psi$. Assume $\phi$. By \emph{modus ponens}, $\psi$. By $\to$Intro, $\phi\to\psi$, discharging the assumption.
 
-\emph{If}: Suppose that $\phi \to \psi$. This is equivalent to $\neg \phi \vee \psi$. Assume $\phi$. By disjunctive syllogism, $\psi$. By conditional proof, it follows that if $\phi$, $\psi$, without need of the assumption.}
+\emph{If}: Suppose that $\phi \to \psi$. This is equivalent to $\neg \phi \vee \psi$. Assume $\phi$. By disjunctive syllogism, $\psi$. By conditional proof, it follows that if $\phi$, $\psi$, without need of the assumption.
+\end{quote}
 
 `Disjunctive syllogism' is the rule that from $\phi \vee \psi$ and $\neg \phi$ one can infer $\psi$. (A problem asks you to show that this is valid derived rule in the system \lone; it is obviously a good rule for the English `or'.) 
 
@@ -59,15 +64,15 @@ But, some have objected, these are terrible inferences – we should never concl
 
 \paragraph{Relevance} Critics of these sequents have maintained that the failure here is one of \emph{relevance}. The arguments may be valid in the narrow sense, because there is no structure which satisfies the premises without also satisfying the conclusion (in the former case, because no structure satisfies the premises; in the latter, because every structure satisfies the conclusion). But validity in this narrow sense is too narrow – what we ordinarily understand to be a successful valid argument excludes these trivial cases of validity. The conclusion in a \emph{genuinely} valid argument – these critics say – should follow from, and be relevant to, the premises.
 
-\paragraph{The Lewis Argument} Yet there is a very simple argument, using ordinary English reasoning which is apparently impeccable, to support these `problematic' sequents. It is known as the Lewis argument, after C. I. Lewis, one of its modern rediscoverers. \\ ~\boxer{The Lewis Argument}{~
-
-\begin{tabular}{lll}
-	1. &  $\phi$ & Assumption\\
-	2. &  $\phi$ or $\psi$ & Disjunction introduction, 1\\
-	3. &  $\neg \phi$ & Assumption \\
-	4. &  $\psi$ &  Disjunctive syllogism, 2, 3
-\end{tabular}\\}
-
+\paragraph{The Lewis Argument} Yet there is a very simple argument, using ordinary English reasoning which is apparently impeccable, to support these `problematic' sequents. It is known as the \emph{Lewis argument}, after C. I. Lewis, one of its modern rediscoverers. 
+\begin{quote}
+	\begin{exe}
+	\ex $\phi$ \hfill Assumption
+	\ex $\phi$ or $\psi$ \hfill Disjunction introduction, 1
+	\ex $\neg \phi$ \hfill Assumption 
+	\ex $\psi$ \hfill  Disjunctive syllogism, 2, 3
+\end{exe}
+\end{quote}
 This argument seems to show that, even ordinarily, this form of apparently irrelevant argument is valid. And who could object to disjunction introduction or disjunctive syllogism, which seem like about the most basic things one can safely say about disjunction.
 
 \paragraph{The relevantist response – reject Disjunctive Syllogism} The relevantist has a response to this argument – reject disjunctive syllogism. For, they say, it goes wrong in precisely this circumstance. The inference works normally because, given a true disjunction with one false disjunct, we can infer to the truth of the other disjunct \emph{without} checking to see whether it is true. (Disjunctive syllogism was called `the dog' by its Stoic inventors, because `even a dog uses this form of inference when it comes to a fork in the road, sniffs down one branch, and not finding the scent there immediately takes off down the other branch, without stopping to sniff' \citep[99--100]{burphilo}.) But in this case, $\phi$  is also an assumption – so the fact that $\phi \vee \psi$ has a disjunct whose denial is an assumption doesn't entail $\psi$. If there are cases where we can have inconsistent assumptions, like this, we should expect disjunctive syllogism to go wrong.
@@ -84,41 +89,55 @@ This argument seems to show that, even ordinarily, this form of apparently irrel
 \paragraph{Designators in \ltwo\ and English}
 
 The formal properties of \ltwo\ have been established; now we begin a relatively informal investigation into the possible connections between the semantics of \ltwo\ and the semantics of English.
-
 We begin in this section with a discussion of \emph{designation} in both languages.
 
 \paragraph{Direct Reference}
 
 \ltwo\ embodies a particularly simple view of the meaning of a constant.
+ \begin{definition}[Direct Reference]
+ 	A referring expression \emph{directly refers} iff the meaning of the name is just its referent, the object denoted by the expression.
+ \end{definition}	
+Constants in \ltwo\ directly refer, because the meaning (semantic value) of $a$ in $\mathscr{A}$ is $\val{a}{A}$, which is just an item in the domain of $\mathscr{A}$.
 
- ~\boxer{Direct Reference}{The meaning of a name (constant) is simply the object denoted by the name, so that the meaning of $a$ in $\mathscr{A}$ is just $\val{a}{A}$.}
 
-This is to be contrasted with the thesis of \emph{rigid designation}, which is the thesis that the thing denoted by a name is the same in every possible situation. It may seem that this doesn't hold in \ltwo, because if $\mathscr{A}\neq\mathscr{B}$, then it may be that  $I_{\mathscr{A}}(a)\neq I_{\mathscr{B}}(a)$. But for all that it may hold; the crucial fact to recognise is whether, \emph{in a given situation}, when we consider what is possible for $a$, we consider what is possible for what $a$ refers to – in every situation in which that thing exists. Since \ltwo\ has no resources for discussing possibility, it is a moot point whether or not rigid designation holds for it. 
-
+This is to be contrasted with any thesis of \emph{indirect} reference, according to which the semantic value of a denoting expression is something other than the referent. The primary example here are definite descriptions; if Russell's account (recall chapter \ref{c8}) is correct, for example,  the meaning of a description is somehow to be extracted from a complex quantified sentence; the referent (if any) is determined by the meaning, but is not the meaning. This can clearly be seen if we accept Russell's treatment of ‘The present king of France is bald’, where the sentence is meaningful even though the definite description fails to denote anything. Given that the meaning of the sentence is determined by the meanings of its constituents, the definite description noun phrase must have a meaning, even though it lacks a referent, and hence cannot be a directly referential expression.
 
 
+
+\paragraph{Rigid Designation} Direct reference is related to, but distinct from, the following notion:
+\begin{definition}[Rigid Designator]
+	A referring expression $a$ is a \emph{rigid designator} iff the referent of $a$ is the same object in every possible situation (possible world) in which that object exists.\footnote{Be careful not to confuse this with the claim that every possible use of ‘$a$’ refers to the same thing – this would be false. The idea is rather, when we actually evaluate the possibility of various things about $a$ in some possible world $w$, we continue to hold fixed the actual meaning of $a$, rather than (for example) what the residents of $w$ themselves would mean by their own utterance of ‘$a$’. Suppose we consider the possibility in which Aristotle hadn't been called ’Aristotle’: we are still talking about the person actually called ‘Aristotle’, even though residents of that possibility do not use that name to denote anyone.}
+\end{definition}
+It may seem that this doesn't hold in \ltwo, because if $\mathscr{A}\neq\mathscr{B}$, then it may be that  $I_{\mathscr{A}}(a)\neq I_{\mathscr{B}}(a)$. But for all that it may hold; the crucial fact to recognise is whether, \emph{in a given situation}, when we consider what is possible for $a$, we consider what is possible for what $a$ refers to – in every situation in which that thing exists. Since \ltwo\ has no resources for discussing possibility, it is a moot point whether or not rigid designation holds for it. 
+
+If an expression is directly referential, in a language with resources for discussing possibility and necessity, then it looks like it will also be a rigid designator. Assume that we evaluate ‘Possibly, $F(a)$’ by seeing whether there is a possible world in which $F(a)$. If $a$ directly refers, the evaluation of ‘Possibly $F(a)$’ will proceed by evaluating whether actual meaning of $a$ – which is just some object $\mathbf{a}$, given direct reference – satisfies $F$ at each possibility in which $\mathbf{a}$ exists. So the actual meaning of $a$, evaluated at each world, will remain constant.
+
+The classic example of a non-rigid designator is also a simple definite description, like ‘the tallest person’. Suppose Jacques is the tallest person. Still, I can perfectly well say ‘Possibly, Gill is the tallest person’, which is \emph{not} synonymous with ‘Possibly, Gill is Jacques’. At the possible world in which Gill is the tallest person, the expression ‘the tallest person’, with its actual meaning, denotes her, though it doesn't denote her actually. 
+
+Things are complicated by the existence of \emph{rigidified descriptions}. As the name suggests, they are rigid designators, but they are also descriptions which refer indirectly. Consider ‘the actual tallest person’: intuitively, the meaning of this description evaluated at every possibility determines it to have a constant referent, of Jacques. Because of this, ‘Possibly, Gill is the actual tallest person’ does seem to entail that possibly, Gill is Jacques. 
+	
 
 
 \paragraph{Names and Direct Reference in English}
 
 For names in English, like `Antony Eagle' or `Aristotle', there is no straightforward semantics for names as there is for constants in \ltwo.
 
-On the one hand, there is considerable syntactic and semantic evidence that names in English function rather like the constants of \ltwo. Consider \begin{description}
-	\item [S] Antony Eagle is lecturing now.
-\end{description}  S is true  iff the thing \textbf{Antony Eagle}, designated by `Antony Eagle', has the property \textbf{lecturing} denoted by `is lecturing', \textbf{now}, i.e., at the time designated by (this use of) `now'. These seem remarkably like the clauses for the satisfaction of atomic formulae of \ltwo; in that sense it looks like the meaning of `Antony Eagle' is just the thing it refers to.
+On the one hand, there is considerable syntactic and semantic evidence that names in English function rather like the constants of \ltwo. Consider \begin{exe}
+	\ex Antony Eagle is lecturing now.\label{s}
+\end{exe}  \ref{s} is true  iff the thing \textbf{Antony Eagle}, designated by `Antony Eagle', has the property \textbf{lecturing} denoted by `is lecturing', \textbf{now}, i.e., at the time designated by (this use of) `now'. These seem remarkably like the clauses for the satisfaction of atomic formulae of \ltwo; in that sense it looks like the meaning of `Antony Eagle' is just the thing it refers to.
 
 \paragraph{Objection to Direct Reference: Informative Identities}
+ If `Hesperus' denotes Hesperus, and `Phosphorus' denotes Phosphorus, then, since Hesperus \emph{is} Phosphorus (both are names for Venus), then the meanings of `Hesperus' and `Phosphorus' are the same. So then why aren't these sentences synonymous?: \begin{exe}
+		\ex Hesperus is Hesperus.
+		\ex Hesperus is Phosphorus.
+	\end{exe}
 
-~\boxer{Informative Identities}{If `Hesperus' denotes Hesperus, and `Phosphorus' denotes Phosphorus, then, since Hesperus \emph{is} Phosphorus (both are names for Venus), then the meanings of `Hesperus' and `Phosphorus' are the same. So then why aren't these sentences synonymous?: \begin{itemize}
-		\item Hesperus is Hesperus.
-		\item Hesperus is Phosphorus.
-	\end{itemize}}
+
 
 This objection trades on the fact that we receive information when told the second claim, but we do not when told the first; hence they must yield different information, and not be synonymous after all. One possible response is to say that \emph{for all we know}, we are in a situation where `Phosphorus' names something other than Venus; and what we are told by the second sentence is a contingent fact about English, namely, that `Phosphorus' means Phosphorus!
 
 \paragraph{Objection to Direct Reference: Empty Names}
-
-~\boxer{Empty Names}{If the meaning of a name is its referent, then `Santa Claus is jolly' is meaningless, yet we judge it to be true. And don't say it is true `in a fiction' – for fictional English is the same as non-fictional English, so if it is meaningless outside of the fiction, it is just as meaningless inside. But set that aside: \emph{negated existentials} show that `Santa Claus' is meaningful, because `Santa Claus does not exist' is straightforwardly true.}
+If the meaning of a name is its referent, then `Santa Claus is jolly' is meaningless, yet we judge it to be true. And don't say it is true `in a fiction' – for fictional English is the same as non-fictional English, so if it is meaningless outside of the fiction, it is just as meaningless inside. But set that aside: \emph{negated existentials} show that `Santa Claus' is meaningful, because `Santa Claus does not exist' is straightforwardly true.
 
 
 
@@ -127,12 +146,12 @@ To be more explicit: `Santa Claus does not exist' apparently expresses a truth. 
 This is a very serious objection to direct reference theories. Many have chosen to bite the bullet, and accept that such sentences are in fact meaningless. Others have chosen to accept some secondary notion of meaning, like a canonical description associated with the empty name, to play a name-like role in these kind of claims. But there is no consensus on how to deal with this problem.
 
 \paragraph{Objection to Direct Reference: The Role of Descriptions}
+Many names are simply introduced by descriptions; and certainly what most of us aim to communicate when we use a name is a certain individual satisfying a certain canonical description that the hearer is familiar with – if there were no such description, `how do people ever use names to refer to things at all?' \citep[28]{krinamne}. 
 
-~\boxer{The Role of Descriptions}{Many names are simply introduced by descriptions; and certainly what most of us aim to communicate when we use a name is a certain individual satisfying a certain canonical description that the hearer is familiar with – if there were no such description, `how do people ever use names to refer to things at all?' \citep[28]{krinamne}. }
-\begin{itemize}
-	\item \emph{Reference Fixing} Some descriptions are used to establish the reference: `Julius' may be introduced into the language as `the inventor of the zipper'. But it is no part of the meaning: consider the counterfactual situation where Julius gets pipped by his rival.
-	\item \emph{Background knowledge} If one knows a lot about Julius, and one's hearers do too, then one will expect that background knowledge to be useable when one uses the name `Julius'. It may be difficult if not impossible for a speaker themselves to separate the meaning of `Julius' from what they know about Julius.
-\end{itemize}
+\begin{description}
+	\item [Reference Fixing] Some descriptions are used to establish the reference: `Julius' may be introduced into the language as `the inventor of the zipper'. But it is no part of the meaning: consider the counterfactual situation where Julius gets pipped by his rival.
+	\item [Background knowledge] If one knows a lot about Julius, and one's hearers do too, then one will expect that background knowledge to be useable when one uses the name `Julius'. It may be difficult if not impossible for a speaker themselves to separate the meaning of `Julius' from what they know about Julius.
+\end{description}
 
 \paragraph{Opaque Contexts}
 
@@ -331,10 +350,10 @@ An element $x$ of $D_{\mathscr{A}}$ is \emph{minimal} iff there is no distinct $
 \begin{definition}[Well-ordering]
   $R$ is a well-ordering of $D$ iff it is total and every non-empty subset $d$ of $D$ has a least member under $R$.
 \end{definition} Example: $\leqslant$ is a well-ordering of the natural numbers $\mathbb{N}$. Here is another well-ordering of $\mathbb{N}$: \begin{equation}
-  x \preccurlyeq y \quad\text{iff}\quad \begin{cases}
-    \text{$x$ is even and $y$ is odd}\\
-    \text{$x$ and $y$ are even and $x\leqslant y$}\\
-    \text{$x$ and $y$ are odd and $x\leqslant y$}\\
+  x \preccurlyeq y \quad\text{ iff }\quad \begin{cases}
+    \text{$x$ is even and $y$ is odd; or}\\
+    \text{$x$ and $y$ are even and $x\leqslant y$; or}\\
+    \text{$x$ and $y$ are odd and $x\leqslant y$}.\\
   \end{cases}
 \end{equation} The order induced by $\preccurlyeq$ yields $0, 2, 4, \ldots, 1, 3, 5, \ldots$. In this ordering, every subset of $\mathbb{N}$ has a $\preccurlyeq$-least element. Notice, however, that $1$ is not least, but it has no immediate predecessor. 
 

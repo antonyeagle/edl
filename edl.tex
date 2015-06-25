@@ -1,6 +1,6 @@
 %!TEX program = xelatex
 %&encoding=UTF-8 Unicode
-\documentclass[openany,leqno,11pt,draft]{book}
+\documentclass[openany,leqno,11pt]{book}
 \usepackage{latexsym}
 \usepackage{textcomp}
 \usepackage{amsmath}
@@ -12,7 +12,9 @@
 \setsansfont[Numbers=OldStyle]{Linux Biolinum O}
 \setmonofont[Scale=MatchLowercase]{Menlo}
 \usepackage[vargreek-shape=unicode]{unicode-math}
-\setmathfont[Scale=MatchLowercase]{XITS Math} 
+\setmathfont[Scale=MatchLowercase]{XITS Math}
+\setmathfont[range=\mathup]{Linux Libertine O}
+\setmathfont[range=\mathbfup]{Linux Libertine O Bold}
 \usepackage{polyglossia}
 \setdefaultlanguage[variant=australian]{english}
 
@@ -21,12 +23,6 @@
 \onehalfspacing
 \raggedbottom
 
-
-
-
-
-\usepackage{url}
-	\urlstyle{sf} 
 \usepackage[round,authoryear,sort]{natbib}
  	\bibpunct[:~]{(}{)}{;}{a}{,}{;~}
 \usepackage[norule,bottom,multiple]{footmisc}
@@ -40,13 +36,10 @@
 \usepackage{multirow}
 \usepackage{textcase}
 \usepackage{fancyhdr}
+\usepackage{gb4e} \noautomath
+\usepackage[english]{isodate}\isodate
 
-\fancyhead{}
-\fancyhead[CE]{\textsc{\lowercase{Elements of Deductive Logic}}}
-\fancyhead[CO]{\textsc{\nouppercase{\rightmark}}}
-\cfoot{\thepage} 
-\renewcommand{\headrule}{}
-\pagestyle{fancy}
+
 \usepackage[lmargin=1.85cm,tmargin=2.425cm,paperwidth=6in,paperheight=9in,heightrounded=true,twoside]{geometry}	
 \hfuzz=0.55pt
 
@@ -64,7 +57,7 @@
 \newtheorem{definition}{Definition}
  \theoremstyle{remark}
 \newtheorem{axiom}{Axiom}
-\newcommand{\cquote}[1]{\ensuremath{\ulcorner #1 \urcorner}}
+
 
 \makeatletter
 \let\@oldquotation=\quotation
@@ -77,19 +70,27 @@
 \newcommand{\lone}{\ensuremath{\mathcal{L}_{1}}}
 \newcommand{\ltwo}{\ensuremath{\mathcal{L}_{2}}}
 \newcommand{\lequ}{\ensuremath{\mathcal{L}_{=}}}
-\newcommand{\val}[2]{\ensuremath{|#1|_{\mathscr{#2}}}}
-\newcommand{\vals}[3]{\ensuremath{|#1|^{#3}_{\mathscr{#2}}}}
+\newcommand{\val}[2]{\ensuremath{\left|#1\right|_{\mathscr{#2}}}}
+\newcommand{\vals}[3]{\ensuremath{\left|#1\right|^{#3}_{\mathscr{#2}}}}
 \newcommand{\valsa}[1]{\vals{#1}{A}{\alpha}}
 \newcommand{\dd}{\text{\emph{\riota\,}}}
 \newcommand{\lvdash}{\vdash_{\!\!\text{\vphantom{\normalsize|}\textnormal{Ł}}}}
 \newcommand{\conc}{\mathop{\frown}}
 \renewcommand{\labelenumi}{\textbf{\theenumi.}}%format enumerations
-\newcommand{\eqdf}{=_{\mathrm{df}}}
+\newcommand{\eqdf}{=_{\text{df}}}
 \newcommand{\at}{\makeatletter{@}\makeatother}
 \newcommand{\bicond}{\leftrightarrow}
-
+\newcommand{\cquote}[1]{\ensuremath{\ulcorner #1 \urcorner}}
 
 \usepackage[unicode,pdfencoding=auto,pdfborder={0 0 0},plainpages=false,colorlinks=false,pdftitle={Elements of Deductive Logic},pdfauthor={Antony Eagle}]{hyperref}
+\urlstyle{sf}
+
+\fancyhead{}
+\fancyhead[CE]{\textsc{\lowercase{Elements of Deductive Logic}}}
+\fancyhead[CO]{\textsc{\nouppercase{\rightmark}}}
+\cfoot{\thepage} 
+\renewcommand{\headrule}{}
+\pagestyle{fancy}
 
 % end of preamble
 
@@ -145,9 +146,9 @@
 
 {\small    	\emph{Elements of Deductive Logic} by Antony Eagle (\href{http://antonyeagle.org}{\nolinkurl{antonyeagle.org}}) is	licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.\\[1cm]
 
-To view a copy of this license, visit \href{http://creativecommons.org/licenses/by-sa/4.0/}{\nolinkurl{creativecommons.org/licenses/by-sa/4.0/}} or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.\\[4cm]
+To view a copy of this license, visit \href{http://creativecommons.org/licenses/by-sa/4.0/}{\nolinkurl{creativecommons.org/licenses/by-sa/4.0/}} or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.\\[1cm]
 
-This book is open source. \XeLaTeX\ source code for the book is available from my website, \href{http://antonyeagle.org}{\nolinkurl{antonyeagle.org}}, or by contacting me: \href{mailto:antony.eagle@adelaide.edu.au}{\nolinkurl{antony.eagle@adelaide.edu.au}}.
+This book is open source. \XeLaTeX\ source code for the book is available from the book's GitHub repository, \href{https://github.com/antonyeagle/edl}{\nolinkurl{github.com/antonyeagle/edl}}, or by contacting me: \href{mailto:antony.eagle@adelaide.edu.au}{\nolinkurl{antony.eagle@adelaide.edu.au}}.\\[4cm]
 
     Last updated  \today\\[1cm]
     

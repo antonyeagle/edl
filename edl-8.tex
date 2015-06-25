@@ -179,7 +179,7 @@ There is not.  One way of helping to make this thought persuasive is to consider
 
 \paragraph{The Halting Problem}
 
-~\boxer{The Halting Problem}{If $S$ is a finite set of instructions, can we give an effective procedure that determines whether  it is the case that those instructions, carried out on some acceptable input, will \emph{terminate} after a finite time with some output?}
+If $S$ is a finite set of instructions, can we give an effective procedure that determines whether  it is the case that those instructions, carried out on some acceptable input, will \emph{terminate} after a finite time with some output?
 
  Consider some enumeration of the set of finite sets of instructions; the halting problem, if soluble, will entail the existence of an effectively computable function $h(i)$ that yields $1$ if the $i$-th set of instructions halts with a defined output on input $i$, and $0$ otherwise (i.e., $h(i) =0$ if the $i$-th set of instructions determines a function which is undefined on input $i$). Can there be such a function $h$?
 
@@ -248,7 +248,7 @@ A corollary is that quantifier-free sentences of \ltwo\ are decidable, since the
 These $\exists$-sentences are \emph{equi-decidable} with quantifier-free sentences.
 
 \begin{theorem}[Arbitrary $\exists$-sentences]
-	If $\phi$ is a quantifier free formula containing only $\tau_{1},\ldots,\tau_{n}$ and $\nu_{1},\ldots,\nu_{m}$, then $$\vDash\exists \nu_{1}\ldots\nu_{m}\phi \quad\text{iff}\quad \vDash \bigvee (\phi[\tau_{i}/\nu_{j}]),$$ where $\bigvee (\phi[\tau_{i}/\nu_{j}])$ is the disjunction of \emph{all} the ways of substituting the constants $\tau_{1},\ldots,\tau_{n}$ for the variables $\nu_{1},\ldots,\nu_{m}$.
+	If $\phi$ is a quantifier free formula containing only $\tau_{1},\ldots,\tau_{n}$ and $\nu_{1},\ldots,\nu_{m}$, then $$\vDash\exists \nu_{1}\ldots\nu_{m}\phi \quad\text{ iff }\quad \vDash \bigvee (\phi[\tau_{i}/\nu_{j}]),$$ where $\bigvee (\phi[\tau_{i}/\nu_{j}])$ is the disjunction of \emph{all} the ways of substituting the constants $\tau_{1},\ldots,\tau_{n}$ for the variables $\nu_{1},\ldots,\nu_{m}$.
 \end{theorem}
 
 I leave the proof of this for an exercise; it is along the same lines as the proof of the proof for constant-free $\exists$-sentences.
@@ -259,7 +259,7 @@ Now we have shown that an arbitrary sentence involving only existential quantifi
 \paragraph{$\forall\exists$-Sentences}
 
 \begin{theorem}[$\forall\exists$-sentences and $\exists$-sentences]
-	If $\tau_{1},\ldots,\tau_{m}$ don't occur in $\phi$, then $$\vDash \forall \upsilon_{1}\ldots\upsilon_{m}\exists\nu_{1}\ldots\nu_{n}\phi \quad\text{iff}\quad \vDash\exists\nu_{1}\ldots\nu_{n}\phi[\tau_{1}/\upsilon_{1},\ldots,\tau_{m}/\upsilon_{m}].$$ \begin{proof} 
+	If $\tau_{1},\ldots,\tau_{m}$ don't occur in $\phi$, then $$\vDash \forall \upsilon_{1}\ldots\upsilon_{m}\exists\nu_{1}\ldots\nu_{n}\phi \quad\text{ iff }\quad \vDash\exists\nu_{1}\ldots\nu_{n}\phi[\tau_{1}/\upsilon_{1},\ldots,\tau_{m}/\upsilon_{m}].$$ \begin{proof} 
 		{\emph{L to R:} By repeated applications of $\forall$-Elimination (Theorem \ref{ueei}), we have \begin{equation*}
 			\forall \upsilon_{1}\ldots\upsilon_{m}\exists\nu_{1}\ldots\nu_{n}\phi \vDash \exists\nu_{1}\ldots\nu_{n}\phi[\tau_{1}/\upsilon_{1},\ldots,\tau_{m}/\upsilon_{m}],
 		\end{equation*}from which the result follows by Cut.

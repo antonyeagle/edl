@@ -7,7 +7,7 @@
 
 A \emph{literal} is either a sentence letter or a negated sentence letter. More concisely, we may say a sentence is in \textsc{\lowercase{DNF}} iff it is a disjunction of conjunctions of literals (allowing degenerate cases of conjunction and disjunction).
 
-\begin{theorem}[\textsc{\lowercase{DNF}}]\label{\textsc{\lowercase{dnf}}}
+\begin{theorem}[\textsc{dnf}]\label{dnf}
 	Every truth function is expressed by a \lone\ formula in \textsc{\lowercase{DNF}}.
 \begin{proof}	
 Suppose $f$ is an $n$-place truth function. Let $\phi_{1},\ldots,\phi_{n}$ be  sentence letters, and let $\mathscr{A}$ be any structure.  Define an \emph{$f$-agreeing} structure $\mathscr{A}$ as one where $f(\langle\val{\phi_{1}}{A},\ldots,\val{\phi_{n}}{A}\rangle) = T$. Assume there is at least one $f$-agreeing structure. Then define $\mathfrak{p}_{\mathscr{A},i} = \phi_{i}$ if $\val{\phi_{i}}{A}=T$; otherwise let $\mathfrak{p}_{\mathscr{A},i} = \neg \phi_{i}$. 
@@ -112,9 +112,11 @@ We can show that both of these connectives are expressively adequate. The  Sheff
 
 $\wedge$ and $\vee$, as well as $\uparrow$ and $\downarrow$, are \emph{duals} of each other. 
 
-~\boxer{Duality}{The \emph{dual} of a truth-functional connective is that connective whose truth table
+\begin{definition}[Duality]
+The \emph{dual} of a truth-functional connective is that connective whose truth table
 results from that of the given connective by replacing \emph{every} occurrence
-of $T$ by $F$ and every occurrence of $F$ by $T$ (see Table \ref{tthree}).}
+of $T$ by $F$ and every occurrence of $F$ by $T$ (see Table \ref{tthree}).
+\end{definition}
 \begin{table}\centering\begin{tabular}{ccc}
 {    \begin{tabular}{cc|c|c}
 \toprule
@@ -148,7 +150,7 @@ Suppose that $\phi$ is a sentence of \lone\ which involves only connectives in $
 	$\phi$ (even those already negated).
 	\item Let $\phi^{\star}$ be the sentence that results from substituting each connective in $\phi$ by its dual.
 \end{enumerate}
-\begin{lemma}[Duality for $\wedge,\vee$]
+\begin{lemma}[Duality for Conjunction and Disjunction]
 	For any $\phi$, $\phi^{\star}\Dashv\vDash\neg\overline{\phi}$. 
 \begin{proof}
 	\emph{Base case:}  $\phi$ is just a sentence
@@ -174,7 +176,7 @@ Suppose that $\phi$ is a sentence of \lone\ which involves only connectives in $
 
 \paragraph{Duality Theorem}
 
- \begin{theorem}[Duality for $\wedge,\vee$]
+ \begin{theorem}[Duality for Conjunction and Disjunction]
 	If $\phi^{\star}$ is dual to $\phi$ and $\psi^{\star}$ is dual to $\psi$, then $\phi \vDash \psi$ iff $\psi^{\star}\vDash \phi^{\star}$.\begin{proof}
 		Suppose $\phi\vDash\psi$. Then, by Substitution of each sentence letter by its negation, $\overline{\phi}\vDash\overline{\psi}$. By Contraposition, $\neg\overline{\psi}\vDash\neg\overline{\phi}$. By the Duality Lemma, $\psi^{\star}\vDash\phi^{\star}$. 
 	\end{proof}
@@ -209,9 +211,11 @@ $\chi \vDash \psi$, and each sentence letter in $\chi$ is in $B$. \end{theorem}
 \begin{proof} Let the members of $B$ be enumerated $b_{1},\ldots,b_{n}$.
 Let $\mathscr{A}$ be a \emph{$B$-variant} of $\mathscr{B}$ iff $\mathscr{A}(b)=\mathscr{B}(b)$ for all $b\in B$. 
 
- Let $\{\mathscr{B}_{1},\ldots,\mathscr{B}_{2^{n}}\}$ be a set of structures every pair of which differ on their assignment of a truth value to at least one $b \in B$. Define a $n$-place truth function $f_{\chi}$, for every structure $\mathscr{B}_{i}$: \[f_{\chi}(\langle\val{b_{1}}{B_{\mathnormal i}},\ldots,\val{b_{n}}{B_{\mathnormal i}}\rangle) = \begin{cases} F \text{ if there is a $B$-variant $\mathscr{A}$ of $\mathscr{B}_{i}$ in which } $\val{\psi}{A}=F$;\\
-T \text{ otherwise.}\end{cases}\]
-
+ Let $\{\mathscr{B}_{1},\ldots,\mathscr{B}_{2^{n}}\}$ be a set of structures every pair of which differ on their assignment of a truth value to at least one $b \in B$. Define a $n$-place truth function $f_{\chi}$, for every structure $\mathscr{B}_{i}$: \begin{equation*}
+f_{\chi}\left(\left\langle\left|{b_{1}}\right|_{\mathscr{B}_{i}},\ldots,\left|{b_{n}}\right|_{\mathscr{B}_{i}}\right\rangle\right) =
+ 	 \begin{cases} F & \parbox[c]{.4\textwidth}{if there is a $B$-variant $\mathscr{A}$ of $\mathscr{B}_{i}$ in which $\val{\psi}{A}=F$;}\\
+T & \parbox[c]{.4\textwidth}{otherwise.}\end{cases}
+ \end{equation*}
  By construction, $f_{\chi}$ is a total truth function. 
 The sentence $\chi$ that (by \textsc{\lowercase{DNF}}) expresses $f_{\chi}$ is our needed interpolant.
 \begin{itemize}
@@ -314,7 +318,7 @@ An \emph{effective procedure} for determining some query is an automatic and mec
 
 A property is \emph{decidable} iff there is an effective procedure which tests for it.
 
-\begin{theorem}[Decidability of Finite Validity in \lone]
+\begin{theorem}[Decidability of Finite Validity]
 	If $\Gamma$ is a finite set of sentences of \lone, then it is decidable whether $\Gamma \vDash$.
 \end{theorem}
 
@@ -322,7 +326,7 @@ This has the immediate consequence that it is decidable whether $\Gamma\vDash\ph
 
 (The notion of an effective procedure is introduced informally, but it can be made precise by investigating \emph{Turing machines} and  \emph{recursive functions} – see \citet[chs.\ 1--8]{bbjcomlo}.)
 
-\paragraph{Proof of Finite Decidability Using Truth Tables}
+\paragraph{Finite Decidability Using Truth Tables}
 
 Let $\Gamma$ be a finite set of \lone\ sentences. Each $\gamma\in\Gamma$ is only finitely long, so there are $n$ sentence letters occurring in $\Gamma$, for some finite $n$.
 
@@ -334,7 +338,7 @@ Check each row of the truth table to see if all sentences in $\Gamma$ have been 
 
 A query is \emph{positively decidable} iff an effective procedure will terminate and correctly answer `Yes' in a finite time. A query is \emph{negatively decidable} iff an effective procedure will terminate and correctly answer `No' in a finite time. It is decidable iff it is both positively and negatively decidable.
 
-\begin{theorem}[Positive Decidability of Inconsistency in \lone]
+\begin{theorem}[Positive Decidability of Inconsistency]
 If $\Gamma$ is an infinite set of sentences of \lone, then if $\Gamma\vDash$, there is an effective procedure that will demonstrate that; but there is no effective procedure that will
 decide if arbitrary $\Gamma$ is consistent.\end{theorem}
 

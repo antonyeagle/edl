@@ -203,8 +203,8 @@ Suppose $f$ is a total function, and $X$ and $Y$ are some other sets.
 Some examples; these are functions from $\mathbb{N}$ to $\mathbb{N}$: \begin{itemize}
 	\item The constant function $f(x) = 1$ is into.
 	\item The function $g(x) = \begin{cases}
-		x/2 \text{ if $x$ is even}\\
-		(x+1)/2 \text{ if $x$ is odd} 
+		x/2 &\text{ if $x$ is even}\\
+		(x+1)/2 &\text{ if $x$ is odd} 
 	\end{cases}$ is onto. (Every natural number is the value of this function for two arguments.)
 	\item The function $h(x)=x^3$ is one-one. (Every natural number has a unique cube, but not every natural number has a natural number cube root.)
  	\item The identity function $i(x) = x$ is a bijection.
@@ -266,8 +266,8 @@ For any set $X$, $|X| < |\wp(X)|$.
   \end{proof}
 \end{theorem} 
 Cantor's theorem shows us that the powerset of a set is always a strictly larger cardinality than the set. We already know that there is one countable infinite set, $\mathbb{N}$. Are there uncountable sets? Yes, obviously: $\wp(\mathbb{N})$: the set of all sets of natural numbers. This allows us to show that another set is uncountable: the real numbers, numbers with arbitrarily many decimal places. Indeed, we can show the following, from which it follows trivially that the set of reals is uncountable. 
-\begin{theorem}[Uncountability of {$[0,1]$}]
-The set of real numbers between 0 and 1 inclusive, $[0,1]$ is uncountable. \begin{proof}
+\begin{theorem}[Uncountability of the Unit Interval]
+The set of real numbers between $0$ and $1$ inclusive, $[0,1]$, is uncountable. \begin{proof}
 	(Sketch.) Each subset of $\mathbb{N}$ can be associated with an infinite binary sequence (sequence of $0$s and $1$s): the sequence corresponding to $X \in \wp(\mathbb{N})$ is the one which has a $1$ at position $n$ iff $n \in X$. Each infinite binary sequence corresponds to exactly one real number in $[0,1]$. So there is a bijection from $\wp(\mathbb{N})$ to $[0,1]$, so $|\wp(\mathbb{N})| = |[0,1]|$, and since the former is uncountable, so is the latter.
 \end{proof}
 \end{theorem}

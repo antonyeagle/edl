@@ -189,15 +189,15 @@ In the case of \lone, the substituable constituents are sentence letters, and th
 \end{definition}
 
 We now show a useful lemma. \begin{lemma}[Substitution]\label{sublem}
-	Suppose $\phi$ and $\theta$ are sentences, and $s$ a sentence letter. For any structure $\mathscr{A}$, define a structure: $$\mathscr{A}^{\star}(\alpha) = 	\val{\alpha[\theta/s]}{A} = \begin{cases} \mathscr{A}(\alpha) \quad\text{iff}\quad \alpha \neq s \\
-	\val{\theta}{A} \quad\text{iff}\quad \alpha = s.
+	Suppose $\phi$ and $\theta$ are sentences, and $s$ a sentence letter. For any structure $\mathscr{A}$, define a structure: $$\mathscr{A}^{\star}(\alpha) = 	\val{\alpha[\theta/s]}{A} = \begin{cases} \mathscr{A}(\alpha) &\text{ iff } \alpha \neq s \\
+	\val{\theta}{A} &\text{ iff } \alpha = s.
 		\end{cases}$$ Then $\val{\phi}{A^{\star}}= \val{\phi[\theta/s]}{A}$. 
 \begin{proof}	The new structure $\mathscr{A}^{\star}$ is just like $\mathscr{A}$, with the possible exception that it assigns to $s$ what $\mathscr{A}$ assigns to $\theta$.
 
 \emph{Base case}: If $\phi$ is a sentence letter, then the result follows by construction of $\mathscr{A}^{\star}$.\\
 		\emph{Induction step}: If $\phi$ is complex, and the theorem holds for less complex claims, then the result follows. I show one case: where $\phi$ is a conjunction of two simpler constituents. The induction hypothesis is that  $\val{\phi_{i}}{A^{\star}} = \val{\phi_{i}[\theta/s]}{A}$ where $\phi_{i}$ are constituents of $\phi$.
 By the semantic rules for the valuation function, and the induction hypothesis, \begin{align*}
-	\val{\phi}{A^{\star}} = T &\text{iff} \val{(\phi_{1} \wedge \phi_{2})}{A^{\star}} = T\\ &\text{iff} \val{\phi_{1}}{A^{\star}}=\val{\phi_{2}}{A^{\star}}=T\\ &\text{iff} \val{\phi_{1}[\theta/s]}{A}=\val{\phi_{2}[\theta/s]}{A}=T\\ &\text{iff} \val{\phi_{1}[\theta/s] \wedge \phi_{2}[\theta/s]}{A}=T\\ &\text{iff} \val{(\phi_{1} \wedge \phi_{2})[\theta/s]}{A}=T.
+	\val{\phi}{A^{\star}} = T &\text{ iff } \val{(\phi_{1} \wedge \phi_{2})}{A^{\star}} = T\\ &\text{ iff } \val{\phi_{1}}{A^{\star}}=\val{\phi_{2}}{A^{\star}}=T\\ &\text{ iff } \val{\phi_{1}[\theta/s]}{A}=\val{\phi_{2}[\theta/s]}{A}=T\\ &\text{ iff } \val{\phi_{1}[\theta/s] \wedge \phi_{2}[\theta/s]}{A}=T\\ &\text{ iff } \val{(\phi_{1} \wedge \phi_{2})[\theta/s]}{A}=T.
 \end{align*}
 The desired result follows: $\val{\phi}{A^{\star}} = \val{\phi[\theta/s]}{A}$. \emph{Mutatis mutandis} for the other connectives. 
 \end{proof} 
@@ -285,15 +285,15 @@ Consider the 1-place truth functions. By Theorem \ref{ntf}, there are 4 such fun
 \begin{definition}[Truth-functional Connective]\label{tfc}
 	A \emph{truth-functional connective} is an $n$-place connective $\oplus$ such that there exists a $n$-place truth function $f$ such that, for any $\phi_{1},\ldots,\phi_{n}$, $$\val{\oplus(\phi_{1},\ldots,\phi_{n})}{A} = f\left(\val{\phi_{1}}{A},\ldots,\val{\phi_{n}}{A}\right),$$ i.e., if $\oplus(\phi_{1},\ldots,\phi_{n})$ expresses some truth function $f$. 
 \end{definition}
-It is evident from Table \ref{tt}  that each of the connectives of \lone\ are truth-functional connectives, so \lone\ is a \emph{truth-functional language}. We've already encountered the 1-place truth function corresponding to the negation connective: it is $\mathbf{n}$ from Table \ref{t1tf}. For another example: let $\mathbf{k}$ be the 2-place truth function defined as follows: $$\mathbf{k}(x,y) = \begin{cases} T \quad\text{if}\quad x = y = T;\\
-F \quad\text{otherwise}.\end{cases}$$ As can be readily verified, this truth-function is expressed by $P \wedge Q$ (and by $Q \wedge R$, and $P_{17} \wedge R_{101}$, etc., etc.), and so is the truth function corresponding to \emph{conjunction}. Here are three other two-place functions we may name:
+It is evident from Table \ref{tt}  that each of the connectives of \lone\ are truth-functional connectives, so \lone\ is a \emph{truth-functional language}. We've already encountered the 1-place truth function corresponding to the negation connective: it is $\mathbf{n}$ from Table \ref{t1tf}. For another example: let $\mathbf{k}$ be the 2-place truth function defined as follows: $$\mathbf{k}(x,y) = \begin{cases} T &\text{if} x = y = T;\\
+F &\text{otherwise}.\end{cases}$$ As can be readily verified, this truth-function is expressed by $P \wedge Q$ (and by $Q \wedge R$, and $P_{17} \wedge R_{101}$, etc., etc.), and so is the truth function corresponding to \emph{conjunction}. Here are three other two-place functions we may name:
 \begin{align*}
-	\mathbf{a}(x,y) &= \begin{cases} F \quad\text{if}\quad x =  y = F;\\ 
-T \quad\text{otherwise}.\end{cases}\\
- \mathbf{c}(x,y) &= \begin{cases} F \quad\text{if}\quad x = T \neq y;\\
-T \quad\text{otherwise}.\end{cases}\\
-\mathbf{e}(x,y) &= \begin{cases} T \quad\text{if}\quad x = y;\\
-F \quad\text{otherwise}.\end{cases}
+	\mathbf{a}(x,y) &= \begin{cases} F &\text{if} x =  y = F;\\ 
+T &\text{otherwise}.\end{cases}\\
+ \mathbf{c}(x,y) &= \begin{cases} F &\text{if} x = T \neq y;\\
+T &\text{otherwise}.\end{cases}\\
+\mathbf{e}(x,y) &= \begin{cases} T &\text{if} x = y;\\
+F &\text{otherwise}.\end{cases}
 \end{align*}
 
 It is easy to verify which connectives in Table \ref{tt} express these truth-functions.
@@ -302,12 +302,12 @@ It is easy to verify which connectives in Table \ref{tt} express these truth-fun
 
 \paragraph{Revisiting the Semantics} We could use our truth-functions to express the semantics for our language in another form, giving this alternative definition of a valuation. \begin{definition}[Alternative \lone-valuation]
 	When $\mathscr{A}$ is any \lone-structure, the valuation function generated by $\mathscr{A}$ is this function\label{val2}: $$\val{\phi}{A} = \begin{cases}
-		\mathscr{A}(\phi) \quad\text{if $\phi$ is a sentence letter};\\
-		\mathbf{n}\left(\val{\psi}{A}\right) \quad\text{if}\quad \phi = \neg\psi;\\
-		\mathbf{k}\left(\val{\psi}{A},\val{\chi}{A}\right) \quad\text{if}\quad \phi = (\psi \wedge \chi);\\ 
-		\mathbf{a}\left(\val{\psi}{A},\val{\chi}{A}\right) \quad\text{if}\quad \phi = (\psi \vee \chi);\\
-		\mathbf{c}\left(\val{\psi}{A},\val{\chi}{A}\right) \quad\text{if}\quad \phi = (\psi \to \chi);\\
-		\mathbf{e}\left(\val{\psi}{A},\val{\chi}{A}\right) \quad\text{if}\quad \phi = (\psi \bicond \chi).\\ 
+		\mathscr{A}(\phi) &\text{if $\phi$ is a sentence letter};\\
+		\mathbf{n}\left(\val{\psi}{A}\right) &\text{if} \phi = \neg\psi;\\
+		\mathbf{k}\left(\val{\psi}{A},\val{\chi}{A}\right) &\text{if} \phi = (\psi \wedge \chi);\\ 
+		\mathbf{a}\left(\val{\psi}{A},\val{\chi}{A}\right) &\text{if} \phi = (\psi \vee \chi);\\
+		\mathbf{c}\left(\val{\psi}{A},\val{\chi}{A}\right) &\text{if} \phi = (\psi \to \chi);\\
+		\mathbf{e}\left(\val{\psi}{A},\val{\chi}{A}\right) &\text{if} \phi = (\psi \bicond \chi).\\ 
 	\end{cases}$$
 \end{definition} This definition is obviously equivalent to that in Definition \ref{value}, in that both definitions determine the same valuation of all the sentences of the language given the same initial structure.
 
