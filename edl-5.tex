@@ -2,24 +2,32 @@
 
 \section{Disjunctive Normal Form}
 
+\begin{definition}[Arbitrary Conjunction] An inductive definition: \begin{itemize}
+	\item $\left[\bigwedge_{i=1}^{1} \phi_{i}\right] \eqdf \phi_{1}$;
+	 \item $\left[\bigwedge_{i=1}^{n+1}\phi_{i}\right]\eqdf \left(\left[\bigwedge_{i=1}^{n} \phi_{i}\right]\wedge \phi_{n+1}\right).$
+\end{itemize} 
+\end{definition} The definition of arbitrary disjunction, $\bigvee_{i=1}^{n}$, is wholly parallel to that for arbitrary conjunction. (Giving it explicitly is left as an exercise.) \begin{definition}[Literal]
+	A \emph{literal} is any sentence letter or negated sentence letter. 
+\end{definition}
+\begin{definition}[Disjunctive Normal Form (\textsc{\lowercase{DNF}})]
+	An \lone\ sentence of $\phi$ is in \emph{disjunctive normal form} iff there exist $n,m_{1},\ldots,m_{n}$ such that\[\phi = \left[\bigvee_{i=1}^{n}\left[\bigwedge_{j=1}^{m_{i}} \pm s_{i,j}\right]\,\right],\]where each $\pm s_{i,j}$ is a literal.
+\end{definition} That is: a sentence is in disjunctive normal form iff it is a (perhaps degenerate) disjunction of (perhaps degenerate) conjunctions of (perhaps negated) sentence letters. One clear example is $((P\wedge \neg Q) \vee (P \wedge Q))$. But since $P$ is a literal, and it is a degenerate arbitrary conjunction, and a degenerate arbitrary disjunction, it is in \textsc{\lowercase{DNF}}also. Another way of characterising which \lone\ sentences are in \textsc{\lowercase{DNF}}is as follows: a sentence is \textsc{\lowercase{DNF}}iff it contains at most only connectives drawn from $\{\neg,\wedge,\vee\}$, and such that $\vee$ never occurs in the scope of $\wedge$ or $\neg$, and $\wedge$ never occurs in the scope of $\neg$.
 
-\begin{definition}[Disjunctive Normal Form] A sentence is in \emph{Disjunctive Normal Form} (\textsc{\lowercase{DNF}}) if it contains only connectives drawn from $\{\neg,\wedge,\vee\}$, and such that $\vee$ never occurs in the scope of $\wedge$ or $\neg$, and $\wedge$ never occurs in the scope of $\neg$. \end{definition}
 
-A \emph{literal} is either a sentence letter or a negated sentence letter. More concisely, we may say a sentence is in \textsc{\lowercase{DNF}} iff it is a disjunction of conjunctions of literals (allowing degenerate cases of conjunction and disjunction).
-
+Our interest in disjunctive normal form lies in the following theorem: 
 \begin{theorem}[\textsc{dnf}]\label{dnf}
-	Every truth function is expressed by a \lone\ formula in \textsc{\lowercase{DNF}}.
+	Every truth function is expressed by a \lone\ sentence in \textsc{\lowercase{DNF}}.
 \begin{proof}	
-Suppose $f$ is an $n$-place truth function. Let $\phi_{1},\ldots,\phi_{n}$ be  sentence letters, and let $\mathscr{A}$ be any structure.  Define an \emph{$f$-agreeing} structure $\mathscr{A}$ as one where $f(\langle\val{\phi_{1}}{A},\ldots,\val{\phi_{n}}{A}\rangle) = T$. Assume there is at least one $f$-agreeing structure. Then define $\mathfrak{p}_{\mathscr{A},i} = \phi_{i}$ if $\val{\phi_{i}}{A}=T$; otherwise let $\mathfrak{p}_{\mathscr{A},i} = \neg \phi_{i}$. 
-For any structure $\mathscr{B}$ that agrees with $\mathscr{A}$ on $\phi_{1},\ldots,\phi_{n}$, let $\mathfrak{p}_{\mathscr{B},i}=\mathfrak{p}_{\mathscr{A},i}$.
+Suppose $f$ is an $n$-place truth function. Let $s_{1},\ldots,s_{n}$ be  sentence letters, and let $\mathscr{A}$ be any structure.  Define an \emph{$f$-agreeing} structure $\mathscr{A}$ as one where $f(\val{s_{1}}{A},\ldots,\val{s_{n}}{A}) = T$. Assume there is at least one $f$-agreeing structure. Then define $\mathfrak{l}_{\mathscr{A},i} = s_{i}$ if $\mathscr{A}(s_{i})=T$; otherwise let $\mathfrak{l}_{\mathscr{A},i} = \neg s_{i}$. 
+For any structure $\mathscr{B}$ that agrees with $\mathscr{A}$ on $s_{1},\ldots,s_{n}$, let $\mathfrak{l}_{\mathscr{B},i}=\mathfrak{l}_{\mathscr{A},i}$. It is obvious that $\val{\mathfrak{l}_{\mathscr{A,i}}}{A} = T$ for each $\mathscr{A},i$.
 
-For every structure, define $\mathfrak{c}_{\mathscr{A}} = \mathfrak{p}_{\mathscr{A},1}\wedge\ldots\wedge \mathfrak{p}_{\mathscr{A},n}$.  Since there are only finitely many structures that differ from one another in their assignments to $\phi_{1},\ldots,\phi_{n}$, there are only finitely many sentences $\mathfrak{c}_{\mathscr{A}}$.  Therefore, there are only finitely many $\mathfrak{c}_{\mathscr{A}}$ \emph{such that $\mathscr{A}$ is an $f$-agreeing structure}; let them be enumerated $\mathfrak{c}_{1},\ldots,\mathfrak{c}_{m}.$
+For every structure $\mathscr{A}$, define $\mathfrak{c}_{\mathscr{A}} = \mathfrak{l}_{\mathscr{A},1}\wedge\ldots\wedge \mathfrak{l}_{\mathscr{A},n} = \left[\bigwedge_{i=1}^{n}\mathfrak{l}_{\mathscr{A},i}\right]$. Again, it is obvious that $\val{\mathfrak{c}_{\mathscr{A}}}{A}=T$. Since there are only finitely many structures that differ from one another in their assignments to $s_{1},\ldots,s_{n}$, there are only finitely many distinct sentences $\mathfrak{c}_{\mathscr{A}}$ for various $\mathscr{A}$.  Therefore, there are only finitely many $\mathfrak{c}_{\mathscr{A}}$ \emph{such that $\mathscr{A}$ is an $f$-agreeing structure}; let them be enumerated $\mathfrak{c}_{1},\ldots,\mathfrak{c}_{m}.$ It is obvious that each $\mathfrak{c}_{i}$ is true in one and only one structure, and that each such structure is $f$-agreeing.
 
- Define $\mathfrak{d} = \mathfrak{c}_{1} \vee \ldots \vee \mathfrak{c}_{m}$,  \emph{unless} there were no $f$-agreeing structures, in which case let $\mathfrak{d} = \phi_{1} \wedge \neg \phi_{1}$.
+ Define $\mathfrak{d} = \mathfrak{c}_{1} \vee \ldots \vee \mathfrak{c}_{m} = \left[\bigvee_{j=1}^{m} \mathfrak{c}_{j}\right]$,  \emph{unless} there were no $f$-agreeing structures, in which case let $\mathfrak{d} = P_{1} \wedge \neg P_{1}$. It is obvious that $\mathfrak{d}$ is true in any structure which is among those such that some $\mathfrak{c}_{i}$ is true, i.e., $\mathfrak{d}$ is true in any $f$-agreeing structure.
+
+$\mathfrak{d}$ is in DNF, by construction; and $\val{\mathfrak{d}}{A} = f(\val{s_{1}}{A},\ldots,\val{s_{n}}{A})$  for all $\mathscr{A}$, because it captures all and only the $f$-agreeing structures. So $\mathfrak{d}$ expresses $f$. \end{proof}\end{theorem}
 
 
-
-$\mathfrak{d}$ is in \textsc{\lowercase{DNF}}, by construction; and $\val{\mathfrak{d}}{A} = f(\langle\val{\phi_{1}}{A},\ldots,\val{\phi_{n}}{A}\rangle)$ for all $\mathscr{A}$, so $\mathfrak{d}$ expresses $f$. \end{proof}\end{theorem}
 
 The truth-table rationale for this proof is clear: first, find the rows of the truth table on which the truth-function gets $T$ (those are the $f$-agreeing rows). Specify a sentence true in exactly one row by conjoining the relevant literals (so if the row is $\val{P}=T$, $\val{Q}=F$, the relevant conjunction is $P \wedge \neg Q$). Then disjoin those conjunctions which correspond to the $f$-agreeing rows; the result is a \textsc{\lowercase{DNF}} sentence true in exactly the $f$-agreeing rows. 
 
@@ -391,6 +399,7 @@ $\Gamma$ not yet checked. So inconsistency is only positively decidable, and inf
 \addcontentsline{toc}{subsection}{Exercises}
 
 \begin{enumerate}
+\item Give, explicitly, the inductive definition of arbitrary disjunction.
 \item \begin{enumerate}
 	
 	\item Show that if there are $n$ sentence letters in $S$, there are $2^{n}$ sentences of the form $\mathfrak{c}_{\mathscr{A}}$ defined in the proof of the \textsc{\lowercase{DNF}} theorem.

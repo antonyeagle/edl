@@ -43,15 +43,11 @@ The problem is assuming that \emph{any} condition at all defines a set. The alte
     subset}) of $Y$ if $X
     \subseteq Y$ and $Y \not\subseteq X$ (written `$X \subset
 Y$').\end{definition}
-
 Trivially, for all sets $X$, $X\subseteq X$. It also follows that if $X \subseteq Y$ and $Y \subseteq X$ then $X=Y$ (easy). And also if $X \subseteq Y$ and $Y \subseteq Z$ then $X \subseteq Z$.
-
 \begin{definition}[Relative Complement] If $X$ and $Y$
 	are sets, then $X \setminus Y$ is the set of all members of $X$ which
 	are {\em not} members of $Y$, called the {\em relative complement} of
 	$Y$ with respect to $X$. If $X$ and $Y$ exist, then $X\setminus Y$ exists: $X \setminus Y = \{x: x\in X \wedge x \notin Y\}$.\end{definition}
-
-
 \begin{definition}[Union] If $X$ and $Y$ are sets, then $X \cup Y$
     (read `the {\em union} of $X$ and $Y$') is the set which contains 
     all the
@@ -91,12 +87,10 @@ This is \emph{not} possible. Suppose there were a universal set. Then the axiom 
 
 So far you might think that sets are just collections of individuals (i.e., non-sets). But set theory is much more general than that: anything at all, including other sets, can be gathered into a set.
 One useful set of sets is the \emph{power set} of a set $X$, the set of all subsets of $X$:
-
  \begin{definition}[Power Set]Given a set $X$, the {\em power set} of $X$, denoted $\wp(X)$, is
 defined: $\wp(X) = \{Y: Y \subseteq X\}$. (It is an axiom of set theory that for any set, its power set exists.)\end{definition} 
-
 Notice that, for any $X$, $\emptyset \in \wp(X)$; and $X \in \wp(X)$. The name `power set' comes from this fact: 
-\begin{theorem} If $X$ has $n$ members, $\wp(X)$ has $2^{n}$ members. 
+\begin{theorem} If $X$ has $n$ members, $\wp(X)$ has $2^{n}$ members.
 	\begin{proof}
 		A subset of $X$ is a set containing perhaps some but not necessarily all the members of $X$. We can specify a subset by saying, of each member of $X$, whether it is in the subset.  Suppose the members of $X$ are $x_{1},\ldots,x_{n}$. Then a finite binary sequence, consisting of $1$s and $0$s, of length $n$ suffices to determine a subset of $X$, by the following principle: let $x_{i}$ be a member of the subset associated with $s$ iff the $i$th place in the sequence $s$ is a $1$. By extensionality, each subset of $X$ corresponds to exactly one such sequence. So how many finite binary sequences of length $n$ are there? Each place $i$ in the sequence can be either $1$ or $0$, so there are $2^{n}$ such sequences. So there are $2^n$ distinct subsets of $X$, and hence $2^{n}$ members of $\wp(X)$. 
 	\end{proof}
@@ -105,7 +99,6 @@ Notice that, for any $X$, $\emptyset \in \wp(X)$; and $X \in \wp(X)$. The name `
 \paragraph{Ordered Pairs and Sequences}
 
 As mentioned above, sets are identical iff they have the same members. How those members happen to be listed is irrelevant: $\{x,y\}=\{y,x\}=\{x,x,y\}$. So if we want to capture the idea of an \emph{ordered sequence}, it cannot be a set – order doesn't matter for sets, and one can't have repeated elements in a set. Yet we can model sequences just using sets.
-
  \begin{definition}[Ordered Pair] An {\em ordered pair} $\langle x, y\rangle$ is defined as the
 unordered set
 $\bigl\{x,\{x,y\}\bigr\}$.
@@ -133,13 +126,9 @@ This definition is unwieldy, but we shall simply adopt the notation and forget t
 
 \section{Relations and Functions}
 Intuitively, a relation $R$ connects some things (its \emph{relata}). We will model a relation set theoretically as a set of \emph{pairs} of entities such that the first member of the pair bears the relation to the second.  So the set $$\{\langle \text{Melbourne},\text{Victoria}\rangle, \langle \text{Brisbane},\text{Queensland}\rangle,\ldots\}$$ is (part of) the relation of ` –  is the capital city of  – '.
-
 \begin{definition}[Binary Relation]
 	$X$ is a binary relation on a \emph{domain} $D$ iff it is a set that contains nothing except ordered pairs $\langle x,y\rangle$ where $x \in D$ and $y\in D$. ($\emptyset$ contains nothing at all, and so nothing other than ordered pairs, so is a binary relation).
 \end{definition}
-
-
-
 \begin{definition}[Cartesian Product]
 	The \emph{Cartesian product} of sets $X$ and 
 	$Y$, written‘$X \times Y$’, is the set of all pairs $\langle x,y\rangle$
@@ -151,27 +140,24 @@ We discuss binary relations further, from a more metaphysical perspective, in Ch
 \paragraph{Functions}
 
 Melbourne and Victoria are related by the `is the capital city of' relation iff `Melbourne' names the same thing as `the capital of Victoria'. The term-forming expression `the capital of  –' denotes a \emph{function}. We'll treat the notion of a function more precisely, as a special kind of relation.
-
 \begin{definition}[Function]
 	$f$ is an $n$-place function iff (i) it is relation on $D$ (ii) and for any sequence $x_{1},\ldots,x_{n}$ of objects from $D$, and any $y,z \in D$, if $\langle x_{1},\ldots,x_{n},y\rangle \in f$ and $\langle x_{1},\ldots,x_{n},z\rangle \in f$, then $y=z$ (i.e., each sequence of things stands in the relation to at most one thing). 
 \end{definition}
  A $n+1$-place relation which meets this condition is an $n$-place function.
-If $f$ is a unary function (i.e., a binary relation), we write $f(x) = y$ iff $\langle x,y\rangle \in f$. In this case we say $x$ is the \emph{argument} given to $f$, and $y$ the \emph{value} of $f$ given that argument. The fact that, for a given argument, a function has a unique value, justifies our talking of `\emph{the} value of the function for a given argument', and justifies the link to natural language definite descriptions like `the capital of South Australia' as corresponding to a function with an argument – see the discussion of definite descriptions in chapter \ref{c7} for more on this issue.
 
+If $f$ is a unary function (i.e., a binary relation), we write $f(x) = y$ iff $\langle x,y\rangle \in f$. In this case we say $x$ is the \emph{argument} given to $f$, and $y$ the \emph{value} of $f$ given that argument. The fact that, for a given argument, a function has a unique value, justifies our talking of `\emph{the} value of the function for a given argument', and justifies the link to natural language definite descriptions like `the capital of South Australia' as corresponding to a function with an argument – see the discussion of definite descriptions in chapter \ref{c7} for more on this issue.
 \begin{definition}[Domain]
 The \emph{domain} (note: different to the domain of a relation) of a function  $f$ is the set $$\mathcal{D}(f)=\{x: \text{there is a $y$ such that } \langle x,y \rangle \in f\}.$$
 \end{definition}
 \begin{definition}[Range]
 	The \emph{range} of $f$ is the set $$\mathcal{R}(f)=\{y: \text{there is a $x$ such that } \langle x,y \rangle \in f\}.$$
 \end{definition}
-
 \begin{definition}[Partial and Total]
 	A function
 $f$ is \emph{partial}  on $X$ if $\mathcal{D}(f) \subset X$; it is \emph{total} if $\mathcal{D}(f) =X$.
 \end{definition}
 
 \paragraph{Operators}
-
 \begin{definition}[Operator]
 	If $f$ is a function, and $\mathcal{R}(f) \subseteq \mathcal{D}(f)$, then $f$ is an \emph{operator}.
 \end{definition}
@@ -190,9 +176,7 @@ It is obvious that $\mathsf{plus}$ is both commutative and associative: $x+y=y+x
 
 \paragraph{Properties of functions; enumerations}
 
-Suppose $f$ is a total function, and $X$ and $Y$ are some other sets. 
-
-\begin{definition}[Into, Onto, etc.]
+Suppose $f$ is a total function, and $X$ and $Y$ are some other sets. \begin{definition}[Into, Onto, etc.]
 \begin{description}
 	\item [Into] $f$ is a function from $X$ \emph{into} $Y$ iff $\mathcal{D}(f) = X$ and $\mathcal{R}(f)\subseteq Y$.
 	\item [Onto] $f$ is a function from $X$ \emph{onto} $Y$ iff $\mathcal{D}(f) = X$ and $\mathcal{R}(f) = Y$. An \emph{onto} function is also known as a \emph{surjection}.
@@ -255,7 +239,6 @@ Certainly treating the natural numbers as cardinals of finite sets meets the con
 \end{theorem}
 
 With the notion of a cardinal, we can prove that there are more sizes of set than finite sizes, because there are more cardinals than just the natural numbers, which are the cardinalities of finite sets. Since there is no bijection from any finite subset of natural numbers to the whole set of natural numbers, the cardinality of the set of natural numbers is not any finite natural number. We introduce $\aleph_{0}$ to name $|\mathbb{N}|$. 
-
 \begin{theorem}[Cantor]\label{cantor}
 For any set $X$, $|X| < |\wp(X)|$.
 \begin{proof}

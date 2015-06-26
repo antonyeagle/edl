@@ -77,9 +77,9 @@ This argument seems to show that, even ordinarily, this form of apparently irrel
 
 \paragraph{The relevantist response – reject Disjunctive Syllogism} The relevantist has a response to this argument – reject disjunctive syllogism. For, they say, it goes wrong in precisely this circumstance. The inference works normally because, given a true disjunction with one false disjunct, we can infer to the truth of the other disjunct \emph{without} checking to see whether it is true. (Disjunctive syllogism was called `the dog' by its Stoic inventors, because `even a dog uses this form of inference when it comes to a fork in the road, sniffs down one branch, and not finding the scent there immediately takes off down the other branch, without stopping to sniff' \citep[99--100]{burphilo}.) But in this case, $\phi$  is also an assumption – so the fact that $\phi \vee \psi$ has a disjunct whose denial is an assumption doesn't entail $\psi$. If there are cases where we can have inconsistent assumptions, like this, we should expect disjunctive syllogism to go wrong.
 
-\paragraph{Dialethism} Some truly radical support for this line of argument can be found from the \emph{dialethist} position that some sentences are \emph{both} true and false. If $\phi$ is one such sentence, then both assumptions can be true ($\phi$ because it is true, $\neg\phi$ because $\phi$ is false). But $\psi$, since it is arbitrary, can be chosen to be a plain falsehood, giving a situation  which is a counterexample to disjunctive syllogism. Dialethists motivate their non-standard semantics by appeal to particular problem cases that don't seem to admit of any other solution. The best known is \begin{description}
-	\item [L] L is false.
-\end{description} The sentence L displayed above says of itself that it is false. If it is true, then L is false (as that is what it says). But if it is false, then what it says is false, so it must be true. So L is true iff it is false. The dialethist takes this proof at face value – L is both true and false. But, despite the great difficulties more standard approaches to the Liar paradox L have, few have found dialethism compelling (though it has surprisingly able defenders). 
+\paragraph{Dialethism} Some truly radical support for this line of argument can be found from the \emph{dialethist} position that some sentences are \emph{both} true and false. If $\phi$ is one such sentence, then both assumptions can be true ($\phi$ because it is true, $\neg\phi$ because $\phi$ is false). But $\psi$, since it is arbitrary, can be chosen to be a plain falsehood, giving a situation  which is a counterexample to disjunctive syllogism. Dialethists motivate their non-standard semantics by appeal to particular problem cases that don't seem to admit of any other solution. The best known is \begin{exe}
+	\exi{L} L is false.
+\end{exe} The sentence L displayed above says of itself that it is false. If it is true, then L is false (as that is what it says). But if it is false, then what it says is false, so it must be true. So L is true iff it is false. The dialethist takes this proof at face value – L is both true and false. But, despite the great difficulties more standard approaches to the Liar paradox L have, few have found dialethism compelling (though it has surprisingly able defenders). 
 
  \paragraph{Inconsistent belief} Dialethism is too incredible to convincingly motivate the rejection of disjunctive syllogism. A weaker motivation is found in reasoning about what we believe. If you are like me, you probably have some inconsistent beliefs that you are not aware of. It is absurd to say that I therefore believe everything, just because I have beliefs that entail everything. So it seems, the set of my beliefs is not plausibly closed under classical entailment (that is, the set of my beliefs does not contain everything which is  entailed by some things in my set of beliefs). Disjunctive syllogism seems to fail for my beliefs; just because $\phi\vee\psi$ and $\neg\phi$ are among my beliefs does not mean that $\psi$ is one of my beliefs; for $\phi$ may be one of my beliefs as well. The logic of belief, it may be said, is relevant. (The original application of this kind of idea was to simple inference-drawing computers – if they are not aware of when the body of information input contains a contradiction, you should not allow them to draw conclusions using full classical logic.) The problem with all this is that it doesn't really seem like logic any more. There are no counterexamples to disjunctive syllogism, that is, structures where $\phi\vee\psi$ and $\neg\phi$ are true but $\psi$ is false. Rather, there are cases where \emph{according to my beliefs} $\phi \vee \psi$ and $\neg\phi$ are true, and also \emph{according to my beliefs} $\psi$ is not true. But it is already well-known that, when we have a non-truth-functional operator like `according to my beliefs', it won't generally be true that classically valid sequents remain correct when each sentence in the sequent is in the scope of the operator. (Think of the non-truth-functional operator `possibly': $\phi, \psi \vDash \phi \wedge \psi$ is correct, `possibly $\phi$, possibly $\psi \vDash$ possibly $\phi \wedge \psi$' is not correct – think of the case where $\psi$ = `the coin toss lands heads', $\phi$ = `the coin toss lands tails'.) 
 
@@ -92,7 +92,6 @@ The formal properties of \ltwo\ have been established; now we begin a relatively
 We begin in this section with a discussion of \emph{designation} in both languages.
 
 \paragraph{Direct Reference}
-
 \ltwo\ embodies a particularly simple view of the meaning of a constant.
  \begin{definition}[Direct Reference]
  	A referring expression \emph{directly refers} iff the meaning of the name is just its referent, the object denoted by the expression.
@@ -119,7 +118,6 @@ Things are complicated by the existence of \emph{rigidified descriptions}. As th
 
 
 \paragraph{Names and Direct Reference in English}
-
 For names in English, like `Antony Eagle' or `Aristotle', there is no straightforward semantics for names as there is for constants in \ltwo.
 
 On the one hand, there is considerable syntactic and semantic evidence that names in English function rather like the constants of \ltwo. Consider \begin{exe}
@@ -147,37 +145,31 @@ This is a very serious objection to direct reference theories. Many have chosen 
 
 \paragraph{Objection to Direct Reference: The Role of Descriptions}
 Many names are simply introduced by descriptions; and certainly what most of us aim to communicate when we use a name is a certain individual satisfying a certain canonical description that the hearer is familiar with – if there were no such description, `how do people ever use names to refer to things at all?' \citep[28]{krinamne}. 
-
 \begin{description}
 	\item [Reference Fixing] Some descriptions are used to establish the reference: `Julius' may be introduced into the language as `the inventor of the zipper'. But it is no part of the meaning: consider the counterfactual situation where Julius gets pipped by his rival.
 	\item [Background knowledge] If one knows a lot about Julius, and one's hearers do too, then one will expect that background knowledge to be useable when one uses the name `Julius'. It may be difficult if not impossible for a speaker themselves to separate the meaning of `Julius' from what they know about Julius.
 \end{description}
 
 \paragraph{Opaque Contexts}
+ Consider \begin{exe}
+	\ex Lois Lane believes that Superman is Superman;
+	\ex Lois Lane believes that Superman is Clark Kent.
+\end{exe}
+It is fairly clear that in the context `Lois Lane believes that Superman is $x$', one cannot straightforwardly substitute co-referring expressions into $x$ and get a true sentence. Such \emph{opaque contexts} – those which do not permit substitution \emph{salva veritate} – are a problem for the direct reference theory, of course, but also for other theories that think the objects of belief are propositions concerning the entities one has the belief about. 
 
- Consider \begin{itemize}
-	\item Lois Lane believes that Superman is Superman;
-	\item Lois Lane believes that Superman is Clark Kent.
-\end{itemize}
-It is fairly clear that in the context `Lois Lane beleives that Superman is $x$', one cannot straightforwardly substitute co-referring expressions into $x$ and get a true sentence. Such \emph{opaque contexts} – those which do not permit substitution \emph{salva veritate} – are a problem for the direct reference theory, of course, but also for other theories that think the objects of belief are propositions concerning the entities one has the belief about. 
-
-Obviously \ltwo\ lacks opaque contexts, as theorems about substitution of co-referring constants proved last time show. This is an expressive weakness of \ltwo\ compared with English.
+Obviously \ltwo\ lacks opaque contexts, as theorems about substitution of co-referring constants proved in Chapter \ref{c6} show. This is an expressive weakness of \ltwo\ compared with English.
 
 
 
 \paragraph{Other Designators in English}
-
-There are several other natural language expressions other than names which have a designator role in English. \begin{description}
+There are several other natural language expressions other than names and definite descriptions which have a designator role in English. \begin{description}
 	\item [Indexicals] such as `I', `you', `here', `now', `actually'. This class may also include \emph{demonstratives} like `this', `that'.
 	\item [Count Nouns] such as `chair', `boy', `piece of furniture'.
 	\item [Non-Count Nouns] such as `gold', `dirt', `intelligence'.
-	\item [Descriptions] such as `the inventor of the zipper', `the president of the United States'. 
 \end{description}
-
-Count nouns can be handled by the apparatus of quantification in \ltwo, rather than as designating expressions directly. Descriptions we talked about  more fully in Chapter 7.
+Count nouns can be handled by the apparatus of quantification in \ltwo, rather than as designating expressions directly. 
 
 \paragraph{Indexicals}
-
 The characteristic of an indexical expression is \emph{context sensitivity}. `I' refers to different people when uttered by different people: to me when I say `I am tired', to you if you utter that same string of words. Similarly with other expressions in this category, as they are sensitive to features of context – where the context of an utterance includes the speaker, time, place, etc., of the utterance – and thus may have different referents in different contexts.
 
 Despite the context-sensitivity of indexical \emph{reference}, their meaning appears constant. Distinguish (following Kaplan):  \begin{description}
@@ -191,7 +183,6 @@ Pronouns – `she', `they', `it' – may perhaps be analysed similarly.
 
 
 \paragraph{Non-Count Nouns}
-
 Non-count nouns are a certain type of \emph{non-plural} referring expression. One reasonable test is whether `$\mu$'  can be grammatically substituted into the expression `I want some $\mu$'. 
  These fall into at least two kinds: \begin{description}
 	\item [Mass] Mass nouns, like `gold' or `dirt', denote a kind of stuff or substance, rather than a particular thing. They typically display \emph{cumulative reference}: if `being gold' is true of $a$ and $b$, then it is true of the \emph{sum} $a+b$ which has just $a$ and $b$ as parts.

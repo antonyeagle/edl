@@ -1,6 +1,6 @@
 %!TEX program = xelatex
 %&encoding=UTF-8 Unicode
-\documentclass[openany,leqno,11pt]{book}
+\documentclass[openany,leqno,11pt,draft]{book}
 \usepackage{latexsym}
 \usepackage{textcomp}
 \usepackage{amsmath}
@@ -86,8 +86,8 @@
 \urlstyle{sf}
 
 \fancyhead{}
-\fancyhead[CE]{\textsc{\lowercase{Elements of Deductive Logic}}}
-\fancyhead[CO]{\textsc{\nouppercase{\rightmark}}}
+\fancyhead[CE]{\textnormal{\textsc{\lowercase{Elements of Deductive Logic}}}}
+\fancyhead[CO]{\textnormal{\textsc{\nouppercase{\rightmark}}}}
 \cfoot{\thepage} 
 \renewcommand{\headrule}{}
 \pagestyle{fancy}
@@ -100,7 +100,7 @@
 
 \pagenumbering{roman}
 
-% \renewcommand{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
 \renewcommand{\sectionmark}[1]{}
 
 \renewcommand{\chaptermark}[1]{%
@@ -220,7 +220,7 @@ Many chapters also contain a section of `Further Reading', which contains refere
 \input{edl-4.tex}  
 \newpage
 
-\chapter{Some Metatheorems Concerning $\mathcal{L}_{1}$}\label{c4}
+\chapter{Metatheory of $\mathcal{L}_{1}$}\label{c4}
  \input{edl-5.tex}
 
 \newpage

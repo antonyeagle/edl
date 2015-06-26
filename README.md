@@ -3,7 +3,7 @@
 
 *Elements of Deductive Logic* is a free, open source text, licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
-Source files are in XeLaTeX. Build by:
+Source files are in [XeLaTeX](http://www.xelatex.org/). Build by:
 
     xelatex edl.tex
 
