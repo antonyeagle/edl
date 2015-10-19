@@ -13,3 +13,7 @@ The project uses standard packages but won't compile without modification unless
 * [XITS math fonts](https://github.com/khaledhosny/xits-math).
 
 I get no errors, but some font warnings, using TeXLive 2015.
+
+***
+
+This version is **in progress** Chapters 1–4 have been fully revised as of June 2015. Later chapters are scheduled for revision by early 2016. 
