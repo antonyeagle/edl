@@ -16,12 +16,12 @@ If `if $\phi$, $\psi$' is $\phi \to \psi$, this argument should be valid (it is 
 \paragraph{Can we do better in our logic?}
 The first question we should address is: is there a better option in \lone? And it seems that there is not. Suppose that `If $\phi$, $\psi$' is expressed by some truth function $f(|\phi|,|\psi|)$. One thing is definitely true; if $|\phi|=T$ and $|\psi|=F$, we want $f(|\phi|,|\psi|)=F$. This leaves us with 8 possible two-place truth-functions. Another thing we want is \emph{asymmetry}: there exists at least one structure $\mathscr{A}$ where $f(|\phi|_{\mathscr{A}},|\psi|_{\mathscr{A}})\neq f(|\psi|_{\mathscr{A}},|\phi|_{\mathscr{A}})$. This rules out four further functions (it rules out all those where $f(F,T)=F$), leaving us with four. Since we've just suggested in our discussion of the boxed argument above that it is undesirable for the truth of a conditional to follow from the truth of the consequent or the falsity of the antecedent, it would surely be even worse if the conditional were \emph{equivalent} to the consequent or the negation of the antecedent. This rules out two of our remaining truth functions, leaving us with just two: $\to$ and a function $g$ (expressed by $\neg(\psi\to\phi)$). But $g(T,T)=F$, hardly what we want from a conditional. So the only truth-function which satisfies minimal conditions necessary to count as a conditional is $\to$.
 
-\paragraph{Meaning as characterised by proof rules}
-Of course, this is not a strong argument – that $\to$ is better than other candidates is no argument that $\to$ is itself adequate! But we can offer better considerations. Given that our proof system for \lone\ is sound and complete, there is a sense in which those rules – collectively – govern or fix the meaning of the connectives. No other rules are necessary to ensure the right things are provable, the things which correspond exactly to the meaning of the connectives.
+\paragraph{Meaning as characterised by derivation rules}
+Of course, this is not a strong argument – that $\to$ is better than other candidates is no argument that $\to$ is itself adequate! But we can offer better considerations. Given that our derivation system for \lone\ is sound and complete, there is a sense in which those rules – collectively – govern or fix the meaning of the connectives. No other rules are necessary to ensure the right things are provable, the things which correspond exactly to the meaning of the connectives.
 
-Things may not be much different in natural languages. Of course we don't have soundness and completeness proofs, because we have neither a fully spelled out semantics nor a formal proof system for natural language. But we do have characteristic patterns of inference for the connectives of English. Some of these patterns of inference look remarkably like those for the formal connectives of \lone, notably the rules governing `and'. (This is some motivation behind the nomenclature of `natural deduction' – it is natural in the sense that it formalises intuitively fundamental characteristic patterns of inference for the corresponding operators.)
+Things may not be much different in natural languages. Of course we don't have soundness and completeness proofs, because we have neither a fully spelled out semantics nor a formal derivation system for natural language. But we do have characteristic patterns of inference for the connectives of English. Some of these patterns of inference look remarkably like those for the formal connectives of \lone, notably the rules governing `and'. (This is some motivation behind the nomenclature of `natural deduction' – it is natural in the sense that it formalises intuitively fundamental characteristic patterns of inference for the corresponding operators.)
 
-Whatever else we might want to say about the English conditional connective `if $\phi$, $\psi$', it seems it should obey these rules: \begin{description}
+Whatever else we might want to say about the English conditional connective `if $\phi$, $\psi$', it seems \emph{prima facie} it should obey these rules: \begin{description}
 	\item [\emph{Modus Ponens}]  If you have established $\phi$, and you have established  `if $\phi$, $\psi$', then you can on that basis establish $\psi$.
 	\item [Conditional Proof] If $\psi$ can be established, conditional on the assumption that $\phi$, then you can establish `if $\phi$, $\psi$' without need of that assumption. 
 \end{description}
@@ -44,14 +44,65 @@ The principle Grice invokes to explain this implicature is his `Maxim of Quantit
 
 \paragraph{Applying Quantity to conditionals}
   
-The material conditional is equivalent to a disjunction $\neg \phi \vee \psi$. Any disjunct of a disjunction entails the disjunction, so contains more information. So an utterance of a disjunction implicates that neither disjunct is believed by the speaker. So if it is apparent that the speaker \emph{does} believe either disjunct – either through being committed to the consequent, or rejecting the antecedent, of the relevant material conditional – we should be struck by the fact that the speaker has communicated an apparent contradiction. In the case of the Tigers above, the speaker who utters both the premises and conclusion of this argument communicates that they believe the consequent, and also utters the conditional which conversationally implicates that the speaker does not believe the consequent. So the hearer has a contradiction communicated to them – little wonder, then, that these sentences sound so bad! But – and this is the crucial part – nothing in this explanation of the badness of the conditional is \emph{semantic}. Nothing in this explanation undermines the idea that the truth conditions of the English conditional construction are the same as those for the material conditional. This is all to do with what we standardly take ourselves to be able to infer from an utterance of a sentence with those semantics, and what goes wrong here is that inference, not the semantics.
+The material conditional is equivalent to a disjunction $\neg \phi \vee \psi$. Any disjunct of a disjunction entails the disjunction, so contains more information. So an utterance of a disjunction implicates that neither disjunct is believed by the speaker. As Thomson put it, \begin{quote}
+	In saying ‘if $p$ then $q$’ a speaker will say something which is in general anyway true or false. But by the act of making the statement he will do other things, too. He will encourage us to think that he has some or other reason for thinking that if $p$ then $q$ and that his reasons are not such as to allow him to assert not-$p$ nor such as to allow him to assert $q$. \citep[67–8]{thomson}
+\end{quote}So if it is apparent that the speaker \emph{does} believe either disjunct – either through being committed to the consequent, or rejecting the antecedent, of the relevant material conditional – we should be struck by the fact that the speaker has communicated an apparent contradiction. 
+
+
+In the case of the Tigers, the speaker who utters both the premises and conclusion of this argument communicates that they believe the consequent, and also utters the conditional which conversationally implicates that the speaker does not believe the consequent. So the hearer has a contradiction communicated to them – little wonder, then, that these sentences sound so bad! But – and this is the crucial part – nothing in this explanation of the badness of the conditional is \emph{semantic}. Nothing in this explanation undermines the idea that the truth conditions of the English conditional construction are the same as those for the material conditional. This is all to do with what we standardly take ourselves to be able to infer from an utterance of a sentence with those semantics, and what goes wrong here is that inference, not the semantics.
 
 \paragraph{Trickier Cases}
 
 All is not smooth sailing for the material conditional account of `If $\phi$, $\psi$'. I mention two trickier cases: \begin{enumerate}
-	\item There seem to be cases where conditional proof goes wrong – most noticeably, in the case of assumptions made that explicitly contradict other things we believe. This is especially apparent in so called \emph{counterfactual} conditionals – those (at least at first glance) that involve conditional reasoning about circumstances that do not obtain. So consider the (apparently true) counterfactual `If Univ had never existed, Exeter would have been the third oldest college'. The conditional proof rationale for this is: if we can derive the consequent from the assumption that Univ never existed and other things, then we can derive the conditional from those other things alone. Yet since Univ's existence is known to us, adding that assumption to our prior beliefs gives an inconsistent set of assumptions, from which any consequent whatever follows. But `If Univ had never existed, Catz would have been the third oldest college' is clearly false, though it should be derivable on exactly the same grounds. What we need to do, apparently, is modify which of our prior beliefs can be retained when reasoning from this contrary-to-fact assumption – there is a large literature on how best to do this, starting with \citet{lewcount}.
-\item There seem to be cases where the Gricean explanation should make a conditional sound bad, but in which it does not. Consider: `You won't fail EDL. Even if you do, you will pass on the resit.' The first sentence of this little speech is a denial of the antecedent of the following conditional, so the conditional should sound bad. But it sounds fine. The word `even' may be held responsible; but it is now up to the Gricean to explain how it interferes with the ordinary Gricean mechanisms.
+	\item There seem to be cases where conditional proof goes wrong – most noticeably, in the case of assumptions made that explicitly contradict other things we believe. This is especially apparent in so called \emph{counterfactual} conditionals – those (at least at first glance) that involve conditional reasoning about circumstances that do not obtain. So consider the (apparently true) counterfactual `If Univ had never existed, Exeter would have been the third oldest college'. The conditional proof rationale for this is: if we can derive the consequent from the assumption that Univ never existed and other things, then we can derive the conditional from those other things alone. Yet since Univ's existence is known to us, adding that assumption to our prior beliefs gives an inconsistent set of assumptions, from which any consequent whatever follows. But `If Univ had never existed, Catz would have been the third oldest college' is clearly false, though it should be derivable on exactly the same grounds. What we need to do, apparently, is modify which of our prior beliefs can be retained when reasoning from this contrary-to-fact assumption.
+
+	 Many philosophers are agreed, however, that such cases should be treated by analysing the `if' involved in counterfactuals as distinct from the `if' of the so-called \emph{indicative} conditionals we've been dealing with so far – if that suggestion is adopted, we may retain a material conditional analysis of indicative `if' while giving an alternative treatment of counterfactual `if'. The classic early account of counterfactual `if' is \citet{lewcount}.
+\item There seem to be cases where the Gricean explanation should make a conditional sound bad, but in which it does not. Consider: `You won't fail EDL. Even if you do, you will pass on the re-sit.' The first sentence of this little speech is a denial of the antecedent of the following conditional, so the conditional should sound bad. But it sounds fine. The word `even' may be held responsible; but it is now up to the Gricean to explain how it interferes with the ordinary Gricean mechanisms.
 \end{enumerate}
+
+\paragraph{The Gibbard Argument}
+
+\begin{theorem}[Gibbard]
+Any conditional operator $\Rightarrow$ which satisfies these three conditions is equivalent to the material conditional \citep{gibbard}\label{gibb}:
+\begin{description}
+	\item[Import-Export] $\phi \Rightarrow (\psi \Rightarrow \chi)$ and $(\phi\wedge \psi)\Rightarrow \chi$ are logically equivalent.
+\item[Lower] $\phi \Rightarrow \psi$ entails $\phi \to \psi$ (i.e., the conditional entails the material conditional).
+\item[Upper] $\phi \vDash \psi$ entails $\phi \Rightarrow \psi$ (i.e., entailment entails the conditional)
+\end{description}
+\begin{proof}
+	Left for exercise.
+\end{proof}
+\end{theorem}
+
+The relevance of the theorem is that the English conditional `if' does seem to satisfy Upper, Lower, and Import-Export. The only mildly controversial one is apparently the latter, but support for it can be found by considering cases in which the application of Import-Export seems unproblematic. Consider this pair, which seem to express the same claim:
+\begin{exe}
+	\ex  \begin{xlist}
+		\ex If you drink one more can of beer then if I drink one more can of beer then we’ll be completely out of beer.
+	\ex If you drink one more can of beer and I drink one more can of beer then we’ll be completely out of beer. \citep[88]{kratzer}
+	\end{xlist}
+\end{exe}
+
+\paragraph{The Trickiest Case}
+
+
+Here's another problem case: \begin{quote}
+	Opinion polls taken just before the 1980 election showed the Republican Ronald Reagan decisively ahead of the Democrat Jimmy Carter, with the other Republican in the race, John Anderson, a distant third.  \citep{mcgee}
+\end{quote} There are only two Republicans in the race, so this is trivially true: \begin{exe}
+	\ex If a Republican wins and it's not Reagan, then it's Anderson who wins.\label{imp}
+\end{exe} (\ref{imp}) is a conditional with a conjunctive antecedent; if Import-Export is valid for the English `if', then we can derive \begin{exe}
+	\ex If a Republican wins the election, then if it’s not Reagan who wins it will be Anderson.\label{exp}
+\end{exe}
+And since the polls overwhelmingly favour Reagan, it is almost certain he will win, and so almost certain that the antecedent of this conditional (\ref{exp}) - i.e., `A Republican will win the election' – is true. It was certainly widely believed by people at the time that a Republican would win, and it turned out to be true in the end.
+
+Assuming that if someone believes a conditional, and believes the antecedent of that conditional, they can validly reason (using \emph{modus ponens}) to the consequent, this follows: \begin{exe}
+	\ex If it's not Reagan who wins, it will be Anderson.\label{false}
+\end{exe}
+But this is false: Anderson was a distant third in the polls, and the most likely alternative to Reagan was Carter. 
+
+
+What has gone wrong? We've derived, from claims we believe to be true ((\ref{imp}) and that a Republican will win), using Import-Export and \emph{modus ponens}, a claim we believe to be false: \ref{false}. The defender of the material conditional account of `if' cannot object to either of these rules, since both Import-Export and \emph{modus ponens} are provably correct derivation rules for the material conditional. So they have to argue that the apparently false conclusion is in fact true; or else deny either the trivial truth (\ref{imp}), or deny that it is acceptable to reason from the highly probable claim – that in fact turned out to be true, just as the polls indicated – that a Republican would win the election. None of these options looks particularly appealing, and most philosophers and linguists have concluded that the material conditional account of `if' is thereby refuted. However, there has been no consensus about what to offer in its place. 
+
+
 
 
 \section{Entailment}
@@ -122,7 +173,7 @@ For names in English, like `Antony Eagle' or `Aristotle', there is no straightfo
 
 On the one hand, there is considerable syntactic and semantic evidence that names in English function rather like the constants of \ltwo. Consider \begin{exe}
 	\ex Antony Eagle is lecturing now.\label{s}
-\end{exe}  \ref{s} is true  iff the thing \textbf{Antony Eagle}, designated by `Antony Eagle', has the property \textbf{lecturing} denoted by `is lecturing', \textbf{now}, i.e., at the time designated by (this use of) `now'. These seem remarkably like the clauses for the satisfaction of atomic formulae of \ltwo; in that sense it looks like the meaning of `Antony Eagle' is just the thing it refers to.
+\end{exe}  (\ref{s}) is true  iff the thing \textbf{Antony Eagle}, designated by `Antony Eagle', has the property \textbf{lecturing} denoted by `is lecturing', \textbf{now}, i.e., at the time designated by (this use of) `now'. These seem remarkably like the clauses for the satisfaction of atomic formulae of \ltwo; in that sense it looks like the meaning of `Antony Eagle' is just the thing it refers to.
 
 \paragraph{Objection to Direct Reference: Informative Identities}
  If `Hesperus' denotes Hesperus, and `Phosphorus' denotes Phosphorus, then, since Hesperus \emph{is} Phosphorus (both are names for Venus), then the meanings of `Hesperus' and `Phosphorus' are the same. So then why aren't these sentences synonymous?: \begin{exe}
@@ -312,7 +363,7 @@ Given a relation $R$ on $D$, its \emph{complement} $R'$ on $D$ is defined to be 
 \paragraph{Orderings}
 \begin{definition}[Ordering]
 	A relation $R$ on $D_{\mathscr{A}}$ is a \begin{description}
-		\item [Partial order] iff it is reflexive, transitive, and anti-symmetric (e.g., $\subseteq$ on a set of sets; see figure \ref{fthree});
+		\item [Partial order] iff it is reflexive, transitive, and anti-symmetric (e.g., $\subseteq$ on a set of sets; see Figure \ref{fthree});
 		\item [Strict Partial Order] iff it is transitive and asymmetric (i.e., $\subset$);
 		\item [Total Order] iff it is a total partial ordering (i.e., $\leqslant$ on $\mathbb{N}$). Also sometimes known as a \emph{linear order};
 		\item [Strict Total Order] iff it is a total strict partial order (i.e., $<$).
@@ -381,7 +432,9 @@ Despite these problems, the case against English having a similar semantics for 
 \addcontentsline{toc}{subsection}{Further Reading}
 
 
-\citet{bevpospa} and \citet{burphilo}, cited in the last chapter, provide useful material on relevant and conditional logics. On the topic of the English conditional, both indicative and counterfactual, a good guide is \citet{benphiguc}. In addition to the work of Grice cited above, \citet{sep-implicature} is a useful source. The best defence of dialethism is \citet{priinco}; the application of relevant logic to inconsistent data sets is \citet{belusefov}.  
+\citet{bevpospa} and \citet{burphilo}, cited in the last chapter, provide useful material on relevant and conditional logics. On the topic of the English indicative conditional, a good guide is \citet{edgington}. In addition to the work of Grice and Thomson cited above, \citet{sep-implicature} is a useful source on conversational pragmatics. \citet{stalnaker} gives an account of the English conditional which invalidates Import-Export; \citet{mcgee} argues that in fact the English `if' doesn't satisfy \emph{modus ponens}. Edgington and \citet{kratzer} discuss more exotic accounts.
+
+ The best defence of dialethism is \citet{priinco}; the application of relevant logic to inconsistent data sets is \citet{belusefov}.  
 
 A wonderful book on names and description is \citet{krinamne}. A modern classic: amazingly, it is more or less a transcription of a series of lectures originally delivered without notes. A useful source on empty names is \citet{capempna}. The topic of empty names is one main topic of another famous series of lectures by \citet{krirefex}.
 
@@ -393,14 +446,14 @@ A wonderful book on names and description is \citet{krinamne}. A modern classic:
 
 \begin{enumerate}
 	
-	\item 	\begin{enumerate} \item Show that the following rules of inference are acceptable in our framework: \begin{enumerate}
+	\item 	\begin{enumerate} \item Show that the following derivation rules are acceptable in our framework: \begin{enumerate}
 		\item \emph{Modus Ponens}: If $\vDash \phi$ and $\vDash \phi \to \psi$, then $\vDash \psi$.
 				\item \emph{Disjunctive Syllogism}: If $\vDash \phi \vee \psi$ and $\vDash \neg \phi$, then $\vDash \psi$.
 				\item \emph{Reductio ad Absurdum}: If $\phi \vDash \psi$ and $\phi \vDash \neg \psi$ then $\vDash \neg \phi$. \end{enumerate}
 	\item
 		 In our system each acceptable rule of inference has a corresponding correct semantic sequent (for example, the sequent $\phi, (\phi \to \psi) \vDash \psi$ corresponds to  \emph{modus ponens}). Consider now this rule of inference in English: if $\phi$ is a truth of logic, then `Necessarily, $\phi$' is too.  Is this rule intuitively correct? Is the corresponding sequent `$\phi \vDash_{\text{English}} \text{Necessarily } \phi$' intuitively correct?
 		\end{enumerate}
-
+\item Give the proof of Gibbard's theorem (Theorem \ref{gibb}). (\emph{Hint:} begin with the fact that all instances of this schema for disjunctive syllogism are valid: $((¬\phi \vee \psi)\wedge\phi)\vDash\psi$.)
 		\item \begin {enumerate} \item John argues that, since $\phi$ and $\psi$ together entail (in English)
 		$\psi$, if follows that $\psi$ entails `if $\phi$, $\psi$'. Evaluate John's argument.
 
@@ -412,7 +465,8 @@ A wonderful book on names and description is \citet{krinamne}. A modern classic:
 		\item Give an argument that `if $\phi$,$\psi$' is a truth-functional connective in English. Do you see any difficulties with your argument?
 
 		\end{enumerate}	
-	
+
+
 \item Say that $\phi \vDash \psi$ is a \emph{perfect} sequent iff it is correct, and $\phi$ is satisfiable, and	$\psi$ is not a tautology. Say that a sequent is \emph{perfectible} iff it is a substitution instance of a perfect sequent. \begin{enumerate}
 	\item Show that there must be a sentence letter in common between $\phi$ and $\psi$ is a perfectible sequent. (Hint: use the Craig Interpolation Theorem (page \pageref{thmcraig}), plus properties of substitution.)
 	\item Give examples to show that perfectible entailment is not transitive (i.e., that there are cases where $\phi$ perfectibly entails $\psi$, where $\psi$ perfectibly entails $\chi$, but where $\phi$ does not perfectibly entail $\chi$.)

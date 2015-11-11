@@ -234,23 +234,25 @@
 \contentsline {theorem}{{Theorem}{97}{Overspill}}{138}{theorem.9.3.97}
 \contentsline {proof}{{\proofname }{71}{}}{138}{proof.71}
 \contentsline {theorem}{{Theorem}{98}{G\"odel Incompleteness Theorems}}{140}{theorem.9.4.98}
-\contentsline {definition}{{Definition}{65}{Direct Reference}}{152}{definition.65}
-\contentsline {definition}{{Definition}{66}{Rigid Designator}}{153}{definition.66}
-\contentsline {definition}{{Definition}{67}{Finite Graph}}{159}{definition.67}
-\contentsline {definition}{{Definition}{68}{Reflexive}}{159}{definition.68}
-\contentsline {definition}{{Definition}{69}{Transitive}}{159}{definition.69}
-\contentsline {definition}{{Definition}{70}{Symmetric}}{160}{definition.70}
-\contentsline {definition}{{Definition}{71}{Anti-symmetric}}{160}{definition.71}
-\contentsline {definition}{{Definition}{72}{Equivalence Relation}}{161}{definition.72}
-\contentsline {definition}{{Definition}{73}{Path}}{162}{definition.73}
-\contentsline {definition}{{Definition}{74}{Strong Connectedness}}{162}{definition.74}
-\contentsline {definition}{{Definition}{75}{Weak Connectedness}}{162}{definition.75}
-\contentsline {definition}{{Definition}{76}{Totality}}{162}{definition.76}
-\contentsline {theorem}{{Theorem}{99}{}}{162}{theorem.10.4.99}
-\contentsline {proof}{{\proofname }{72}{}}{162}{proof.72}
-\contentsline {definition}{{Definition}{77}{Inverse}}{163}{definition.77}
-\contentsline {definition}{{Definition}{78}{Complement}}{163}{definition.78}
-\contentsline {theorem}{{Theorem}{100}{Property Preservation}}{163}{theorem.10.4.100}
-\contentsline {proof}{{\proofname }{73}{}}{163}{proof.73}
-\contentsline {definition}{{Definition}{79}{Ordering}}{163}{definition.79}
-\contentsline {definition}{{Definition}{80}{Well-ordering}}{164}{definition.80}
+\contentsline {theorem}{{Theorem}{99}{Gibbard}}{150}{theorem.10.1.99}
+\contentsline {proof}{{\proofname }{72}{}}{150}{proof.72}
+\contentsline {definition}{{Definition}{65}{Direct Reference}}{155}{definition.65}
+\contentsline {definition}{{Definition}{66}{Rigid Designator}}{156}{definition.66}
+\contentsline {definition}{{Definition}{67}{Finite Graph}}{161}{definition.67}
+\contentsline {definition}{{Definition}{68}{Reflexive}}{162}{definition.68}
+\contentsline {definition}{{Definition}{69}{Transitive}}{162}{definition.69}
+\contentsline {definition}{{Definition}{70}{Symmetric}}{163}{definition.70}
+\contentsline {definition}{{Definition}{71}{Anti-symmetric}}{163}{definition.71}
+\contentsline {definition}{{Definition}{72}{Equivalence Relation}}{164}{definition.72}
+\contentsline {definition}{{Definition}{73}{Path}}{164}{definition.73}
+\contentsline {definition}{{Definition}{74}{Strong Connectedness}}{165}{definition.74}
+\contentsline {definition}{{Definition}{75}{Weak Connectedness}}{165}{definition.75}
+\contentsline {definition}{{Definition}{76}{Totality}}{165}{definition.76}
+\contentsline {theorem}{{Theorem}{100}{}}{165}{theorem.10.4.100}
+\contentsline {proof}{{\proofname }{73}{}}{165}{proof.73}
+\contentsline {definition}{{Definition}{77}{Inverse}}{165}{definition.77}
+\contentsline {definition}{{Definition}{78}{Complement}}{165}{definition.78}
+\contentsline {theorem}{{Theorem}{101}{Property Preservation}}{166}{theorem.10.4.101}
+\contentsline {proof}{{\proofname }{74}{}}{166}{proof.74}
+\contentsline {definition}{{Definition}{79}{Ordering}}{166}{definition.79}
+\contentsline {definition}{{Definition}{80}{Well-ordering}}{167}{definition.80}
