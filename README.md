@@ -16,4 +16,4 @@ I get no errors, but some font warnings, using TeXLive 2015.
 
 ***
 
-This version is **in progress** Chapters 1–4 have been fully revised as of June 2015. Later chapters are scheduled for revision by early 2016. 
+This version is **in progress**. Chapters 1–4 have been fully revised as of June 2015. Later chapters are scheduled for revision by early 2016. 

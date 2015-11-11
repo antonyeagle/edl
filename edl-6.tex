@@ -3,7 +3,7 @@
 \section{Natural Deduction Proofs}
 \paragraph{Proof}
 
-In the last chapter, we saw that using truth tables was a decidable method for evaluating sequents, but it is cumbersome and inelegant. Here, we consider elegant and powerful \emph{proof systems} for propositional logic.
+In the last chapter, we saw that using truth tables was a decidable method for evaluating sequents, but it is cumbersome and inelegant. Here, we consider elegant and powerful \emph{proof systems} for sentential logic.
 
 A \emph{proof} in the informal sense is something which establishes the truth of some claim. Our proofs are structures made out of sentences of \lone, with the following desirable properties: \begin{itemize}
 	\item Each step in the proof involves an obviously correct rule.
@@ -361,7 +361,7 @@ This is familiar in mathematics: one begins with some \emph{axioms} (normally in
 
 If one's axioms are well chosen, one should be able to prove all and only truths about a given subject matter from the axioms characterising that subject matter. This was Euclid's method in the \emph{Elements}: he showed that all and only the truths of Euclidean geometry could be established on the basis of his well chosen axioms.
 
-\paragraph{Axioms for Propositional Logic}
+\paragraph{Axioms for Sentential Logic}
 
 In an axiomatic system, one begins with theorems, the axioms, and applies the rules of inference to preserve theoremhood. 
 
@@ -476,7 +476,7 @@ See also \citet[ch. 5--6]{bosintlo}; he gives a direct proof of the completeness
 		\end{prooftree}
 	\end{equation*}
 \end{enumerate}	
-\item Consider the natural deduction system $ND_{\to,\vee}$ for the language $\mathcal{L}_{\to,\vee}$ in which the only connectives are $\to,\vee$. Suppose we introduce to the language the zero-place propositional constant $\bot$, and add the following rules to the proof system, yielding $ND_{\to,\vee,\bot}$: \begin{equation*}
+\item Consider the natural deduction system $ND_{\to,\vee}$ for the language $\mathcal{L}_{\to,\vee}$ in which the only connectives are $\to,\vee$. Suppose we introduce to the language the zero-place sentential constant $\bot$, and add the following rules to the proof system, yielding $ND_{\to,\vee,\bot}$: \begin{equation*}
 	\begin{prooftree}
 		\bot \justifies \phi \using\bot
 	\end{prooftree}\qquad
