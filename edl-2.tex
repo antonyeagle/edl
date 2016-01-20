@@ -104,7 +104,7 @@ unordered set
 $\bigl\{x,\{x,y\}\bigr\}$.
 \end{definition}
 We need to check whether this definition works. We do so by establishing the fundamental principle of the identity of ordered pairs follows from this definition, namely, that ordered pairs are identical iff they have the same first member, and the same second member.
-\begin{theorem}[Criteria of Identity for Ordered pairs]
+\begin{theorem}[Criteria of Identity for Ordered pairs]\label{cridorpa}
 $\langle x,y\rangle = \langle u,v\rangle$ iff $x=u$ and $y=v$.
 \begin{proof}
 	$\langle x,y\rangle = \langle u,v\rangle$ iff $\left\{x,\{x,y\}\right\} = \left\{u,\{u,v\}\right\}$ iff (i) $x=u$ and $\{x,y\} = \{u,v\}$ or (ii) $x=\{u,v\}$ and $\{x,y\}=u$. Since (ii) is not possible – it would entail that $x$ is a member of one of its own members – it must be that (i), which in turn holds iff $x=u$ and $y=v$.
@@ -118,11 +118,16 @@ In the proof of this theorem, we had to appeal to the fact that no set is a memb
 	\end{proof} 
 \end{theorem}
 
-We can extend the idea of an ordered pair to an ordered sequence of any number of elements, as follows: \begin{equation}\langle x_{1}, \ldots,
-x_{i}, \ldots, x_{n}\rangle = \underbrace{\langle\ldots\langle}_{n-1} x_{1}, 
-\underbrace{\ldots,x_{i}\rangle,\ldots,}_{n-2}
-x_{n}\rangle.\end{equation}
-This definition is unwieldy, but we shall simply adopt the notation and forget the background complexities.
+We can extend the idea of an ordered pair to an ordered sequence of any number of elements, as follows: \begin{definition}[Ordered $n$-tuple]
+Let the notation  $⟪x_{1},\ldots,x_{n}⟫$ denote an ordered $n$-tuple, for $n\geqslant 2$. We offer an inductive definition. \begin{itemize}
+	\item  \emph{Base case.} $⟪ x_{1},x_{2}⟫ \eqdf \langle x_{1},x_{2}\rangle$.
+	\item \emph{Inductive step.} $⟪x_{1},…,x_{n+1}⟫ \eqdf \langle⟪ x_{1},…,x_{n}⟫,x_{n+1}\rangle$.
+\end{itemize}\end{definition}
+From now on, I will abuse notation, and use ‘$\langle$’ and ‘$\rangle$’ to delimit all ordered sequences, not only pairs. But, speaking strictly, when in the following I denote an ordered triple by $\langle x,y,z\rangle$, that expression should be interpreted as $⟪x, y, z⟫= \langle\langle x,y\rangle,z\rangle$. It doesn't really matter \emph{how} we define ordered tuples; all that matters is that they are well-defined set-theoretic entities which behave as expected. (So, strictly speaking, we'd need to prove a theorem analogous to Theorem \ref{cridorpa} showing that ordered $n$-tuples as just defined behave in the right way. We are not going to do that.)
+
+One remaining case deserves attention. Our notation covers all ordered sequences of two or more members. What about the degenerate case of an ordered sequence with just one member? We shall adopt the following harmless convention (which will however be of use in §\ref{semltwo}): \begin{definition}[Ordered 1-tuple]\label{ordonetup}
+	An ordered 1-tuple $\langle x\rangle$ is simply $x$ itself.
+\end{definition}
 
 \section{Relations and Functions}
 Intuitively, a relation $R$ connects some things (its \emph{relata}). We will model a relation set theoretically as a set of \emph{pairs} of entities such that the first member of the pair bears the relation to the second.  So the set $$\{\langle \text{Melbourne},\text{Victoria}\rangle, \langle \text{Brisbane},\text{Queensland}\rangle,\ldots\}$$ is (part of) the relation of ` –  is the capital city of  – '.

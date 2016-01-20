@@ -68,12 +68,15 @@ An \ltwo-formula	$\phi$ is a \emph{sentence} (or `closed formula') of \ltwo\ iff
 \end{definition}  
 
 
-\section{Semantics of \ltwo}
+\section{Semantics of \ltwo} \label{semltwo}
 \paragraph{Semantics for \ltwo: Domains}
 
 As in \lone, the idea is to specify meanings (or \emph{extensions}) for the basic parts of the language, and systematically show how the meaning of complex expressions depends on the meanings of the parts and their relations. But now we have sub-sentential constituents of formulae, which cannot be assigned truth-values as their extensions, so \lone\ structures cannot suffice for \ltwo.
 
  We begin with the notion of a \emph{domain} $D$. This is a non-empty set of objects – any objects – from which are drawn the \emph{semantic values} of constants. (So the meaning of a constant will be an object.) The meaning of a predicate letter will be a \emph{property} or \emph{relation} on the domain. For our purposes, a subset of the domain will suffice for a property (intuitively, those  things in the domain which have the property); and a subset of $D\times D$ will suffice for a 2-place relation. In general, then, the semantic value of a $n$-ary predicate letter will be a subset of $D\underbrace{\times\ldots\times}_{n} D = D^{n}$.
+
+ The attentive reader will have noticed a potential oddity here. The semantic value assigned to a 2-place predicate letter will be a set of pairs, and that assigned to a 3-place predicate letter will be a set of triples, etc. Shouldn't the semantic value assigned to a 1-place monadic predicate letter be a set of 1-tuples, rather than a subset of the domain? That is, shouldn't the semantic value of a predicate be something like $X=\{\langle x_{1} \rangle,…,\langle x_{n}\rangle,…\}$, rather than $X'=\{x_{1},…,x_{n},…\}$? The still more attentive reader will recall that, by Definition \ref{ordonetup}, $\langle x_{1}\rangle = x_{1}$, so that $X=X'$. A subset of the domain turns out to be a set of ordered 1-tuples, so the interpretation of all $n$-ary predicate letters is uniform: a set of $n$-tuples.
+
 
 \paragraph{\ltwo\ Structures and Variable Assignments}
 
@@ -99,7 +102,7 @@ We now assign truth values to the formulae of \ltwo.
 
 \begin{definition}[Satisfaction]
 Supposing $\phi,\psi$ to be formulae of \ltwo, $\upsilon$ a variable, $\mathscr{A}$ a \ltwo-structure, and $\alpha$ a variable assignment over $\mathscr{A}$. We say that $\alpha$ \emph{satisfies} $\phi$ under $\mathscr{A}$, $\valsa{\phi}=T$, as follows: \begin{itemize}
-	\item $\valsa{\Phi\tau_{1}\ldots\tau_{n}}=T$ iff $\langle \valsa{\tau_{1}},\ldots,\valsa{\tau_{n}}\rangle \in \valsa{\Phi}$, where $\Phi$ is a $n$-ary predicate letter ($n>0$), and each $\tau_{i}$ is a term.
+	\item $\valsa{\Phi\tau_{1}\ldots\tau_{n}}=T$ iff $\langle \valsa{\tau_{1}},\ldots,\valsa{\tau_{n}}\rangle \in \valsa{\Phi}$, where $\Phi$ is a $n$-ary predicate letter ($n>0$), and each $\tau_{i}$ is a term.\footnote{Recall the discussion of ordered 1-tuples at the beginning of this section when applying this definition to monadic predicates.}
 	\item $\valsa{\neg\phi}=T$ iff $\valsa{\phi}=F$.
 	\item $\valsa{\phi\wedge\psi}=T$ iff $\valsa{\phi}=\valsa{\psi}=T$.
 	\item $\valsa{\phi\vee\psi}=T$ iff $\valsa{\phi}=T$ or $\valsa{\psi}=T$.

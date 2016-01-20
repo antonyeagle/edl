@@ -32,18 +32,18 @@
 \contentsline {paragraph}{Power Set}{18}{section*.29}
 \contentsline {paragraph}{Ordered Pairs and Sequences}{19}{section*.30}
 \contentsline {section}{\numberline {2.2}Relations and Functions}{21}{section.2.2}
-\contentsline {paragraph}{Functions}{21}{section*.31}
-\contentsline {paragraph}{Operators}{22}{definition.17}
-\contentsline {paragraph}{Properties of functions; enumerations}{23}{section*.33}
+\contentsline {paragraph}{Functions}{22}{section*.31}
+\contentsline {paragraph}{Operators}{23}{definition.19}
+\contentsline {paragraph}{Properties of functions; enumerations}{24}{section*.33}
 \contentsline {section}{\numberline {2.3}Size}{25}{section.2.3}
-\contentsline {subsection}{Further Reading}{28}{section*.34}
-\contentsline {subsection}{Exercises}{28}{section*.35}
+\contentsline {subsection}{Further Reading}{29}{section*.34}
+\contentsline {subsection}{Exercises}{29}{section*.35}
 \contentsline {chapter}{\numberline {3}The Syntax of $\symcal {L}_{1}$}{31}{chapter.3}
 \contentsline {section}{\numberline {3.1}Strings and Quotation}{31}{section.3.1}
 \contentsline {paragraph}{The Alphabet of \ensuremath {\symcal {L}_{1}}}{31}{section*.36}
 \contentsline {paragraph}{Corner Quotes}{32}{section*.37}
 \contentsline {section}{\numberline {3.2}Sentences}{33}{section.3.2}
-\contentsline {paragraph}{Some Useful Terminology }{34}{definition.32}
+\contentsline {paragraph}{Some Useful Terminology }{34}{definition.34}
 \contentsline {paragraph}{Syntax}{35}{section*.39}
 \contentsline {paragraph}{Abbreviatory Conventions}{35}{section*.40}
 \contentsline {section}{\numberline {3.3}Proofs About Syntax}{35}{section.3.3}
@@ -68,9 +68,9 @@
 \contentsline {paragraph}{Generalised Substitition and Formal Logic}{52}{section*.50}
 \contentsline {paragraph}{Equivalence Revisited}{53}{section*.51}
 \contentsline {section}{\numberline {4.7}Truth-functions}{54}{section.4.7}
-\contentsline {paragraph}{Expression}{54}{definition.47}
+\contentsline {paragraph}{Expression}{54}{definition.49}
 \contentsline {paragraph}{How Many Truth Functions?}{55}{theorem.4.7.39}
-\contentsline {paragraph}{Truth-Functional Connectives}{56}{definition.48}
+\contentsline {paragraph}{Truth-Functional Connectives}{56}{definition.50}
 \contentsline {paragraph}{Non-Truth Functional Connectives}{57}{section*.55}
 \contentsline {paragraph}{Revisiting the Semantics}{57}{section*.56}
 \contentsline {subsection}{Exercises}{59}{section*.57}
@@ -144,30 +144,30 @@
 \contentsline {paragraph}{\ensuremath {\symcal {L}_{2}}}{99}{section*.110}
 \contentsline {paragraph}{The Syntax of \ensuremath {\symcal {L}_{2}}: \ensuremath {\symcal {L}_{1}}\ alphabet and Predicate Letters}{100}{section*.111}
 \contentsline {paragraph}{The Syntax of \ensuremath {\symcal {L}_{2}}: Constants, Variables, Quantifiers}{100}{section*.112}
-\contentsline {paragraph}{Atomic Formulae and Formulae of \ensuremath {\symcal {L}_{2}}}{100}{definition.55}
-\contentsline {paragraph}{Free and Bound Occurrences of Variables}{101}{definition.57}
+\contentsline {paragraph}{Atomic Formulae and Formulae of \ensuremath {\symcal {L}_{2}}}{100}{definition.57}
+\contentsline {paragraph}{Free and Bound Occurrences of Variables}{101}{definition.59}
 \contentsline {section}{\numberline {7.2}Semantics of \ensuremath {\symcal {L}_{2}}}{102}{section.7.2}
 \contentsline {paragraph}{Semantics for \ensuremath {\symcal {L}_{2}}: Domains}{102}{section*.115}
-\contentsline {paragraph}{\ensuremath {\symcal {L}_{2}}\ Structures and Variable Assignments}{102}{definition.59}
+\contentsline {paragraph}{\ensuremath {\symcal {L}_{2}}\ Structures and Variable Assignments}{102}{definition.61}
 \contentsline {paragraph}{Semantic Values of Simple Expressions}{103}{section*.117}
-\contentsline {paragraph}{Satisfaction}{103}{definition.61}
+\contentsline {paragraph}{Satisfaction}{103}{definition.63}
 \contentsline {paragraph}{Explaining Satisfaction}{104}{section*.119}
-\contentsline {paragraph}{Truth}{104}{section*.120}
+\contentsline {paragraph}{Truth}{105}{section*.120}
 \contentsline {section}{\numberline {7.3}Some Semantic Theorems About \ensuremath {\symcal {L}_{2}}}{105}{section.7.3}
 \contentsline {paragraph}{Semantic Sequents for \ensuremath {\symcal {L}_{2}}}{105}{section*.121}
-\contentsline {paragraph}{Some Theorems About Entailment in \ensuremath {\symcal {L}_{2}}}{105}{section*.122}
+\contentsline {paragraph}{Some Theorems About Entailment in \ensuremath {\symcal {L}_{2}}}{106}{section*.122}
 \contentsline {paragraph}{Quantifier Interdefinability}{106}{theorem.7.3.66}
-\contentsline {paragraph}{Substitution of Co-Designating Terms}{106}{theorem.7.3.67}
-\contentsline {paragraph}{Satisfaction of Sentences}{107}{theorem.7.3.68}
-\contentsline {paragraph}{Quantifiers: Universal Elimination/Existential Introduction}{108}{theorem.7.3.69}
-\contentsline {paragraph}{Quantifiers: Universal Introduction/Existential Elimination}{108}{theorem.7.3.70}
-\contentsline {paragraph}{Substitution of Equivalent Formulae}{109}{theorem.7.3.71}
-\contentsline {section}{\numberline {7.4}Alternative Semantics for \ensuremath {\symcal {L}_{2}}}{109}{section.7.4}
-\contentsline {paragraph}{Semantics only for sentences}{109}{section*.129}
-\contentsline {paragraph}{`Substitutional' Quantification}{110}{section*.130}
+\contentsline {paragraph}{Substitution of Co-Designating Terms}{107}{theorem.7.3.67}
+\contentsline {paragraph}{Satisfaction of Sentences}{108}{theorem.7.3.68}
+\contentsline {paragraph}{Quantifiers: Universal Elimination/Existential Introduction}{109}{theorem.7.3.69}
+\contentsline {paragraph}{Quantifiers: Universal Introduction/Existential Elimination}{109}{theorem.7.3.70}
+\contentsline {paragraph}{Substitution of Equivalent Formulae}{110}{theorem.7.3.71}
+\contentsline {section}{\numberline {7.4}Alternative Semantics for \ensuremath {\symcal {L}_{2}}}{110}{section.7.4}
+\contentsline {paragraph}{Semantics only for sentences}{110}{section*.129}
+\contentsline {paragraph}{`Substitutional' Quantification}{111}{section*.130}
 \contentsline {paragraph}{Truth for Open Formulae}{111}{section*.131}
-\contentsline {subsection}{Further Reading}{111}{section*.132}
-\contentsline {subsection}{Exercises}{111}{section*.133}
+\contentsline {subsection}{Further Reading}{112}{section*.132}
+\contentsline {subsection}{Exercises}{112}{section*.133}
 \contentsline {chapter}{\numberline {8}Natural Deduction in \ensuremath {\symcal {L}_{2}}}{114}{chapter.8}
 \contentsline {section}{\numberline {8.1}Proofs in \ensuremath {\symcal {L}_{2}}}{114}{section.8.1}
 \contentsline {paragraph}{Proofs in \ensuremath {\symcal {L}_{2}}}{114}{section*.134}
@@ -255,11 +255,11 @@
 \contentsline {section}{\numberline {10.4}Binary Relations}{161}{section.10.4}
 \contentsline {paragraph}{Binary Relations}{161}{section*.206}
 \contentsline {paragraph}{Reflexivity and Transitivity Represented Graphically}{162}{section*.207}
-\contentsline {paragraph}{Symmetry Represented Graphically}{163}{definition.70}
-\contentsline {paragraph}{Equivalence Relations}{164}{definition.72}
+\contentsline {paragraph}{Symmetry Represented Graphically}{163}{definition.72}
+\contentsline {paragraph}{Equivalence Relations}{164}{definition.74}
 \contentsline {paragraph}{Connectedness}{164}{section*.210}
 \contentsline {paragraph}{Inverse and Complement Relations}{165}{section*.211}
-\contentsline {paragraph}{Orderings}{166}{definition.79}
+\contentsline {paragraph}{Orderings}{166}{definition.81}
 \contentsline {paragraph}{Well-Orderings}{167}{section*.213}
 \contentsline {paragraph}{Expressing Properties of Binary Relations in \ensuremath {\symcal {L}_{2}}$_{=}$}{167}{section*.214}
 \contentsline {paragraph}{Relations in English and \ensuremath {\symcal {L}_{2}}: Intension and Extension}{168}{section*.215}

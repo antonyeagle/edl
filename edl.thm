@@ -27,63 +27,65 @@
 \contentsline {axiom}{{Axiom}{3}{Foundation}}{20}{axiom.3}
 \contentsline {theorem}{{Theorem}{8}{}}{20}{theorem.2.1.8}
 \contentsline {proof}{{\proofname }{8}{}}{20}{proof.8}
-\contentsline {definition}{{Definition}{11}{Binary Relation}}{21}{definition.11}
-\contentsline {definition}{{Definition}{12}{Cartesian Product}}{21}{definition.12}
-\contentsline {definition}{{Definition}{13}{Function}}{22}{definition.13}
-\contentsline {definition}{{Definition}{14}{Domain}}{22}{definition.14}
-\contentsline {definition}{{Definition}{15}{Range}}{22}{definition.15}
-\contentsline {definition}{{Definition}{16}{Partial and Total}}{22}{definition.16}
-\contentsline {definition}{{Definition}{17}{Operator}}{22}{definition.17}
-\contentsline {definition}{{Definition}{18}{Commutative}}{23}{definition.18}
-\contentsline {definition}{{Definition}{19}{Associative}}{23}{definition.19}
-\contentsline {definition}{{Definition}{20}{Into, Onto, etc.}}{23}{definition.20}
-\contentsline {definition}{{Definition}{21}{Inverse}}{24}{definition.21}
-\contentsline {theorem}{{Theorem}{9}{}}{24}{theorem.2.2.9}
-\contentsline {definition}{{Definition}{22}{Partial function}}{24}{definition.22}
-\contentsline {theorem}{{Theorem}{10}{}}{24}{theorem.2.2.10}
-\contentsline {definition}{{Definition}{23}{Finite}}{25}{definition.23}
-\contentsline {definition}{{Definition}{24}{Enumeration}}{25}{definition.24}
-\contentsline {definition}{{Definition}{25}{{[Un]}Countable}}{25}{definition.25}
-\contentsline {definition}{{Definition}{26}{Equinumerosity}}{25}{definition.26}
-\contentsline {definition}{{Definition}{27}{Cardinality}}{26}{definition.27}
-\contentsline {definition}{{Definition}{28}{$\leq $}}{26}{definition.28}
+\contentsline {definition}{{Definition}{11}{Ordered $n$-tuple}}{21}{definition.11}
+\contentsline {definition}{{Definition}{12}{Ordered 1-tuple}}{21}{definition.12}
+\contentsline {definition}{{Definition}{13}{Binary Relation}}{22}{definition.13}
+\contentsline {definition}{{Definition}{14}{Cartesian Product}}{22}{definition.14}
+\contentsline {definition}{{Definition}{15}{Function}}{22}{definition.15}
+\contentsline {definition}{{Definition}{16}{Domain}}{23}{definition.16}
+\contentsline {definition}{{Definition}{17}{Range}}{23}{definition.17}
+\contentsline {definition}{{Definition}{18}{Partial and Total}}{23}{definition.18}
+\contentsline {definition}{{Definition}{19}{Operator}}{23}{definition.19}
+\contentsline {definition}{{Definition}{20}{Commutative}}{23}{definition.20}
+\contentsline {definition}{{Definition}{21}{Associative}}{23}{definition.21}
+\contentsline {definition}{{Definition}{22}{Into, Onto, etc.}}{24}{definition.22}
+\contentsline {definition}{{Definition}{23}{Inverse}}{25}{definition.23}
+\contentsline {theorem}{{Theorem}{9}{}}{25}{theorem.2.2.9}
+\contentsline {definition}{{Definition}{24}{Partial function}}{25}{definition.24}
+\contentsline {theorem}{{Theorem}{10}{}}{25}{theorem.2.2.10}
+\contentsline {definition}{{Definition}{25}{Finite}}{25}{definition.25}
+\contentsline {definition}{{Definition}{26}{Enumeration}}{25}{definition.26}
+\contentsline {definition}{{Definition}{27}{{[Un]}Countable}}{26}{definition.27}
+\contentsline {definition}{{Definition}{28}{Equinumerosity}}{26}{definition.28}
+\contentsline {definition}{{Definition}{29}{Cardinality}}{26}{definition.29}
+\contentsline {definition}{{Definition}{30}{$\leq $}}{26}{definition.30}
 \contentsline {theorem}{{Theorem}{11}{}}{26}{theorem.2.3.11}
 \contentsline {proof}{{\proofname }{9}{}}{26}{proof.9}
-\contentsline {theorem}{{Theorem}{12}{Schröder-Bernstein}}{26}{theorem.2.3.12}
-\contentsline {theorem}{{Theorem}{13}{Cantor}}{26}{theorem.2.3.13}
-\contentsline {proof}{{\proofname }{10}{}}{26}{proof.10}
-\contentsline {theorem}{{Theorem}{14}{Uncountability of the Unit Interval}}{27}{theorem.2.3.14}
-\contentsline {proof}{{\proofname }{11}{}}{27}{proof.11}
+\contentsline {theorem}{{Theorem}{12}{Schröder-Bernstein}}{27}{theorem.2.3.12}
+\contentsline {theorem}{{Theorem}{13}{Cantor}}{27}{theorem.2.3.13}
+\contentsline {proof}{{\proofname }{10}{}}{27}{proof.10}
+\contentsline {theorem}{{Theorem}{14}{Uncountability of the Unit Interval}}{28}{theorem.2.3.14}
+\contentsline {proof}{{\proofname }{11}{}}{28}{proof.11}
 \contentsline {theorem}{{Theorem}{15}{Countable Unions}}{28}{theorem.2.3.15}
-\contentsline {definition}{{Definition}{29}{String}}{32}{definition.29}
-\contentsline {definition}{{Definition}{30}{Sentence Letters}}{33}{definition.30}
-\contentsline {definition}{{Definition}{31}{Sentences of \lone }}{33}{definition.31}
-\contentsline {definition}{{Definition}{32}{Arity}}{34}{definition.32}
-\contentsline {definition}{{Definition}{33}{Scope}}{34}{definition.33}
-\contentsline {definition}{{Definition}{34}{Main Connective}}{34}{definition.34}
+\contentsline {definition}{{Definition}{31}{String}}{32}{definition.31}
+\contentsline {definition}{{Definition}{32}{Sentence Letters}}{33}{definition.32}
+\contentsline {definition}{{Definition}{33}{Sentences of \lone }}{33}{definition.33}
+\contentsline {definition}{{Definition}{34}{Arity}}{34}{definition.34}
+\contentsline {definition}{{Definition}{35}{Scope}}{34}{definition.35}
+\contentsline {definition}{{Definition}{36}{Main Connective}}{34}{definition.36}
 \contentsline {theorem}{{Theorem}{16}{Parenthesis Matching}}{36}{theorem.3.3.16}
 \contentsline {proof}{{\proofname }{12}{}}{36}{proof.12}
 \contentsline {theorem}{{Theorem}{17}{Prefix-free}}{36}{theorem.3.3.17}
 \contentsline {proof}{{\proofname }{13}{}}{36}{proof.13}
-\contentsline {definition}{{Definition}{35}{Complexity}}{37}{definition.35}
+\contentsline {definition}{{Definition}{37}{Complexity}}{37}{definition.37}
 \contentsline {theorem}{{Theorem}{18}{}}{38}{theorem.3.4.18}
 \contentsline {proof}{{\proofname }{14}{}}{38}{proof.14}
 \contentsline {lemma}{{Lemma}{19}{Key Lemma}}{39}{theorem.3.5.19}
 \contentsline {proof}{{\proofname }{15}{}}{39}{proof.15}
-\contentsline {definition}{{Definition}{36}{Valuation}}{42}{definition.36}
-\contentsline {definition}{{Definition}{37}{\lone -Structure}}{42}{definition.37}
-\contentsline {definition}{{Definition}{38}{\lone -valuation}}{42}{definition.38}
-\contentsline {definition}{{Definition}{39}{Agreement of Structures}}{43}{definition.39}
+\contentsline {definition}{{Definition}{38}{Valuation}}{42}{definition.38}
+\contentsline {definition}{{Definition}{39}{\lone -Structure}}{42}{definition.39}
+\contentsline {definition}{{Definition}{40}{\lone -valuation}}{42}{definition.40}
+\contentsline {definition}{{Definition}{41}{Agreement of Structures}}{43}{definition.41}
 \contentsline {theorem}{{Theorem}{20}{Falsity is Untruth}}{43}{theorem.4.1.20}
 \contentsline {proof}{{\proofname }{16}{}}{43}{proof.16}
-\contentsline {definition}{{Definition}{40}{Satisfaction}}{45}{definition.40}
-\contentsline {definition}{{Definition}{41}{Entailment}}{46}{definition.41}
-\contentsline {definition}{{Definition}{42}{Tautology}}{46}{definition.42}
+\contentsline {definition}{{Definition}{42}{Satisfaction}}{45}{definition.42}
+\contentsline {definition}{{Definition}{43}{Entailment}}{46}{definition.43}
+\contentsline {definition}{{Definition}{44}{Tautology}}{46}{definition.44}
 \contentsline {theorem}{{Theorem}{21}{}}{46}{theorem.4.3.21}
 \contentsline {theorem}{{Theorem}{22}{}}{46}{theorem.4.3.22}
 \contentsline {proof}{{\proofname }{17}{}}{46}{proof.17}
 \contentsline {theorem}{{Theorem}{23}{Conjunction and Satisfaction}}{47}{theorem.4.4.23}
-\contentsline {definition}{{Definition}{43}{Equivalence}}{47}{definition.43}
+\contentsline {definition}{{Definition}{45}{Equivalence}}{47}{definition.45}
 \contentsline {theorem}{{Theorem}{24}{Equivalence and Biconditional}}{48}{theorem.4.4.24}
 \contentsline {proof}{{\proofname }{18}{}}{48}{proof.18}
 \contentsline {theorem}{{Theorem}{25}{Deduction}}{48}{theorem.4.4.25}
@@ -98,8 +100,8 @@
 \contentsline {proof}{{\proofname }{22}{}}{49}{proof.22}
 \contentsline {theorem}{{Theorem}{31}{Transitivity}}{49}{theorem.4.5.31}
 \contentsline {theorem}{{Theorem}{32}{Contraposition}}{49}{theorem.4.5.32}
-\contentsline {definition}{{Definition}{44}{Uniform Substitution}}{50}{definition.44}
-\contentsline {definition}{{Definition}{45}{Substitution Instance}}{50}{definition.45}
+\contentsline {definition}{{Definition}{46}{Uniform Substitution}}{50}{definition.46}
+\contentsline {definition}{{Definition}{47}{Substitution Instance}}{50}{definition.47}
 \contentsline {lemma}{{Lemma}{33}{Substitution}}{50}{theorem.4.6.33}
 \contentsline {proof}{{\proofname }{23}{}}{51}{proof.23}
 \contentsline {theorem}{{Theorem}{34}{Substitution of Material Equivalents}}{51}{theorem.4.6.34}
@@ -112,23 +114,23 @@
 \contentsline {proof}{{\proofname }{27}{}}{53}{proof.27}
 \contentsline {theorem}{{Theorem}{38}{Equivalence}}{54}{theorem.4.6.38}
 \contentsline {proof}{{\proofname }{28}{}}{54}{proof.28}
-\contentsline {definition}{{Definition}{46}{Truth Function}}{54}{definition.46}
-\contentsline {definition}{{Definition}{47}{Expression}}{54}{definition.47}
+\contentsline {definition}{{Definition}{48}{Truth Function}}{54}{definition.48}
+\contentsline {definition}{{Definition}{49}{Expression}}{54}{definition.49}
 \contentsline {theorem}{{Theorem}{39}{}}{55}{theorem.4.7.39}
 \contentsline {proof}{{\proofname }{29}{}}{55}{proof.29}
-\contentsline {definition}{{Definition}{48}{Truth-functional Connective}}{56}{definition.48}
-\contentsline {definition}{{Definition}{49}{Alternative \lone -valuation}}{58}{definition.49}
-\contentsline {definition}{{Definition}{50}{Base}}{58}{definition.50}
-\contentsline {definition}{{Definition}{51}{Arbitrary Conjunction}}{61}{definition.51}
-\contentsline {definition}{{Definition}{52}{Literal}}{61}{definition.52}
-\contentsline {definition}{{Definition}{53}{Disjunctive Normal Form (\textsc {\lowercase {DNF}})}}{61}{definition.53}
+\contentsline {definition}{{Definition}{50}{Truth-functional Connective}}{56}{definition.50}
+\contentsline {definition}{{Definition}{51}{Alternative \lone -valuation}}{58}{definition.51}
+\contentsline {definition}{{Definition}{52}{Base}}{58}{definition.52}
+\contentsline {definition}{{Definition}{53}{Arbitrary Conjunction}}{61}{definition.53}
+\contentsline {definition}{{Definition}{54}{Literal}}{61}{definition.54}
+\contentsline {definition}{{Definition}{55}{Disjunctive Normal Form (\textsc {\lowercase {DNF}})}}{61}{definition.55}
 \contentsline {theorem}{{Theorem}{40}{\textsc {dnf}}}{62}{theorem.5.1.40}
 \contentsline {proof}{{\proofname }{30}{}}{62}{proof.30}
 \contentsline {theorem}{{Theorem}{41}{}}{64}{theorem.5.1.41}
 \contentsline {proof}{{\proofname }{31}{}}{64}{proof.31}
 \contentsline {theorem}{{Theorem}{42}{De Morgan Equivalences}}{65}{theorem.5.2.42}
 \contentsline {proof}{{\proofname }{32}{}}{65}{proof.32}
-\contentsline {definition}{{Definition}{54}{Duality}}{67}{definition.54}
+\contentsline {definition}{{Definition}{56}{Duality}}{67}{definition.56}
 \contentsline {lemma}{{Lemma}{43}{Duality for Conjunction and Disjunction}}{67}{theorem.5.3.43}
 \contentsline {proof}{{\proofname }{33}{}}{67}{proof.33}
 \contentsline {theorem}{{Theorem}{44}{Duality for Conjunction and Disjunction}}{68}{theorem.5.3.44}
@@ -169,27 +171,27 @@
 \contentsline {theorem}{{Theorem}{64}{Deduction Theorem for \L }}{94}{theorem.6.5.64}
 \contentsline {theorem}{{Theorem}{65}{}}{94}{theorem.6.5.65}
 \contentsline {proof}{{\proofname }{49}{}}{95}{proof.49}
-\contentsline {definition}{{Definition}{55}{Atomic Formula}}{100}{definition.55}
-\contentsline {definition}{{Definition}{56}{Formula}}{100}{definition.56}
-\contentsline {definition}{{Definition}{57}{Free and Bound Variable Occurrences}}{101}{definition.57}
-\contentsline {definition}{{Definition}{58}{Sentence of \ltwo }}{101}{definition.58}
-\contentsline {definition}{{Definition}{59}{\ltwo -Structure}}{102}{definition.59}
-\contentsline {definition}{{Definition}{60}{Variable Assignment}}{102}{definition.60}
-\contentsline {definition}{{Definition}{61}{Satisfaction}}{103}{definition.61}
-\contentsline {definition}{{Definition}{62}{Truth}}{104}{definition.62}
-\contentsline {definition}{{Definition}{63}{Validity in \ltwo }}{105}{definition.63}
+\contentsline {definition}{{Definition}{57}{Atomic Formula}}{100}{definition.57}
+\contentsline {definition}{{Definition}{58}{Formula}}{100}{definition.58}
+\contentsline {definition}{{Definition}{59}{Free and Bound Variable Occurrences}}{101}{definition.59}
+\contentsline {definition}{{Definition}{60}{Sentence of \ltwo }}{101}{definition.60}
+\contentsline {definition}{{Definition}{61}{\ltwo -Structure}}{102}{definition.61}
+\contentsline {definition}{{Definition}{62}{Variable Assignment}}{103}{definition.62}
+\contentsline {definition}{{Definition}{63}{Satisfaction}}{103}{definition.63}
+\contentsline {definition}{{Definition}{64}{Truth}}{105}{definition.64}
+\contentsline {definition}{{Definition}{65}{Validity in \ltwo }}{106}{definition.65}
 \contentsline {theorem}{{Theorem}{66}{Interdefinable Quantifiers}}{106}{theorem.7.3.66}
 \contentsline {proof}{{\proofname }{50}{}}{106}{proof.50}
-\contentsline {theorem}{{Theorem}{67}{Substitution of Co-Designators}}{106}{theorem.7.3.67}
-\contentsline {proof}{{\proofname }{51}{}}{106}{proof.51}
-\contentsline {theorem}{{Theorem}{68}{Satisfaction of Sentences}}{107}{theorem.7.3.68}
-\contentsline {proof}{{\proofname }{52}{}}{107}{proof.52}
-\contentsline {theorem}{{Theorem}{69}{}}{108}{theorem.7.3.69}
-\contentsline {proof}{{\proofname }{53}{}}{108}{proof.53}
+\contentsline {theorem}{{Theorem}{67}{Substitution of Co-Designators}}{107}{theorem.7.3.67}
+\contentsline {proof}{{\proofname }{51}{}}{107}{proof.51}
+\contentsline {theorem}{{Theorem}{68}{Satisfaction of Sentences}}{108}{theorem.7.3.68}
+\contentsline {proof}{{\proofname }{52}{}}{108}{proof.52}
+\contentsline {theorem}{{Theorem}{69}{}}{109}{theorem.7.3.69}
+\contentsline {proof}{{\proofname }{53}{}}{109}{proof.53}
 \contentsline {theorem}{{Theorem}{70}{}}{109}{theorem.7.3.70}
 \contentsline {proof}{{\proofname }{54}{}}{109}{proof.54}
-\contentsline {theorem}{{Theorem}{71}{Substitution of Equivalent Formulae}}{109}{theorem.7.3.71}
-\contentsline {proof}{{\proofname }{55}{}}{109}{proof.55}
+\contentsline {theorem}{{Theorem}{71}{Substitution of Equivalent Formulae}}{110}{theorem.7.3.71}
+\contentsline {proof}{{\proofname }{55}{}}{110}{proof.55}
 \contentsline {theorem}{{Theorem}{72}{Cut}}{115}{theorem.8.1.72}
 \contentsline {proof}{{\proofname }{56}{}}{115}{proof.56}
 \contentsline {theorem}{{Theorem}{73}{\citealt {harwhasol}}}{117}{theorem.8.1.73}
@@ -226,7 +228,7 @@
 \contentsline {theorem}{{Theorem}{93}{\lequ \ is Sound}}{131}{theorem.9.1.93}
 \contentsline {proof}{{\proofname }{68}{}}{131}{proof.68}
 \contentsline {theorem}{{Theorem}{94}{Completeness of \lequ }}{132}{theorem.9.1.94}
-\contentsline {definition}{{Definition}{64}{Definite Descriptions}}{134}{definition.64}
+\contentsline {definition}{{Definition}{66}{Definite Descriptions}}{134}{definition.66}
 \contentsline {theorem}{{Theorem}{95}{Finitude Undefinable}}{137}{theorem.9.3.95}
 \contentsline {proof}{{\proofname }{69}{}}{137}{proof.69}
 \contentsline {theorem}{{Theorem}{96}{The L\"owenheim-Skolem Theorem}}{138}{theorem.9.3.96}
@@ -236,23 +238,23 @@
 \contentsline {theorem}{{Theorem}{98}{G\"odel Incompleteness Theorems}}{140}{theorem.9.4.98}
 \contentsline {theorem}{{Theorem}{99}{Gibbard}}{150}{theorem.10.1.99}
 \contentsline {proof}{{\proofname }{72}{}}{150}{proof.72}
-\contentsline {definition}{{Definition}{65}{Direct Reference}}{155}{definition.65}
-\contentsline {definition}{{Definition}{66}{Rigid Designator}}{156}{definition.66}
-\contentsline {definition}{{Definition}{67}{Finite Graph}}{161}{definition.67}
-\contentsline {definition}{{Definition}{68}{Reflexive}}{162}{definition.68}
-\contentsline {definition}{{Definition}{69}{Transitive}}{162}{definition.69}
-\contentsline {definition}{{Definition}{70}{Symmetric}}{163}{definition.70}
-\contentsline {definition}{{Definition}{71}{Anti-symmetric}}{163}{definition.71}
-\contentsline {definition}{{Definition}{72}{Equivalence Relation}}{164}{definition.72}
-\contentsline {definition}{{Definition}{73}{Path}}{164}{definition.73}
-\contentsline {definition}{{Definition}{74}{Strong Connectedness}}{165}{definition.74}
-\contentsline {definition}{{Definition}{75}{Weak Connectedness}}{165}{definition.75}
-\contentsline {definition}{{Definition}{76}{Totality}}{165}{definition.76}
+\contentsline {definition}{{Definition}{67}{Direct Reference}}{155}{definition.67}
+\contentsline {definition}{{Definition}{68}{Rigid Designator}}{156}{definition.68}
+\contentsline {definition}{{Definition}{69}{Finite Graph}}{161}{definition.69}
+\contentsline {definition}{{Definition}{70}{Reflexive}}{162}{definition.70}
+\contentsline {definition}{{Definition}{71}{Transitive}}{162}{definition.71}
+\contentsline {definition}{{Definition}{72}{Symmetric}}{163}{definition.72}
+\contentsline {definition}{{Definition}{73}{Anti-symmetric}}{163}{definition.73}
+\contentsline {definition}{{Definition}{74}{Equivalence Relation}}{164}{definition.74}
+\contentsline {definition}{{Definition}{75}{Path}}{164}{definition.75}
+\contentsline {definition}{{Definition}{76}{Strong Connectedness}}{165}{definition.76}
+\contentsline {definition}{{Definition}{77}{Weak Connectedness}}{165}{definition.77}
+\contentsline {definition}{{Definition}{78}{Totality}}{165}{definition.78}
 \contentsline {theorem}{{Theorem}{100}{}}{165}{theorem.10.4.100}
 \contentsline {proof}{{\proofname }{73}{}}{165}{proof.73}
-\contentsline {definition}{{Definition}{77}{Inverse}}{165}{definition.77}
-\contentsline {definition}{{Definition}{78}{Complement}}{165}{definition.78}
+\contentsline {definition}{{Definition}{79}{Inverse}}{165}{definition.79}
+\contentsline {definition}{{Definition}{80}{Complement}}{165}{definition.80}
 \contentsline {theorem}{{Theorem}{101}{Property Preservation}}{166}{theorem.10.4.101}
 \contentsline {proof}{{\proofname }{74}{}}{166}{proof.74}
-\contentsline {definition}{{Definition}{79}{Ordering}}{166}{definition.79}
-\contentsline {definition}{{Definition}{80}{Well-ordering}}{167}{definition.80}
+\contentsline {definition}{{Definition}{81}{Ordering}}{166}{definition.81}
+\contentsline {definition}{{Definition}{82}{Well-ordering}}{167}{definition.82}
