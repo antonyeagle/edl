@@ -1,4 +1,4 @@
-
+%!TEX root = edl.tex
 
 \section{Sets}
 
@@ -99,9 +99,7 @@ Notice that, for any $X$, $\emptyset \in \wp(X)$; and $X \in \wp(X)$. The name `
 \paragraph{Ordered Pairs and Sequences}
 
 As mentioned above, sets are identical iff they have the same members. How those members happen to be listed is irrelevant: $\{x,y\}=\{y,x\}=\{x,x,y\}$. So if we want to capture the idea of an \emph{ordered sequence}, it cannot be a set – order doesn't matter for sets, and one can't have repeated elements in a set. Yet we can model sequences just using sets.
- \begin{definition}[Ordered Pair] An {\em ordered pair} $\langle x, y\rangle$ is defined as the
-unordered set
-$\bigl\{x,\{x,y\}\bigr\}$.
+\begin{definition}[Ordered Pair] An {\em ordered pair} $\langle x, y \rangle$ is defined as the unordered set $\bigl\{x,\{x,y\}\bigr\}$.
 \end{definition}
 We need to check whether this definition works. We do so by establishing the fundamental principle of the identity of ordered pairs follows from this definition, namely, that ordered pairs are identical iff they have the same first member, and the same second member.
 \begin{theorem}[Criteria of Identity for Ordered pairs]\label{cridorpa}
@@ -192,9 +190,7 @@ Suppose $f$ is a total function, and $X$ and $Y$ are some other sets. \begin{def
 Some examples; these are functions from $\mathbb{N}$ to $\mathbb{N}$: \begin{itemize}
 	\item The constant function $f(x) = 1$ is into.
 	\item The function $g(x) = \begin{cases}
-		x/2 &\text{ if $x$ is even}\\
-		(x+1)/2 &\text{ if $x$ is odd} 
-	\end{cases}$ is onto. (Every natural number is the value of this function for two arguments.)
+		x/2 &\text{ if $x$ is even}\\ (x+1)/2 &\text{ if $x$ is odd} \end{cases}$ is onto. (Every natural number is the value of this function for two arguments.)
 	\item The function $h(x)=x^3$ is one-one. (Every natural number has a unique cube, but not every natural number has a natural number cube root.)
  	\item The identity function $i(x) = x$ is a bijection.
 \end{itemize}
