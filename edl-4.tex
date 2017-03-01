@@ -40,9 +40,9 @@ Since the value of a sentence is determined by the values of its constituents, i
 \begin{theorem}[Falsity is Untruth]
 		$\val{\phi}{A}=F$ iff $\val{\phi}{A}≠T$.
 		\begin{proof}
-			{\em Base case:} $\phi$ is a sentence letter. Because $\mathscr{A}$ is a function, if $\val{\phi}{A}=F$ then $\val{\phi}{A} ≠T$. Because $\mathscr{A}$ is into and total, if $\val{\phi}{A}≠T$ then $\val{\phi}{A}=F$.
+			\emph{Base case:} $\phi$ is a sentence letter. Because $\mathscr{A}$ is a function, if $\val{\phi}{A}=F$ then $\val{\phi}{A} ≠T$. Because $\mathscr{A}$ is into and total, if $\val{\phi}{A}≠T$ then $\val{\phi}{A}=F$.
 
-			{\em Induction step:} Suppose $\phi$ is a sentence, but is complex, and that the theorem holds for the constituents of $\phi$. We show two illustrative cases: \begin{enumerate}
+			\emph{Induction step:} Suppose $\phi$ is a sentence, but is complex, and that the theorem holds for the constituents of $\phi$. We show two illustrative cases: \begin{enumerate}
 				\item Suppose $\phi = \neg \psi$. Then $\val{\phi}{A}=F$ iff $\val{\neg \psi}{A}=F$, iff $\val{\psi}{A} = T$, iff $\val{\psi}{A}≠0$ iff $\val{\neg\psi}{A}≠T$ iff $\val{\phi}{A}≠T$.
 				\item Suppose $\phi = (\psi \vee \chi)$. Then $\val{\phi}{A} = F$ iff $\val{\psi \vee \chi}{A}=F$ iff $\val{\psi}{A}=F$ and $\val{\chi}{A}=F$ iff $\val{\psi}{A}≠T$ and $\val{\chi}{A} ≠T$ iff  $\val{\psi\vee\chi}{A}≠T$ iff $\val{\phi}{A}≠T$.
 			\end{enumerate}

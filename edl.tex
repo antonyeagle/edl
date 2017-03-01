@@ -163,7 +163,7 @@ This book is open source. \XeLaTeX\ source code for the book is available from t
 
 \chapter*{Preface}\markright{preface}
 
-This is a textbook covering the basics of formal logic and elementary metatheory. Its distinguishing feature is that it has more emphasis on metatheory than comparable introductory textbooks. It was originally written to accompany lectures in the introductory-intermediate logic course at the University of Oxford, \emph{Elements of Deductive Logic}. It can be used independently of the Oxford lectures, of course. 
+This is a textbook covering the basics of formal logic and elementary metatheory. Its distinguishing feature is that it has more emphasis on metatheory than comparable introductory textbooks. It was originally written to accompany lectures in the introductory-intermediate logic course at the University of Oxford, \emph{Elements of Deductive Logic}, but has evolved significantly since then. It is now more suitable for independent study.
 
 This book is made available under a Creative Commons license (CC BY-SA 4.0), which allows users to share the work as they like, and to create derivative and modified works for any purpose, as long as the original creator is appropriately credited, and derivative works are licensed in the same way. I hope this will encourage any users of the book to adapt it to their local environments.
 
@@ -194,11 +194,11 @@ Answering such questions involves drawing a distinction between the \emph{object
 \paragraph{The Structure of this Book} I begin, in chapters \ref{c1} and \ref{c2}, by outlining some mathematical tools – specifically, some elementary \emph{set theory}, including the theory of functions – that will help us study and understand the formal languages which are our subject. In chapters \ref{c3} and \ref{c3a}, we'll briefly review the syntax and semantics of classical sentential logic. Then we'll start proving some results in metatheory. We'll prove some small but still interesting results about the truth-functions, and about the intimate connections between conjunction (‘$\wedge$’), disjunction (‘$\vee$’), and negation (‘$¬$’). In chapter \ref{c4}, we'll prove our first `big' result: the so-called \emph{compactness} theorem for sentential logic. We'll take a break from metatheory in chapter \ref{c5}, to introduce and talk about \emph{formal derivations} in sentential logic, and introduce a particular kind of natural deduction derivation system. Then we'll prove two central results connecting derivability with validity: the \emph{soundness} and \emph{completeness} theorems for sentential logic. I also mention issues of computational implementation, in particular, the \emph{decidability} of sentential logic.
 In chapter \ref{c6}, we'll review \emph{predicate} logic and (in chapter \ref{c7}) its natural deduction derivation system, and we'll prove soundness for standard predicate logic. I sketch the proof of completeness, and briefly consider issues of decidability. In chapter \ref{c8}, issues about predicate logic with identity are discussed, including the soundness of the natural deduction system we construct, and issues about numerical quantification and compactness are discussed. In the final chapter \ref{c9}, we turn from metatheory to issues about the relation between logical languages and natural languages, particularly focussing on issues about conditionals, entailment, designation and the theory of relations.
 
-\paragraph{Exercises and Further Reading} This book also includes exercises, contained in a section entitled `Exercises' at the end of each chapter. These exercises are mostly review and consolidation of the material in the chapter, but some are intended to extend and stretch a student's knowledge of the material. No solutions are provided.
+\paragraph{Exercises and Further Reading} This book also includes exercises, contained in a section entitled `Exercises' at the end of each chapter. These exercises are mostly review and consolidation of the material in the chapter, but some are intended to extend and stretch a student's knowledge of the material. Solutions to selected exercises – some rather more detailed than others – are provided in \autoref{exans}.
 
 Many chapters also contain a section of `Further Reading', which contains references to books and articles that may provide additional information on particular topics of interest. Details of the items there referred to can be found in the Bibliography at the end of the book.
 
-\paragraph{Appendices} The text makes free use of Greek letters as variables of various kinds; a quick refresher of the English names of these letters can be found in Appendix \ref{greek}. There are a number of defined expressions; a list of definitions can be found in Appendix \ref{defns}.
+\paragraph{Other Appendices} The text makes free use of Greek letters as variables of various kinds; a quick refresher of the English names of these letters can be found in Appendix \ref{greek}. There are a number of defined expressions; a list of definitions can be found in Appendix \ref{defns}.
 
 \paragraph{Some Other Useful Readings} The languages and derivation systems used in this book are those developed in Volker Halbach's \emph{Logic Manual} \citep{hallogma}. While the present book is self-contained, it may be helpful to review the material in Halbach's book as a useful adjunct. Another useful source of related material, that I drew on in a number of places in this book, is \citet{bosintlo}.  
 
@@ -252,7 +252,8 @@ Many chapters also contain a section of `Further Reading', which contains refere
 \chapter[Alternative Proof of Compactness]{An Alternative Proof of Compactness}\label{altcomp}
 \input{edl-a.tex}
 
-
+\chapter[Answers to Selected Exercises]{Answers to Selected Exercises}\label{exans}
+\input{edl-ex.tex}
 
 
 \chapter{Greek letters}\label{greek}
@@ -316,7 +317,7 @@ Bennett, Jonathan (2003), \emph{A Philosophical Guide to Conditionals}.
 Boolos, George~S, Burgess, John~P, and Jeffrey, Richard~C (2007), \emph{
   Computability and Logic}. Cambridge: Cambridge University Press, 5 ed.
 
-\bibitem[Boolos(1971)]{boolos} Boolos, George (1971) ‘The Iterative Conception of Set’, \emph{Journal of Philosophy} \textbf{68}: 215–232.
+\bibitem[Boolos(1971)]{boolos} Boolos, George (1971), ‘The Iterative Conception of Set’. \emph{Journal of Philosophy} \textbf{68}: 215–232.
 
 
 \bibitem[{Borkowski and S{\l}upecki(1958)}]{boslogwol}
@@ -351,6 +352,9 @@ Dummett, Michael (1983), \enquote{The Philosophical Basis of Intuitionist
 
 \bibitem[{Edgington(2014)}]{edgington}
 Edgington, Dorothy (2014), \enquote{Indicative Conditionals}. In Edward~N Zalta (ed.), \emph{The Stanford Encyclopedia of Philosophy}. \urlprefix\href{http://plato.stanford.edu/entries/conditionals/}{\nolinkurl{plato.stanford.edu/entries/conditionals/}}.
+
+\bibitem[{Fine(1975)}]{fine}
+Fine, Kit (1975), \enquote{Vagueness, Truth and Logic}. \emph{Synthese} \textbf{30}: 265–300.
 
 \bibitem[{Gentzen(1969)}]{geninvinl}
 Gentzen, Gerhard (1969), \enquote{Investigations into Logical Deduction}. In
@@ -512,11 +516,10 @@ Taylor, Barry (2006), \emph{Models, Truth, and Realism}. Oxford: Oxford
   University Press.
 
 \bibitem[{Thomson(1990)}]{thomson}
-Thomson,~J~F (1990) \enquote{In Defense of ⊃}. \emph{The Journal of Philosophy}, vol.~87: pp.~57–70.
+Thomson,~J~F (1990), \enquote{In Defense of ⊃}. \emph{The Journal of Philosophy}, vol.~87: pp.~57–70.
 
 \bibitem[{Turing(1937)}]{turoncon}
-Turing,~A~M (1937), \enquote{On Computable Numbers, with an Application to
-  the Entscheidungsproblem}. \emph{Proceedings of the London Mathematical
+Turing,~A~M (1937), \enquote{On Computable Numbers, with an Application to  the Entscheidungsproblem}. \emph{Proceedings of the London Mathematical
   Society}, vol.~42: pp.~230–65.
 
 \end{thebibliography}

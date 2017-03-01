@@ -4,15 +4,17 @@
 
 A \emph{set} is a collection of objects. Like a collection, it is a single thing, not a plurality. If $X$ is a set, the objects in $X$ are called its \emph{elements} or \emph{members}. We write $x \in X$ for `$x$ is an element of $X$' (and $y \notin X$ for `$y$ is not an element of $X$').
 
- Sets are \emph{individuated} by their members; or as we sometimes say, sets are individuated purely \emph{extensionally}. There must be something to a set over and above its members – otherwise it would be simply a plurality identical to those members. But whatever that ‘something’ is, it is minimal enough that there cannot be two distinct sets which share the same members.Therefore, if $X$ and $Y$ name sets which have all and only the same members, $A = B$. So we can specify a set by listing the members, conventionally in curly braces: $X = \{x_{1},...,x_{n},…\}$. (But sets differ from \emph{sequences}: two distinct sequences can have the same members as long as they occur in a different order in the two sequences.)
+ Sets are \emph{individuated} by their members; or as we sometimes say, sets are individuated purely \emph{extensionally}. There must be something to a set over and above its members – otherwise it would be simply a plurality identical to those members. But whatever that ‘something’ is, it is minimal enough that there cannot be two distinct sets which share the same members.Therefore, if $X$ and $Y$ name sets which have all and only the same members, $X = Y$. So we can specify a set by listing the members, conventionally in curly braces: $X = \{x_{1},...,x_{n},…\}$. 
 
-A set is not \emph{composed} of its members in any straightforward sense. We can see this most easily in the case of a \emph{singleton} set, a set with just one member. Clearly $x \in \{x\}$; but since $x$ itself need not be a set, $x \notin x$. Since sets are individuated by their members, and since $\{x\}$ has a member that $x$ does not, $x\neq\{x\}$.
+ In this, sets differ from \emph{sequences}: two distinct sequences can have the same members as long as they occur in a different order in the two sequences. Some say that sets also differ from wholes in this respect: while you can make only one set from a given collection of members, you can make more than one object from a given collection of parts, if you arrange those parts in different ways. (This last example is however controversial: some think that appearances here are deceptive.) 
+
+A set is not \emph{composed} of its members in any straightforward sense: it is not a whole with its members as parts. We can see this most easily in the case of a \emph{singleton} set, a set with just one member. Clearly $x \in \{x\}$; but since $x$ itself need not be a set, $x \notin x$. Since sets are individuated by their members, and since $\{x\}$ has a member that $x$ does not, $x\neq\{x\}$. So a set is not to be identified with the fusion of its members, even when that latter object exists.
 
 \paragraph{Axioms} The standard approach to set theory is to take this informal conception of a set as a collection, and set down \emph{axioms} that characterise the behaviour of sets. We've already seen one of the standard axioms of so-called Zermelo-Fraenkel set theory : the axiom of \emph{extensionality}: \begin{axiom}[Extensionality]
   For any sets $X$ and $Y$, if for all objects $x$, $x\in X$ iff $x\in Y$, then $X=Y$.
 \end{axiom} I will below mention various axioms, the basic starting points of modern set theory, but we will largely proceed in an informal way. In particular, I will not be offering proofs from the axioms of all the set theoretic principles I state below.
 
-\paragraph{Sets in Sets} One thing is worth being explicit about at the outset. \emph{Sets can have other sets as members.} We might be used to thinking of collections as collections of material objects (rocks, china plates, etc.) But since a set is not identical to its members, and we can talk about and quantify over sets, they are also objects available to be the members of further sets. We might \emph{start} with the non-sets, or \emph{ur-elements} as they are sometimes known; but once we make sets of them, we can then make further sets which include sets as members, and then further sets involving sets of sets, etc. This is the so-called \emph{iterative conception of a set}.
+\paragraph{Sets in Sets} One thing is worth being explicit about at the outset. \emph{Sets can have other sets as members.} We might be used to thinking of collections as collections of material objects (rocks, china plates, etc.) But since a set is not identical to its members, and we can talk about and quantify over sets, they are also objects available to be the members of further sets. We might \emph{start} with the non-sets, or \emph{ur-elements} as they are sometimes known; but once we make sets of them, we can then make further sets which include sets as members, and then further sets involving sets of sets, etc. This is the so-called \emph{iterative conception of a set} \citep{boolos}.
 
 
 \paragraph{Defining Sets}
@@ -29,45 +31,52 @@ Alternatively, we can specify a set by stating a condition $F$ that the members 
 
  Not just any condition will define a set. Consider the condition $F = x \notin x$. This defines a set $\mathbf{R} = \{x: x\notin x\}$, the set of all non-self-membered things.
 
- Is $\mathbf{R}$ a member of $\mathbf{R}$? Assume $\mathbf{R} \in \mathbf{R}$. Then $\mathbf{R}$ must meet the defining condition $F$, so that $\mathbf{R} \notin \mathbf{R}$. But since $\mathbf{R}$ cannot both be and not be a member of itself, the assumption must be wrong. So $\mathbf{R}\notin \mathbf{R}$. But then $\mathbf{R}$ does meet $F$, and therefore $\mathbf{R} \in \mathbf{R}$. A contradiction follows. This is known as \emph{Russell's paradox}.
+ Is $\mathbf{R}$ a member of $\mathbf{R}$? Assume $\mathbf{R} \in \mathbf{R}$. Then $\mathbf{R}$ must meet the defining condition $F$, so that $\mathbf{R} \notin \mathbf{R}$. But since $\mathbf{R}$ cannot both be and not be a member of itself, the assumption must be wrong. So $\mathbf{R}\notin \mathbf{R}$. But then $\mathbf{R}$ does meet $F$, and therefore $\mathbf{R} \in \mathbf{R}$. A contradiction follows. This is known as \emph{Russell's paradox}\label{russ}.
 
-The problem is assuming that \emph{any} condition at all defines a set. The alternative is simple: to assume that, \emph{if we are given a set $X$}, then any condition at all will \emph{separate} the members of $X$ into those which meet the condition and those which do not. That is: for any set $X$, and any condition $F$, there will exist a set $Y$ which contains everything which is both a member of $X$ and satisfies $F$. This is the axiom of \emph{separation}.
+The problem is assuming that \emph{any} condition at all defines a set. The alternative is simple: to assume that, \emph{if we are given a set $X$}, then any condition at all will \emph{separate} the members of $X$ into those which meet the condition and those which do not. That is: for any set $X$, and any condition $F$, there will exist a set $Y$ which contains everything which is both a member of $X$ and satisfies $F$. This is the axiom of \emph{separation}, so called because it separates out those members of a set which have a certain specified feature.\begin{axiom}[Separation]
+	If $X$ is a set that is already given, and $F$ is any condition, then there exists a set $Y$ consisting of all the members of $X$ which meet the condition $F$. (This may be trivial, in that all or no members of $X$ meet the condition.) That is, for any $X$ and $F$, this specification is well-defined and guaranteed to denote a set: $\{x\in X: F(x)\}$.
+\end{axiom}
 
 
-\paragraph{Relations Between Sets}
-
-\begin{definition}[Subset] A set $X$ is a {\em subset} of $Y$, written
+\paragraph{Relations Between Sets} Some important relations of inclusion and exclusion between sets can be defined, once we are assured that some sets exist.
+\begin{definition}[Subset] A set $X$ is a \emph{subset} of $Y$, written
    $X \subseteq Y$ if every
     member of $X$ is also a member of $Y$: for every $x$, if $x \in X$
-    then $x \in Y$. $X$ is a {\em strict subset} (or {\em proper
+    then $x \in Y$. $X$ is a \emph{strict subset} (or \emph{proper
     subset}) of $Y$ if $X
     \subseteq Y$ and $Y \not\subseteq X$ (written `$X \subset
 Y$').\end{definition}
 Trivially, for all sets $X$, $X\subseteq X$. It also follows that if $X \subseteq Y$ and $Y \subseteq X$ then $X=Y$ (easy). And also if $X \subseteq Y$ and $Y \subseteq Z$ then $X \subseteq Z$.
-\begin{definition}[Relative Complement] If $X$ and $Y$
+Note that if $F$ is some condition, the set $\{x:x\in X \text{and } F(x)\}$, which is guaranteed to exist by the axiom of Separation, is always a subset of $X$.
+\begin{definition}[Superset] A set $X$ is a \emph{superset} of $Y$, written   $X \supseteq Y$ if every    member of $Y$ is also a member of $X$: for every $x$, if $x \in Y$    then $x \in X$. $X$ is a \emph{strict superset} (or \emph{proper superset}) of $Y$ if $X    \supseteq Y$ and $Y \not\supseteq X$ (written `$X \supset Y$').\end{definition}
+\begin{definition}[Disjoint] Sets $X$ and $Y$ are \emph{disjoint} iff there is no $x$ which is a member of both.	
+\end{definition}
+
+
+\paragraph{Operations on Sets} The foregoing relations are defined between existing sets. But there are also generating operations, that given some existing sets yield some new sets. For each of these generating operations, we need to give a definition of the properties of the operation. But we also need an axiom to ensure that that operation succeeds, that is, that there is a set which satisfies the definition we have set down. The axiom of Separation supports our first two definitions: 
+\begin{definition}[Intersection] If $X$ and $Y$ are sets, the set $X
+    \cap Y$ which contains only members of both is called the {\em
+    intersection.} 
+
+If $\mathbf{X}=X_{1},\ldots,X_{n},\ldots$ is a set of sets, $\bigcap \mathbf{X} = X_{1} \cap \ldots \cap X_{n} \cap \ldots$.
+\end{definition}
+ \begin{definition}[Relative Complement] If $X$ and $Y$
 	are sets, then $X \setminus Y$ is the set of all members of $X$ which
-	are {\em not} members of $Y$, called the {\em relative complement} of
-	$Y$ with respect to $X$. If $X$ and $Y$ exist, then $X\setminus Y$ exists: $X \setminus Y = \{x: x\in X \wedge x \notin Y\}$.\end{definition}
+	are \emph{not} members of $Y$, called the \emph{relative complement} of
+	$Y$ with respect to $X$. \end{definition}
+Because both of these definitions involve taking a set that is already given and constructing a subset, the existence of the resulting sets is supported by the axiom of Separation. In the case of intersection, if $X$ and $Y$ exist, $X \cap Y$ exists: $X\cap Y = \{x \in X:x\in Y\}$. Alternatively, we can denote this set as the set of any $x$ that meets the conjunctive condition of being in both $X$ and $Y$: $\{x: x\in X \text{and } x \in Y\}$. In the case of relatively complement, if $X$ and $Y$ exist, $X\setminus Y$ exists: $X \setminus Y = \{x \in Y: x\notin Y\}$.
+
+What if we want to make a set which isn't a subset of an already given set?
 \begin{definition}[Union] If $X$ and $Y$ are sets, then $X \cup Y$
-    (read `the {\em union} of $X$ and $Y$') is the set which contains 
-    all the
-    members of $X$ and all the members of $Y$. If $X$ and $Y$ exist, $X\cup Y$ exists: $X \cup Y = \{x:x\in X \vee x \in Y\}$. 
+    (read `the \emph{union} of $X$ and $Y$') is the set which contains all the members of $X$ and all the members of $Y$. 
 
 If $\mathbf{X}=X_{1},\ldots,X_{n},\ldots$ is a set of sets, $\bigcup \mathbf{X} = X_{1} \cup \ldots \cup X_{n} \cup \ldots$.
 \end{definition}
 The existence of unions is supported by this axiom: \begin{axiom}[Unions]
-  Suppose $\mathbf{X}$ is any set of sets (i.e., a set with only other sets as its members). For any such $\mathbf{X}$, there is a set $Y$ such that, for any $z$, $z\in Y$ iff $z$ is a member of one of the members of $\mathbf{X}$.  
-\end{axiom} That is, $Y$ is the set containing all the things which are in any of the sets in $\mathbf{X}$. Since if $A$ and $B$ are sets, there is a set $\{A,B\}$, it follows from the axiom of Unions that there is a set which contains all the members of $A$ and all the members of $B$. By extensionality, there is just one such set; we call it $A \cup B = \bigcup\{A,B\}$.
+  Suppose $\mathbf{X}$ is any set of sets (i.e., a set with only other sets as its members). For any such $\mathbf{X}$, there is a set $Y$ such that, for any $z$, $z\in Y$ iff $z$ is a member of one of the members of $\mathbf{X}$.  In short: if $X$ and $Y$ exist, $X\cup Y$ exists: $X \cup Y = \{x:x\in X \text{or } x \in Y\}$.  
+\end{axiom} That is, $Y$ is the set containing all the things which are in any of the sets in $\mathbf{X}$. If $X$ and $Y$ are sets, there is a set $\{A,B\}$.\footnote{This is in fact another axiom, the axiom of Pairing.} It then follows from the axiom of Unions that there is a set which contains all the members of $X$ and all the members of $Y$. By extensionality, there is just one such set; we call it $A \cup B = \bigcup\{A,B\}$.
 
-
-\begin{definition}[Intersection] If $X$ and $Y$ are sets, the set $X
-    \cap Y$ which contains only members of both is called the {\em
-    intersection.} If $X$ and $Y$ exist, $X \cap Y$ exists: $X\cap Y = \{x:x\in X \wedge x\in Y\}$.
-
-If $\mathbf{X}=X_{1},\ldots,X_{n},\ldots$ is a set of sets, $\bigcap \mathbf{X} = X_{1} \cap \ldots \cap X_{n} \cap \ldots$.
-\end{definition}
-Note the links in the definition between $\cap$ and `and', and $\cup$ and `or'.
- 
+Note the links  between $\cap$ and `and', and $\cup$ and `or'.
 
 \paragraph{The Empty Set}
 
@@ -77,18 +86,21 @@ The empty set is the collection which has nothing in it. It corresponds to the e
 
  If $X$ is any set, then for any $x$, if $x \in \emptyset$ then $x\in X$ – for the empty set has no members at all. By the definition of subset, therefore, $\emptyset \subseteq X$, for any $X$.
 
+ It is easy to show that when $X$ and $Y$ are disjoint, $X \cap Y = \emptyset$.
+
 \paragraph{Absolute Complement and the Universal Set}
 
-The empty set is the smallest possible set. Is there a largest set? If there is a \emph{universal set} $\Omega$ – a set which has everything (every individual \emph{and every set}) as a member – we could define something a bit closer to negation than relative complement. We could define: $-X = \Omega \setminus X$; it would be the set of all things which are not in $X$.
+The empty set is the smallest possible set in terms of its members. Is there a largest set? If there is a \emph{universal set} $\Omega$ – a set which has everything (every individual \emph{and every set}) as a member – we could define something a bit closer to negation than relative complement. We could define: $-X = \Omega \setminus X$; it would be the set of all things which are not in $X$.
 
-This is \emph{not} possible. Suppose there were a universal set. Then the axiom of separation, that if $X$ is a set then there is a set $Y$ which is a subset of $X$ and such that for all $x\in X$ if $F(x)$ then $x\in Y$, will entail a contradiction.\footnote{Hint for exercises: Apply the condition $x\notin x$ to the universal set $\Omega$ in the axiom of separation, and we will construct the Russell set $\mathbf{R}$ perfectly legitimately. Since the Russell set does not exist, something's gone wrong: the only candidate is the assumption that there is a set of everything.} So there is no universal set. (Puzzle: how do we quantify over all sets, as we have been doing, if there is no set big enough to contain them all?)
+This is \emph{not} possible. Suppose there were a universal set. Then the axiom of separation, that if $X$ is a set then there is a set $Y$ which is a subset of $X$ and such that for all $x\in X$ if $F(x)$ then $x\in Y$, will entail a contradiction.\footnote{Hint for exercises: Apply the condition $x\notin x$ to the universal set $\Omega$ in the axiom of separation, and we will construct the Russell set $\mathbf{R}$ perfectly legitimately. Since the Russell set does not exist, something's gone wrong: the only candidate is the assumption that there is a set of everything.} So there is no universal set. (Philosophical puzzle: how do we quantify over – talk about – all sets, as we have been doing, if there is no collection big enough to contain them all? How indeed can we even talk about \emph{everything} if there are too many things to be collected together into a set?) 
 
 \paragraph{Power Set}
 
-So far you might think that sets are just collections of individuals (i.e., non-sets). But set theory is much more general than that: anything at all, including other sets, can be gathered into a set.
+So far you might think that sets are just collections of individuals (i.e., non-sets). (Well, we've already mentioned the axiom of Pairing, so you probably don't think that.) But set theory is much more general than that: anything at all, including other sets, can be gathered into a set (as long as we don't try to gather too many things).
+
 One useful set of sets is the \emph{power set} of a set $X$, the set of all subsets of $X$:
- \begin{definition}[Power Set]Given a set $X$, the {\em power set} of $X$, denoted $\wp(X)$, is
-defined: $\wp(X) = \{Y: Y \subseteq X\}$. (It is an axiom of set theory that for any set, its power set exists.)\end{definition} 
+ \begin{definition}[Power Set]Given a set $X$, the \emph{power set} of $X$, denoted $\wp(X)$, is
+defined: $\wp(X) = \{Y: Y \subseteq X\}$. (It is another axiom of set theory that for any set, its power set exists.)\end{definition} 
 Notice that, for any $X$, $\emptyset \in \wp(X)$; and $X \in \wp(X)$. The name `power set' comes from this fact: 
 \begin{theorem} If $X$ has $n$ members, $\wp(X)$ has $2^{n}$ members.
 	\begin{proof}
@@ -98,23 +110,23 @@ Notice that, for any $X$, $\emptyset \in \wp(X)$; and $X \in \wp(X)$. The name `
 
 \paragraph{Ordered Pairs and Sequences}
 
-As mentioned above, sets are identical iff they have the same members. How those members happen to be listed is irrelevant: $\{x,y\}=\{y,x\}=\{x,x,y\}$. So if we want to capture the idea of an \emph{ordered sequence}, it cannot be a set – order doesn't matter for sets, and one can't have repeated elements in a set. Yet we can model sequences just using sets.
-\begin{definition}[Ordered Pair] An {\em ordered pair} $\langle x, y \rangle$ is defined as the unordered set $\bigl\{x,\{x,y\}\bigr\}$.
+As mentioned above, sets are identical iff they have the same members. How those members happen to be listed is irrelevant: $\{x,y\}=\{y,x\}=\{x,x,y\}$. So if we want to capture the idea of an \emph{ordered sequence}, it cannot be a set – order doesn't matter for sets, and one can't have repeated elements in a set. Yet we can model, or represent, sequences just using sets.
+\begin{definition}[Ordered Pair] An \emph{ordered pair} $\langle x, y \rangle$ is defined as the unordered set $\bigl\{x,\{x,y\}\bigr\}$.
 \end{definition}
-We need to check whether this definition works. We do so by establishing the fundamental principle of the identity of ordered pairs follows from this definition, namely, that ordered pairs are identical iff they have the same first member, and the same second member.
+We need to check whether this definition works. We do so by establishing the fundamental principle of the identity of ordered pairs follows from this definition, namely, that ordered pairs are identical iff they have the same first member, and the same second member. What we show is that, if we define ordered pairs as above, they have all the characteristic features of ordered pairs. 
 \begin{theorem}[Criteria of Identity for Ordered pairs]\label{cridorpa}
 $\langle x,y\rangle = \langle u,v\rangle$ iff $x=u$ and $y=v$.
 \begin{proof}
-	$\langle x,y\rangle = \langle u,v\rangle$ iff $\left\{x,\{x,y\}\right\} = \left\{u,\{u,v\}\right\}$ iff (i) $x=u$ and $\{x,y\} = \{u,v\}$ or (ii) $x=\{u,v\}$ and $\{x,y\}=u$. Since (ii) is not possible – it would entail that $x$ is a member of one of its own members – it must be that (i), which in turn holds iff $x=u$ and $y=v$.
+	$\langle x,y\rangle = \langle u,v\rangle$ iff $\left\{x,\{x,y\}\right\} = \left\{u,\{u,v\}\right\}$ iff (i) $x=u$ and $\{x,y\} = \{u,v\}$ or (ii) $x=\{u,v\}$ and $\{x,y\}=u$. Since (ii) is not possible – it would entail that $x$ is a member of one of its own members – it must be that (i), which in turn holds iff $x=u$ and $y=v$ (we need extensionality again to show that if $\{x,y\}=\{x,v\}$ then $y=v$).
 \end{proof}
 \end{theorem}
-In the proof of this theorem, we had to appeal to the fact that no set is a member of a member of itself.\footnote{Kuratowski's original definition of an ordered pair was this: $\langle x,y\rangle = \{\{x\},\{x,y\}\}$. In proving the criteria of identity for ordered pairs for this alternative definition, we need not appeal to the above-cited fact. (Exercise.)} This obviously holds on the iterative conception of a set. It tacitly relies on this characteristic axiom of Zermelo-Fraenkel set theory: \begin{axiom}[Foundation]
-	 Every non-empty set $X$ contains a member $y$  such that $X \cap y = \emptyset$.
+In the proof of this theorem, we had to appeal to the fact that no set is a member of a member of itself.\footnote{Kuratowski's original definition of an ordered pair was this: $« x,y» = \{\{x\},\{x,y\}\}$. In proving the criteria of identity for ordered pairs for this alternative definition, we need not appeal to the above-cited fact. (Exercise.) The choice to model ordered pairs as in the text, or by Kuratowski's alternative, is a choice of model – it has no significance for what is being modelled, namely, sequences of length $2$.} This obviously holds on the iterative conception of a set. It tacitly relies on this characteristic axiom of Zermelo-Fraenkel set theory: \begin{axiom}[Foundation]
+	 Every non-empty set $X$ contains a member $y$  such that $X$ is disjoint from $y$: $X \cap y = \emptyset$.
 \end{axiom} (This axiom is also known as \emph{regularity}.) \begin{theorem}
 	No set is a member of itself. \begin{proof}
-		Let $X$ be an arbitrary set. Clearly $X \in \{X\}$. By Foundation, since $\{X\}$ is non-empty, it has a member $y$ such that $\{X\} \cap y = \emptyset$. Since the only member of $\{X\}$ is $X$, it must be that $\{X\} \cap X = \emptyset$. But if $X\in X$, then $X$ and $\{X\}$ do have a member in common – namely, $X$ – and their intersection isn't empty. So $X \notin X$.
+		Let $X$ be an arbitrary set. Clearly $X \in \{X\}$, which latter set exists by Pairing. By Foundation, since $\{X\}$ is non-empty, it has a member $y$ such that $\{X\} \cap y = \emptyset$. Since the only member of $\{X\}$ is $X$, it must be that $\{X\} \cap X = \emptyset$. But if $X\in X$, then $X$ and $\{X\}$ do have a member in common – namely, $X$ – and their intersection isn't empty. So $X \notin X$.
 	\end{proof} 
-\end{theorem}
+\end{theorem} This theorem gives another route to avoiding Russell's paradox from earlier (page \pageref{russ}). But Foundation also enables us to rule out longer `cycles' of inclusion, since it entails that there are no infinite descending chains of set membership: every set bottoms out eventually in some members of its members of its members… that have no members themselves.
 
 We can extend the idea of an ordered pair to an ordered sequence of any number of elements, as follows: \begin{definition}[Ordered $n$-tuple]
 Let the notation  $⟪x_{1},\ldots,x_{n}⟫$ denote an ordered $n$-tuple, for $n\geqslant 2$. We offer an inductive definition. \begin{itemize}
@@ -279,7 +291,7 @@ Another presentation of the set theory needed for this book can be found in
 
 
 
-\subsection*{Exercises}
+\subsection*{Exercises} \label{ex2}
 \addcontentsline{toc}{subsection}{Exercises}
 
 \begin{enumerate}
@@ -287,26 +299,26 @@ Another presentation of the set theory needed for this book can be found in
 \item Prove: \begin{enumerate}
 	\item If $X \subseteq Y$ and $Y \subseteq X$ then $X=Y$.
 	\item If $X \subseteq Y$ and $Y \subseteq Z$ then $X \subseteq Z$.
-	\item $A \not\subset A$.
-	\item If $A \subset B$ then $B \not\subset A$.
-	\item If $A \subset B$ then $A \subseteq B$.
+	\item $X \not\subset X$.
+	\item If $X \subset Y$ then $Y \not\subset X$.
+	\item If $X \subset Y$ then $X \subseteq Y$.
 \end{enumerate}
 
 \item Prove: \begin{enumerate}
-	\item $A\cap A=A\cup A=A$.
-	\item $A \cap \emptyset = \emptyset$.
-	\item $A \cup \emptyset = A$.
-	\item $A \subseteq B$ iff $A \cap B = A$ iff $A \cup B = B$.
-	\item $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$.
-	\item $A\setminus (A \cap B) = A\setminus B$.
-	\item $A \setminus (B \cap C) = (A\setminus B)\cup(A\setminus C)$.
+	\item $X\cap X=X\cup X=X$.
+	\item $X \cap \emptyset = \emptyset$.
+	\item $X \cup \emptyset = X$.
+	\item $X \subseteq Y$ iff $X \cap Y = X$ iff $X \cup Y = Y$.
+	\item $X \cap (Y \cup Z) = (X \cap Y) \cup (X \cap Z)$.
+	\item $X\setminus (X \cap Y) = X\setminus Y$.
+	\item $X \setminus (Y \cap Z) = (X\setminus Y)\cup(X\setminus Z)$.
 \end{enumerate}
 
 \item Prove that if there is a universal set $\Omega$, then the axiom of separation entails a contradiction.
 
-\item Let us define a \emph{Kuratowski ordered pair} $\llbracket x,y\rrbracket$ as the set $\{\{x\},\{x,y\}\}$. Prove that \begin{enumerate} 
-	\item $\llbracket x,y\rrbracket = \llbracket u,v\rrbracket$ iff $x=u$ and $y=v$.
-	\item If $x=y$ then $\llbracket x,y\rrbracket = \{\{x\}\}$.
+\item Let us define a \emph{Kuratowski ordered pair} $« x,y»$ as the set $\{\{x\},\{x,y\}\}$. Prove that \begin{enumerate} 
+	\item $« x,y» = « u,v»$ iff $x=u$ and $y=v$.
+	\item If $x=y$ then $« x,y» = \{\{x\}\}$.
 \end{enumerate}
 
 \item \begin{enumerate}
@@ -345,5 +357,7 @@ Another presentation of the set theory needed for this book can be found in
 
 
 \end{enumerate}
+
+Answers to selected exercises on page \pageref{ans2}.
 }
 

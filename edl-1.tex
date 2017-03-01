@@ -2,15 +2,18 @@
 
 \section{Inductive Proofs}
 
-\paragraph{Mathematical Proof} What is a proof? A proof of a theorem is just an argument, from assumptions that are known truths, that the theorem is true. In the mathematical case, the arguments involved are such that whenever the assumptions are true, the conclusions are true – they are supposed to be necessarily truth-preserving in English. And the assumptions in the mathematical case are the axioms of a particular mathematical theory: necessary mathematical truths that are collectively sufficient, when supplemented by appropriate definitions, to characterise a given body of mathematical truths. There are many issues surrounding the nature of proof that we will neglect; but basically, a proof is an absolutely \emph{conclusive} argument for a given claim, based on assumptions which are themselves known.
+\paragraph{Mathematical Proof} What is a proof? A proof of a claim is just an argument, from assumptions that are known truths, that the claim is true. In a proof, the argument must be a \emph{conclusive} one: if the assumptions are true, the claim must also be true. An argument involved in a proof is \emph{necessarily truth-preserving}, so that in every possible scenario where the assumptions – also known as \emph{premises} – are true, the claim being argued for – also known as the \emph{conclusion} – is also true in that scenario.\footnote{The conclusion need not be necessary itself: what is necessary is the conclusive relationship between the premises and conclusion.}
 
+Such arguments are hard to come by. So we tend to find proofs in mathematics and the mathematicised areas of other disciplines such as physics, computer science, economics, and even philosophy. Other disciplines involve plenty of conclusive arguments, but the stumbling block tends to be finding starting assumptions which are known to be true. In the mathematical case, we begin our proofs  ultimately with the axioms of a particular mathematical theory: necessary mathematical truths that are collectively sufficient, when supplemented by appropriate definitions, to characterise a given body of mathematical truths. (Some might even wonder whether we know these axioms, but I'll set aside such scepticism in this book.) There are many issues surrounding the nature of proof that we will neglect; but basically, a proof is an absolutely \emph{conclusive} argument for a given claim, based on assumptions which are themselves known.
+
+We will offer a considerable number of proofs in this book. They are largely proofs about particular formal logical systems. (We will also look at the formal analogue of mathematical proofs carried out in such logical systems, which we call \emph{deductions}, in \autoref{c5} and \autoref{c7}.) In this chapter, we look informally at some of the techniques we will use in constructing these proofs.
 
 \paragraph{Mathematical Induction}
  We shall often use a powerful method of reasoning known as proof by \emph{mathematical induction}. 
 
-The basic idea is simple. Assume we have a numbered sequence of things. Suppose (i) we can show that: the first member of the sequence has some property, and (ii) we can show that: if some member has the property, then then the subsequent member also has the property. Then we can conclude that \emph{every} member of the sequence has the property.
+The basic idea is simple. Assume we have a numbered sequence of things. Suppose (i) we can show that: the first member of the sequence has some property, and (ii) we can show that: if a member of the sequence has the property, then the immediately subsequent member also has the property. Then we can conclude that \emph{every} member of the sequence has the property.
 
-The easiest case is where the sequence \emph{is} the natural (counting) numbers $\mathbb{N}$, but the principle also works for sequences of other things that are ordered like the natural numbers.
+The easiest case is where the sequence \emph{is} the natural (counting) numbers $\mathbb{N} = 0, 1, 2, 3…$, but the principle also works for sequences of other things that are ordered like the natural numbers. So suppose we rank the children in a classroom from tallest to shortest. A ranking just is a way of associating each member of some collection with an initial fragment of the natural numbers. Suppose the tallest child is shorter than 2m. By the way we've constructed the ranking, if some randomly selected child is shorter than 2m, then the next child in the ranking (if there is one) is also shorter than 2m. So, we can conclude, every child in the class is shorter than 2m. Perhaps we do not always – or ever! – go explicitly through such reasoning in such mundane cases. But we can see in the example that the reasoning does seem to be correct, and to underlie our informal and immediate conclusion that if the tallest student is shorter than 2m, then so is every student.  
 
 
 \paragraph{The Weak Principle of Induction}
@@ -25,17 +28,17 @@ There are a number of formulations of induction. This one follows our intuitions
     is true of the $n$-th member of $S$, then $P$ is true of $n+1$-th member of $S$;
  \end{enumerate} then, $P$ is true of every member of $S$.\end{definition}
 
-To apply this principle, we first establish the \emph{base case} for condition (i); and then the \emph{induction case}, where we assume that (for some \emph{arbitrary} $n$) $P$ holds of the $n$-th member, and show it holds of the $n+1$-th member, to show condition (ii). (Condition (ii) is a conditional claim: it can hold even if nothing is $F$, as long as, if any $n$ is $F$, that suffices to establish that the subsequent thing is also $F$.) Having established those conditions, the principle of induction says, it is now legitimate to infer that every member of the sequence has the property in question. Here is an example.
+To apply this principle, we first establish the \emph{base case} for condition (i); and then the \emph{induction case}, where we assume that (for some \emph{arbitrary} $n$) $P$ holds of the $n$-th member, and show it holds of the $n+1$-th member, to show condition (ii). (Condition (ii) is a conditional claim: it can hold even if nothing is $F$, as long as, if any $n$ is $F$, that suffices to establish that the subsequent thing is also $F$.) Having established those conditions, the principle of induction says, it is now legitimate to infer that every member of the sequence has the property in question. Here is a more mathematical example.
 
 \begin{theorem} For every natural number $n$, 
 \begin{equation}0+1+2+\ldots+n = \frac{n(n+1)}{2}. \label{eqb}
 \end{equation}
 
 \begin{proof}
-	We first prove the {\em base case}, that the
+	We first prove the \emph{base case}, that the
 	property holds of $0$ (the first member of $\mathbb{N}$). Easy: $0 = \frac{0\cdot(0+1)}{2} = \frac{0}{2} = 0$. (Usually the base case is the easy part.)
 
-	Now we wish to prove the {\em induction step}. That is, we assume the 
+	Now we wish to prove the \emph{induction step}. That is, we assume the 
 	property holds of $n$, and show it must hold of $n+1$. So we assume:
 	$0+1+\ldots+n = (n(n+1))/2$.
   
@@ -49,24 +52,20 @@ To apply this principle, we first establish the \emph{base case} for condition (
     \label{eq:3}  \\
       & = & \frac{(n+1)((n+1)+1)}{2}
     \label{eq:4}
-\end{eqnarray} Equation \eqref{eq:4} is clearly just an instance of
-Equation \eqref{eqb} with `$n+1$' in place of `$n$', as required. This
-proves the induction step. \end{proof} \end{theorem} 
-
-
-
+\end{eqnarray} 
+Equation \eqref{eq:4} is clearly just an instance of Equation \eqref{eqb} with `$n+1$' in place of `$n$', as required. This proves the induction step. \end{proof} \end{theorem} 
 
 
 \paragraph{The Strong Principle of Induction}
-
+Here is another induction principle, which is sometimes easier to use than weak induction.
 \begin{definition}[Strong Principle of Induction] `For all $n$, if for all $m<n$, $P(m)$ then $P(n)$' implies `For
    all $n$, $P(n)$.' \end{definition}
+To return to our schoolchildren example, we could reason informally using the strong principle like this. Pick any random child. We know that if each child earlier in the ranking than our chosen child is shorter than 2m, then our child too is shorter than 2m. Since our child was randomly chosen, we know that every child is such that, if all its precedessors in the ranking are shorter than 2m, they are too. We conclude that every child must be shorter than 2m.
 
-The strong principle is just a conditional claim – there is no basis step. Why? Assume that for every $n$, if for all $m < n$ $F(m)$, then $F(n)$. Consider, in particular, $n=0$. Is it true that for all $m <0$, $F(m)$? Well, if it were false, there would be a number less than $0$ such that it isn't $F$. But there are no numbers less than zero, so in particular, there are none of them that are not $F$. So – in a degenerate or vacuous way – all numbers less than $0$ are $F$. So the antecedent of the conditional is satisfied, and since the conditional is true, the consequent must be true. The consequent is $F(0)$ – which is the basis step. Still, sometimes its useful to set out the basis step even when we're using strong induction.
+The strong principle is just a conditional claim – there is no basis step. Why? Assume that for every $n$, if for each $m < n$ it is the case that $F(m)$, then $F(n)$. Consider, in particular, $n=0$. Is it true that for all $m <0$, $F(m)$? Well, if it were false, there would be a number less than $0$ such that it isn't $F$. But there are no numbers less than zero, so in particular, there are none of them that are not $F$! So – in a degenerate or vacuous way – all numbers less than $0$ are $F$. So the antecedent of the conditional is true, and since the conditional is true, the consequent must be true. The consequent is $F(0)$ – which is the basis step. Still, sometimes its useful to set out the basis step even when we're using strong induction.
 
-The Weak Principle of Induction is equivalent to the Strong Principle. I show the left-to-right direction of the equivalence.
-
-\begin{theorem}[Weak to Strong] The weak principle of induction entails the strong principle of induction.
+The choice of whether to use the weak principle or the strong principle is stylistic, for they are equivalent in the sense that any proof using one could be in principled reformulated to use the other. I show one direction of the equivalence here.
+\begin{theorem}[Weak to Strong] The weak principle of induction validates reasoning in accordance the strong principle of induction.
   \begin{proof}
     We assume the conditional premise of the strong principle: that for every $n$, if for all $m < n$ $F(m)$, then $F(n)$. We will also assume the weak principle of induction. And we'll prove from those two assumptions that every $n$ is $F$. That is, assuming the validity of reasoning in accordance with the weak principle of induction, we can demonstrate the validity of reasoning in accordance with the strong principle.
 
@@ -84,50 +83,33 @@ The Weak Principle of Induction is equivalent to the Strong Principle. I show th
 
 
 
-\paragraph{The Least Number Principle}
-
-\begin{definition}[Least Number Principle] If $M$ is a subset of
-  $\mathbb{N}$, and is non-empty, then $M$ has a least
-  member.\end{definition}
-
+\paragraph{The Least Number Principle} Here's another induction principle, of a different form to those we've just considered.
+\begin{definition}[Least Number Principle] If $M$ is a subset of $\mathbb{N}$, and is non-empty, then $M$ has a least member.\end{definition}
 On the assumption that reasoning in accordance with the LNP is good, then reasoning in accordance with the weak principle is also good, as is shown by the following theorem.
-\begin{theorem}[LNP to Weak] The Weak Principle of Induction \label{lnpweak}
-  follows from the Least Number Principle. \begin{proof} Assume
- that $P$ is a 
-  property such that $P(0)$, and for every $n$, $P(n) \to P(n+1)$. We prove from the LNP and these assumptions that for every $n$, $P(n)$ (which is the Weak
-  Principle).
+\begin{theorem}[LNP to Weak] The weak principle of Induction \label{lnpweak} is validated by the least number principle. \begin{proof} Assume that $P$ is a property such that $P(0)$, and for every $n$, $P(n) \to P(n+1)$. We prove from the LNP and these assumptions that for every $n$, $P(n)$ (which is the weak principle).
   
-  Let $M$ be the set of numbers which do \emph{not} satisfy $P$. By the LNP, $M$ has a least member if it is not
-  empty – call this member $m$. $P(0)$ holds, by
-  assumption, so $m>0$; and since $m$ is the least member of $M$, $P(m-1)$. But since if $P(n)$ then $P(n+1)$,
-  $P(m)$ follows from $P(m-1)$. That contradicts our assumption that $m \in
-  M$. So there can be no least member of $M$. A set only has no least member if it has no
-  members at all; so there is no number 
-  $n$
-  such that $\neg P(n)$, hence for every number $n$,
-  $P(n)$.\end{proof}\end{theorem}
+Let $M$ be the set of numbers which do \emph{not} satisfy $P$. By the LNP, $M$ has a least member if it is not empty – call this member $m$. $P(0)$ holds, by assumption, so $m>0$; and since $m$ is the least member of $M$, $P(m-1)$. But since if $P(n)$ then $P(n+1)$, $P(m)$ follows from $P(m-1)$. That contradicts our assumption that $m \in M$. So there can be no least member of $M$. A set only has no least member if it has no members at all; so there is no number $n$ such that $\neg P(n)$, hence for every number $n$, $P(n)$.\end{proof}\end{theorem}
 
-To show that all three principles of induction we've considered are equivalent, we'd now need to show that the LNP follows from the Strong or Weak Principles of Induction; this is left for an exercise.
+To show that all three principles of induction we've considered are equivalent, we'd now need to show that the LNP follows from the strong or weak principles of induction; this is left for an exercise.
 
 
 \section{Proof by \emph{Reductio}}
-Another important proof strategy that you will commonly use is proof by \emph{reductio ad absurdum} (literally, `reduction to the absurd'). In mathematics, this is commonly known as \emph{proof by contradiction}. The idea of this proof is to show that some claim is true by showing that its negation cannot be true. In fact, we just used this proof strategy in the proof of Theorem \ref{lnpweak}.
-
-\paragraph{Example of \emph{Reductio} Proof} Consider, for example this elementary number theoretic result: \begin{theorem} There is no largest prime number. \begin{proof}
+Another important proof strategy that you will commonly use is proof by \emph{reductio ad absurdum} (literally, `reduction to the absurd'). In mathematics, this is also commonly known as \emph{proof by contradiction}. The idea of this proof is to show that some claim is true by showing that its negation cannot be true. In fact, we just used this proof strategy in the proof of Theorem \ref{lnpweak}. Here is another example. \begin{theorem} There is no largest prime number. \begin{proof}
 Suppose – for the sake of argument – that $k$ is the largest prime. Take all the prime numbers less than or equal to $k$. Multiply all these numbers together, and add 1. The resulting number cannot be divided by $k$, nor by any of the primes smaller than $k$ – for if you were to divide by any of those numbers, the remainder would be one. Therefore it is either itself prime, or (by the fundamental theorem of arithmetic) it is divisible by a prime number greater than $k$. In either case, there is a prime greater than $k$, thus refuting our initial supposition that there is a greatest prime. So that initial supposition must be false, and theorem holds.
-\end{proof}\end{theorem} I have made the role of the supposition explicit – we show that an absurdity, or a flat out contradiction, follows from our assumption by impeccable deductive reasoning. But the hallmark of impeccable deductive reasoning is that, if you start with a truth, you will end up with a truth. Since we have ended up with something untrue – an impossibility – we must not have started with a truth.
+\end{proof}\end{theorem} I have made the role of the supposition explicit – we show that an absurdity, or a flat out contradiction, follows from our assumption by impeccable conclusive reasoning. But the hallmark of impeccable conclusive reasoning is that, if you start with a truth, you must also end up with a truth. Since we have ended up with something bound to be untrue – an impossibility – we must not have started with a truth. 
 
-\section{Intuitionism} The foregoing line of reasoning is very persuasive, and its use is pervasive throughout mathematics and in this book. However, some mathematicians and philosophers, beginning with the influential topologist Brouwer, have wondered whether this proof strategy is legitimate. Everyone agrees that, in showing that our initial supposition of `not $S$' is untrue, we have shown that its negation, `not not $S$' is true. But these \emph{intuitionists} say that `not not $S$' is not equivalent to $S$. Why do they say this? It is because proof by contradiction permits us to show that there is an entity with a certain property (because to assume there is no such entity would lead to a contradiction), without telling us what that entity is. Such proofs are called \emph{non-constructive}, for they do not construct the entity which has the property in question.\footnote{Consider, for example, the classical proof that there are irrational numbers $a$ and $b$ such that $a^{b}$ is rational. We can show this by considering $q=\sqrt{2}^{\sqrt{2}}$, and show that either $q^{\sqrt{2}}$ is rational if $q$ is irrational, or that $q$ itself is rational – either way, there is a pair of irrational numbers (either $a = b = \sqrt{2}$, or $a=q, b=\sqrt{2}$) such that $a^{b}$ is rational. But we haven't shown \emph{which} of these numbers is in fact rational – we haven't constructed an example, we've merely shown that there must be an example. (In fact, $q$ is irrational, so that is an actual constructed example that verifies the theorem.)} 
+\section{Intuitionism} The foregoing line of reasoning is very persuasive, and its use is pervasive throughout mathematics and in this book. However, some mathematicians and philosophers, beginning with the influential topologist Brouwer, have wondered whether this proof strategy is legitimate. Everyone agrees that, in showing that our initial supposition of `not $S$' for some English sentence $S$ is untrue, we have shown that its negation, `not not $S$' is true. But these \emph{intuitionists} say that `not not $S$' is not equivalent to $S$. Why do they say this? It is because proof by contradiction permits us to show that there is an entity with a certain property (because to assume there is no such entity would lead to a contradiction), without telling us what that entity is. Such proofs are called \emph{non-constructive}, for they do not construct the entity which has the property in question.\footnote{Consider, for example, the classical proof that there are irrational numbers $a$ and $b$ such that $a^{b}$ is rational. We can show this by considering $q=\sqrt{2}^{\sqrt{2}}$, and show that either $q^{\sqrt{2}}$ is rational if $q$ is irrational, or that $q$ itself is rational – either way, there is a pair of irrational numbers (either $a = b = \sqrt{2}$, or $a=q, b=\sqrt{2}$) such that $a^{b}$ is rational. But we haven't shown \emph{which} of these numbers is in fact rational – we haven't constructed an example, we've merely shown that there must be an example. (In fact, $q$ is irrational, so that is an actual constructed example that verifies the theorem.)} 
 
-\paragraph{Intuitionism on Mathematical Truth} What is the interpretation of mathematical truth that motivates intuitionists to reject the equivalence of `not-not-$P$' and `$P$'? It is this: \emph{mathematical truth is mathematical proof} \citep{shap}. Mathematical objects don't just exist, out there in some Platonic heaven, waiting for facts about them to be discovered. They need to be brought into existence by the activity of a mathematician. But bringing something into existence is a positive act – simply showing that it would be absurd if something didn't exist, is not yet to construct it. So intuitionists offer a reinterpretation of the language of proof – English, in our case – to reflect their philosophical commitments. \begin{itemize}
+\paragraph{Intuitionism on Mathematical Truth} What is the interpretation of mathematical truth that motivates intuitionists to reject the equivalence of `not-not-$P$' and `$P$' for at least some sentence $P$? It is this: \emph{mathematical truth is mathematical proof} \citep{shap}. Mathematical objects don't just exist, out there in some Platonic heaven, waiting for facts about them to be discovered. They need to be brought into existence by the activity of a mathematician. But bringing something into existence is a positive act – simply showing that it would be absurd if something didn't exist, is not yet to construct it. So intuitionists offer a reinterpretation of the language of proof – English, in our case – to reflect their philosophical commitments. \begin{itemize}
   \item The absurd sentence $\bot$ is not constructible.
 \item A construction of `$P$ and $Q$' consists of a construction of $P$ and a construction of $Q$.
 \item A construction of `$P$ or $Q$' consists of a construction of $P$ or a construction of $Q$.
 \item A construction of `If $P$ then $Q$' is a technique which transforms any construction of $P$ into a construction of $Q$.
 \end{itemize} They define `not-$P$' to mean: `If $P$ then $\bot$', i.e., there is a technique which turns a construction of $P$ into a construction of the absurdity. `not not $P$', accordingly, says that there is a technique which turns a technique turning a construction of $P$ into the construction of the absurdity, itself into a construction of an absurdity. But that is not at all obviously the same as a construction of $P$.
 
-\paragraph{The Law of Excluded Middle} Characteristically, the rejection of the so-called \emph{law of double negation elimination} leads to the rejection of the \emph{law of excluded middle} (LEM): intuitionists reject the principle that for any $P$, either $P$ or not $P$. For them, that is equivalent to: for any $P$, there is (already) either a construction of $P$, or a construction turning a construction of $P$ into the construction of an absurdity. Why should we think, prior to any such construction being offered, that they antecedently exist?
-Of course we can prove something related to LEM. \begin{theorem}[LEM\minus]
+\paragraph{The Law of Excluded Middle} Characteristically, the rejection of the so-called \emph{law of double negation elimination} leads to the rejection of the \emph{law of excluded middle} (LEM): intuitionists reject the principle that for any $P$, either $P$ or not $P$. For them, that is equivalent to: for any $P$, there is (already) either a construction of $P$, or a construction turning a construction of $P$ into the construction of an absurdity. Why should we think, prior to any such construction being offered, that they antecedently exist? 
+
+We can however prove something closely related to LEM. \begin{theorem}[LEM\minus]
   For any $P$, not-not-($P$ or not-$P$)
  \begin{proof}
   Assume (i) that for some $P$, it is the case neither that $P$, nor that not-$P$. Assume (ii) $P$: it follows that $P$ or not-$P$, so our assumption (ii) must be false. If assumption (ii) were correct, in conjunction with assumption (i), we'd be able to construct a contradictory claim of the form $Q$ and not-$Q$. That is absurd, and not constructible. So, under assumption (i) alone, we can turn any construction of $P$ into a construction of the absurd, which is of course a construction of not-$P$ from assumption (i). But it follows from not-$P$, again trivially, that `$P$ or not-$P$'. So we can turn an assumption of (i) into a construction of the absurdity, which is a construction of not-not-($P$ or not-$P$).
@@ -143,20 +125,22 @@ So we can show that it is absurd to deny LEM; but that is not yet tantamount to 
 \subsection*{Further Reading}
 \addcontentsline{toc}{subsection}{Further Reading}
 
-On mathematical induction, see  \citet{macsetthl}. Two philosophical attempts to motivate discussion of intuitionism are by \citet{heyintin} and \citet{dumphibai}. A useful discussion of the non-standard features of intuitionistic mathematics is by \citet{int}. 
+On mathematical induction, see  \citet{macsetthl}. Two philosophical attempts to motivate intuitionism are by \citet{heyintin} and \citet{dumphibai}. A useful discussion of the non-standard features of intuitionistic mathematics is by \citet{int}. 
 
 
 
-\subsection*{Exercises}
+\subsection*{Exercises} \label{ex1}
 \addcontentsline{toc}{subsection}{Exercises}
 
 \begin{enumerate}
-\item Prove that the Weak Principle of Induction entails the Least Number Principle.
+\item Prove that the strong principle of induction entails the LNP.
 
-\item \emph{Bivalence} is the principle that every meaningful declarative sentence is either true or false. What is the relationship between Bivalence and the Law of Excluded Middle? 
+\item \emph{Bivalence} is the principle that every meaningful declarative sentence is either true or false – that there are exactly two `truth values'. What is the relationship between Bivalence and the Law of Excluded Middle? 
 
 
 \end{enumerate}
+
+Answers to selected exercises on page \pageref{ans1}.
 }
 
 

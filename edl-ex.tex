@@ -1,0 +1,43 @@
+%!TEX root = edl.tex
+
+\section*{Exercises for Chapter 1: page \pageref{ex1}} \label{ans1}
+
+\begin{enumerate}
+	\item We want to show that the LNP holds. The LNP is a conditional claim: so we'll assume the antecedent (`left hand side') of the conditional, and show that the consequent (`right hand side') must then hold, by reasoning using the strong principle.
+
+	We'll reason by \emph{reductio}. So we'll assume that there is a non-empty set of natural numbers $M$ with \emph{no} least member. So now consider this property of natural numbers: \emph{$n$ is not being a member of $M$}, symbolised $n \notin M$.
+
+	Pick some number $k$ at random. Suppose that none of $k$'s  predecessors are in $M$. Could $k$ be in $M$? If it were, it would be the least member of $M$, because it is the earliest member of the natural number sequence to be found in $M$. But $M$ has no least member. So $k\notin M$. Discharge our supposition, we get this conditional: \emph{if for all $n<k$, $n\notin M$, then $k\notin M$}. Since $k$ was random, we didn't use any specific features of $k$ at all. So this reasoning would hold for any number at all. So we have this claim: \emph{For all $k$ (if for all $n<k$, $n\notin M$, then $k\notin M$)}. This is in the right form to apply strong induction. So we conclude: \emph{for all $k$, k \notin M}.
+
+	But now we have a problem: for if no number is a member of $M$, and $M$ is a subset of the natural numbers, then there is only one option: $M$ is empty. Our supposition was that $M$ is non-empty. So collectively,  our suppositions have led to a contradiction. We blame the supposition that $M$ has no least member, so we conclude that if $M$ is a non-empty set of natural numbers, then it must have some least member.
+
+	 \item  Suppose there is some sentence operator \emph{not} that when applied to some sentence $P$ yields a sentence \emph{not-$P$} which is true just in case $P$ is false, and false just in case $P$ is true. We can use this principle, along with plausible principles about truth and disjunction, to argue that Bivalence leads to the LEM.
+
+If Bivalence is true, then for every meaningful sentence $P$, either $P$ is true or $P$ is false. By our assumption about \emph{not}, it follows that either $P$ is true or not-$P$ is true. But then `$P$ or not-$P$' is true (by the principle that if $\phi$ is true or $\psi$ is true, then `$\phi$ or $\psi$' is true). If $\phi$ is true, then $\phi$. So for any meaningful $P$, $P$ or not-$P$, which is the LEM.
+
+The argument from LEM to Bivalence is trickier. We cannot simply run the above argument in reverse. Suppose we try: we assume the LEM, and then conclude that for each $P$, `$P$ or not-$P$' is true. Does this mean that either $P$ is true or `not-$P$' is true? 
+
+Not necessarily. Consider the case of vagueness. Suppose Alice is borderline tall, neither definitely tall nor definitely not tall. It is natural to say that a sentence can be true only if it is definite. A sentence is definite if it doesn't contain any vague terms, or if it does contain them, they don't make a difference. One influential approach to vagueness known as \emph{supervaluationism} \citep{fine} says that the vague terms don't make a difference just in case the sentence would be true no matter how the vague terms are made precise. So the sentence `Alice is tall' is indefinite, because it contains a vague term and on some ways of making `tall' precise, it is true – those where we make it precise by setting the boundary between tall and not-tall below Alice's height - and on other ways of making it precise, it is false. So `Alice is tall' is indefinite, and thus \emph{neither true nor false}. Hence Bivalence fails, according to the supervaluationist.
+
+But what about the sentence `Alice is tall or not-(Alice is tall)'? No matter where we draw the boundary for `tall' – so long as we do it the same way in each disjunct – Alice will fall on one side or the other. So that sentence is definite: no matter how we make the vague expression precise, it doesn't change the truth value. So the whole sentence is definite. In fact, every instance of LEM is definitely true according to the supervaluationist. So while `$P$ or not-$P$' is always true, that doesn't entail – says the supervaluationist – that either $P$ is true or `not-$P$' is true. So the supervaluationist, at least, wants to resist the argument from LEM to Bivalence.
+\end{enumerate}
+
+\section*{Exercises for Chapter 2: page \pageref{ex2}} \label{ans2}
+
+\begin{enumerate}
+	\item \begin{enumerate}
+		\item $X\subseteq Y$ iff each member of $X$ is a member of $Y$. $Y \subseteq X$ iff each member of $Y$ is a member of $X$. If both hold, then $X$ and $Y$ have the same members. By extensionality, $x=Y$.  
+		\item If $X\subseteq Y$ then every member of $X$ is also a member of $Y$. If $Y \subset Z$, all the members of $Y$ (which include among them all the members of $X$) are members of $Z$. So all the members of $X$ are also members of $Z$, i.e., $X\subseteq Z$. \setcounter{enumii}{3}
+		\item If $X \subset Y$, then all members of $X$ are members of $Y$, but not vice versa. So there is at least one member of $Y$ which is not a member of $X$. So $Y\not\subset X$. 
+	\end{enumerate}
+	\item \begin{enumerate}
+		\item $X\cap X$ is the set which has all the members in both $X$ and itself; but that is just the set which shares all its members with $X$, namely $X$ (by extensionality). Similar reasoning shows $X\cup X = X$. \setcounter{enumii}{2}
+	\item The set which contains all the members of $X$ and all the members of the empty set can be distinct from $X$ only if there are members of the empty set, which there are not. \setcounter{enumii}{4}
+	\item $X\cap(Y \cup Z)$ is the set containing just those members of $X$ which are also members of $Y$ or members of $Z$. There are thus two ways to be a member of this set: be a member of $X$ and  $Y$, or be a member of $X$ and $Z$ (or both). That is equivalent to: be a member of $X \cap Y$ or a member of $X \cap Z$ (or both). That is equivalent to: be a member of $(X\cap Y)\cup(X\cap Z)$. Here we have exploited the connection between conjunction and intersection, and disjunction and union, mentioned in the text. \setcounter{enumii}{6}
+	\item The set $X \setminus (Y \cap Z)$ is the set of those members of $X$ which are not members of both $Y$ and $Z$. Something can be a member of this set just in case it is in $X$ but not in $Y$, or is in $X$ but not in $Z$ (or both). Equivalently: be a member of $X \setminus Y$ or a member of $X\setminus Z$; equivalently, be a member of $(X \setminus Y) \cup (X\setminus Z)$.
+	\end{enumerate} \setcounter{enumi}{3}
+	\item \begin{enumerate}
+		\item $«x,y»= «u,v»$ iff $\{\{x\},\{x,y\}\} = \{\{u\},\{u,v\}\}$ iff either (i) $\{x\}=\{u\}$ and $\{x,y\}=\{u,v\}$ or (ii) $\{x\} = \{u,v\}$ and $\{x,y\} = \{u\}$. Case (ii) cannot hold, because extensionality entails that identical sets must have the same number of members. So case (i) holds. But case (i) holds iff $x=u$ and $y=v$, by extensionality again.
+		\item If $x=y$ then $«x,y»=\{\{x\},\{x,x\}\}=\{\{x\},\{x\}\}=\{\{x\}\}$.
+	\end{enumerate}
+\end{enumerate}
