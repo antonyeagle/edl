@@ -47,7 +47,7 @@ The problem is assuming that \emph{any} condition at all defines a set. The alte
     \subseteq Y$ and $Y \not\subseteq X$ (written `$X \subset
 Y$').\end{definition}
 Trivially, for all sets $X$, $X\subseteq X$. It also follows that if $X \subseteq Y$ and $Y \subseteq X$ then $X=Y$ (easy). And also if $X \subseteq Y$ and $Y \subseteq Z$ then $X \subseteq Z$.
-Note that if $F$ is some condition, the set $\{x:x\in X \text{and } F(x)\}$, which is guaranteed to exist by the axiom of Separation, is always a subset of $X$.
+Note that if $F$ is some condition, the set $\{x:x\in X \text{ and } F(x)\}$, which is guaranteed to exist by the axiom of Separation, is always a subset of $X$.
 \begin{definition}[Superset] A set $X$ is a \emph{superset} of $Y$, written   $X \supseteq Y$ if every    member of $Y$ is also a member of $X$: for every $x$, if $x \in Y$    then $x \in X$. $X$ is a \emph{strict superset} (or \emph{proper superset}) of $Y$ if $X    \supseteq Y$ and $Y \not\supseteq X$ (written `$X \supset Y$').\end{definition}
 \begin{definition}[Disjoint] Sets $X$ and $Y$ are \emph{disjoint} iff there is no $x$ which is a member of both.	
 \end{definition}
@@ -64,7 +64,7 @@ If $\mathbf{X}=X_{1},\ldots,X_{n},\ldots$ is a set of sets, $\bigcap \mathbf{X} 
 	are sets, then $X \setminus Y$ is the set of all members of $X$ which
 	are \emph{not} members of $Y$, called the \emph{relative complement} of
 	$Y$ with respect to $X$. \end{definition}
-Because both of these definitions involve taking a set that is already given and constructing a subset, the existence of the resulting sets is supported by the axiom of Separation. In the case of intersection, if $X$ and $Y$ exist, $X \cap Y$ exists: $X\cap Y = \{x \in X:x\in Y\}$. Alternatively, we can denote this set as the set of any $x$ that meets the conjunctive condition of being in both $X$ and $Y$: $\{x: x\in X \text{and } x \in Y\}$. In the case of relatively complement, if $X$ and $Y$ exist, $X\setminus Y$ exists: $X \setminus Y = \{x \in Y: x\notin Y\}$.
+Because both of these definitions involve taking a set that is already given and constructing a subset, the existence of the resulting sets is supported by the axiom of Separation. In the case of intersection, if $X$ and $Y$ exist, $X \cap Y$ exists: $X\cap Y = \{x \in X:x\in Y\}$. Alternatively, we can denote this set as the set of any $x$ that meets the conjunctive condition of being in both $X$ and $Y$: $\{x: x\in X \text{ and } x \in Y\}$. In the case of relatively complement, if $X$ and $Y$ exist, $X\setminus Y$ exists: $X \setminus Y = \{x \in Y: x\notin Y\}$.
 
 What if we want to make a set which isn't a subset of an already given set?
 \begin{definition}[Union] If $X$ and $Y$ are sets, then $X \cup Y$
@@ -73,7 +73,7 @@ What if we want to make a set which isn't a subset of an already given set?
 If $\mathbf{X}=X_{1},\ldots,X_{n},\ldots$ is a set of sets, $\bigcup \mathbf{X} = X_{1} \cup \ldots \cup X_{n} \cup \ldots$.
 \end{definition}
 The existence of unions is supported by this axiom: \begin{axiom}[Unions]
-  Suppose $\mathbf{X}$ is any set of sets (i.e., a set with only other sets as its members). For any such $\mathbf{X}$, there is a set $Y$ such that, for any $z$, $z\in Y$ iff $z$ is a member of one of the members of $\mathbf{X}$.  In short: if $X$ and $Y$ exist, $X\cup Y$ exists: $X \cup Y = \{x:x\in X \text{or } x \in Y\}$.  
+  Suppose $\mathbf{X}$ is any set of sets (i.e., a set with only other sets as its members). For any such $\mathbf{X}$, there is a set $Y$ such that, for any $z$, $z\in Y$ iff $z$ is a member of one of the members of $\mathbf{X}$.  In short: if $X$ and $Y$ exist, $X\cup Y$ exists: $X \cup Y = \{x:x\in X \text{ or } x \in Y\}$.  
 \end{axiom} That is, $Y$ is the set containing all the things which are in any of the sets in $\mathbf{X}$. If $X$ and $Y$ are sets, there is a set $\{A,B\}$.\footnote{This is in fact another axiom, the axiom of Pairing.} It then follows from the axiom of Unions that there is a set which contains all the members of $X$ and all the members of $Y$. By extensionality, there is just one such set; we call it $A \cup B = \bigcup\{A,B\}$.
 
 Note the links  between $\cap$ and `and', and $\cup$ and `or'.
@@ -98,9 +98,8 @@ This is \emph{not} possible. Suppose there were a universal set. Then the axiom 
 
 So far you might think that sets are just collections of individuals (i.e., non-sets). (Well, we've already mentioned the axiom of Pairing, so you probably don't think that.) But set theory is much more general than that: anything at all, including other sets, can be gathered into a set (as long as we don't try to gather too many things).
 
-One useful set of sets is the \emph{power set} of a set $X$, the set of all subsets of $X$:
- \begin{definition}[Power Set]Given a set $X$, the \emph{power set} of $X$, denoted $\wp(X)$, is
-defined: $\wp(X) = \{Y: Y \subseteq X\}$. (It is another axiom of set theory that for any set, its power set exists.)\end{definition} 
+One useful set of sets is the \emph{power set} of a set $X$. This is, intuitively, the set of all ways to choose some members from $X$. We can choose no members; we can choose all the members; we can choose some but not all. Each such way of choosing determines a subset of $X$, so the set of all ways to choose members from $X$ is exactly the set of all subsets of $X$:
+ \begin{definition}[Power Set]Given a set $X$, the \emph{power set} of $X$, denoted $\wp(X)$, is defined: $\wp(X) = \{Y: Y \subseteq X\}$. (It is another axiom of set theory that for any set, its power set exists – the aptly named Power Set axiom.)\end{definition} 
 Notice that, for any $X$, $\emptyset \in \wp(X)$; and $X \in \wp(X)$. The name `power set' comes from this fact: 
 \begin{theorem} If $X$ has $n$ members, $\wp(X)$ has $2^{n}$ members.
 	\begin{proof}
@@ -113,14 +112,19 @@ Notice that, for any $X$, $\emptyset \in \wp(X)$; and $X \in \wp(X)$. The name `
 As mentioned above, sets are identical iff they have the same members. How those members happen to be listed is irrelevant: $\{x,y\}=\{y,x\}=\{x,x,y\}$. So if we want to capture the idea of an \emph{ordered sequence}, it cannot be a set – order doesn't matter for sets, and one can't have repeated elements in a set. Yet we can model, or represent, sequences just using sets.
 \begin{definition}[Ordered Pair] An \emph{ordered pair} $\langle x, y \rangle$ is defined as the unordered set $\bigl\{x,\{x,y\}\bigr\}$.
 \end{definition}
-We need to check whether this definition works. We do so by establishing the fundamental principle of the identity of ordered pairs follows from this definition, namely, that ordered pairs are identical iff they have the same first member, and the same second member. What we show is that, if we define ordered pairs as above, they have all the characteristic features of ordered pairs. 
+This is not to say that ordered pairs are and always have been special kinds of sets. The existence of multiple equally good models for how to represent ordered pairs set-theoretically undermines any claim that ordered pairs are identical to sets. Kuratowski's original definition of an ordered pair was this different proposal:
+\begin{definition}[Kuratowski Ordered Pair] A \emph{Kuratowski ordered pair} $«x,y» \eqdf \{\{x\},\{x,y\}\}$.
+\end{definition}
+ If we take seriously the identification of ordered pairs with sets, we need to answer which of these definitions identifies the `right' sets. But any such answer would be arbitrary, because it would involve picking one equally good representation of ordered pairs over another. The choice to model ordered pairs as in the text, or by Kuratowski's alternative, is a choice of model – it has no significance for what is being modelled, namely, sequences of length $2$.
+
+Why do I say this? Because we can show that both our definition and Kuratowski's manage to capture the behaviour of  ordered pairs. We do so by establishing the fundamental principle of the identity of ordered pairs follows from the definitions, namely, that ordered pairs are identical iff they have the same first member, and the same second member. What we show is that, if we define ordered pairs as above, they have all the characteristic features of ordered pairs.
 \begin{theorem}[Criteria of Identity for Ordered pairs]\label{cridorpa}
 $\langle x,y\rangle = \langle u,v\rangle$ iff $x=u$ and $y=v$.
 \begin{proof}
 	$\langle x,y\rangle = \langle u,v\rangle$ iff $\left\{x,\{x,y\}\right\} = \left\{u,\{u,v\}\right\}$ iff (i) $x=u$ and $\{x,y\} = \{u,v\}$ or (ii) $x=\{u,v\}$ and $\{x,y\}=u$. Since (ii) is not possible – it would entail that $x$ is a member of one of its own members – it must be that (i), which in turn holds iff $x=u$ and $y=v$ (we need extensionality again to show that if $\{x,y\}=\{x,v\}$ then $y=v$).
 \end{proof}
 \end{theorem}
-In the proof of this theorem, we had to appeal to the fact that no set is a member of a member of itself.\footnote{Kuratowski's original definition of an ordered pair was this: $« x,y» = \{\{x\},\{x,y\}\}$. In proving the criteria of identity for ordered pairs for this alternative definition, we need not appeal to the above-cited fact. (Exercise.) The choice to model ordered pairs as in the text, or by Kuratowski's alternative, is a choice of model – it has no significance for what is being modelled, namely, sequences of length $2$.} This obviously holds on the iterative conception of a set. It tacitly relies on this characteristic axiom of Zermelo-Fraenkel set theory: \begin{axiom}[Foundation]
+In the proof of this theorem, we had to appeal to the fact that no set is a member of a member of itself. (In proving the parallel criteria of identity theorem for Kuratowski ordered pairs, we need not appeal to this fact, showing which I leave as an exercise.) This fact obviously holds on the iterative conception of a set. It tacitly relies on this characteristic axiom of Zermelo-Fraenkel set theory: \begin{axiom}[Foundation]
 	 Every non-empty set $X$ contains a member $y$  such that $X$ is disjoint from $y$: $X \cap y = \emptyset$.
 \end{axiom} (This axiom is also known as \emph{regularity}.) \begin{theorem}
 	No set is a member of itself. \begin{proof}
@@ -139,38 +143,191 @@ One remaining case deserves attention. Our notation covers all ordered sequences
 	An ordered 1-tuple $\langle x\rangle$ is simply $x$ itself.
 \end{definition} This choice has the odd but harmless consequence that everything is a sequence.
 
-\section{Relations and Functions}
-Intuitively, a relation $R$ connects some things (its \emph{relata}). We will model a relation set theoretically as a set of \emph{pairs} of entities such that the first member of the pair bears the relation to the second.  So the set $$\{\langle \text{Melbourne},\text{Victoria}\rangle, \langle \text{Brisbane},\text{Queensland}\rangle,\ldots\}$$ is (part of) the relation of ` –  is the capital city of  – '.
+\section{Relations}
+Intuitively, a relation $R$ characterises the nature of the connections between some things (its \emph{relata}), or an aspect of the structure of some collection of things. We will model a relation set theoretically as a set of \emph{sequences} of entities; we care not just about which things are involved in the relation, but which way they are related. (We need to be able to distinguish when Alice loves Bob from the case where Bob loves Alice, and simply saying that Alice and Bob are related by the `– loves –' relation doesn't allow us to do that.)  So the set $$\{\langle \text{Melbourne}, \text{Victoria}\rangle, \langle \text{Adelaide}, \text{South Australia}\rangle,\ldots\}$$ is (part of) the relation of ` –  is the capital city of  – '.
 \begin{definition}[Binary Relation]
-	$X$ is a binary relation on a \emph{domain} $D$ iff it is a set that contains nothing except ordered pairs $\langle x,y\rangle$ where $x \in D$ and $y\in D$. ($\emptyset$ contains nothing at all, and so nothing other than ordered pairs, so is a binary relation).
+	$X$ is a binary relation on a \emph{domain} $D$ iff it is any set that contains nothing except ordered pairs $\langle x,y\rangle$ where $x \in D$ and $y\in D$. ($\emptyset$ contains nothing at all, and so nothing other than ordered pairs, so is a binary relation).
 \end{definition}
 \begin{definition}[Cartesian Product]
-	The \emph{Cartesian product} of sets $X$ and 
-	$Y$, written‘$X \times Y$’, is the set of all pairs $\langle x,y\rangle$
-	such that $x \in X$ and $y \in Y$.
-\end{definition} A relation on $D$ is a subset of $D \times D$.
-
-We discuss binary relations further, from a more metaphysical perspective, in Chapter \ref{c8}.
-
-\paragraph{Functions}
-
-Melbourne and Victoria are related by the `is the capital city of' relation iff `Melbourne' names the same thing as `the capital of Victoria'. The term-forming expression `the capital of  –' denotes a \emph{function}. We'll treat the notion of a function more precisely, as a special kind of relation.
-\begin{definition}[Function]
-	$f$ is an $n$-place function iff (i) it is relation on $D$ (ii) and for any sequence $x_{1},\ldots,x_{n}$ of objects from $D$, and any $y,z \in D$, if $\langle x_{1},\ldots,x_{n},y\rangle \in f$ and $\langle x_{1},\ldots,x_{n},z\rangle \in f$, then $y=z$ (i.e., each sequence of things stands in the relation to at most one thing). 
+	The \emph{Cartesian product} of sets $X$ and 	$Y$, written‘$X \times Y$’, is the set of all pairs $\langle x,y\rangle$ such that $x \in X$ and $y \in Y$.
+\end{definition} A binary relation on $D$ is a subset of $D \times D$. A relation can be generalised to arbitrary numbers of relata: 
+\begin{definition}[$n$-place Relation]
+  $X$ is an $n$-place relation on $D$ iff it is any set of ordered $n$-tuples of members of $D$. An $n$-place relation is a subset of $\underbrace{D \times \ldots \times D}_{n}$.
 \end{definition}
- A $n+1$-place relation which meets this condition is an $n$-place function.
+This identification of relations with sets is not necessarily a `metaphysical' hypothesis. Just as in the case of ordered pairs, we need not literally assert that relations are and always were sets. Rather, this is a model that can be used to represent some interesting features of relations. I say some more about the metaphysics of relations in \autoref{c8}.
 
-If $f$ is a unary function (i.e., a binary relation), we write $f(x) = y$ iff $\langle x,y\rangle \in f$. In this case we say $x$ is the \emph{argument} given to $f$, and $y$ the \emph{value} of $f$ given that argument. The fact that, for a given argument, a function has a unique value, justifies our talking of `\emph{the} value of the function for a given argument', and justifies the link to natural language definite descriptions like `the capital of South Australia' as corresponding to a function with an argument – see the discussion of definite descriptions in chapter \ref{c7} for more on this issue.
+
+\paragraph{Properties of Binary Relations} Binary relations have many interesting properties. We can often represent these properties \emph{graphically}, if the domain on which the relation is defined is finite. 
+\begin{definition}[Finite Directed Graph]
+  A \emph{finite directed graph} on a domain $D$ is a pair $\langle V, A\rangle$ where the set of \emph{vertices} $V$ is $D$, $D$ is finite, and $A$ is a set of \emph{arrows}, directed lines from members of $V$ to members of $V$. (Not every member of $V$ needs to have an arrow attached to it.)
+\end{definition} A graph on $D$ represents a binary relation $R$ on $D$ just in case \begin{enumerate}
+  \item $\langle x,y\rangle \in R$ iff $x\in V$ and $y \in V$.
+  \item $\langle x,y\rangle \in R$ iff there is an arrow from $x$ to $y$ in $A$.
+\end{enumerate}
+\paragraph{Reflexivity, Transitivity, and Symmetry}
+Consider the domain $D=\{1,2,3,4\}$.
+\begin{definition}[Reflexive]
+  A relation on $D$ is \emph{reflexive} iff for all $x\in D$, $\langle x,x\rangle\in R$. 
+\end{definition} Graphically, that means, as in the figure on the left in Figure \ref{fone}, that each vertex has an arrow pointing to itself. A relation is \emph{irreflexive} iff no vertex has an arrow pointing to itself.
+\begin{definition}[Transitive]
+  A relation on $D$ is \emph{transitive} iff for all $x,y,z\in D$, if both $\langle x,y\rangle\in R$ and $\langle y,z\rangle\in R$, then also $\langle x,z\rangle\in R$.
+\end{definition} Graphically, that means, as in the figure on the right in Figure \ref{fone}, that whenever there is an indirect sequence of arrows between two vertices, there is also a `shortcut'. A relation is \emph{intransitive} iff there is never a shortcut.
+\begin{figure}
+\begin{center}
+  {~\xymatrix{1 \ar@(ur,dr)[lr]  & 2 \ar@(ur,dr)[lr] \\
+  3 \ar@(ur,dr)[lr] & 4 \ar@(ur,dr)[lr] }\qquad\qquad}{\xymatrix{1  & 2 \ar[l] \\ 3 \ar[ur]
+    \ar[u] & 4 \ar[l] \ar[ul] \ar[u] 
+    }}
+\end{center}  \caption{Reflexivity and Transitivity\label{fone}}
+\end{figure}
+\begin{definition}[Symmetric]
+  A relation $R$ on $D$ is \emph{symmetric} iff whenever $\langle x,y\rangle \in R$, then $\langle y,x\rangle \in R$.
+\end{definition} Graphically, this means (as on the left in Figure \ref{ftwo}) that whenever there is an arrow from one vertex to another, there will be a return arrow. A relation is \emph{asymmetric} iff there are no returning arrows at all.
+\begin{definition}[Anti-symmetric]
+  A relation $R$ on $D$ is \emph{anti-symmetric} iff whenever $\langle x,y\rangle \in R$ and $\langle y,x\rangle \in R$, then $x=y$ (sometimes this is known as \emph{weak asymmetry}).
+\end{definition} Graphically, this means (as on the right in Figure \ref{ftwo}) that the only `returning' arrows are loops.
+\begin{figure}
+\begin{center}
+  ~{\xymatrix{1 \ar@/^/[r]  & 2 \ar@/^/[l] \ar@/^/[d] \\
+  3 \ar@/^/[r] & 4 \ar@/^/[l] \ar@/^/[u] }\qquad\qquad}{\xymatrix{1 \ar@(ul,dl)[lr]  & 2 \ar[l] \\ 3 \ar[ur]
+    \ar[u] & 4 \ar@(dl,dr)[lr] \ar[l] \ar[ul] \ar[u] 
+    }}
+\end{center}  \caption{Symmetry\label{ftwo}}
+\end{figure}
+We need to clearly distinguish non-reflexivity from irreflexivity: the former is just the failure of reflexivity – i.e., at least one object in the domain doesn't bear $R$ to itself – while the latter involves every object in the domain not bearing $R$ to itself. Likewise, we need to distinguish non-transitivity from intransitivity, and non-symmetry from asymmetry \emph{and} antisymmetry. 
+
+The observant reader will have noticed that, while we defined \emph{reflexive on $D$}, \emph{symmetric on $D$}, etc., the only definition which actually mentions $D$ is the definition of reflexivity. All the other definitions are \emph{conditional} in form: they say, if certain pairs are in the relation, then certain other pairs will be too. We needn't specify a domain to check whether these conditionals hold of any relation. But to check whether a relation is reflexive, we need not only the ordered pairs of the relation, but also what the domain is, so we can see if any members of the domain are missing from the relation. Reflexivity is an extrinsic property of a relation, because it is relative to the domain from which the relata of the relation may be drawn. The others are intrinsic properties of a relation; whether the relation has them is fixed by which pairs are in the relation. The very same set of pairs might be reflexive on one domain and non-reflexive on another, but it will be symmetric on every domain if it is symmetric on any.
+
+\paragraph{Equivalence Relations}
+\begin{definition}[Equivalence Relation]
+  If $R$ on $D$ is reflexive, transitive, and symmetric, then it is an \emph{equivalence relation}. 
+\end{definition}
+An equivalence relation divides up the domain into \emph{equivalence classes}, every member of which bears the relation to every other member of it. The relation `is the same height as' is an equivalence relation on the domain of all people; we say that it \emph{induces a partition} on the domain of people, sorting them into groups which are uniform with respect to height.
+
+The most obvious equivalence relation on a domain $D$ is the identity relation, the set of all pairs $\langle x, x\rangle$ such that $x\ in D$. It is reflexive by definition, and moreover symmetric and transitive; since there are \emph{never} arrows from any $x$ to any distinct $y$, it follows that every time there are such arrows, there are return arrows and shortcuts. (Notice that the identity relation is both symmetric and anti-symmetric.)
+
+Any relation on the empty set is also trivially an equivalence relation. While every empty relation is trivially symmetric and transitive, it will generally fail to be reflexive unless the domain is empty too.
+
+\paragraph{Connectedness}
+An equivalence relation divides up the domain into isolated groups of mutually interrelated elements. A connected relation, intuitively, is one where no item is isolated. But there are a number of things we could mean by this. First, we define a (directed) path: \begin{definition}[Path]
+  There is a \emph{path} from $x$ to $y$ in $R$ iff there exists a sequence $z_{1},\ldots,z_{n}$ such that $\langle x,z_{1}\rangle \in R$ and
+  $\langle z_{1},z_{2}\rangle \in R$ and \ldots and $\langle z_{n},y\rangle \in R$.
+\end{definition}
+Now we may define: \begin{definition}[Strong Connectedness]
+  $R$ on $D$ is \emph{connected} iff for any $x \in D$ and $y \in D$, such that $x$ and $y$ are distinct, then there is a path from $x$ to $y$ in $R$. 
+ \end{definition} This is illustrated in the middle graph in \autoref{fconn}, where by following the arrows one can get from any vertex to any other, perhaps by a number of intermediate vertices.
+
+ There is another property of binary relations, sometimes called \emph{weak connectedness}, which holds iff for any nodes on the graph of $R$, $x$ and $y$, there is some path that joins $x$ to $y$ moving only along arrows (perhaps in the `backwards' direction). This is illustrated in the left hand graph in \autoref{fconn}. For any binary relation $S$, let $S^{*}$ be the relation defined by $\langle x,y\rangle \in S^{*}$ iff $\langle x,y\rangle \in S$ or $\langle y,x\rangle \in S$. 
+ \begin{definition}[Weak Connectedness]
+  A relation $R$ is weakly connected on $D$ iff  $R^{*}$ is connected on $D$.
+\end{definition}
+There is an even stronger condition than connectedness, illustrated in the right hand graph in \autoref{fconn}: \begin{definition}[Totality]
+  A relation $R$ on $D$ is \emph{total} iff for any $x$ and $y$ in $D$, either $\langle x,y\rangle \in R$ or $\langle y,x\rangle \in R$.
+\end{definition}
+\begin{figure}
+\begin{center}
+  ~{\xymatrix{1 \ar[r]  & 2  \ar[d] \\
+  3  & 4 \ar[l]}}\qquad\qquad
+  {\xymatrix{1 \ar[r]  & 2  \ar[d] \\
+  3 \ar[u]  & 4 \ar[l]}}\qquad\qquad
+    {\xymatrix{1 \ar@(ul,dl)[lr]  & 2 \ar@(ur,dr)[lr]\ar[l] \\ 3 \ar@(dl,dr)[lr] \ar[ur]
+    \ar[u] & 4 \ar@(dl,dr)[lr] \ar[l] \ar[ul] \ar[u] 
+    }}
+\end{center}  \caption{Connectedness and Totality\label{fconn}}
+\end{figure}\begin{theorem}\label{tot}
+  If $R$ is total on $D$, then $R$ is reflexive on $D$.
+  \begin{proof}
+     If $R$ is total, then for any $x$ and $y$ in $D$, either $\langle x,y\rangle \in R$ or $\langle y,x\rangle \in R$. Suppose $x=y$; then either either $\langle x,x\rangle \in R$ or $\langle x,x\rangle \in R$. Therefore, for any $x\in D$, $\langle x,x\rangle \in R$, i.e., $R$ is reflexive on $D$.
+   \end{proof} 
+\end{theorem}
+
+
+\paragraph{Inverse and Complement Relations}
+Given a relation $R$ on $D$, we can define two interesting further relations in terms of it: \begin{definition}[Inverse] \label{definverse}
+Given a relation $R$, its \emph{inverse} $R^{-1}$ is defined to be this set: $\left\{\langle y,x\rangle:\langle x,y\rangle \in R\right\}$. \end{definition}
+\begin{definition}[Complement]
+Given a relation $R$ on $D$, its \emph{complement} $R'$ on $D$ is defined to be this set: $(D \times D) \setminus R$ – i.e., the set of all ordered pairs of elements of the domain \emph{not} in $R$.
+ \end{definition} Note that a complement relation is always with respect to the underlying domain – there is no such thing as \emph{the} complement of a relation – whereas we can define an inverse relation just with reference to the original relation. 
+
+\begin{theorem}[Property Preservation]
+  \begin{itemize}
+    \item If $R$ is reflexive on $D$ then $R^{-1}$ is reflexive on $D$ and $R'$ is irreflexive on $D$;
+    \item  if $R$ is symmetric then $R^{-1}$ and $R'$ are symmetric; 
+    \item if $R$ is transitive then $R^{-1}$ is transitive;
+    \item  if $R$ is connected on $D$ then $R^{-1}$ is connected on $D$.
+  \end{itemize}
+\begin{proof}
+  I prove one case: reflexivity. If $R$ is reflexive on $D$, then for all $x \in D$, $\langle x,x\rangle \in R$. By definition of inverse, then, each $\langle x,x\rangle \in R^{-1}$; i.e., $R^{-1}$ is also reflexive on $D$.  By definition of complement, \emph{no} $\langle x,x\rangle \in R'$; so $R'$ is irreflexive on $D$.
+\end{proof}\end{theorem}
+
+
+
+\paragraph{Orderings}
+\begin{definition}[Ordering]
+  A relation $R$ on $D$ is a \begin{description}
+    \item [Partial order] iff it is reflexive, transitive, and anti-symmetric (e.g., $\subseteq$ on a set of sets; see Figure \ref{fthree});
+    \item [Strict Partial Order] iff it is transitive and asymmetric (i.e., $\subset$);
+    \item [Total Order] iff it is a total partial ordering (i.e., $\leqslant$ on $\mathbb{N}$). Also sometimes known as a \emph{linear order};
+    \item [Strict Total Order] iff it is a total strict partial order (i.e., $<$).
+  \end{description} 
+\end{definition}
+
+\begin{figure}
+  \centering ~{\xymatrix{ \{A,B\} \ar@(ul,dl)[]_{\subseteq}   &
+  \{A\}\ar[l]^{\subseteq} \ar@(dr,ru)[]_{\subseteq}\\
+   \{B\}
+  \ar[u]_{\subseteq} \ar@(ul,dl)[]_{\subseteq}
+  & \emptyset \ar@(dr,ru)[]_{\subseteq} \ar[u]^{\subseteq} \ar[l]_{\subseteq}
+  \ar[ul]_{\subseteq} 
+  }
+  }\caption{Partial ordering of a set of sets by $\subseteq$\label{fthree}}
+\end{figure}
+
+As defined above, a total order is reflexive, transitive, antisymmetric, and total. By Theorem \ref{tot}, a total order is reflexive. So we could have defined a total order as one that is total, transitive, and antisymmetric.
+
+\paragraph{Well-Orderings}
+
+Suppose $R$ is a total order on $D$. If $\langle x,y\rangle\in R$, then we say $x$ \emph{precedes} $y$. If $\langle x,y\rangle \in R$ and $x\neq y$ and there does not exist a $z$ such that $\langle x,z\rangle \in R$ and $\langle z,y\rangle \in R$, then $x$ \emph{immediately precedes} $y$. (We can give exactly similar definitions for \emph{succeeds}.)
+
+An element $x$ of $D$ is \emph{minimal} iff there is no distinct $y$ that precedes $x$. An element $x$ is \emph{least} if it precedes \emph{every distinct} $y \in D$. (Corresponding definitions can be given for maximality and greatest.)
+
+\begin{definition}[Well-ordering]
+  $R$ is a well-ordering of $D$ iff it is a total order and every non-empty subset $d$ of $D$ has a least member under $R$.
+\end{definition} Example: $\leqslant$ is a well-ordering of the natural numbers $\mathbb{N}$. Here is another well-ordering of $\mathbb{N}$: \begin{equation}
+  x \preccurlyeq y \quad\text{ iff }\quad \begin{cases}
+    \text{$x$ is even and $y$ is odd; or}\\
+    \text{$x$ and $y$ are even and $x\leqslant y$; or}\\
+    \text{$x$ and $y$ are odd and $x\leqslant y$}.\\
+  \end{cases}
+\end{equation} The order induced by $\preccurlyeq$ yields $0, 2, 4, \ldots, 1, 3, 5, \ldots$. In this ordering, every subset of $\mathbb{N}$ has a $\preccurlyeq$-least element. Notice, however, that $1$ is not least, but it has no immediate predecessor. 
+
+The less-than-or-equal-to relation on natural numbers $\leqslant$ is a well-ordering of $\mathbb{N}$. It can be extended in an obvious way to the less-than-or-equal-to relation on the positive and negative integers $\mathbb{Z}$, which we denote $\leqslant_{\mathbb{Z}}$. (This is strictly speaking a different relation, since $\langle -1,0\rangle\in \leqslant_{\mathbb{Z}}$ but $\langle -1,0\rangle\notin \leqslant$.) $\leqslant_{\mathbb{Z}}$ is a total or linear order on $\mathbb{Z}$, but is not a well-ordering, because the set of all negative integers is a non-empty subset of $\mathbb{Z}$ but has no least member under $\leqslant_{\mathbb{Z}}$ (it does have a greatest member though, unlike $\mathbb{N}$). But $\mathbb{Z}$ can be well-ordered: $x \leqslant_{\text{abs}} y$ iff either (i) $|x|\leqslant |y|$ or (ii) $|x|=|y|$ and $x\leqslant y$, where `$|x|$' here denotes the absolute value of $x$.  This induces the order $0,-1,1,-2,2,\ldots$.
+
+\section{Functions}
+
+Consider the relation `– is the capital city of –', conceived of as relating  Australian states to Australian cities. This relation has an interesting feature: if a state stands in the relation to a city, then it stands in the relation to exactly one city. This is in fact made explicit by the way we have specified the relation: a city C stands in the relation to a state S iff C is (is identical to) the capital city of S, where the descriptive noun phrase `the capital city of S' manages to successfully denote something just in case there is only one capital city. Not all relations have this feature: `$x$ is taller than $y$', for example, cannot be formulated as an identity between $x$ and something denoted by a descriptive phrase involving $y$.
+
+Relations which have this special feature, where whenever $xRy$, then there is no distinct $z$ such that $xRz$, are known as \emph{functions}. 
+\begin{definition}[Unary Function]
+  If $R$ is a binary relation such that for any $x,y,z$, if $\langle x,y\rangle\in R$ then $\langle x,z\rangle\in R$ iff $y$ is identical to $z$, then $R$ is a unary (one-place) function. 
+\end{definition}
+We write $f_{R}(x) =y$ iff $\langle x,y\rangle\in R$. The notation `$f_{R}(x)$' is a noun phrase, typically corresponding to a definite description like `the capital city of $x$'. We say $x$ is the \emph{argument} given to $f$, and $y$ the \emph{value} of $f$ given that argument.  The fact that, for a given argument, a function has a unique value, justifies our talking of `\emph{the} value of the function for a given argument', and justifies the link to natural language definite descriptions as corresponding to a function with an argument – see the discussion of definite descriptions in \autoref{c9}. 
+
+The notion of a function can be generalised to an arbitrary $n$-place relation, which will give rise potentially to an $n-1$-place function.
+\begin{definition}[Function]
+	$f$ is an $n$-place function iff (i) it is a relation (ii) and for any sequence $x_{1},\ldots,x_{n}$ of objects, and any $y,z$, if $\langle x_{1},\ldots,x_{n},y\rangle \in f$ and $\langle x_{1},\ldots,x_{n},z\rangle \in f$, then $y=z$ (i.e., each sequence of things stands in the relation to at most one thing). 
+\end{definition}
+
+Since a function is a relation, some of its properties are defined only relative to a domain. There is another notion, also confusingly called the domain of a function, which can be thought of as the things the function accepts as arguments.
 \begin{definition}[Domain]
 The \emph{domain} (note: different to the domain of a relation) of a function  $f$ is the set $$\mathcal{D}(f)=\{x: \text{there is a $y$ such that } \langle x,y \rangle \in f\}.$$
-\end{definition}
+\end{definition} There is also the range of the function, which are the things the function can yield as values.
 \begin{definition}[Range]
 	The \emph{range} of $f$ is the set $$\mathcal{R}(f)=\{y: \text{there is a $x$ such that } \langle x,y \rangle \in f\}.$$
 \end{definition}
 \begin{definition}[Partial and Total]
-	A function
-$f$ is \emph{partial}  on $X$ if $\mathcal{D}(f) \subset X$; it is \emph{total} if $\mathcal{D}(f) =X$.
-\end{definition}
+	A function $f$ is \emph{partial}  on domain $D$ if $\mathcal{D}(f) \subset D$; it is \emph{total} if $\mathcal{D}(f) =D$.
+\end{definition} Obviously any function $f$ is total on $\mathscr{D}(f)$, but it may be total on some domains and partial on others. In this sense, totality and partiality of a function is another extrinsic property of the underlying relation.
 
 \paragraph{Operators}
 \begin{definition}[Operator]
@@ -189,34 +346,105 @@ It is obvious that $\mathsf{plus}$ is both commutative and associative: $x+y=y+x
 
 
 
-\paragraph{Properties of functions; enumerations}
+\paragraph{Properties of functions}
 
-Suppose $f$ is a total function, and $X$ and $Y$ are some other sets. \begin{definition}[Into, Onto, etc.]
+Suppose $f$ is a function, and $X$ and $Y$ are some sets. There are some relational properties that $f$ might have relative to $X$ and $Y$.
+ \begin{definition}[Into, Onto, etc.]\label{intoonto}
 \begin{description}
 	\item [Into] $f$ is a function from $X$ \emph{into} $Y$ iff $\mathcal{D}(f) = X$ and $\mathcal{R}(f)\subseteq Y$.
 	\item [Onto] $f$ is a function from $X$ \emph{onto} $Y$ iff $\mathcal{D}(f) = X$ and $\mathcal{R}(f) = Y$. An \emph{onto} function is also known as a \emph{surjection}.
 	\item [One-One] $f$ is a \emph{one-one} function from $X$ to $Y$ iff $f$ is into and whenever $x\neq y$, $f(x)\neq f(y)$. A one-one function is also known as an \emph{injection}.
 	\item [Bijection] $f$ is a \emph{bijection} from $X$ to $Y$ (or, is a \emph{one-one correspondence}) iff $f$ is one-one and onto.
 \end{description}
-\end{definition}
-Some examples; these are functions from $\mathbb{N}$ to $\mathbb{N}$: \begin{itemize}
-	\item The constant function $f(x) = 1$ is into.
+\end{definition} It is important to remember as always that these features are always relative to the sets $X$ and $Y$. A function that is a bijection between $X$ and $Y$ needn't be a bijection between $X'$ and $Y'$. These properties are illustrated in \autoref{fintoonto}.
+\begin{figure}
+\centering
+\begin{tabular}{cccc}
+
+
+   {\xy
+\xymatrix"*"{%
+• \\
+• \\
+• }%
+\POS*\frm<40pt>{.}
+\POS-(15,4)
+\xymatrix{%
+• \ar["*"]  \\
+• \ar["*"d]  \\
+• \ar["*"] }%
+\POS*\frm<40pt>{.}
+\endxy} & 
+~{\xy
+\xymatrix"*"{%
+• \\
+• \\
+• }%
+\POS*\frm<40pt>{.}
+\POS-(15,4)
+\xymatrix{%
+• \ar["*"]  \\
+• \ar["*"]  \\
+• \ar["*"]  \\
+• \ar["*"u] }%
+\POS*\frm<40pt>{.}
+\endxy} & 
+~{\xy
+\xymatrix"*"{%
+• \\
+• \\
+• \\
+• }%
+\POS*\frm<40pt>{.}
+\POS-(15,4)
+\xymatrix{%
+• \ar["*"]  \\
+• \ar["*"]  \\
+• \ar["*"] }%
+\POS*\frm<40pt>{.}
+\endxy} & 
+~{\xy
+\xymatrix"*"{%
+• \\
+• \\
+• }%
+\POS*\frm<40pt>{.}
+\POS-(15,4)
+\xymatrix{%
+• \ar["*"]  \\
+• \ar["*"]  \\
+• \ar["*"] }%
+\POS*\frm<40pt>{.}
+\endxy} \\
+Into & Onto & One-one & Bijection
+\end{tabular}
+  \caption{Properties of functions \label{fintoonto}}
+\end{figure}
+
+
+Some examples; these are all total functions from $\mathbb{N}$: \begin{itemize}
+	\item The constant function $f(x) = 1$ is into $\mathbb{N}$.
 	\item The function $g(x) = \begin{cases}
-		x/2 &\text{ if $x$ is even}\\ (x+1)/2 &\text{ if $x$ is odd} \end{cases}$ is onto. (Every natural number is the value of this function for two arguments.)
-	\item The function $h(x)=x^3$ is one-one. (Every natural number has a unique cube, but not every natural number has a natural number cube root.)
- 	\item The identity function $i(x) = x$ is a bijection.
+		x/2 &\text{ if $x$ is even}\\ (x+1)/2 &\text{ if $x$ is odd} \end{cases}$ is onto $\mathbb{N}$. (Every natural number is the value of this function for two arguments.)
+	\item The function $h(x)=x^3$ is one-one from  $\mathbb{N}$ to $\mathbb{N}$. (Every natural number has a unique cube, every cube has a unique cube root – but not every natural number is a cube.)
+ 	\item The identity function $i(x) = x$ is a bijection from  $\mathbb{N}$ to $\mathbb{N}$.
 \end{itemize}
 
+Because a function is a relation, it has an inverse and complemenent. The complement is not very interesting from the perspective of functions, since only in trivial cases will the complement of a function be a function. But the inverse of a function may be of more interest. The definition of an inverse relation in \autoref{definverse} suffices to define an inverse function, but here is an equivalent definition directly in terms of functions: 
 \begin{definition}[Inverse] If $g$ is a function, it is the \emph{inverse} of $f$ iff  $\mathcal{D}(f)=\mathcal{R}(g)$, $\mathcal{R}(f)=\mathcal{D}(g)$, and for all $x$, $g(f(x))=x$. In that case, we often write $f^{-1}$ for $g$.
- \end{definition} 
+ \end{definition} Obviously, $f$ is also the inverse of $f^{-1}$. 
+
+Note that not every function has an inverse function (it always has an inverse relation, which may or may not be a function):
 \begin{theorem}
-	If a function has an inverse, it is one-one.
+	A function has an inverse iff it is one-one. \begin{proof}
+    Left for exercises.
+  \end{proof}
 \end{theorem}
-\begin{definition}[Partial function]
- $f$ is a partial function from $X$ to $Y$ iff $\mathcal{D(f)} \subset X$. If $\mathcal{D}(f)=X$, $f$ is a total function from $X$.
-\end{definition}
 \begin{theorem}
-	If $f$ is one-one but not a bijection, $f^{-1}$ is a partial function.
+If $f$ is one-one but not a bijection, $f^{-1}$ is a partial function. 
+\begin{proof}
+If $f$ is one-one from $X$ to $Y$ but not a bijection, then there exists a $y\in Y$ which is not the value of $f$ for any member of $X$. Assume for \emph{reductio} that $f^{-1}$ is total on $Y$. Then there must be some $x \in X$ such that $f^{-1}(y) = x$. But then by the definition of inverse, $f(x) = f(f^{-1}(y)) = y$. But then $x$ is a member of $X$ which yields $y$ as value when given to $f$ as argument; contradiction. So $f^{-1}$ is not total.
+\end{proof}
 \end{theorem}
 
 
@@ -224,11 +452,11 @@ Some examples; these are functions from $\mathbb{N}$ to $\mathbb{N}$: \begin{ite
 
 \begin{definition}[Finite]
   A set $X$ is finite iff there exists a set of natural numbers $N = \{1,\ldots,n\}$ and a bijection $f$ from $X$ to $N$.
-\end{definition} A finite set can be put into one-one correspondence with some initial fragment of the sequence of natural numbers. A set is infinite iff it is not finite. Where there is a bijection between $X$ and $\{1,\ldots,n\}$, $X$ has $n$ members – we say that $X$ has cardinality $n$, $|X|=n$.
+\end{definition} A finite set can be put into one-one correspondence with some initial fragment of the sequence of natural numbers. (This corresponds to the notion, familiar from childhood, of counting some things by pointing to each of them while reciting some initial fragment of the natural numbers.) A set is infinite iff it is not finite. Where there is a bijection between $X$ and $\{1,\ldots,n\}$, $X$ has $n$ members – we say that $X$ has cardinality $n$, $|X|=n$.
 
 Now we will define some further notions useful for talking about \emph{size}.
 \begin{definition}[Enumeration] $f$ is an \emph{enumeration} of $X$ iff $\mathcal{D}(f) \subseteq \mathbb{N}$ (the natural numbers), $\mathcal{R}(f) = X$, and $f$ is onto.
-\end{definition} An enumeration associates each member of $X$ with some number – it corresponds to the intuitive notion of counting a set. (Though since we only require that an enumeration be onto, all sorts of weird `counting' procedures are included: e.g, the constant function from $\mathbb{N}$ onto $\{a\}$ is an enumeration of $\{a\}$.) This gives us the following idea: 
+\end{definition} An enumeration associates each member of $X$ with some number. This is a generalisation of the ordinary notion of counting, however: since we only require that an enumeration be onto, all sorts of weird `counting' procedures are included: e.g, the constant function from $\mathbb{N}$ onto $\{a\}$ is an enumeration of $\{a\}$. But this definition does ensure that any enumerable set is intuitively countable: since any enumerable set $X$ is going to be no larger than some subset of $\mathbb{N}$, by \autoref{intoonto}. This is captured in the following definition: 
 \begin{definition}[{[Un]}Countable] $X$ is \emph{countable} iff there exists a function which enumerates it; it is \emph{denumerable} iff it is countable and infinite; it is \emph{uncountable} if it is not countable.
 \end{definition}
 Obviously, all finite sets are enumerable, since if $f$ is a bijection showing $X$ to be finite, $f^{-1}$ exists and is an enumeration of $X$. But some infinite sets are countable too: obviously, $\mathbb{N}$ itself (there is a no bijection between $\mathbb{N}$ and some initial subset of $\mathbb{N}$, but the identity function enumerates it).
@@ -276,7 +504,7 @@ A final theorem linking countability and set theory, useful – perhaps – for 
 I sketch the proof.
 Let $P$ be the set of positive prime numbers. This set is in one-one correspondence with $\mathbb{N}$ (for every $n$, there is one and only one $n$-th prime). Since $\mathbf{X}$ is countable, there is a one-one function from $\mathbf{X}$ into the natural numbers, so there is a one-one function $f$ from $\mathbf{X}$ into $P$.
 
-Since each $X_{i}$ is countable, there is a function $g_{i}$ that is a one to one correspondence between $X_{i}$ and a subset of $\mathbb{N}$. Define the function $h_{i}(x) = f(X_{i})^{g_{i}(x)}$. Since every integer has a unique prime decomposition, if $h_{i}\neq h_{j}$ then $\mathcal{R}(h_{i})\cap\mathcal{R}(h_{i})=\emptyset.$
+Since each $X_{i}$ is countable, there is a function $g_{i}$ that is a one to one correspondence between $X_{i}$ and a subset of $\mathbb{N}$. Define the function $h_{i}(x) = f(X_{i})^{g_{i}(x)}$. Since every integer has a unique prime decomposition – by the fundamental theorem of arithmetic \citep[§V.14]{fundta} – if $h_{i}\neq h_{j}$ then $\mathcal{R}(h_{i})\cap\mathcal{R}(h_{i})=\emptyset.$
 
 Now define: $h(x) = h_i(x)$ where $x\in X_i$ and $x$ is not a member of any $X_{j}$ where $j < i$. Clearly $\mathcal{D}(h) = \bigcup\mathbf{X}$. Obviously $\mathcal{R}(h) \subseteq \mathbb{N}$. And $h$ is one-one, since each $h_{i}$ is a function and their ranges are disjoint. So $\bigcup\mathbf{X}$ is in one-one correspondence with a subset of $\mathbb{N}$ so is countable. 
 
@@ -327,20 +555,80 @@ Another presentation of the set theory needed for this book can be found in
 	\item Show, by providing a counterexample, that it is not always true that $\wp(X) \cup \wp(Y) = \wp(X \cup Y)$.
 \end{enumerate}
 
+
+\item Which of the relations expressed by the following English predicates are equivalence relations: \begin{enumerate}
+  \item `$x$ and $y$ attend the same lectures', on the domain of Oxford students.
+  \item `$x$ is studying the same subject as $y$', on the domain of Oxford students.
+\end{enumerate}
+\item Prove the following: \begin{enumerate}
+\item If $R$ is irreflexive, then $R'$ is reflexive.
+  \item If $R$ is symmetric, then $R^{-1}$ is symmetric.
+  \item If $R$ is symmetric, then $R'$ is symmetric.
+  \item If $R$ is transitive, then $R^{-1}$ is transitive.
+  \item If $R$ is connected, then $R^{-1}$ is connected.
+  \item If $R$ is asymmetric and non-empty, then $R'$ is non-symmetric.
+\end{enumerate}
 \item \begin{enumerate}
+  \item If $R$ is transitive, is $R'$ transitive?
+  \item If $R$ is connected, is $R'$ connected?
+  \item If $R$ is antisymmetric, is $R'$ symmetric?
+  \item If $R$ is transitive and non-empty, is $R'$ is transitive?
+\end{enumerate}
+\item If $R$ is defined on the empty domain, 
+    can it be reflexive? Can it be irreflexive? What about
+    transitivity and symmetry?
+\item What is wrong with the following argument that reflexivity is a consequence of symmetry and transitivity? \begin{quote}
+  If $\langle x,y\rangle \in R$, then $\langle y,x\rangle\in R$ since we assume $R$ is symmetric. If both $\langle x,y\rangle\in R$ and $\langle y,x\rangle \in R$, then since $R$ is transitive, $\langle x,x\rangle\in R$ – so $R$ is reflexive. (After \citealt[p.\ 52]{pmwmatmel}.)
+\end{quote} 
+\item \begin{enumerate}
+  \item Can a relation be asymmetric and reflexive?
+  \item Can a relation 
+      be transitive, non-symmetric and irreflexive?
+  \item   Can a relation 
+        be connected and irreflexive?
+\end{enumerate}  
+\item  A relation $R$ satisfies \emph{trichotomy} iff, for all $x$ and $y$, at most one of these three holds: $Rxy$, $Ryx$, or $x=y$. Is every trichotomous relation connected? Under what circumstances is a connected relation trichotomous?
+
+
+\item Show that a well-ordering of $D$ is a total ordering
+    of $D$, but not \emph{vice versa}.
+
+  
+  
+
+
+
+\item Prove that \begin{enumerate}
+  \item If $x$ is a least member under an ordering $R$, then it is the unique least member.
+  \item The set of natural numbers $\mathbb{N}$ is well-ordered by $<$.
+  \item The set of (positive and negative) integers $\mathbb{Z}$ is \emph{not} well-ordered by $<$.
+  \item There exists orderings with no maximal elements.
+\end{enumerate}
+
+\item A relation $R$ is \emph{dense} iff whenever $\langle x,y\rangle \in R$, there exists a $z$ such that $\langle x,z\rangle \in R$ and $\langle z,y\rangle \in R$. Prove that on the domain of the natural numbers $\mathbb{N}$, the greater-than relation $>$ is not dense; but that on the domain of the positive rationals (i.e., numbers of the form $\frac{n}{m}$ where $n,m \in \mathbb{N}$), it is dense.
+
+\item Let $D = \{1,2,3,5,6,10,15,30\}$. Let $R$ be the relation on $D$ defined by \begin{equation*}
+  R = \{\langle x,y\rangle: x\text{ divides $y$ without remainder}\}.
+\end{equation*}\begin{enumerate}
+  \item Show that $R$ is a weak partial order but not a total order.
+  \item Draw the graph of $R$, and identify any minimal, maximal, least or greatest elements.
+  \item Do the same for the set $\wp \{a,b,c\}$, using the relation $\subseteq$ on that domain.
+\end{enumerate}
+
+\item \begin{enumerate}
+\item Show that if $f^{-1}$ is the inverse of $f$, then $f$ is also the inverse of $f^{-1}$.
 	\item Show that $f$ has an inverse function iff it is one-one.
 	\item Give an example of a function that \begin{enumerate}
 		\item is into but is not onto;
 		\item is one-one but is not a bijection;
 		\item has no inverse;
-		\item is its own inverse. 
+		\item is its own inverse. (A function which is its own inverse is known as an \emph{involution}.)
 	\end{enumerate}
 	\item Under exactly what conditions is the union of two functions itself a function? (I.e., state necessary and sufficient conditions.)
-\item Two sets are said to be \emph{equipollent} iff there is a one-one correspondence between them. Show that $X$ and $\wp(X)$ are not equipollent. 
 	\item Give an example of a set which is \begin{enumerate}
 		\item Countable;
 		\item Denumerable;
-		\item Uncountable. (Hint: use 6.(d) and 6.(e).ii.)
+		\item Uncountable. (Hint: use \autoref{cantor} and 6.(d).ii.)
 	\end{enumerate} 
 \end{enumerate} 
 

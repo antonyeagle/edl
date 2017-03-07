@@ -245,166 +245,14 @@ A full treatment of these nouns cannot be carried out in \ltwo; constants referr
 
 
 
-\section{Binary Relations}
 
 
-
-
-\paragraph{Binary Relations}
-
-Binary relations – any subset of $D_{\mathscr{A}}\times D_{\mathscr{A}}$ – have many interesting properties. We can often represent these properties \emph{graphically}, if the domain on which the relation is defined is finite.
-
-\begin{definition}[Finite Graph]
-	A \emph{finite graph} on $D_{\mathscr{A}}$ is a pair $\langle V, E\rangle$ where the set of \emph{vertices} $V$ is $D_{\mathscr{A}}$, $D_{\mathscr{A}}$ is finite, and $E$ is a set of \emph{edges}, directed `arrows' from members of $V$ to members of $V$.
-\end{definition} A graph on $D_{\mathscr{A}}$ \emph{corresponds to} a binary relation $R$ on $D_{\mathscr{A}}$ just in case \begin{enumerate}
-	\item If $\langle x,y\rangle \in R$, then $x\in V$ and $y \in V$.
-	\item If $\langle x,y\rangle \in R$, then there is an arrow from $x$ to $y$ in $E$.
-\end{enumerate}
-
-\paragraph{Reflexivity and Transitivity Represented Graphically}
-
-Consider the domain $D_{\mathscr{A}}=\{1,2,3,4\}$.
-
-\begin{definition}[Reflexive]
-	A relation on $D_{\mathscr{A}}$ is \emph{reflexive} iff for all $x\in D_{\mathscr{A}}$, $\langle x,x\rangle\in R$. 
-\end{definition}Graphically, that means, as in the figure on the left in Figure \ref{fone}, that each vertex has an arrow pointing to itself. A relation is \emph{irreflexive} iff no vertex has an arrow pointing to itself.
-
-\begin{definition}[Transitive]
-	A relation on $D_{\mathscr{A}}$ is \emph{transitive} iff for all $x,y,z\in D_{\mathscr{A}}$, if both $\langle x,y\rangle\in R$ and $\langle y,z\rangle\in R$, then also $\langle x,z\rangle\in R$.
-\end{definition} Graphically, that means, as in the figure on the right in Figure \ref{fone}, that whenever there is an indirect sequence of arrows between two vertices, there is also a `shortcut'. A relation is \emph{intransitive} iff there is never a shortcut.
-
-\begin{figure}
-\begin{center}
-	{~\xymatrix{1 \ar@(ur,dr)[lr]  & 2 \ar@(ur,dr)[lr] \\
-	3 \ar@(ur,dr)[lr] & 4 \ar@(ur,dr)[lr] }\qquad\qquad}{\xymatrix{1  & 2 \ar[l] \\ 3 \ar[ur]
-		\ar[u] & 4 \ar[l] \ar[ul] \ar[u] 
-		}}
-\end{center}	\caption{Reflexivity and Transitivity\label{fone}}
-\end{figure}
-
-
-\paragraph{Symmetry Represented Graphically}
-
-\begin{definition}[Symmetric]
-	A relation $R$ on $D_{\mathscr{A}}$ is \emph{symmetric} iff whenever $\langle x,y\rangle \in R$, then $\langle y,x\rangle \in R$.
-\end{definition} Graphically, this means (as on the left in Figure \ref{ftwo}) that whenever there is an arrow from one vertex to another, there will be a return arrow. A relation is \emph{asymmetric} iff there are no returning arrows at all.
-
-\begin{definition}[Anti-symmetric]
-	A relation is \emph{anti-symmetric} iff whenever $\langle x,y\rangle \in R$ and $\langle y,x\rangle \in R$, then $x=y$ (sometimes this is known as \emph{weak asymmetry}).
-\end{definition} Graphically, this means (as on the right in Figure \ref{ftwo}) that the only `returning' arrows are loops.
-
-\begin{figure}
-\begin{center}
-	~{\xymatrix{1 \ar@/^/[r]  & 2 \ar@/^/[l] \ar@/^/[d] \\
-	3 \ar@/^/[r] & 4 \ar@/^/[l] \ar@/^/[u] }\qquad\qquad}{\xymatrix{1 \ar@(ul,dl)[lr]  & 2 \ar[l] \\ 3 \ar[ur]
-		\ar[u] & 4 \ar@(dl,dr)[lr] \ar[l] \ar[ul] \ar[u] 
-		}}
-\end{center}	\caption{Symmetry\label{ftwo}}
-\end{figure}
-
-We need to clearly distinguish non-reflexivity from irreflexivity: the former is just the failure of reflexivity, i.e., at least one object in the domain doesn't bear $R$ to itself, while the latter involves every object in the domain not bearing $R$ to itself. Likewise, we need to distinguish non-transitivity from intransitivity, and non-symmetry from asymmetry \emph{and} antisymmetry. 
-
-The observant reader will have noticed that, while we defined \emph{reflexive on $D$}, \emph{symmetric on $D$}, etc., the only definition which actually mentions $D$ is the definition of reflexivity. All the other definitions are \emph{conditional} in form: they say, if certain pairs are in the relation, then certain other pairs will be too. We needn't specify a domain to check whether these conditionals hold of any relation. But to check whether a relation is reflexive, we need not only the ordered pairs of the relation, but also what the domain is, so we can see if any members of the domain are missing from the relation. (Reflexivity is an extrinsic property of a relation, relative to a domain; the others are intrinsic properties.)
-
-
-\paragraph{Equivalence Relations}
-
-\begin{definition}[Equivalence Relation]
-	If $R$ on $D_{\mathscr{A}}$ is reflexive, transitive, and symmetric, then it is an \emph{equivalence relation}. 
-\end{definition}
-
-An equivalence relation divides up the domain into \emph{equivalence classes}, every member of which bears the relation to every other member of it. The relation `is the same height as' is an equivalence relation on the domain of all people; we say that it \emph{induces a partition} on the domain of people, sorting them into groups which are uniform with respect to height.
-
-The most obvious equivalence relation is the identity relation; it is reflexive by definition, and moreover symmetric and transitive; since there are \emph{never} arrows from any $x$ to any distinct $y$, it follows that every time there are such arrows, there are return arrows and shortcuts. (Notice that the identity relation is both symmetric and anti-symmetric.)
-
-Any relation on the empty set is also trivially an equivalence relation. While every empty relation is trivially symmetric and transitive, it will generally fail to be reflexive unless the domain is empty too.
-
-\paragraph{Connectedness}
-
-First, we define a (directed) path: \begin{definition}[Path]
-	There is a \emph{path} from $x$ to $y$ in $R$ iff there exists a sequence $z_{1},\ldots,z_{n}$ such that $\langle x,z_{1}\rangle \in R$ and
-	$\langle z_{1},z_{2}\rangle \in R$ and \ldots and $\langle z_{n},y\rangle \in R$.
-\end{definition}
-Now we may define: \begin{definition}[Strong Connectedness]
- 	$R$ on $D$ is \emph{connected} iff for any $x \in D$ and $y \in D$, such that $x$ and $y$ are distinct, then there is a path from $x$ to $y$ in $R$. 
- \end{definition}
- There is another property of binary relations, sometimes called \emph{weak
-connectedness}, which holds iff for any nodes on the graph of $R$, $x$ and $y$, there is
-some path that joins $x$ to $y$ moving only along arrows (perhaps in
-the `backwards' direction). For any binary relation $S$, let $S^{*}$ be the relation defined by $\langle x,y\rangle \in S^{*}$ iff $\langle x,y\rangle \in S$ or $\langle y,x\rangle \in S$. \begin{definition}[Weak Connectedness]
-	A relation $R$ is weakly connected on $D$ iff  $R^{*}$ is connected on $D$.
-\end{definition} 
-
-There is an even stronger condition than connectedness: \begin{definition}[Totality]
-  A relation $R$ on $D$ is \emph{total} iff for any $x$ and $y$, either $\langle x,y\rangle \in R$ or $\langle y,x\rangle \in R$.
-\end{definition}\begin{theorem}\label{tot}
-  If $R$ is total, then $R$ is reflexive.
-  \begin{proof}
-     If $R$ is total, then for any $x$ and $y$, either $\langle x,y\rangle \in R$ or $\langle y,x\rangle \in R$. Suppose $x=y$; then either either $\langle x,x\rangle \in R$ or $\langle x,x\rangle \in R$. Therefore, $\langle x,x\rangle \in R$, i.e., $R$ is reflexive.
-   \end{proof} 
-\end{theorem}
-
-\paragraph{Inverse and Complement Relations}
-
-Given a relation $R$ on $D$, we can define two interesting further relations: \begin{definition}[Inverse]
-Given a relation $R$, its \emph{inverse} $R^{-1}$ is defined to be this set: $\left\{\langle y,x\rangle:\langle x,y\rangle \in R\right\}$. \end{definition}
-\begin{definition}[Complement]
-Given a relation $R$ on $D$, its \emph{complement} $R'$ on $D$ is defined to be this set: $D \times D \setminus R$ (i.e., the set of all ordered pairs of elements of the domain \emph{not} in $R$.)
- \end{definition} Note that complement is always with respect to the underlying domain, whereas we can define an inverse relation just with reference to the original relation.
-
-\begin{theorem}[Property Preservation]
-	If $R$ is reflexive then $R^{-1}$ is reflexive and $R'$ is irreflexive; if $R$ is symmetric then $R^{-1}$ and $R'$ are symmetric; if $R$ is transitive then $R^{-1}$ is transitive; if $R$ is connected then $R^{-1}$ is connected.
-\begin{proof}
-	I prove one case: reflexivity. If $R$ is reflexive, then for all $x \in D_{\mathscr{A}}$, $\langle x,x\rangle \in R$. By definition of inverse, then, all $\langle x,x\rangle \in R^{-1}$; i.e., $R^{-1}$ is also reflexive.  By definition of complement, \emph{no} $\langle x,x\rangle \in R'$; so $R'$ is irreflexive.
-\end{proof}\end{theorem}
-
-
-
-\paragraph{Orderings}
-\begin{definition}[Ordering]
-	A relation $R$ on $D_{\mathscr{A}}$ is a \begin{description}
-		\item [Partial order] iff it is reflexive, transitive, and anti-symmetric (e.g., $\subseteq$ on a set of sets; see Figure \ref{fthree});
-		\item [Strict Partial Order] iff it is transitive and asymmetric (i.e., $\subset$);
-		\item [Total Order] iff it is a total partial ordering (i.e., $\leqslant$ on $\mathbb{N}$). Also sometimes known as a \emph{linear order};
-		\item [Strict Total Order] iff it is a total strict partial order (i.e., $<$).
-	\end{description} 
-\end{definition}
-
-\begin{figure}
-	\centering ~{\xymatrix{ \{A,B\} \ar@(ul,dl)[]_{\subseteq}   &
-	\{A\}\ar[l]^{\subseteq} \ar@(dr,ru)[]_{\subseteq}\\
-	 \{B\}
-	\ar[u]_{\subseteq} \ar@(ul,dl)[]_{\subseteq}
-	& \emptyset \ar@(dr,ru)[]_{\subseteq} \ar[u]^{\subseteq} \ar[l]_{\subseteq}
-	\ar[ul]_{\subseteq} 
-	}
-	}\caption{Partial ordering of a set of sets by $\subseteq$\label{fthree}}
-\end{figure}
-
-As defined above, a total order is reflexive, transitive, antisymmetric, and total. By Theorem \ref{tot}, a total order is reflexive. So we could have defined a total order as one that is total, transitive, and antisymmetric.
-
-\paragraph{Well-Orderings}
-
-Suppose $R$ is a total order on $D_{\mathscr{A}}$. If $\langle x,y\rangle\in R$, then we say $x$ \emph{precedes} $y$. If $\langle x,y\rangle \in R$ and $x\neq y$ and there does not exist a $z$ such that $\langle x,z\rangle \in R$ and $\langle z,y\rangle \in R$, then $x$ \emph{immediately precedes} $y$. (We can give exactly similar definitions for \emph{succeeds}.)
-
-An element $x$ of $D_{\mathscr{A}}$ is \emph{minimal} iff there is no distinct $y$ that precedes $x$. An element $x$ is \emph{least} if it precedes \emph{every distinct} $y \in D_{\mathscr{A}}$. (Corresponding definitions can be given for maximality and greatest.)
-
-\begin{definition}[Well-ordering]
-  $R$ is a well-ordering of $D$ iff it is total and every non-empty subset $d$ of $D$ has a least member under $R$.
-\end{definition} Example: $\leqslant$ is a well-ordering of the natural numbers $\mathbb{N}$. Here is another well-ordering of $\mathbb{N}$: \begin{equation}
-  x \preccurlyeq y \quad\text{ iff }\quad \begin{cases}
-    \text{$x$ is even and $y$ is odd; or}\\
-    \text{$x$ and $y$ are even and $x\leqslant y$; or}\\
-    \text{$x$ and $y$ are odd and $x\leqslant y$}.\\
-  \end{cases}
-\end{equation} The order induced by $\preccurlyeq$ yields $0, 2, 4, \ldots, 1, 3, 5, \ldots$. In this ordering, every subset of $\mathbb{N}$ has a $\preccurlyeq$-least element. Notice, however, that $1$ is not least, but it has no immediate predecessor. 
-
-While $\leqslant$ well-orders $\mathbb{N}$, it does not well-order the positive and negative integers $\mathbb{Z}$. Here is a well-ordering of $\mathbb{Z}$: $x \leqslant_{\text{abs}} y$ iff either (i) $|x|\leqslant |y|$ or (ii) $|x|=|y|$ and $x\leqslant y$, where `$|x|$' here denotes the absolute value of $x$.  This induces the order $0,-1,1,-2,2,\ldots$.
-
-
+\section{More on Relations}
  
  \paragraph{Expressing Properties of Binary Relations in \ltwo$_{=}$}
  
+We talked about the properties of binary relations, modelled as sets, back in \autoref{c2}.
+
  We can use formulae of \ltwo\ to express various properties of relations on an entire domain. For example \begin{description}
  	\item [Reflexivity] A relation $R$ is reflexive on $D_{\mathscr{A}}$ iff $R = \val{P^{2}}{A}$ and\\ $\val{\forall x P^{2}xx}{A}=T$. 
 \item [Transitivity] A relation $R$ is transitive on $D_{\mathscr{A}}$ iff $R = \val{P^{2}}{A}$ and $$\val{\forall x \forall y \forall z (P^{2}xy \wedge P^{2}yz) \to P^{2}(xz)}{A}=T.$$ 
@@ -475,50 +323,17 @@ A wonderful book on names and description is \citet{krinamne}. A modern classic:
 	
 	
 \item Which of the relations expressed by the following English predicates are equivalence relations: \begin{enumerate}
-	\item `$x$ and $y$ attend the same lectures', on the domain of Oxford students.
-	\item `$x$ is studying the same subject as $y$', on the domain of Oxford students.
 	\item `$x$ entails $y$', on the domain of sentences of \ltwo.
 	\item `$x$ is logically equivalent to $y$', on the domain of sentences of \ltwo.
 	\item `If $\{x\}$ is consistent, then $\{x\}\cup \{y\}$ is consistent' on the domain of sentences of \ltwo.
 \end{enumerate}
-\item Prove the following: \begin{enumerate}
-\item If $R$ is irreflexive, then $R'$ is reflexive.
-	\item If $R$ is symmetric, then $R^{-1}$ is symmetric.
-	\item If $R$ is symmetric, then $R'$ is symmetric.
-	\item If $R$ is transitive, then $R^{-1}$ is transitive.
-	\item If $R$ is connected, then $R^{-1}$ is connected.
-	\item If $R$ is asymmetric and non-empty, then $R'$ is non-symmetric.
-\end{enumerate}
-\item \begin{enumerate}
-	\item If $R$ is transitive, is $R'$ transitive?
-	\item If $R$ is connected, is $R'$ connected?
-	\item If $R$ is antisymmetric, is $R'$ symmetric?
-	\item If $R$ is transitive and non-empty, is $R'$ is transitive?
-\end{enumerate}
-\item If $R$ is defined on the empty domain, 
-    can it be reflexive? Can it be irreflexive? What about
-    transitivity and symmetry?
-\item What is wrong with the following argument that reflexivity is a consequence of symmetry and transitivity? \begin{quote}
-	If $\langle x,y\rangle \in R$, then $\langle y,x\rangle\in R$ since we assume $R$ is symmetric. If both $\langle x,y\rangle\in R$ and $\langle y,x\rangle \in R$, then since $R$ is transitive, $\langle x,x\rangle\in R$ – so $R$ is reflexive.
-\end{quote} (After \citealt[p.\ 52]{pmwmatmel}.)
-\item \begin{enumerate}
-	\item Can a relation be asymmetric and reflexive?
-	\item Can a relation 
-	    be transitive, non-symmetric and irreflexive?
-	\item 	Can a relation 
-		    be connected and irreflexive?
-\end{enumerate}  
-\item \begin{enumerate}
-	\item Show that $\forall x \forall y (\neg x=y\to (Pxy \vee Pyx) \equiv \forall x \forall y (x=y \vee Pxy \vee Pyx)$. 
-	\item A relation $R$ satisfies \emph{trichotomy} iff, for all $x$ and $y$, at most one of these three holds: $Rxy$, $Ryx$, or $x=y$. Is every trichotomous relation connected? Under what circumstances is a connected relation trichotomous?
-\end{enumerate} 
-\item
- Show by suitable reasoning that
+
+\item  Show that $\forall x \forall y (\neg x=y\to (Pxy \vee Pyx) \equiv \forall x \forall y (x=y \vee Pxy \vee Pyx)$. 
+	
+\item Show by suitable reasoning that
     in a finite domain, for any \emph{partial order} $R$,  $\exists x \forall y (Ryx \to
     x=y)$. Give a counterexample to this condition in an infinite domain. 
 
-\item Show that a well-ordering of $D$ is a total ordering
-    of $D$, but not \emph{vice versa}.
 \item Give a graph, on some non-empty domain, of a relation $R$
 	which satisfies this condition:
 	$\forall x \forall y (Rxy \to \exists z ((x \neq z) \wedge (y \neq
@@ -529,22 +344,9 @@ A wonderful book on names and description is \citet{krinamne}. A modern classic:
 
 
 
-\item Prove that \begin{enumerate}
-	\item If $x$ is a least member under an ordering $R$, then it is the unique least member.
-	\item The set of natural numbers $\mathbb{N}$ is well-ordered by $<$.
-	\item The set of (positive and negative) integers $\mathbb{Z}$ is \emph{not} well-ordered by $<$.
-	\item There exists orderings with no maximal elements.
-\end{enumerate}
 
-\item A relation $R$ is \emph{dense} iff whenever $\langle x,y\rangle \in R$, there exists a $z$ such that $\langle x,z\rangle \in R$ and $\langle z,y\rangle \in R$. Prove that on the domain of the natural numbers $\mathbb{N}$, the greater-than relation $>$ is not dense; but that on the domain of the positive rationals (i.e., numbers of the form $\frac{n}{m}$ where $n,m \in \mathbb{N}$), it is dense.
 
-\item Let $D = \{1,2,3,5,6,10,15,30\}$. Let $R$ be the relation on $D$ defined by \begin{equation*}
-	R = \{\langle x,y\rangle: x\text{ divides $y$ without remainder}\}.
-\end{equation*}\begin{enumerate}
-	\item Show that $R$ is a weak partial order but not a total order.
-	\item Draw the graph of $R$, and identify any minimal, maximal, least or greatest elements.
-	\item Do the same for the set $\wp \{a,b,c\}$, using the relation $\subseteq$ on that domain.
-\end{enumerate}
+
 
 \item	We might normally expect `is similar to' to be a symmetric relation: after all, if there is a respect in which $a$ is similar to $b$, then $b$ must be similar to $a$ in that very same respect. But many people seem to judge that similarity is \emph{not} symmmetric: \begin{quote}
 		When people are asked to make comparisons between a highly familiar object and a less familiar one, their responses reveal a systematic asymmetry: The unfamiliar object is judged as more similar to the familiar one than vice versa. For example, people who know more about the USA than about Mexico judge Mexico to be more similar to the USA than the USA is to Mexico. \citep[520]{kunsocco}

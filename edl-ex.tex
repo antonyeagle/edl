@@ -38,12 +38,43 @@ But what about the sentence `Alice is tall or not-(Alice is tall)'? No matter wh
 	\item The set $X \setminus (Y \cap Z)$ is the set of those members of $X$ which are not members of both $Y$ and $Z$. Something can be a member of this set just in case it is in $X$ but not in $Y$, or is in $X$ but not in $Z$ (or both). Equivalently: be a member of $X \setminus Y$ or a member of $X\setminus Z$; equivalently, be a member of $(X \setminus Y) \cup (X\setminus Z)$.
 	\end{enumerate} \setcounter{enumi}{3}
 	\item \begin{enumerate}
-		\item $«x,y»= «u,v»$ iff $\{\{x\},\{x,y\}\} = \{\{u\},\{u,v\}\}$ iff either (i) $\{x\}=\{u\}$ and $\{x,y\}=\{u,v\}$ or (ii) $\{x\} = \{u,v\}$ and $\{x,y\} = \{u\}$. Case (ii) cannot hold, because extensionality entails that identical sets must have the same number of members. So case (i) holds. But case (i) holds iff $x=u$ and $y=v$, by extensionality again.
+		\item $«x,y»= «u,v»$ iff $\{\{x\},\{x,y\}\} = \{\{u\},\{u,v\}\}$ iff either (i) $\{x\}=\{u\}$ and $\{x,y\}=\{u,v\}$ or (ii) $\{x\} = \{u,v\}$ and $\{x,y\} = \{u\}$. Case (ii) only holds when $x=y=u=v$, because extensionality entails that identical sets must have the same number of members. In that degenerate case, the theorem holds. In the non-degenerate case where $x≠y$, case (i) must hold. But case (i) holds iff $x=u$ and $y=v$, by extensionality again.
 		\item If $x=y$ then $«x,y»=\{\{x\},\{x,x\}\}=\{\{x\},\{x\}\}=\{\{x\}\}$.
+	\end{enumerate}
+	\item  \begin{enumerate}\setcounter{enumii}{2}
+		\item The powerset of any set $Z$ contains sets which have members of $Z$ as their only members. So $\wp(X)$ only contain sets of things from $X$; $\wp(Y)$ only contains sets of things from $Y$. So all the members of $\wp(X)\cup\wp(Y)$ are `pure' sets – it has no members which are sets mixing members of $X$ and $Y$ (except if $X \cap Y$ is non-empty). By contrast, $\wp(X\cup Y)$ does contain such mixed sets. In fact, it is easy to see that as long as there is an $X\setminus Y$ and $Y \setminus X$ are both non-empty, then $\wp(X) \cup \wp(Y) \subset \wp(X \cup Y)$. 
+
+		For example, let $X = \{1,2\}, Y=\{2,3\}$. $\{1,3\}\in \wp(X\cup Y)$, but $\{1,3\}\notin \wp(X)\cup \wp(Y)$; by extensionality, $\wp(X) \cup \wp(Y) \neq \wp(X \cup Y)$. 
+	\end{enumerate}\setcounter{enumi}{16}
+	\item \begin{enumerate}
+		\setcounter{enumii}{2}
+		\item \begin{enumerate} 
+			\item The successor function which maps each number to its immediate successor (i.e., $\mathsf{succ}(x) = x+1$) is into $\mathbb{N}$ but not onto, since there is no $n$ such that $\mathsf{succ}(n) = 0$ but $0 \in \mathbb{N}$.
+			\item The identity function from natural numbers into integers $\mathbb{Z} = \{…,-3,-2,-1,0,1,2,3…\}$ is one-one, since each number is mapped to itself and no other number. But it is not a bijection, because there is no natural number $n$ such that $n = -1$.
+			\item Any function which is not one-one has no inverse. So consider the squaring function on integers, $\mathsf{sq}(x) = x^{2}$ for any $x\in\mathbb{Z}$. Since $\mathsf{sq}(2)=\mathsf{sq}(-2)=4$, the relation which is the inverse of $\mathsf{sq}$ contains the pairs $\langle 4,2\rangle$ and $\langle 4,-2\rangle$, and so is not a function.
+			\item An argument which is its own inverse is such that $f(f(x)) = f^{-1}(f(x)) = x$. Identity is its own inverse. A more interesting case is negation $\mathsf{n}$, discussed in chapter \autoref{c3a}. $\mathsf{n}=\{\langle T,F\rangle,\langle F,T\rangle\}$; swap the order of each pair, and we get the same set back. Another example is the function \textsf{rotate 180˚} on the domain of compass directions: apply the function twice, and we get the original argument back again. 
+		\end{enumerate}
+		\item The union of two functions is itself a function iff the constituent functions are not defined on any argument(s) in common. Since both constituent functions are relations, their union is a relation too (though perhaps on a different – larger – domain); and that relation meets the condition for being a function iff any $a$ which is in the domain of one constituent function and in the domain of the other is such that both functions assign to $a$ that same value.   
 	\end{enumerate}
 \end{enumerate}
 
 \section*{Exercises for Chapter 3: page \pageref{ex3}} \label{ans3}
+
+\begin{enumerate}
+	\item Answer: \begin{quote}
+		For any numbers $n$ and $m$, \cquote{n+m} denotes a number, as long as `$+$' denotes the addition operator.
+	\end{quote} \setcounter{enumi}{2}
+	\item Suppose that $\phi$ is a non-atomic \lone\ sentence which is formed in accordance with two formation rules. There are two possible cases: (i) $\phi$ begins with $\neg$. If $\phi$ was also produced by one of the other formation rules, then $\phi = \cquote{(\chi\oplus\pi)}$. If so, `$\neg$' would have to be the same symbol as `$($', which contradicts our supposition that no connective is also a piece of punctuation. (ii) $\phi = \cquote{(\chi\oplus\pi)}$  and $\phi = \cquote{(\psi\otimes\omega)}$ for sentences $\chi,\pi,\psi,\omega$ and binary connectives $\oplus,\otimes$. There are three options for where the relevant occurence of $\otimes$ can occur in $\cquote{(\chi\oplus\pi)}$: it can occur somewhere in $\chi$, it can occur at $\oplus$, or it can occur somewhere in $\pi$. \begin{itemize}
+		\item Suppose it occurs in $\chi$. Then $\chi = \cquote{\psi\otimes\sigma}$ for some string $\sigma$. By \autoref{prefix}, since $\chi$ is a sentence, $\psi$ is not, contradiction. 
+
+\item So suppose it occurs in $\pi$. Then $\psi = \cquote{\chi\oplus\sigma'}$ for some string $\sigma'$. Again by \autoref{prefix}, since $\psi$ is a sentence, $\chi$ is not, contradiction.
+\item So $\cquote{\oplus=\otimes}$. But that would contradict our intitial assumption that `no character in any category is identical to any other character in that category'. 
+	\end{itemize}
+So there couldn't be any such sentence $\phi$.
+\item Suppose $\phi$ is any \lone\ sentence, and every constituent sentence of $\phi$ of lower complexity is uniquely readable. $\phi$ was either formed by applying negation to a uniquely readable sentence, or applying one of the binary connectives to uniquely readable sentences. By the result of the previous exercise, there is exactly one formation rule that could have been applied to produce $\phi$, and it is uniquely determined which formation rule was applied to construct $\phi$. So $\phi$ too is uniquely readable.  By strong induction, every sentence of \lone\ is uniquely readable.
+		
+	\end{enumerate}
+
 
 
 
