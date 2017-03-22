@@ -25,7 +25,7 @@
 
 \usepackage[round,authoryear,sort]{natbib}
  	\bibpunct[:~]{(}{)}{;}{a}{,}{;~}
-\usepackage[norule,bottom,multiple]{footmisc}
+\usepackage[norule,bottom,multiple,splitrule,flushmargin]{footmisc}
 \usepackage{prooftree}
 \usepackage[all]{xy}
 \usepackage{phonetic}
@@ -70,8 +70,8 @@
 \newcommand{\lone}{\ensuremath{\mathcal{L}_{1}}}
 \newcommand{\ltwo}{\ensuremath{\mathcal{L}_{2}}}
 \newcommand{\lequ}{\ensuremath{\mathcal{L}_{=}}}
-\newcommand{\val}[2]{\ensuremath{\left|#1\right|_{\mathscr{#2}}}}
-\newcommand{\vals}[3]{\ensuremath{\left|#1\right|^{#3}_{\mathscr{#2}}}}
+\newcommand{\val}[2]{\ensuremath{\left\llbracket #1\right\rrbracket_{\mathscr{#2}}}}
+\newcommand{\vals}[3]{\ensuremath{\left\llbracket#1\right\rrbracket^{#3}_{\mathscr{#2}}}}
 \newcommand{\valsa}[1]{\vals{#1}{A}{\alpha}}
 \newcommand{\dd}{\text{\emph{\riota\,}}}
 \newcommand{\lvdash}{\vdash_{\!\!\text{\vphantom{\normalsize|}\textnormal{Ł}}}}
@@ -163,7 +163,9 @@ This book is open source. \XeLaTeX\ source code for the book is available from t
 
 \chapter*{Preface}\markright{preface}
 
-This is a textbook covering the basics of formal logic and elementary metatheory. Its distinguishing feature is that it has more emphasis on metatheory than comparable introductory textbooks. It was originally written to accompany lectures in the introductory-intermediate logic course at the University of Oxford, \emph{Elements of Deductive Logic}, but has evolved significantly since then. It is now more suitable for independent study.
+This is a textbook covering the basics of formal logic and elementary metatheory. One distinguishing feature is that it has more emphasis on metatheory (particularly for sentential logic) than comparable introductory textbooks. Another distinguishing feature is that, while it is not primarily a book in philosophy of logic, the book does pay close attention to some foundational issues about meaning, consequence, and the philosophical rationale behind various metalogical results.
+
+This book was originally written as a set of notes to accompany lectures in the introductory-intermediate logic course at the University of Oxford, \emph{Elements of Deductive Logic}, but has evolved significantly since then. It is now suitable for independent study. In the classroom, I have used it as the basis for a second course in logic, particularly for slightly more mathematically inclined students, and it could serve as the basis for a useful bridging course to a more advanced third logic course that covers the material in \citet{bbjcomlo}.
 
 This book is made available under a Creative Commons license (CC BY-SA 4.0), which allows users to share the work as they like, and to create derivative and modified works for any purpose, as long as the original creator is appropriately credited, and derivative works are licensed in the same way. I hope this will encourage any users of the book to adapt it to their local environments.
 
@@ -201,7 +203,7 @@ Many chapters also contain a section of `Further Reading', which contains refere
 
 \paragraph{Other Appendices} The text makes free use of Greek letters as variables of various kinds; a quick refresher of the English names of these letters can be found in Appendix \ref{greek}. There are a number of defined expressions; a list of definitions can be found in Appendix \ref{defns}.
 
-\paragraph{Some Other Useful Readings} The languages and derivation systems used in this book are those developed in Volker Halbach's \emph{Logic Manual} \citep{hallogma}. While the present book is self-contained, it may be helpful to review the material in Halbach's book as a useful adjunct. Another useful source of related material, that I drew on in a number of places in this book, is \citet{bosintlo}.  
+\paragraph{Some Other Useful Readings} The languages and derivation systems used in this book are those developed in \citep{hallogma} and . While the present book is self-contained, it may be helpful to review the material in Halbach's book as a useful adjunct. Other useful sources of related material, that I drew on in a number of places in this book, are \citet{bevpospa,bosintlo,bbjcomlo,priintncl} and \citet{sidlfp}.  
 
 \newpage
 
@@ -250,8 +252,6 @@ Many chapters also contain a section of `Further Reading', which contains refere
 
 \appendix
 
-\chapter[Alternative Proof of Compactness]{An Alternative Proof of Compactness}\label{altcomp}
-\input{edl-a.tex}
 
 \chapter[Answers to Selected Exercises]{Answers to Selected Exercises}\label{exans}
 \input{edl-ex.tex}
@@ -356,6 +356,9 @@ Edgington, Dorothy (2014), \enquote{Indicative Conditionals}. In Edward~N Zalta 
 
 \bibitem[{Fine(1975)}]{fine}
 Fine, Kit (1975), \enquote{Vagueness, Truth and Logic}. \emph{Synthese} \textbf{30}: 265–300.
+
+\bibitem[{van Fraassen(1980)}]{bvfsi}
+van Fraassen, Bas C. (1980), \emph{The Scientific Image}. Oxford: Clarendon Press.
 
 \bibitem[{Gentzen(1969)}]{geninvinl}
 Gentzen, Gerhard (1969), \enquote{Investigations into Logical Deduction}. In
@@ -463,6 +466,9 @@ Prawitz, Dag (2006), \emph{Natural Deduction: A Proof-theoretic study}. New
 Priest, Graham (2006), \emph{In Contradiction}. Oxford: Oxford University
   Press, 2nd ed.
 
+\bibitem[{Priest(2008)}]{priintncl}
+---\!\!---\!\!---\!\!--- (2008), \emph{An Introduction to Non-Classical Logic}. Cambridge: Cambridge University Press, 2nd ed. 
+
 \bibitem[{Prior(1960)}]{prirunint}
 Prior,~A~N (1960), \enquote{The Runabout Inference-Ticket}. \emph{Analysis},
   vol.~21: pp.~38–9.
@@ -492,6 +498,9 @@ Russell, Bertrand (1956), \enquote{On Denoting}. In \emph{Logic and
 \bibitem[{Shapiro(2013)}]{sep-logic-classical}
 ---\!\!---\!\!---\!\!---  (2013), \enquote{Classical Logic}. In Edward~N Zalta (ed.),
   \emph{The Stanford Encyclopedia of Philosophy}. \urlprefix\href{http://plato.stanford.edu/entries/logic-classical/}{\nolinkurl{plato.stanford.edu/entries/logic-classical/}}.
+
+\bibitem[{Sider(2010)}]{sidlfp}
+Sider, Theodore (2010), \emph{Logic for Philosophy}. Oxford: Oxford University Press.
 
 \bibitem[{Stalnaker(1975)}]{stalnaker}
 Stalnaker, Robert~C (1975), \enquote{Indicative Conditionals}. \emph{Philosophia}, vol.~: pp.~269–86.

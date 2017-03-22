@@ -75,8 +75,131 @@ So there couldn't be any such sentence $\phi$.
 		
 	\end{enumerate}
 
+\section*{Exercises for Chapter 4: page \pageref{ex4}} \label{ans4}
+
+\begin{enumerate}
+\item $\Gamma \vDash \phi$ iff every \lone-structure $\mathscr{A}$ in which each member of $\Gamma$ is true is also one in which $\phi$ is true; iff every \lone-structure $\mathscr{A}$ in which each member of $\Gamma$ is true is also one in which $\neg\phi$ is false; iff every \lone-structure $\mathscr{A}$ is one in which at least one member of $\Gamma \cup \{\neg\phi\}$ is false; iff $\Gamma\cup\{\neg\phi\}$ is unsatisfiable.
+\item \begin{enumerate}
+	\item When $\Gamma\vDash\phi$, every line of the truth table on which each member of $\Gamma$ gets a $T$ will be one on which $\phi$ also gets a $T$.
+	\item When $\Gamma$ is consistent, at least one line of the truth table will assign a $T$ to each member of $\Gamma$.
+	\item When $\phi$ is a contradiction, it will get $F$ on every line of the truth table.
+	\item When $\phi$ and $\psi$ are logically equivalent, they get the same value on every line of the truth table. 
+\end{enumerate}
+\setcounter{enumi}{3}
+\item \begin{enumerate}
+	\item Suppose $\chi = (\phi\wedge \psi)$. Then $\val{\chi}{A} = F$ iff either $\val{\phi}{A} = F$ or $\val{\psi}{A}=F$ iff either $\val{\phi}{A}\neq T$ or $\val{\psi}{A}\neq T$ iff $\val{\phi \wedge \psi}{A}≠T$ iff $\val{\chi}{A}≠T$.
+	\item Suppose $\chi = (\phi \to \psi)$. Then $\val{\chi}{A} = F$ iff $\val{\phi}{A}=T$ and $\val{\psi}{A}=F$ iff $\val{\phi}{A}≠F$ and $\val{\psi}{A} ≠T$ iff  $\val{\phi\to\psi}{A}≠T$ iff $\val{\chi}{A}≠T$.
+	\item Suppose $\chi=(\phi\bicond\psi)$. Then $\val{\chi}{A} =F$ iff $\val{\phi}{A}≠\val{\psi}{A}$ iff $\val{(\phi\bicond\psi)}{A}≠T$ iff $\val{\chi}{A}≠T$.
+\end{enumerate}
+\setcounter{enumi}{8}
+
+\item If $\phi$ and $\psi$ express the same truth-function $f_{n}$, and they contain the same sentence letters $s_{1},…,s_{n}$ then in every structure $\mathscr{A}$, $$f(\mathscr{A}(s_{1}),…,\mathscr{A}(s_{n}))= \val{\phi}{A} = \val{\psi}{A}.$$
+But then these two sentence have the same truth value in every \lone-structure, and are logically equivalent. The restriction to sentences with the same sentence letters is crucial. $(P\wedge Q)$ and $(P \wedge R)$ both express the conjunction function $\mathbf{k}$, but are not logically equivalent.
+
+If $\phi$ and $\psi$ contain the same $n$ sentence letters and are logically equivalent, then in every \lone-structure $\mathscr{A}$, $\val{\phi}{A}=\val{\psi}{A}$. If $\phi$ expresses $f$, then $f(\mathscr{A}(s_{1}),…,\mathscr{A}(s_{n})) = \val{\phi}{A}=\val{\psi}{A}$. But since $\psi$ contains just $s_{1},…,s_{n}$ too, $\psi$ also expresses $f$. 
+
+\item The underlying result is this: for any structure $\mathscr{A}$, $$\val{\neg(\phi\bicond\psi)}{A} = \val{(\neg\phi\bicond\psi)}{A}.$$ For $\val{\neg(\phi\bicond\psi)}{A} = T$ iff $\val{\phi\bicond\psi}{A}=F$ iff $\val{\phi}{A}≠\val{\psi}{A}$ iff $\val{\neg\phi}{A}=\val{\psi}{A}$ iff $\val{\neg\phi\bicond\psi}{A}=T$.
+
+Suppose we have some sentence of our language $\mathcal{L}_{\bicond,\neg}$, which has a constituent which is a negated biconditional. We can apply the above result, and \autoref{tequiv}, to derive that the sentence obtained by replacing this constituent by `pushing in' the negation to apply only to the antecedent of the biconditional is logically equivalent to our original sentence. If  we apply this procedure again to the new sentence, and repeatedly the sentence obtained as a result of the procedure, we will eventually drive all negations to rest against sentence letters, and none will have any occurrence of $\bicond$ in their scope. The procedure always reduces the complexity of any negated biconditional sentence, so it will terminate eventually because every sentence has finite complexity. (In effect we have an induction on the maximal complexity of constituents which are negated biconditionals: the procedure shows that if we have a sentence with no negated biconditional constituent of complexity greater than $i$, that is logically equivalent to a sentence with containing no negated biconditional constituent of complexity greater than $i-1$; if our induction hypothesis is that all sentences with a negated biconditional constituent of complexity no greater than $i-1$ are equivalent to sentences with no biconditional in the scope of negation, we have our result. The procedure described may be a little easier to intuitively grasp than induction on complexity of constituents.)
+
+So consider $¬(¬(P\bicond Q)\bicond R)$. We see that the sentence is a negated biconditional, so we apply the procedure to obtain $(¬¬(P \bicond Q) \bicond R)$. We apply the procedure to $¬(P\bicond Q)$ obtaining $(¬(¬P \bicond Q)\bicond R)$. Finally, we apply the procedure to $¬(¬P \bicond Q)$, obtaining $((¬¬P \bicond Q) \bicond R)$.
 
 
 
+\end{enumerate}
+
+\section*{Exercises for Chapter 5: page \pageref{ex5}} \label{ans5}
+
+\begin{enumerate}
+\item Our task is to construct a sentence in conjunctive normal form that expresses any arbitrary truth function. Suppose we are given an $n$-place truth function. Select $n$ sentence letters $\{s_{1},…,s_{n}\}$, and construct a sentence using them as follows. \begin{itemize}
+	\item If in some structure $\mathscr{A}$, $f(\val{s_{1}}{A},…,\val{s_{n}}{A}) = F$, call $\mathscr{A}$ an $f$-disagreeing structure. If $\mathscr{A}$ is an $f$-disagreeing structure, let $$S^{\mathscr{A}}_{i} = \begin{cases}
+		s_{i} &\text{if } \val{s_{i}}{A} = F\\	
+		¬s_{i} &\text{if } \val{s_{i}}{A} = T.
+	\end{cases}$$ For each $f$-disagreeing structure $\mathscr{A}$, we can see that $\val{S_{i}^{\mathscr{A}}}{A} = F$.
+	\item Define $\mathfrak{d}_{\mathscr{A}} = \left[\bigvee_{i=1}^{n}S^{\mathscr{A}}_{i}\right]$ for each $f$-disgreeing structure $\mathscr{A}$. Since in each $f$-disagreeing structure, the disjuncts of this disjunction are all $F$, the disjunction $\mathfrak{d}_{\mathscr{A}}$ also is $F$ in an $f$-disagreeing structure $\mathscr{A}$. Indeed, by construction, $\mathfrak{d}_{\mathscr{A}}$ is false only in $\mathscr{A}$ and structures that agree with $\mathscr{A}$ on sentence letters in $\{s_{1},…,s_{n}\}$ – only those structures are guaranteed to be ones where every disjunct is false. 
+
+	There are only finitely many equivalence classes of structures that agree on the setence letters in $\{s_{1},…,s_{n}\}$; for each such class which contains an $f$-disagreeing structure,  pick some $f$-disgreeing structure from it at random. There are finitely many of these chosen $f$-disagreeing structures which can be enumerated $\mathscr{A}_{1},…\mathscr{A}_{m}$. 
+	\item Define $\mathfrak{c} = \left[\bigvee_{j=1}^{m} \mathfrak{d}_{\mathscr{A}_{j}}\right]$. This conjunction is false whenever it has any false conjunct, and true otherwise. It is thus false on every $f$-disagreeing structure, and true otherwise. So it expresses $f$.
+
+	If there are no $f$-disagreeing structures, let $\mathfrak{c} = (P\vee \neg P)$, which is obviously true on every structure, just like $f$, and is degenerately in CNF. 
+\end{itemize}
+What we have done is create a sentence which says, `we are not in row $x$ \emph{and} we are not in row $y$ \emph{and} … \emph{and} we are not in row $z$', for each row of the truth table for $s_{1},…,s_{n}$ where $f$ gets the value $F$.  
+
+\item  Recall that a truth-function is positive iff $f(T,…,T) = T$. Suppose $\phi$ expresses $f$. We want to show that if $\phi$ contains only $\to$ and $\wedge$ as its connectives, $f$ is positive.
+
+\emph{Base case}. $\phi$ is a sentence letter, $s$. If $s$ expresses $f$, then $f(\val{s}{A})=\mathscr{A}(s)$. So if $\mathscr{A}(s) = T$, $f(T) = T$. So $f$ is positive.
+
+\emph{Induction step}. $\phi$ is complex (a conjunction or conditional), and the induction hypothesis holds of its simpler constituents $\phi$ and $\psi$. Then $\psi$ and $\chi$ both express positive truth functions, $f_{\psi}$ and $f_{\chi}$ – so $f_{\psi}(T,…T) = T = f_{\chi}(T,…,T)$.
+\begin{itemize}
+ 	\item $\phi = (\psi \wedge \chi)$. $\phi$ then expresses the truth function $\mathbf{k}(f_{\psi}(\cdots),f_{\chi}(\cdots))$. Since those constituent truth functions are positive, $$\mathbf{k}(f_{\psi}(T,…,T),f_{\chi}(T,…,T)) = \mathbf{k}(T,T)=T.$$ So $\phi$ expresses a positive truth function too.
+ 	\item $\phi = (\psi \to \chi)$. $\phi$ then expresses the truth function $\mathbf{c}(f_{\psi}(\cdots),f_{\chi}(\cdots))$. Since those constituent truth functions are positive, $$\mathbf{c}(f_{\psi}(T,…,T),f_{\chi}(T,…,T)) = \mathbf{c}(T,T)=T.$$ So $\phi$ expresses a positive truth function too.
+ \end{itemize} 
+\setcounter{enumi}{5}
+\item  \begin{enumerate}\setcounter{enumii}{1}
+	\item Yes; $(¬\phi \to \psi)$ is logically equivalent to the disjunction $(\phi \vee \psi)$, and we already know that disjunction and negation are together expressively adequate. 
+	\setcounter{enumii}{3}
+	\item No. The two-place connectives are all positive, and so cannot ever express a truth-function which is not positive. Negation is not positive, but no sentence involving only negation can be used to express any constant one-place truth function, since $\mathbf{n}(x) ≠ x$, but for a constrant truth function $f(T)=T$ or $f(F)=F$.
+	\item $\downarrow$ is expressively complete: $(\phi\downarrow\phi)$ is logically equivalent to $\neg\phi$; and $((\phi\downarrow\psi)\downarrow(\phi\downarrow\psi))$ is logically equivalent to $(\phi\vee\psi)$. And we know that $\{\neg,\vee\}$ is expressively complete.
+	\item A 2-place truth-function is expressively adequate if it is able to express all 16 2-place truth functions. \begin{itemize}
+	\item It cannot be positive (else it would not be able to express those 8 truth-functions which get the value $F$ when given $T,T$ as input) - this rules out the 8 positive truth functions, leaving 8.
+	\item It cannot be negative (i.e., $f(F,F)=F$), since it would not be able to express those 8 truth functions which are not negative. 
+	\item This leaves 4 candidates: \begin{tabular}{cc|cccc}
+\toprule
+	~ & ~ & $f_{\uparrow}$ & $f_{\text{n-right}}$ & $f_{\text{n-left}}$ & $f_{\downarrow}$ \\
+	\midrule
+	$T$ & $T$ & $F$ & $F$ & $F$ & $F$\\
+	$T$ & $F$ & $T$ & $T$ & $F$ & $F$\\
+	$F$ & $T$ & $T$ & $F$ & $T$ & $F$\\
+	$F$ & $F$ & $T$ & $T$ & $T$ & $T$\\	
+	\bottomrule
+\end{tabular}
+
+But $f_{\text{n-left}}$ is the truth-function $f(x,y) =\mathbf{n}(x)$, and $f_{\text{n-right}}$ is the truth-function $f(x,y) =\mathbf{n}(y)$. Neither of these truth-functions is able to express any of the 8 truth functions where $f(F,T)=f(T,F)$.  \end{itemize}
+So only the connectives which express $f_{\uparrow}$ and 
+	$f_{\downarrow}$ are expressively complete by themselves. 
+\item $\bot$ is not expressively adequate by itself, since it is not true in any structure and so cannot express any positive truth-function. However, $\{\to,\bot\}$ is expressively adequate: $(P \to \bot)$ expresses the same truth-function as $\neg P$ (because that conditional expresses the function that yields $F$ iff only if $P$ is true and $\bot$ is false, but since $\bot$ is always false, iff $P$ is true). And it can be easily verified that $((P\to\bot)\to Q)$ expresses disjunction $(P\vee Q)$. And conjunction isn't expressively adequate itself.
+\end{enumerate}
+\item  \begin{enumerate}
+	\item We can express negation using $\to$ and $\to^{\star}$ as follows: $P \to^{\star} (P \to P)$ (or $P \to (P \to^{\star} P)$). Since $\{\neg,\to\}$ are expressively adequate, so too is $\{\to,\to^{\star}\}$.
+
+	Self-duality is not sufficient for expressive adequacy, since $\{¬\}$ is a self-dual set without being expressively adequate. Nor is it necessary, since $\{\uparrow\}$ is expressively adequate without being a self-dual set. 
+	\item The definition of duality is such that if $f(x,y) = z$ then $f^{\star}(x^{\star},y^{\star}) = z^{\star}$. If $f =f^{\star}$, so that $f$ is self-dual, then if $f(T,F) = z$, $f(F,T) = z^{\star}$, so $f(T,F)≠f(F,T)$. Likewise $f(T,T)≠f(F,F)$. 
+
+	There are 16 2-place truth-functions. But 12 of them are such that either the top line or bottom line of the truth-table are the same, or the two middle lines of the truth table are the same. So only 4 could be self-dual: the four degenerate truth-functions that track their first input or second input or their negations, $f_{\text{left}}, f_{\text{n-left}}, f_{\text{right}}, f_{\text{n-right}}$. These are self-dual, basically because when we `flip' the truth table, these functions directly follow the flipped inputs to the truth-functions, undistorted by any contribution from the other input.
+\end{enumerate}
+\setcounter{enumi}{8}
+\item \begin{enumerate}
+	\item $(¬Q \vee R)$;
+	\setcounter{enumii}{2}
+	\item $(P\to Q)$.
+\end{enumerate}
+\item \begin{enumerate}
+	\setcounter{enumii}{1} \item If $\Gamma \vDash^{\!\star} \Delta$, then every structure which satisfies all of $\Gamma$ satisfies at least one of $\Delta$. So there can be no structure which satisfies all of $\Gamma$ and none of $\Delta$. Let $\widetilde{\Delta}$ be the set which results from taking every member of $\Delta$ and negating it (i.e., $\widetilde{\Delta} = \{\neg\delta : \delta\in \Delta\}$). Then $\Gamma\cup\widetilde{\Delta}$ is unsatisfiable. By Compactness, some finite subset of $\Gamma\cup\widetilde{\Delta}$ is unsatisfiable – call that set $G\widetilde{D}$. There are three cases to consider: \begin{itemize}
+		\item $G\widetilde{D}$ contains elements from both $\Gamma$ and $\widetilde{\Delta}$. Let $\Phi$ be the conjunction of all sentences in both $\Gamma$ and $G\widetilde{D}$. Since the latter is finite, the conjunction is finite: $(\phi_{1}\wedge…\wedge \phi_{m})$. Let $\Psi'$ be the conjunction of all sentences in $\widetilde{\Delta}$ and $G\widetilde{D}$. Since $\Psi'$ is a conjunction of negated sentences $(\neg\psi_{1}\wedge…\wedge ¬\psi_{n})$, it is logically equivalent to a negated disjunction $¬(\psi_{i}\vee…\vee \psi_{n}) = ¬\Psi$. (Note that $\Psi$ is the embedded disjunction.) Since $G\widetilde{D}$ is unsatisfiable, $\Phi,¬ \Psi \vDash$; by \autoref{entuns}, $\Phi\vDash \Psi$, and $\Phi$ and $\Psi$ are of the right form.
+		\item $G\widetilde{D}$ contains elements only from $\Gamma$. Let $\Phi$ be the conjunction of every sentence in $G\widetilde{D}$, and let $\Psi$ be an arbitrary finite disjunction of members from $\Delta$. Since $G\widetilde{D}\subseteq \Gamma$, $\Phi$ is of the right form, and since $\Phi$ is a contradiction, $\Phi\vDash\Psi$.
+		\item  $G\widetilde{D}$ contains elements only from $\widetilde{\Delta}$. Then every structure makes some member of $\Delta$ true whose negation is in $G\widetilde{D}$. Let $\Psi$ be the disjunction of negations of every sentence in $G\widetilde{D}$; this is a finite tautologous disjunction. Let $\Phi$ be an arbitrary finite conjunction of members from $\Gamma$. Since $\Psi$ is a tautology, $\Phi\vDash \Psi$.
+	\end{itemize}
+\end{enumerate}
+\item \begin{enumerate}
+	\item The set of effective procedures is roughly the set of finite recipes in English. Each such recipe is a finite sequence of characters drawn from a finite alphabet, and by the same argument as in the Key Lemma \ref{keylemma}, there are only countably many effective procedures.
+	\item \begin{enumerate}
+		\item If there were an effective procedure for computing $d$, it would be a member of $E$ – say it would be the $k$-th recipe under the relevant enumeration. But if $d$ is computed by the $k$-th recipe, then $d=f_{k}$. But $d(k) ≠ f_{k}(k)$, by construction of $d$. So $d$ cannot be computed by the $k$-th recipe. Since $k$ was arbitrary, $d$ cannot be computed by any effective recipe specifiable in English.
+		\item Suppose there were an effective procedure for sorting recipes into those which are \emph{good} (compute a function in a finite time) and those which are \emph{garbage} (not computing a function, not halting in a finite time.) This procedure determines a function $g(i) = \begin{cases}
+			1 &\text{ iff the $i$-th recipe in $E$ is good;}\\
+			0 &\text{ otherwise}.
+		\end{cases}$ 
+
+If this function $g$ is effectively computable, then $d$ is effectively computable. The recipe for computing each $d(n)$ is this: \begin{verbatim}
+    On given input n, compute g(n) 
+        If g(n) = 0, then set d(n) = 1. 
+        If g(n) = 1, then compute f_n(n)
+            If f_n(n) = 1, then set d(n) = 2;
+            If f_n(n) ≠ 1, then set d(n) = 1.
+\end{verbatim} 
+If $g$ is a good test for effective procedures, every function in this little flowchat is calculate by an effective procedure, so for each $n$, we determine the value of $d(n)$ in a finite time. So $d$ is effectively computable. But the previous exercise just showed that $d$ is not effectively computable, hence $g$ is not effectively computable.
+
+	\end{enumerate}
+\end{enumerate}
+\end{enumerate}
 
 }

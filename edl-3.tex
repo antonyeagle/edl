@@ -28,7 +28,7 @@ Here's how they work. If $\phi$ is a string, the expression $\cquote{\phi}$ is t
 
 
 Now we can see how to fix up our definition of sentence letters:
-\begin{definition}[Sentence Letters]
+\begin{definition}[Sentence Letters]\label{sentlet}
  	A symbol is a sentence letter iff it is an instance of one of the following: \cquote{P_{n}}, \cquote{Q_{n}}, or \cquote{R_{n}}, for $n \geqslant 0$. For simplicity, we write `$P$' for `$P_{0}$'. 
  \end{definition}
 This can all seem a bit complicated, but we need to be precise if we are going to be sure that we can prove what we need to prove about our language. Pedantry is almost always a virtue in logic.
@@ -59,7 +59,7 @@ To say that the sentences are strings in the \emph{smallest collection} includin
 \end{definition} `$\neg$' is called a \emph{unary} connective; it makes a sentence when it is supplied with one sentence. `$\wedge$', `$\vee$', etc., are called \emph{binary} connectives, because they make a sentence when supplied with two sentences, which they connect together (hence the name). \lone\ does not involve ternary or higher arity connectives. 
 
 \begin{definition}[Scope]
-		The \emph{scope} of an occurrence of a connective in a sentence $\phi$ is the occurrence of the smallest subsentence of $\phi$ that contains this occurrence of the connective.
+		The \emph{scope} of an occurrence of a connective in a sentence $\phi$ is smallest sentence occurring as a constituent of $\phi$ that contains this occurrence of the connective.
 \end{definition}
 So in the sentence $((P\wedge Q) \vee R)$, the scope of $\wedge$ is $(P \wedge Q)$. 
 
@@ -82,8 +82,8 @@ We may combine these conventions, dropping the outer parentheses to yield \cquot
 \section{Proofs About Syntax}
 
 
-We can be quite precise about the syntax of \lone. For an example of what we can show, consider this result: \begin{theorem}[Parenthesis Matching]\label{thmpm}	If $\phi$ is a formula of \lone, then if $\phi$ contains any left parenthesis `(', then it terminates with a right parenthesis `)', which is paired with the leftmost left parenthesis in $\phi$ \citep[\S 2, Theorem 1]{sep-logic-classical}. \begin{proof}
-		By clause (3) of Definition \ref{lone}, every sentence is built up from the sentence letters using the subclauses of clause (2) of Definition \ref{lone}. Sentence letters have no parentheses (as no sentence letter is also a parenthesis). Parentheses are introduced only in subclauses involving `$\wedge$', `$\vee$', `$\to$', and `$\bicond$', and each time they are introduced as a matched set. So at any stage in the construction of a sentence, the parentheses are paired off. Moreover, each newly introduced pair of parentheses will be the leftmost and rightmost characters in a sentence. Since the only complex sentences not formed from these parenthesis-introducing rules are formed by negating existing sentences, and negation introduces a new character only at the left. So any complex formula which contains any parenthesis terminates in a right parenthesis, which is matched to the leftmost left parenthesis.
+We can be quite precise about the syntax of \lone. For an example of what we can show, consider this result: \begin{theorem}[Parenthesis Matching]\label{thmpm}	If $\phi$ is a sentence of \lone, then if $\phi$ contains any left parenthesis `(', then it terminates with a right parenthesis `)', which is paired with the leftmost left parenthesis in $\phi$ \citep[\S 2, Theorem 1]{sep-logic-classical}. \begin{proof}
+		By clause (3) of Definition \ref{lone}, every sentence is built up from the sentence letters using the subclauses of clause (2) of Definition \ref{lone}. Sentence letters have no parentheses (as no sentence letter is also a parenthesis). Parentheses are introduced only in subclauses involving `$\wedge$', `$\vee$', `$\to$', and `$\bicond$', and each time they are introduced as a matched set. So at any stage in the construction of a sentence, the parentheses are paired off. Moreover, each newly introduced pair of parentheses will be the leftmost and rightmost characters in a sentence. Since the only complex sentences not formed from these parenthesis-introducing rules are formed by negating existing sentences, and negation introduces a new character only at the left. So any complex sentence which contains any parenthesis terminates in a right parenthesis, which is matched to the leftmost left parenthesis.
 	\end{proof}
 \end{theorem}
 Now, this isn't particularly interesting on its own; it's fairly obvious from the rules for the construction of sentences. However, it's important for two reasons. First, it shows how to construct a proof in the metalanguage: a systematic argument that a certain claim – the theorem – is correct. This is a fairly informal proof of this sort, and things will get a bit more precise later in the book, but it is illustrative of the kind of thing we'll do. Second, we can use this theorem in proving further theorems. For example: \begin{theorem}[Prefix-free]\label{prefix} Let $\phi,\psi$ be nonempty strings, such that $\cquote{\phi\psi}$ (i.e., $\phi$ followed by $\psi$) is a sentence. Then $\phi$ is \emph{not} a sentence \citep[\S 2, Theorem 5]{sep-logic-classical}.
@@ -126,7 +126,7 @@ How big is the language \lone? That is: what is the size of its set of sentences
 Each sentence is finitely long – we can prove this by induction on complexity, since at each complexity stage, we only form finitely long sentences from previously formed finite sentences, and there is never a stage at which an infinite sentence is formed. So each sentence of \lone\ is a finite sequence. Moreover, while our alphabet is infinite (we are treating each sentence letter as a distinct syntactically indivisible entity, at least at our level of analysis),\footnote{We need not do this, of course: we could use the alphabet consisting of $P$, $Q$, $R$, and the digits $0,\ldots, 9$ to treat the sentence letters themselves as finite strings drawn from a finite alphabet. But as we'll see, this doesn't make any difference to the size of the set of sentences of \lone.} it is nevertheless countable. We can set up some standard enumeration of the alphabet: perhaps associate the parentheses with $0$ and $1$, the connectives with numbers $2$–$6$, and the sentence letters with the subsequent numbers. 
 
 This means of associating numbers with items in our alphabet is in effect a \emph{code}, which turns strings of \lone\ into corresponding sequences of natural numbers. And it turns out this entails the set of sentences of \lone\ is only countably infinite:
- \begin{lemma}[Key Lemma]
+ \begin{lemma}[Key Lemma]\label{keylemma}
 	There is a one-one correspondence between finite sequences of natural numbers and the set of natural numbers $\mathbb{N}$.
 	\begin{proof}
 		For each $l$, there are countably many finite sequences of length $l$. For we can map any given sequence to a unique natural number, as follows: if $p_{k}$ is the $k$-th prime number, we map the sequence  $\langle n_{1}, \ldots, n_{l}\rangle$ to the product of the first $l$ primes, each prime $p_{i}$ raised to the power of $n_{i}$: $$\mathsf{code}(\langle n_{1}, \ldots, n_{l}\rangle) = p_{1}^{n_{1}}\times\ldots\times p_{l}^{n_{l}}.$$ Since the coding function $\mathsf{code}$ is one-one, by the fundamental theorem of arithmetic \citep[§V.14]{fundta}, it has an inverse, which is from a the natural numbers \emph{onto} the set of finite sequences of length $l$, which is thus an enumeration, and hence the latter set is countable.

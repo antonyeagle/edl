@@ -18,62 +18,106 @@ Our interest in disjunctive normal form lies in the following theorem:
 \begin{theorem}[\textsc{dnf}]\label{dnf}
 	Every truth function is expressed by a \lone\ sentence in \textsc{\lowercase{DNF}}.
 \begin{proof}	
-Suppose $f$ is an $n$-place truth function. Let $s_{1},\ldots,s_{n}$ be  sentence letters, and let $\mathscr{A}$ be any structure.  Define an \emph{$f$-agreeing} structure $\mathscr{A}$ as one where $f(\val{s_{1}}{A},\ldots,\val{s_{n}}{A}) = T$. Assume there is at least one $f$-agreeing structure. Then define $\mathfrak{l}_{\mathscr{A},i} = s_{i}$ if $\mathscr{A}(s_{i})=T$; otherwise let $\mathfrak{l}_{\mathscr{A},i} = \neg s_{i}$. 
-For any structure $\mathscr{B}$ that agrees with $\mathscr{A}$ on $s_{1},\ldots,s_{n}$, let $\mathfrak{l}_{\mathscr{B},i}=\mathfrak{l}_{\mathscr{A},i}$. It is obvious that $\val{\mathfrak{l}_{\mathscr{A,i}}}{A} = T$ for each $\mathscr{A},i$.
+Suppose $f$ is an $n$-place truth function. Let $s_{1},\ldots,s_{n}$ be  sentence letters in the standard order, and let $\mathscr{A}$ be any structure.  Define an \emph{$f$-agreeing} structure $\mathscr{A}$ as one where $f(\val{s_{1}}{A},\ldots,\val{s_{n}}{A}) = T$. Assume there is at least one $f$-agreeing structure. Then define $$S^{\mathscr{A}}_{i} = \begin{cases}
+	s_{i} &\text{if } \val{s_{i}}{A} = T;\\
+	¬s_{i} &\text{if } \val{s_{i}}{A} = F.
+\end{cases}$$ 
+ It is obvious that $\val{S_{i}^{\mathscr{A}}}{A} = T$ for each $\mathscr{A}, i$.
 
-For every structure $\mathscr{A}$, define $\mathfrak{c}_{\mathscr{A}} = \mathfrak{l}_{\mathscr{A},1}\wedge\ldots\wedge \mathfrak{l}_{\mathscr{A},n} = \left[\bigwedge_{i=1}^{n}\mathfrak{l}_{\mathscr{A},i}\right]$. Again, it is obvious that $\val{\mathfrak{c}_{\mathscr{A}}}{A}=T$. Since there are only finitely many structures that differ from one another in their assignments to $s_{1},\ldots,s_{n}$, there are only finitely many distinct sentences $\mathfrak{c}_{\mathscr{A}}$ for various $\mathscr{A}$.  Therefore, there are only finitely many $\mathfrak{c}_{\mathscr{A}}$ \emph{such that $\mathscr{A}$ is an $f$-agreeing structure}; let them be enumerated $\mathfrak{c}_{1},\ldots,\mathfrak{c}_{m}.$ It is obvious that each $\mathfrak{c}_{i}$ is true in one and only one structure, and that each such structure is $f$-agreeing.
+For every structure $\mathscr{A}$, define $\mathfrak{c}_{\mathscr{A}} = S^{\mathscr{A}}_{1}\wedge\ldots\wedge S^{\mathscr{A}}_{n} = \left[\bigwedge_{i=1}^{n}S^{\mathscr{A}}_{i}\right]$. Again, it is obvious that $\val{\mathfrak{c}_{\mathscr{A}}}{A}=T$, since it is a conjunction of true conjuncts. It is equally obvious that for any structure $\mathscr{B}$ that doesn't agree with $\mathscr{A}$ on the sentence letters $s_{1},…,s_{n}$, $\val{\mathfrak{c}_{\mathscr{A}}}{B}=F$, since it will have at least one false conjunct.
 
- Define $\mathfrak{d} = \mathfrak{c}_{1} \vee \ldots \vee \mathfrak{c}_{m} = \left[\bigvee_{j=1}^{m} \mathfrak{c}_{j}\right]$,  \emph{unless} there were no $f$-agreeing structures, in which case let $\mathfrak{d} = P_{1} \wedge \neg P_{1}$. It is obvious that $\mathfrak{d}$ is true in any structure which is among those such that some $\mathfrak{c}_{i}$ is true, i.e., $\mathfrak{d}$ is true in any $f$-agreeing structure.
+ Since there are only finitely many structures that differ from one another in their assignments to $s_{1},\ldots,s_{n}$, there are only finitely many distinct sentences $\mathfrak{c}_{\mathscr{A}}$ for various $\mathscr{A}$.  Therefore, there are only finitely many $\mathfrak{c}_{\mathscr{A}}$ \emph{such that $\mathscr{A}$ is an $f$-agreeing structure}; let them be enumerated $\mathfrak{c}_{1},\ldots,\mathfrak{c}_{m}.$ It is obvious that each $\mathfrak{c}_{i}$ is true in one and only one structure, and that each such structure is $f$-agreeing.
+
+ Define $\mathfrak{d} = \mathfrak{c}_{1} \vee \ldots \vee \mathfrak{c}_{m} = \left[\bigvee_{j=1}^{m} \mathfrak{c}_{j}\right]$,  \emph{unless} there were no $f$-agreeing structures, in which case let $\mathfrak{d} = (P \wedge \neg P)$. It is obvious that $\mathfrak{d}$ is true in any structure which is among those such that some $\mathfrak{c}_{i}$ is true, i.e., $\mathfrak{d}$ is true in any $f$-agreeing structure.
 
 $\mathfrak{d}$ is in DNF, by construction; and $\val{\mathfrak{d}}{A} = f(\val{s_{1}}{A},\ldots,\val{s_{n}}{A})$  for all $\mathscr{A}$, because it captures all and only the $f$-agreeing structures. So $\mathfrak{d}$ expresses $f$. \end{proof}\end{theorem}
 
 
 
-The truth-table rationale for this proof is clear: first, find the rows of the truth table on which the truth-function gets $T$ (those are the $f$-agreeing rows). Specify a sentence true in exactly one row by conjoining the relevant literals (so if the row is $\val{P}=T$, $\val{Q}=F$, the relevant conjunction is $P \wedge \neg Q$). Then disjoin those conjunctions which correspond to the $f$-agreeing rows; the result is a \textsc{\lowercase{DNF}} sentence true in exactly the $f$-agreeing rows. 
+The truth-table rationale for this proof is clear: first, find the rows of the truth table on which the truth-function gets $T$ (those are the $f$-agreeing rows). Specify a sentence true in exactly one row by conjoining the relevant literals (so if the row corresponding to $\mathscr{A}$ is $\val{P}{A}=T$, $\val{Q}{A}=F$, the relevant conjunction is $P \wedge \neg Q$). Then disjoin those conjunctions which correspond to the $f$-agreeing rows; the result is a \textsc{\lowercase{DNF}} sentence true in exactly the $f$-agreeing rows. 
 
-We can obviously use this result to show that, for any sentence $\phi$, there is a sentence $\phi'$ which is logically equivalent to $\phi$ and which is in \textsc{\lowercase{DNF}} form. This follows immediately from the \textsc{\lowercase{DNF}} theorem and the fact that every sentence expresses a truth function.
+We can use this result to show this \begin{corol}
+	For any sentence $\phi$, there is a sentence $\phi'$ which is logically equivalent to $\phi$ and which is in \textsc{\lowercase{DNF}} form. \begin{proof}
+		This follows immediately from the \textsc{\lowercase{DNF}} theorem and the fact that every sentence expresses a truth function.
+	\end{proof} 
+\end{corol} 
 
 
-\paragraph{\textsc{\lowercase{CNF}} and Positive Truth Functions}
+\paragraph{CNF and Positive Truth Functions}
 
-A formula is said to be in \emph{Conjunctive Normal Form} iff it is a (possibly degenerate) conjunction of (possibly degenerate) disjunctions of literals. This is obviously a dual notion to \textsc{\lowercase{CNF}}.
+A sentence is said to be in \emph{Conjunctive Normal Form} iff it is a (possibly degenerate) conjunction of (possibly degenerate) disjunctions of literals. This is obviously a dual notion to \textsc{\lowercase{DNF}}.
 In the case of \textsc{\lowercase{DNF}}, the \textsc{\lowercase{DNF}} sentence expressing some truth function $f$ is the disjunction of conjunctions, each of which specifies an $f$-agreeing structure. Each conjunct is therefore \emph{sufficient} for $f$ to have the value $T$ in the corresponding structure; the \textsc{\lowercase{DNF}} sentence is the disjunction of all of these sufficient conditions. For \textsc{\lowercase{CNF}}, we want the dual notion: the \textsc{\lowercase{CNF}} expression of $f$ will be a sentence which is a conjunction of disjunctions, each of which specifies a  necessary condition for a structure to be $f$-agreeing. And what is a necessary condition for a structure to be $f$-agreeing? It must avoid being \emph{$f$-disagreeing} – so each disjunct will be a disjunction of sentence letters and negated sentence letters, the truth of any of which is sufficient to ensure that some $f$-disagreeing structure is avoided.  (A problem asks you to make the foregoing remarks into a more precise proof of the \textsc{\lowercase{CNF}} theorem.)
 
 
-Call a truth function $f$ \emph{positive}  iff $f(T,\ldots,T)=T$ \citep[exercise 2.9.3]{bosintlo}. (Equivalently, if the top row of its truth table is $T$.) We can show that  all truth-functions which can be expressed using only $\to$ and $\wedge$ are positive (left for problem 9). Of interest is the converse theorem: \begin{theorem}
+Call a truth function $f$ \emph{positive}  iff $f(T,\ldots,T)=T$ \citep[exercise 2.9.3]{bosintlo}. (Equivalently, if the top row of the truth-function table is $T$.) We can show that  all truth-functions which can be expressed using only $\to$ and $\wedge$ are positive (left for exercises). Of interest is the converse theorem: \begin{theorem}
 	All positive truth functions can be expressed by $\to$ and $\wedge$. \label{positive} \begin{proof}
-	I sketch the proof.	Suppose the contrary, for \emph{reductio}. Then there is a truth function $f$ which is positive but can't be expressed by $\wedge,\to$. There is a \textsc{\lowercase{CNF}} sentence $\phi_{c}$ which expresses $f$; this will be a conjunction of disjunctions of (negated) sentence letters. By the constructive proof of the \textsc{\lowercase{CNF}} theorem, it can be shown (by induction on complexity of sentences, and using the result that $\phi\vee \psi\Dashv\vDash (\psi \to \phi)\to \phi$) that each conjunct of the resulting \textsc{\lowercase{CNF}} sentence will be equivalent to either (i) an arrow sentence \emph{without} negation, or (ii)  a conjunct  of the form $\neg \phi \vee \neg \psi$ (problem 10). In the second case, the \textsc{\lowercase{CNF}} sentence as a whole can't be positive. So the first case must obtain for $\phi_{c}$. By substituting each conjunct of $\phi_{c}$ for the arrow-sentence equivalent, we obtain a sentence $\phi$, which is a conjunction of arrow sentences without negation. But $\phi$ expresses $f$ and contains only $\to$ and $\wedge$.
+	I sketch the proof.	Suppose the contrary, for \emph{reductio}. Then there is a truth function $f$ which is positive but can't be expressed by $\wedge,\to$. There is a \textsc{\lowercase{CNF}} sentence $\phi_{c}$ which expresses $f$; this will be a conjunction of disjunctions of (possibly negated) sentence letters. Note the following results: \begin{itemize}
+		\item  $\phi\vee \psi$ is logically equivalent to $(\psi \to \phi)\to \phi$, 
+		\item $\phi \vee \neg \psi$ is logically equivalent to $\psi \to \phi$, and 
+		\item  $\neg\phi\vee\psi$ is logically equivalent to $\phi\to \psi$.
+	\end{itemize} By the constructive proof of the \textsc{\lowercase{CNF}} theorem, it can be shown – by induction on complexity of sentences, and using these results – that each conjunct of the resulting \textsc{\lowercase{CNF}} sentence will be equivalent to either \begin{enumerate}
+		\item an arrow sentence \emph{without} negation, or 
+		\item a conjunct  of the form $\bigvee_{i} \neg s_{i}$ for the sentence letters in $\phi_{c}$ (exercise).
+	\end{enumerate}  In the second case, the \textsc{\lowercase{CNF}} sentence as a whole can't be positive (because a disjunction of negated sentence letters will be false on the top row of the truth table, so the conjunction will be false). So the first case must obtain for $\phi_{c}$ – each of its conjuncts must be logically equivalent to a negation-free (possibly nested) conditional. By substituting each conjunct of $\phi_{c}$ for the arrow-sentence equivalent, we obtain a sentence $\phi$, which is a conjunction of arrow sentences without negation. But $\phi$ expresses $f$ and contains only $\to$ and $\wedge$.
 	\end{proof}
 \end{theorem} 
 
 
 
 
-\section{Functional Completeness, Expressive Adequacy}
-\paragraph{Functional Completeness and Expressive Adequacy}
+\section{Expressive Adequacy and Functional Completeness} \label{expressiveadeq}
+\paragraph{Expressive Adequacy and Functional Completeness}
+\begin{definition}[Expressive Adequacy]
+	A set of connectives is \emph{expressively adequate} iff there is, for any truth function $f$, a sentence containing only those connectives which expresses $f$.
+\end{definition}
+ The \textsc{\lowercase{DNF}} theorem shows that $\{\vee,\wedge,\neg\}$ is expressively adequate, and therefore that the set of connectives of \lone\ is expressively adequate. A language is by extension also said to be expressively adequate iff the connectives it contains are expressively adequate there is, for each truth function $f$, some sentence in that language that, under the intended semantics, expresses $f$. Since \lone\ sentences in \textsc{dnf} form are collectively expressively adequate, \lone\ is expressively adequate.
 
-A language is said to be \emph{functionally complete} iff there is a formula in that language that, under the intended semantics, expresses every truth function. The \textsc{\lowercase{DNF}} theorem shows that every truth function is expressed by a formula in \lone\ (as \textsc{\lowercase{DNF}} claims clearly are), and so \lone\ is functionally complete.
+\begin{definition}[Functional Completeness]
+	A set of truth-functional operators (truth-functions) $\mathbb{O}$ is \emph{functionally complete} if every truth function can be constructed by (possibly nested) combination of operators from only those in $\mathbb{O}$.\footnote{Remember that each truth-function is an operator since it is a function from sequences of truth values to truth values.}
+\end{definition} Derivatively, a set of \emph{connectives} is functionally complete if the functions expressed by those connectives are jointly functionally complete.
 
-A set of connectives is \emph{expressively adequate} iff there is a sentence containing only those connectives which expresses any truth function. The \textsc{\lowercase{DNF}} theorem shows that $\{\vee,\wedge,\neg\}$ is expressively adequate, and therefore that the set of connectives of \lone\ is expressively adequate.
+The \textsc{dnf} theorem shows that every truth function is expressed by an \lone\ sentence, and so \lone\ is expressively adequate. It may easily be adapted to show that the set of operators $\{\mathbf{n},\mathbf{k},\mathbf{a}\}$ is functionally complete in the strict sense. First we introduce some generalisations of $\mathbf{k}$ and $\mathbf{a}$, which will allow us to apply functions to arbitrary sequences of truth values: \begin{definition}[{Maximum and Minimum}] The \emph{maximum} of a sequence of truth values is defined inductively: \begin{itemize}
+	\item $\max_{i=1}^{1} v_{i} = v_{1}$;
+	\item $\max_{i=1}^{n+1} v_{i} = \textbf{a}(\max_{i=1}^{n},v_{n+1})$.
+\end{itemize}
 
-What this last result shows is that, in some sense, $\to$ and $\bicond$ are \emph{dispensible} – every truth function expressible using them can be expressed by a sentence without them (i.e., a \textsc{\lowercase{DNF}} one).
+The \emph{minimum} of a sequence of truth values is defined: \begin{itemize}
+	\item $\min_{i=1}^{1} v_{i} = v_{1}$;
+	\item $\min_{i=1}^{n+1} v_{i} = \textbf{k}(\min_{i=1}^{n},v_{n+1})$.
+\end{itemize}
+\end{definition}
+According to this definition, $\max(T,F) = T$ and $\min(T,F)=F$.
 
-There is another way to show this same result. Since two sentences are logically equivalent iff they express the same truth-function, the \textsc{\lowercase{DNF}} theorem, together with the fact that every \lone\ sentence expresses a truth-function, suffices to show that every \lone\ sentence is logically equivalent to one in \textsc{\lowercase{DNF}} form. Hence sentences involving $\to$ and $\bicond$ are logically equivalent to sentences in \textsc{\lowercase{DNF}} form, and therefore in a sense dispensible.
+
+\begin{theorem}[Functional Completeness of $\{\mathbf{n},\mathbf{k},\mathbf{a}\}$]If $f(x_{1},\ldots,x_{n})$ is an $n$-place truth function, there is some function composed from $\max$, $\min$, and $\mathbf{n}$ which is identical to $f$ (has the same values for the same arguments), and is constructed in such a way that (i) $\max$ takes scope over any occurrence of $\min$ and $\mathbf{n}$ in the function definition, and (ii) $\min$ takes scope over any occurence of $\mathbf{n}$ in the function definition.\end{theorem}
+	\begin{proof}
+This example illustrates the main idea, which is just that involved in the proof of the \textsc{dnf} theorem.
+
+Suppose we consider the binary function $f$ such that $f(x,y)=F$ iff $x=F,y=T$. Then $f(x,y)=T$ iff either $x=y=T$ or $x=\mathbf{n}(y)=T$ or $\mathbf{n}(x)=\mathbf{n}(y)=T$. So \[f(x,y) = \max(\min(x,y),\min(x,\mathbf{n}(y)),\min(\mathbf{n}(x),\mathbf{n}(y)).\] 
+\end{proof}
+
+
+That is, any truth-function expressible by a sentence in \textsc{dnf} can be constructed from the truth-functions associated with (generalised) disjunction, (generalised) conjunction, and negation; since every truth-function can be expressed by a sentence in DNF, those operators are collectively functionally complete. Accordingly, the connectives which express those operators $\{\neg,\wedge,\vee\}$ form a functionally complete set (in the derivative sense).
+
+
+What this last result shows is that, in some sense, $\to$ and $\bicond$ are \emph{dispensible} – every truth function expressible using them can be expressed by a sentence without them (i.e., a \textsc{\lowercase{DNF}} sentence or a \textsc{cnf} sentence).
+
+There is another way to show this same result. Since two sentences containing the same stock of sentence letters are logically equivalent iff they express the same truth-function, the \textsc{\lowercase{DNF}} theorem, together with the fact that every \lone\ sentence expresses a truth-function, suffices to show that every \lone\ sentence is logically equivalent to one in \textsc{\lowercase{DNF}} form. Hence sentences involving $\to$ and $\bicond$ are logically equivalent to sentences in \textsc{\lowercase{DNF}} form, and therefore in a sense dispensible – we can't say anything more with conditional and biconditional sentences than we could if we had restricted ourselves to sentences in \textsc{dnf}.\footnote{It is more efficient to say $P\bicond Q$ than its \textsc{dnf} equivalent $(P\wedge Q)\vee(¬P \wedge ¬Q)$.}
 
 
 
 \paragraph{The De Morgan Equivalences}
 
-Let `$\phi\Dashv\vDash\psi$' abbreviate `$\phi \vDash \psi$ and $\psi \vDash \phi$'.
-\begin{theorem}[De Morgan Equivalences]
+Let `$\phi\Dashv\vDash\psi$' abbreviate `$\phi \vDash \psi$ and $\psi \vDash \phi$' – that is, that $\phi$ and $\psi$ are logically equivalent.
+\begin{theorem}[De Morgan Equivalences]\label{demorg}
 		\begin{align*}
 			(\phi \vee \psi) &\Dashv\vDash \neg(\neg\phi \wedge \neg \psi),\\
 	(\phi \wedge \psi) &\Dashv\vDash\neg(\neg\phi \vee \neg \psi).
 		\end{align*}
 \begin{proof}
-	These equivalences can be easily demonstrated using a truth table: Table \ref{tone}.
+	These equivalences can be easily demonstrated using a schematic truth table (\autoref{tone}). 
 \end{proof}
-\end{theorem} \begin{table} \label{tone}
+\end{theorem} \begin{table}
     \centering
     \begin{tabular}{cc|cc|cc}
     \toprule
@@ -85,22 +129,40 @@ Let `$\phi\Dashv\vDash\psi$' abbreviate `$\phi \vDash \psi$ and $\psi \vDash \ph
     $F$ & $F$& $F$ & $F$& $F$& $F$\\
     \bottomrule
     \end{tabular}
-\caption{De Morgan Equivalences}
+\caption{De Morgan Equivalences\label{tone}}
 \end{table}
 These equivalences show that $\{\neg,\vee\}$ and $\{\neg,\wedge\}$ are expressively adequate, given the \textsc{\lowercase{DNF}} theorem.
 
+There are analogues of these equivalences for truth-functions: \begin{theorem}[De Morgan Equivalences for Truth Functions] \label{dm}\begin{align*}
+\mathbf{a}(x,y) = \mathbf{n}(\mathbf{k}(\mathbf{n}(x),\mathbf{n}(y))),\\
+\mathbf{k}(x,y) = \mathbf{n}(\mathbf{a}(\mathbf{n}(x),\mathbf{n}(y))).
+\end{align*}\end{theorem} Using this result we can establish \autoref{demorg} without use of a truth table.\footnote{Consider the equivalence of $(\phi\vee\psi)$ and $¬(¬ \phi \wedge ¬ \psi)$. By \autoref{dm}, $\mathbf{a}(x,y) = \mathbf{n} \left(\mathbf{k} \left( \mathbf{n} \left( x \right), \mathbf{n} \left( y \right)  \right) \right)$, so for any $\mathscr{A}$, \begin{align*}
+		\val{\phi\vee\psi}{A} &= \mathbf{a}\left(\val{\phi}{A},\val{\psi}{A}\right)\\
+ &= \mathbf{n}\left(\mathbf{k}\left(\mathbf{n}\left(\val{\phi}{A}\right),\mathbf{n}\left(\val{\psi}{A}\right)\right)\right) \\
+	&= \mathbf{n} \left(\mathbf{k}\left(\val{\neg\phi}{A},\val{\neg\psi}{A}\right)\right)\\
+	&= \mathbf{n}\left(\val{(\neg\phi\wedge\neg\psi)}{A}\right)\\
+	&= \val{\neg(\neg\phi\wedge\neg\psi)}{A}.
+\end{align*}} This result also shows that $\{\mathbf{n},\mathbf{k}\}$ and $\{\mathbf{n},\mathbf{a}\}$ are functionally complete.
+
+
+
+
+
 \paragraph{Inadequacy and New Connectives}
 
-A set of connectives is expressively \emph{inadequate} iff there is some truth function which cannot be expressed by sentences involving only those connective. Accordingly, $\{\neg\}$  is expressively inadequate: quite apart from whether it can express a 2- or more place truth function, consider the 1-place function $f_{T}$ which is constantly true. Since $f_{T}(T)=f_{T}(F)$,  we would need a sentence $\phi$ involving only negation such that in even one case $\val{\phi}{A}=\val{\neg\phi}{A}$; this clearly cannot be.
+A set of connectives is \emph{expressively inadequate} iff there is some truth function which cannot be expressed by sentences involving only those connective. Accordingly, $\{\neg\}$  is expressively inadequate: quite apart from whether it can express a 2- or more place truth function, consider the 1-place function $\mathbf{t}$ which is constantly true. Since $\mathbf{t}(T)=\mathbf{t}(F)$,  we would need a sentence $\phi$ involving only negation such that in even one case $\val{\phi}{A}=\val{\neg\phi}{A}$; this clearly cannot be. 
 
-Given our definition of a connective, we can imagine extending our language \lone\ by adding new sentence-forming operators that express different connectives. We could add the $0$-place connective $\top$ which expresses $f_{T}$. As we know from the \textsc{\lowercase{DNF}} theorem, adding $\top$ doesn't add to the expressive power of the language: $\top$ is logically equivalent to $(P \vee \neg P)$, and so adding it would be redundant.  Adding $\wedge$ to the language $\mathcal{L}_{\neg}$, in which the only connective is negation, is not redundant: $\mathcal{L}_{\neg,\wedge}$ is functionally complete and $\mathcal{L}_{\neg}$ is not. 
+A set of truth functions is \emph{functionally incomplete} iff there is some truth function which is not constructible from functions in that set. The examples just considered show that $\{\mathbf{n\}}$ is functionally incomplete; since $¬$ cannot express $\mathbf{t}$, so $\mathbf{t}$ can't be constructed solely from $\mathbf{n}$.
+
+
+Given our definition of a connective, we can imagine extending our language \lone\ by adding new sentence-forming operators that express different truth functions.  (We need to extend the formation rules in the syntax accordingly too, but that is straightforward once we know the arity of the new connectives.)  We could add the $0$-place connective $\top$ – this is like a sentence letter with a fixed interpretation, $T$ in every structure. As we know from the \textsc{\lowercase{DNF}} theorem, adding $\top$ doesn't add to the expressive power of the language: $\top$ is logically equivalent to $(P \vee \neg P)$, and so adding it would be redundant.  Adding $\wedge$ to the language $\mathcal{L}_{\neg}$, in which the only connective is negation, is not redundant: $\mathcal{L}_{\neg,\wedge}$ is functionally complete and $\mathcal{L}_{\neg}$ is not. 
 
 \paragraph{Sheffer Stroke and Peirce Arrow}
 
-The connectives $\uparrow$ and $\downarrow$ can be added to a language, with the truth tables in Table \ref{ttwo}: 
-\begin{table}\label{ttwo}
+The connectives $\uparrow$ and $\downarrow$ can be added to a language, with the truth tables in \autoref{ttwo}. 
+\begin{table}
 \centering
-\begin{tabular}{cc|c|c}
+\begin{tabular}{cc|cc}
 \toprule
 	$\phi$ & $\psi$ & $(\phi \uparrow \psi)$ & $(\phi \downarrow \psi)$\\
 	\midrule
@@ -109,23 +171,37 @@ The connectives $\uparrow$ and $\downarrow$ can be added to a language, with the
 	$F$ & $T$ & $T$ & $F$\\
 	$F$ & $F$ & $T$ & $T$\\	
 	\bottomrule
-\end{tabular}	\caption{Sheffer Stroke and Peirce Arrow}
-\end{table}The $\uparrow$, also written $|$, is called the \emph{Sheffer stroke}; the $\downarrow$ has no standard name, but is sometimes called the \emph{Peirce arrow}. 
+\end{tabular}	\caption{Sheffer Stroke and Peirce Arrow\label{ttwo}}
+\end{table}The $\uparrow$, sometimes also written $|$, is called the \emph{Sheffer stroke}; the $\downarrow$ has no standard name, but is sometimes called the \emph{Peirce arrow}. 
 
-We can show that both of these connectives are expressively adequate. The  Sheffer stroke is, since $\neg \phi$ is logically equivalent to $(\phi\uparrow\phi)$, and $(\phi \wedge \psi)$ is logically equivalent to  $((\phi\uparrow\psi)\uparrow(\phi\uparrow\psi))$.
+Each of these connectives is expressively adequate. The  Sheffer stroke is: $\neg \phi$ is logically equivalent to $(\phi\uparrow\phi)$, and $(\phi \wedge \psi)$ is logically equivalent to  $((\phi\uparrow\psi)\uparrow(\phi\uparrow\psi))$. The case of the Peirce arrow is left for an exercise.
 
+\begin{definition}[$\mathbf{nand}$ and $\mathbf{nor}$]
+	\begin{align*}
+		\mathbf{nand}(x,y) \eqdf \begin{cases}
+			F \text{ if } x=y=T;\\
+			T \text{ otherwise}.
+		\end{cases}\\
+		\mathbf{nor}(x,y) \eqdf \begin{cases}
+			T \text{ if } x=y=F;\\
+			F \text{ otherwise}.
+		\end{cases}
+	\end{align*}
+\end{definition}
+Each of these truth functions is by itself functionally complete. E.g., we may construct $\mathbf{n}$ and $\mathbf{k}$ using just $\mathbf{nand}$: \begin{align*}
+	\mathbf{n}(x) &= \mathbf{nand}(x,x); \text{ and}\\ 
+	\mathbf{k}(x,y) &= \mathbf{nand}(\mathbf{nand}(x,y),\mathbf{nand}(x,y)).
+\end{align*} Obviously $\uparrow$ expresses $\mathbf{nand}$ and $\downarrow$ expresses $\mathbf{nor}$.
 
 \section{Duality}
 \paragraph{Duality}
 
-$\wedge$ and $\vee$, as well as $\uparrow$ and $\downarrow$, are \emph{duals} of each other. 
+$\wedge$ and $\vee$, as well as $\uparrow$ and $\downarrow$, are what is known as \emph{duals} of one another. 
 
 \begin{definition}[Duality]
-The \emph{dual} of a truth-functional connective is that connective whose truth table
-results from that of the given connective by replacing \emph{every} occurrence
-of $T$ by $F$ and every occurrence of $F$ by $T$ (see Table \ref{tthree}).
+The \emph{dual} of a truth-functional connective is that connective whose truth table results from that of the given connective by replacing \emph{every} occurrence of $T$ by $F$ and every occurrence of $F$ by $T$ (see Table \ref{tthree}\footnote{Note that the right hand truth table is written upside down, but obviously the order of the rows doesn't matter to a truth table.}).
 \end{definition}
-\begin{table}\centering\begin{tabular}{ccc}
+\begin{table}[b]\centering\begin{tabular}{ccc}
 {    \begin{tabular}{cc|c|c}
 \toprule
 $\phi$ & $\psi$ & $\phi \wedge \psi$ & $\phi \uparrow \psi$ \\
@@ -138,39 +214,36 @@ $F$ & $F$ & $F$ &$T$\\
 	\end{tabular}} &
 $\Leftrightarrow$ &
 {	\begin{tabular}{cc|c|c}
+\toprule
 $\phi$ & $\psi$ & $\phi \vee \psi$ & $\phi\downarrow\psi$ \\
-\hline
+\midrule
 $F$ & $F$ & $F$ &$T$\\
 $F$ & $T$ & $T$ &$T$\\
 $T$ & $F$ & $T$ &$T$\\
-$T$ & $T$ & $T$	&$F$
+$T$ & $T$ & $T$	&$F$\\
+\bottomrule
 \end{tabular}
 }    \end{tabular}\caption{Duality Illustrated Using Truth Tables\label{tthree}}\end{table}
-Other connectives have duals too: $\phi \bicond \psi$ is dual to the operator $\nleftrightarrow$ (where $\phi \nleftrightarrow\psi$ is true just
-in case $\phi$ and $\psi$ have different truth values).
+Other connectives have duals too: $\phi \bicond \psi$ is dual to the operator $\nleftrightarrow$ (where $\phi \nleftrightarrow\psi$ is true just in case $\phi$ and $\psi$ have different truth values). Negation $¬$ is an interesting case: it is its own dual, as can readily be verified by transforming the truth table for $¬P$ appropriately.
 
 
-\paragraph{The Duality Lemma for $\wedge,\vee$}
-
+\paragraph{The Duality Theorem for $\wedge,\vee$}
 Suppose that $\phi$ is a sentence of \lone\ which involves only connectives in $\{\wedge,\vee,\neg\}$ (any sentence of \lone\ will be equivalent to some such $\phi$). Now we define two operations on sentences of this form: \begin{enumerate}
 	\item Let $\overline{\phi}$ be the sentence that
-	results from writing `$\neg$' directly in front of every sentence letter in
-	$\phi$ (even those already negated).
-	\item Let $\phi^{\star}$ be the sentence that results from substituting each connective in $\phi$ by its dual.
+	results from uniformly substituing \cquote{\neg s} for each sentence letter \cquote{s} in $\phi$ (even those already negated).
+	\item Let $\phi^{\star}$ be the sentence that results from replacing each connective in $\phi$ by its dual.
 \end{enumerate}
+Note to begin that $¬neg\overline{\phi}=\overline{\neg\phi}$ and $\overline{\phi}\wedge\overline{\psi}=\overline{\phi\wedge \psi}$, because the overlining operation applies only to sentence letters – it doesn't matter whether we apply it to the constituents first then apply the connectives, or apply the connectives first then apply the overlining operation.
 \begin{lemma}[Duality for Conjunction and Disjunction]
 	For any $\phi$, $\phi^{\star}\Dashv\vDash\neg\overline{\phi}$. 
 \begin{proof}
 	\emph{Base case:}  $\phi$ is just a sentence
-	letter: so that $\phi^{\star} = p$, and $\neg\overline{\phi} =
-	\neg\neg p$, which are equivalent (by truth tables).
+	letter $s$: so that $\phi^{\star} = s$, and $\neg\overline{\phi} = \neg\neg s$, which are equivalent.
 
 	\emph{Induction step:} \begin{enumerate}
 		\item $\phi$ is $\neg \psi$, and the hypothesis holds for $\psi$. Then $\phi^{\star} = (\neg \psi)^{\star} = \neg
-	    (\psi^{\star})$. Because the theorem holds of $\psi$, $\neg (\psi^{\star})
-	    \Dashv\vDash \neg\neg\overline{\psi}$; but $\neg \neg\overline{\psi} =
-	   \neg \overline{\neg\psi} = \neg\overline{\phi}$, which proves the
-	   case.
+	    (\psi^{\star})$, because $\neg$ is its own dual. Because the theorem holds of $\psi$, $\neg (\psi^{\star})
+	    \Dashv\vDash \neg\neg\overline{\psi}$; but $\neg \neg\overline{\psi} = \neg \overline{\neg\psi} = \neg\overline{\phi}$.
 	   	\item $\phi$ is $(\psi \wedge \chi)$, and the hypothesis holds for $\psi,\chi$. $\phi^{\star} = (\psi \wedge \chi)^{\star} = \psi^{\star} \vee
 	   \chi^{\star}$. By the induction hypothesis, $\psi^{\star} \vee \chi^{\star}
 	   \Dashv\vDash \neg\overline{\psi} \vee \neg \overline{\chi}$. By De
@@ -180,28 +253,24 @@ Suppose that $\phi$ is a sentence of \lone\ which involves only connectives in $
 		\item $\phi$ is $(\psi \vee \chi)$; much as for $\wedge$. 
 	\end{enumerate}
 \end{proof}\end{lemma}
-
-
-\paragraph{Duality Theorem}
-
  \begin{theorem}[Duality for Conjunction and Disjunction]
 	If $\phi^{\star}$ is dual to $\phi$ and $\psi^{\star}$ is dual to $\psi$, then $\phi \vDash \psi$ iff $\psi^{\star}\vDash \phi^{\star}$.\begin{proof}
 		Suppose $\phi\vDash\psi$. Then, by Substitution of each sentence letter by its negation, $\overline{\phi}\vDash\overline{\psi}$. By Contraposition, $\neg\overline{\psi}\vDash\neg\overline{\phi}$. By the Duality Lemma, $\psi^{\star}\vDash\phi^{\star}$. 
 	\end{proof}
 \end{theorem}
-\begin{corol} If $\phi \Dashv\vDash \psi$, $\phi^{\star}\Dashv\vDash\psi^{\star}$.
-\end{corol}
+\begin{corol}\label{democ}If $\phi \Dashv\vDash \psi$, $\phi^{\star}\Dashv\vDash\psi^{\star}$.
+\end{corol} Each De Morgan equivalence in \autoref{demorg} follows from the other, given Corollary \ref{democ}.
 
-\begin{theorem}[Duality for Tautologies] If $\vDash \phi$, then $\vDash \neg(\phi^{\star})$. \begin{proof}
+\begin{theorem}[Duality for Tautologies] If\, $\vDash \phi$, then\, $\vDash \neg(\phi^{\star})$. \begin{proof}
 	Suppose $\vDash\phi$. Since $\phi$ is true in every structure, $\overline{\phi}$ is also true in every structure (obvious by substitution). So $\vDash \overline{\phi}$. By the Duality Lemma, $\overline{\phi}\Dashv\vDash\neg\phi^{\star}$. So $\vDash \neg\phi^{\star}$.
 \end{proof}
 \end{theorem}
 
 \paragraph{Duality Generalised}
 
-Every truth functional connective $c$ – in any truth-functional language – has a dual, which we denote $c^{\star}$ by extending our previous notation. A set of truth functors $\mathbb{C}=\{c_{1},\ldots,c_{n}\}$ is \emph{self-dual} iff $\mathbb{C} = \{c_{1}^{\star},\ldots,c_{n}^{\star}\}$. It is obvious that $\{\neg\}$ is self-dual. Given the result above, the set $\{\wedge,\vee\}$ is self-dual, as $\vee = \wedge^{\star}$ and $\wedge = \vee^{\star}$.
+Every truth functional connective $\oplus$ – in any truth-functional language – has a dual, which we denote $\oplus^{\star}$ by extending our previous notation. A set of truth functors $\mathbb{C}=\{\oplus_{1},\ldots,\oplus_{n}\}$ is \emph{self-dual} iff $\mathbb{C} = \{\oplus_{1}^{\star},\ldots,\oplus_{n}^{\star}\}$. It is obvious that $\{\neg\}$ is self-dual. Given the result above, the set $\{\wedge,\vee\}$ is self-dual, as $\vee = \wedge^{\star}$ and $\wedge = \vee^{\star}$.
 
-Define a function $\star$ on truth-values such that $T^{\star}=F$ and $F^{\star}=T$. If $\mathscr{A}$ is a structure, let $\mathscr{A}^{\star}$ be the structure such that for all $\phi$, $\mathscr{A}^{\star}(\phi)=T^{\star}$ iff $\mathscr{A}(\phi)=T$. For any language $\mathcal{L}$, let a connective $c$ be in $\mathcal{L}$ iff $c^{\star}$ is in $\mathcal{L}$. The dual $\phi^{\star}$ of a sentence $\phi$ of $\mathcal{L}$ results from replacing \emph{every} connective in $\phi$ by its dual. Then we can show: $$\val{\phi}{A} = (\val{\phi^{\star}}{A^{\star}})^{\star}.$$ 
+If $\mathscr{A}$ is a structure, let $\mathscr{A}^{\star}$ be the structure such that for all $\phi$, $\mathscr{A}^{\star}(\phi)=T^{\star}$ iff $\mathscr{A}(\phi)=T$. Consider just those languages $\mathcal{L}$ such that a connective $\oplus$ is in $\mathcal{L}$ iff $\oplus^{\star}$ is in $\mathcal{L}$. (\lone is among these languages.) The dual $\phi^{\star}$ of a sentence $\phi$ of $\mathcal{L}$ results from replacing \emph{every} connective in $\phi$ by its dual. Then we can show: $$\val{\phi}{A} = \mathbf{n}\left(\val{\phi^{\star}}{A^{\star}}\right).$$ 
 
 
 
@@ -216,64 +285,80 @@ Define a function $\star$ on truth-values such that $T^{\star}=F$ and $F^{\star}
 \vDash \psi$, and there is a non-empty set $B$ of sentence letters occurring in both $\phi$ and
 $\psi$, then there is a sentence $\chi$ (an \emph{interpolant}) such that both $\phi \vDash \chi$ and
 $\chi \vDash \psi$, and each sentence letter in $\chi$ is in $B$. \end{theorem}
-\begin{proof} Let the members of $B$ be enumerated $b_{1},\ldots,b_{n}$.
-Let $\mathscr{A}$ be a \emph{$B$-variant} of $\mathscr{B}$ iff $\mathscr{A}(b)=\mathscr{B}(b)$ for all $b\in B$. 
+\begin{proof} Let the members of $B$ be enumerated $b_{1},\ldots,b_{n}$. 
 
  Let $\{\mathscr{B}_{1},\ldots,\mathscr{B}_{2^{n}}\}$ be a set of structures every pair of which differ on their assignment of a truth value to at least one $b \in B$. Define a $n$-place truth function $f_{\chi}$, for every structure $\mathscr{B}_{i}$: \begin{equation*}
 f_{\chi}\left(\left\langle\left|{b_{1}}\right|_{\mathscr{B}_{i}},\ldots,\left|{b_{n}}\right|_{\mathscr{B}_{i}}\right\rangle\right) =
- 	 \begin{cases} F & \parbox[c]{.4\textwidth}{if there is a $B$-variant $\mathscr{A}$ of $\mathscr{B}_{i}$ in which $\val{\psi}{A}=F$;}\\
+ 	 \begin{cases} F & \parbox[c]{.4\textwidth}{if there is a structure $\mathscr{A}$ which agrees with $\mathscr{B}_{i}$ on $B$ in which $\val{\psi}{A}=F$;}\\
 T & \parbox[c]{.4\textwidth}{otherwise.}\end{cases}
  \end{equation*}
  By construction, $f_{\chi}$ is a total truth function. 
 The sentence $\chi$ that (by \textsc{\lowercase{DNF}}) expresses $f_{\chi}$ is our needed interpolant.
 \begin{itemize}
-	\item $\chi$ clearly 
-	entails $\psi$, since by construction no structure that makes $\chi$ true has a $B$-variant that makes $\psi$ false.
-	\item  Moreover, $\chi$ is clearly entailed by $\phi$,
-	since if there were a structure $\mathscr{C}$ which made $\phi$ true but $\chi$
-	false,  $\mathscr{C}$ would be a $B$-variant of some $\mathscr{B}_{i}$ that makes
-	$\psi$ true; but by construction $\chi$ would be true in $\mathscr{B}_{i}$
-	and in every $B$-variant of it, including  $\mathscr{C}$. There can
-	therefore be no such  $\mathscr{C}$ that both makes $\chi$ true and false.
+	\item $\chi$ clearly entails $\psi$, since by construction no structure that makes $\chi$ true makes $\psi$ false (since every structure agrees with some $\mathscr{B}_{i}$ on $B$). 
+	\item  Moreover, $\chi$ is entailed by $\phi$. Suppose $\phi$ is true in some structure $\mathscr{C}$, but $\chi$ is not. By definition, $\chi$ is false in $\mathscr{C}$ because (i) either $\psi$ is false in $\mathscr{C}$, or (ii) $\psi$ is false in a structure just like $\mathscr{C}$ in what it assigns to the members of $B$. Option (i) is excluded, because  $\phi\vDash\psi$. So if $\chi$ is false in $\mathscr{C}$, it must be because some structure agreeing with $\mathscr{C}$ on $B$ makes $\psi$ false. This structure need differ from $\mathscr{C}$ only in what it assigns to sentence letters in $\psi$ that are not in $\phi$, because obviously it is some difference in those sentence letters that makes $\psi$ true in $\mathscr{C}$ and false in the other structure. But then the other structure need not differ from $\mathscr{C}$ at all in the truth values of sentence letters in $\phi$; and we may therefore assume it does not. So that structure must make $\phi$ true – since $\phi\vDash\psi$, $\psi$ is both true and false in that structure. Contradiction; so there is no such $\mathscr{C}$, by \emph{reductio}. But $\mathscr{C}$ was arbitrary, so  $\phi\vDash\chi$.
 \end{itemize}  \end{proof}
 
 The Craig Interpolation Theorem actually names the version of this result proved for predicate logic  \citep{crathrush}.
+\begin{corol}\label{interpolequiv}
+	If $\phi$ is logically equivalent to $\psi$, and there is a non-empty set $B$ of sentence letters occuring in both $\phi$ and $\psi$, then there is a sentence $\chi$ logically equivalent to both $\phi$ and $\psi$ such that each sentence letter in $\chi$ is in $B$. \begin{proof}
+		Straightforward from transitivity of entailment and \autoref{thmcraig}.
+	\end{proof}
+\end{corol}
 
+There was some philosophical rationale behind interest in interpolation theorems. The \emph{instrumentalists} were a group of philosophers of science who were sceptical of unobservable theoretical entities, to the point where they thought there was no good way of understanding a language which purported to refer to such entities. So they said that terms like `electron', which is a theoretical term referring to an entity whose existence is inferred from observation of intermediaries rather than being observed directly, are strictly speaking meaningless. One might worry whether this cripples our science: what sort of particle physics could we do if we had to get rid of the word `electron'? Craig's Interpolation Theorem offers some help here. Suppose that $\mathbf{T}$ is sentence of (formalised) physics, including subsentences which purport to refer to electrons, etc. And suppose $\mathbf{O}$ is some purely observational consequence of $\mathbf{T}$ – the sort of claim that might be used to test the theory, or make a practical difference. Then the Craig Interpolation Theorem says there is a sentence $\mathbf{T}/\mathbf{E}$ \emph{purely using observational terms} (since those are the only sort that occur in $\mathbf{O}$) that is a consequence of $\mathbf{T}$ and which entails $\mathbf{O}$. $\mathbf{T}/\mathbf{E}$ is, in some sense, the purely observational \emph{empirical} content of $\mathbf{T}$. And – said the instrumentalists – this is great! For every sentence of physics which makes reference to theoretical entities, we can come up with a theoretically hygenic sentence which does not, which is also a consequence of the theory, but which is framed in purely observational vocabulary.
+
+But note that the interpolated sentence isn't a hygienic as it was supposed. For suppose we have a sentence in our observation language that means \emph{everything is observable}. We have negation; so there will be a sentence true iff something is unobservable. This is supposedly expressed in the `acceptable' vocabulary, but of course it makes a claim about purely theoretical unobservable entities. So the philosophical significance of the interpolated sentence seems negligible: \begin{quote}
+	The empirical import of a theory cannot be isolated in this syntactical fashion, by drawing a distinction among theorems in terms of vocabulary. If that could be done, $\mathbf{T}/\mathbf{E}$ would say exactly what $\mathbf{T}$ says about what is observable and what it is like, and nothing more. But any unobservable entity will differ from the observable ones in the way it systematically lacks observable characteristics. As long as we do not abjure negation, therefore, we shall be able to state in the observational vocabulary (however conceived) that there are unobservable entities, and, to some extent, what they are like. The quantum theory, Copenhagen version, implies that there are things which sometimes have a position in space, and sometimes have not. This consequence I have just stated without using a single theoretical term. Newton's theory implies that there is something (to wit, Absolute Space) which neither has a position nor occupies a volume. Such consequences are by no stretch of the imagination about what there is in the observable world, nor about what any observable thing is like. The reduced [interpolated] theory $\mathbf{T}/\mathbf{E}$ is not a description of part of the world described by $\mathbf{T}$; rather, $\mathbf{T}/\mathbf{E}$ is, in a hobbled and hamstrung fashion, the description by $\mathbf{T}$ of everything.~\citep[54–5]{bvfsi}
+\end{quote}
 
 \section{Compactness}
 
+\autoref{thmcraig} is interesting regardless of philosophical programs it may have been associated with. It tells us that, to understand what is going on in an argument, we need only consider the sentence letters in common to premises and conclusion. Since there are only finitely many of those, the correctness or otherwise of entailments between sentences reduces to a computationally tractable problem: look at the (finitely many) sentences that constitute the premise and conclusion; determine the sentence letters in common; and then see if you can construct an interpolant.
 
-\paragraph{Compactness}
+\paragraph{Infinitely Many Premises} But this procedure fails at the first step if we allow arbitrary sets of premises on the left hand side of the entailment. If the set of premises is finite, then we can simply consider the conjunction of all its members, which will be finite. But what happens to the notion of an interpolant, and the idea that entailment is always mediated only by sentence letters occurring in both premises and conclusion, if the set of premises is infinite?
 
-If $\Gamma$ is a inconsistent set of \lone\ sentences ($\Gamma\vDash$), then it needn't be that there is a proper subset $\Gamma' \subset \Gamma$ such that $\Gamma'\vDash$ – while $P,\neg P\vDash$, clearly $\{P\}$ and $\{\neg P\}$ are both consistent.
+This is not merely a theoretical worry. Consider this argument in English: \begin{exe}
+	\ex There is at least $1$ thing.
+	\ex There are at least $2$ things.
+	\ex There are at least $3$ things.\\
+	${ }\qquad\vdots$
+	\exi{($n$)} There are at least $n$ things.\\
+	${ }\qquad\vdots$
+	\exi{(C)} There are infinitely many things.
+\end{exe} This argument is valid. However, it needs to make essential use of infinitely many of its premises. For any \emph{finite} set of premises of this argument can be jointly true while the conclusion is false.\footnote{Each premise entails all the earlier premises; and each premise by itself is true in some finite situation. So if we took only finitely many of these premises, they are collectively equivalent to their highest numbered member ($k$), and then all those finitely many premises will be true in a situation which has $k$ or more things in it, for some finite $k$.}
 
-But, it turns out, when $\Gamma$ is \emph{infinite} and inconsistent, there is always some \emph{finite} subset of $\Gamma$ which is inconsistent. This property is known as \emph{compactness}. 
+\paragraph{Compactness} English is thus a language in which there are valid arguments with infinitely many premises, but where no finite subset of those premises entails the conclusion. Let us introduce a technical term. 
+\begin{definition}[Compactness]
+	An interpreted language $\mathcal{L}$ is said to be \emph{compact} iff any unsatisfiable infinite set of sentences of $\mathcal{L}$ has a finite unsatisfiable subset. Contrapositively: if every finite subset of some $\Gamma$ is satisfiable, then $\Gamma$ is satisfiable.
+\end{definition} Since $\Gamma$ entails $\phi$ iff $\Gamma \cup \{¬\phi\}$ is unsatisfiable, English is \emph{not} a compact language. The union of all the premises stating that there are at least $n$ things together with the claim that there are only finitely many things is unsatisfiable, yet any finite subset of that set must contain at most finitely many of the premises, and no such finite subset of the premises will be unsatisfiable by itself, or unsatisfiable with the claim that there are at most finitely many things.
 
-It has the immediate consequence that if $\Gamma\vDash\phi$, then there is some finite set of premises $\Gamma'$ such that $\Gamma'\vDash\phi$; every valid argument in \lone\ can be captured by a finite sequent.
+\paragraph{Compactness for \lone} Is \lone\ compact? This question can be answered in a number of ways. In this chapter, we show directly, just by consideration of the semantics of \lone, that \lone\ is in fact compact. In the next chapter, after we consider a derivation system for \lone, we can use the adequacy of that system to provide another more indirect proof of compactness for \lone\ (p.\ \pageref{compagain}).
 
-\paragraph{Compactness Theorem}
+Compactness for \lone\ has the immediate consequence that if $\Gamma\vDash\phi$, then there is some finite set of premises $\Gamma'$ such that $\Gamma'\vDash\phi$; every valid argument in \lone\ with infinitely many premises has a corresponding valid argument with only finitely many premises. As suggested above in connection with the interpolation theorem, compactness is of interest in part because of the computational tractability of compact languages. We allow, for mathematical reasons, infinite sets of sentences to entail things. But we never \emph{need} an infinite set of sentences to formulate an argument: any conclusion expressible in \lone\ that is validly entailed by infinitely many premises formulated in \lone\ is also validly entailed by some finite subset of those premises. We will return to this topic below when we discuss \emph{decidability} (p.\ \pageref{decide}).
 
-A set $\Gamma$ is \emph{finitely satisfiable} iff every finite subset of $\Gamma$ is satisfiable (i.e., has a model).
- 
+\begin{definition}[Finite Satisfiability]
+	We say that a set $\Gamma$ is \emph{finitely satisfiable} iff every finite subset of $\Gamma$ is satisfiable (i.e., each has a model – each is consistent).
+\end{definition}
 \begin{theorem}[Compactness]\label{compact}
-If $\Gamma$ is finitely satisfiable then $\Gamma$ is satisfiable. (The contrapositive of this is Compactness in the sense introduced just above.)	
+If\, $\Gamma$ is finitely satisfiable then $\Gamma$ is satisfiable. 
 \end{theorem}
 
-This theorem can be proved a number of ways. It is a fairly quick consequence of the Completeness theorem for the natural deduction formalism for sentential logic, which we  prove in the next chapter. Here I will prove it directly. The proof comes in several stages, marked out below.
+This theorem can be proved a number of ways. It is a fairly quick consequence of the Completeness theorem for the natural deduction formalism for sentential logic, which we prove in \autoref{c5}. In this chapter, we will prove it directly, in what is probably the most involved proof in this book. The proof comes in several stages, marked out below.
 
 Note that the \emph{converse} of Compactness – that satisfiability entails finite satisfiability – is trivial from the structural rules.
 
 \paragraph{Proof of Compactness, Stage 1: Definition of $\Gamma_{i}$s}
 
-Suppose that $\Gamma$ is finitely satisfiable. The set of sentence letters occurring in $\Gamma$ is enumerable, so let its members be enumerated $\phi_{1},\phi_{2},\ldots$.
+Suppose that $\Gamma$ is finitely satisfiable. The set of sentence letters occurring in $\Gamma$ is enumerable, so let its members be enumerated $s_{1},s_{2},\ldots$.
 
 We define a sequence of supersets of $\Gamma$ as follows:
  \begin{align*}
 		\Gamma_{0} &= \Gamma\\
 	&\vdots \\
 	\Gamma_{n+1} &= \begin{cases}
-		\Gamma_{n}\cup\{\phi_{n+1}\} &\text{ if } \Gamma_{n} \cup \{\phi_{n+1}\} \text{ is finitely satisfiable;}\\
-		\Gamma_{n}\cup\{\neg\phi_{n+1}\} &\text{ otherwise.}
+		\Gamma_{n}\cup\{s_{n+1}\} &\text{ if } \Gamma_{n} \cup \{s_{n+1}\} \text{ is finitely satisfiable;}\\
+		\Gamma_{n}\cup\{\neg s_{n+1}\} &\text{ otherwise.}
 	\end{cases}
 \end{align*}
 
@@ -286,41 +371,87 @@ Each $\Gamma_{i}$ is finitely satisfiable.
 \begin{proof}
 {\emph{Base case:} $\Gamma_{0}=\Gamma$, which is finitely satisfiable by hypothesis.
 	
-	\emph{Induction step:} Suppose that each $\Gamma_{i}$, $i\leqslant n$, is finitely satisfiable. Now suppose $\Gamma_{n+1}$ is not. Then, by definition of $\Gamma_{n+1}$, neither $\Gamma_{n}\cup\{\phi_{n+1}\}$ nor $\Gamma_{n}\cup\{\neg\phi_{n+1}\}$ is finitely satisfiable.
+	\emph{Induction step:} Suppose that each $\Gamma_{i}$, $i\leqslant n$, is finitely satisfiable. Now suppose $\Gamma_{n+1}$ is not. Then, by definition of $\Gamma_{n+1}$, neither $\Gamma_{n}\cup\{s_{n+1}\}$ nor $\Gamma_{n}\cup\{\neg s_{n+1}\}$ is finitely satisfiable.
 	
-	So there must be finite subsets $\Delta$ and $\Theta$ of $\Gamma_{n}$ such that both $\Delta,\phi_{n+1}\vDash$ and $\Theta,\neg\phi_{n+1}\vDash$. By weakening, both $\Delta,\Theta,\phi_{n+1}\vDash$ and $\Delta,\Theta,\neg\phi_{n+1}\vDash$. 
+	So there must be finite subsets $\Delta$ and $\Theta$ of $\Gamma_{n}$ such that both $\Delta, s_{n+1}\vDash$ and $\Theta,\neg s_{n+1}\vDash$. By weakening, both $\Delta,\Theta, s_{n+1}\vDash$ and $\Delta,\Theta,\neg s_{n+1}\vDash$. 
 	
-	But $\Delta\cup\Theta$ is a finite subset of a finitely satisfiable set, so is consistent. In any structure $\mathscr{A}$ in which all the members of $\Delta\cup\Theta$ are true, either $\val{\phi_{n+1}}{A}=T$ or $\val{\neg\phi_{n+1}}{A}=T$. So  either $\Delta,\Theta,\phi_{n+1}\not\vDash$ or $\Delta,\Theta,\neg\phi_{n+1}\not\vDash$. Contadiction; so $\Gamma_{n+1}$ is finitely satisfiable. 
+	But $\Delta\cup\Theta$ is a finite subset of a finitely satisfiable set, so is consistent. In any structure $\mathscr{A}$ in which all the members of $\Delta\cup\Theta$ are true, either $\val{s_{n+1}}{A}=T$ or $\val{\neg s_{n+1}}{A}=T$. So  either $\Delta,\Theta,s_{n+1}\not\vDash$ or $\Delta,\Theta,\neg s_{n+1}\not\vDash$. Contadiction; so $\Gamma_{n+1}$ is finitely satisfiable. 
 }\end{proof}
 \end{lemma}
 
 \paragraph{Proof of Compactness, Stage 3: Define a structure from the $\Gamma_{i}$s}
 
-For all $\phi_{i}$, define \begin{equation*}
-	\mathscr{G}(\phi_{i}) = \begin{cases}
-		T & \text{if } \phi_{i} \in\Gamma_{i};\\
-		F & \text{otherwise (i.e., if $\neg\phi_{i}\in\Gamma_{i}$)}.
+For all $s_{i}$, define \begin{equation*}
+	\mathscr{G}(s_{i}) = \begin{cases}
+		T & \text{if } s_{i} \in\Gamma_{i};\\
+		F & \text{otherwise (i.e., if $\neg s_{i}\in\Gamma_{i}$)}.
 	\end{cases}
 \end{equation*}
 
-For any $k$, $\Gamma_{k}$ is finitely satisfiable; since for all $i\leqslant k$, either $\phi_{i}\in\Gamma_{k}$ or $\neg\phi_{i}\in\Gamma_{k}$, the finite set of literals $$\Phi_{k} = \{\phi_{i}\in\Gamma_{k}:i\leqslant k\}\cup\{\neg\phi_{i}\in\Gamma_{k}:i\leqslant k\}$$
+For any $k$, $\Gamma_{k}$ is finitely satisfiable; since for all $i\leqslant k$, either $s_{i}\in\Gamma_{k}$ or $\neg s_{i}\in\Gamma_{k}$, the finite set of literals $$S_{k} = \{s_{i}\in\Gamma_{k}:i\leqslant k\}\cup\{\neg s_{i}\in\Gamma_{k}:i\leqslant k\}$$
 is a subset of $\Gamma_{k}$ and is consistent. 
 
-By construction, for any $k$, and for all $\psi\in\Phi_{k}$, $\val{\psi}{G}=T$. Moreover, \emph{every} structure $\mathscr{G}'$ which agrees with $\mathscr{G}$ on the sentence letters in $\Phi_{k}$ also assigns $T$ to all members of $\Phi_{k}$.  (And obviously, by construction, only those structures which agree on these sentence letters can satisfy $\Phi_{k}$.)
+By construction, for any $k$, and for all $\sigma\in S_{k}$, $\val{\sigma}{G}=T$. Moreover, \emph{every} structure $\mathscr{G}'$ which agrees with $\mathscr{G}$ on the sentence letters in $S_{k}$ also assigns $T$ to all members of $S_{k}$.  (And obviously, by construction, only those structures which agree on these sentence letters can satisfy $S_{k}$.)
 
 \paragraph{Proof of Compactness, Stage 4: $\mathscr{G}$ satisfies $\Gamma$}
 
 Suppose $\mathscr{G}$ does not satisfy $\Gamma$.
 Then for some $\gamma\in\Gamma$, $\val{\gamma}{G}=F$.
 
-$\gamma$ has finitely many sentence letters occurring in it; let $\phi_{k}$ be the highest numbered. Since every $\psi\in\Phi_{k}$  is true in every structure which agrees with $\mathscr{G}$ on $\phi_{i}$, $i\leqslant k$, $\gamma$ is false in every such structure.
+$\gamma$ has finitely many sentence letters occurring in it; let $s_{k}$ be the highest numbered. Since every $\sigma\in S_{k}$  is true in every structure which agrees with $\mathscr{G}$ on every $s_{i}$, $i\leqslant k$, $\gamma$ is false in every such structure.
 
-So $\Phi_{k}\cup\{\gamma\}$ is unsatisfiable. But it is a finite subset of $\Gamma_{k}$, which is finitely satisfiable, so $\Phi_{k}\cup\{\gamma\}$ satisfiable. Contradiction; so $\mathscr{G}$ must satisfy $\Gamma$. $\Gamma$ is satisfiable if all of its finite subsets are.
+So $S_{k}\cup\{\gamma\}$ is unsatisfiable. But it is a finite subset of $\Gamma_{k}$, which is finitely satisfiable, so $S_{k}\cup\{\gamma\}$ satisfiable. Contradiction; so $\mathscr{G}$ must satisfy $\Gamma$. $\Gamma$ is satisfiable if all of its finite subsets are.
 
-An alternative proof of compactness can be found in Appendix \ref{altcomp}.
+\section[Alternative Proof of Compactness]{An Alternative Proof of Compactness}\label{altcomp} In the proof of Compactness just given, we built up the structure that satisfies $\Gamma$ by creating ever larger supersets of $\Gamma$ – we added literals one-by-one in a way that preserves finite satisfiability, and then showed that the structure read off those literals satisfies $\Gamma$.
 
-\section{Decidability}
+In this alternative proof of compactness, we build up the structure that satisfies $\Gamma$ by creating a sequence of structures that converges ever closer to the desired structure, by getting more and more of the sentence letters needed to satisfy $\Gamma$ right, until eventually every sentence letter has been dealt with.
+
+\paragraph{$n$-Acceptable structures}
+Suppose that $\Gamma$ is a finitely satisfiable set of sentences, and $s_{1},s_{2},\ldots$ is an enumeration of the sentence letters occurring as constituents of sentences in $\Gamma$. Let $\mathbf{S}_{n}$ be the set consisting of the first $n$ sentence letters in $\Gamma$ under the enumeration, i.e., $\mathbf{S}_{n} = \{s_{1},s_{2},\ldots,s_{n}\}$. ($\mathbf{S}_{0}$ is the empty set.)
+    
+
+ Call an \lone-structure $\mathscr{B}$ \emph{$n$-acceptable} iff, for each finite subset $\Delta \subseteq \Gamma$, there exists a structure which agrees with $\mathscr{B}$ on $\mathbf{S}_{n}$ which satisfies $\Delta$. (Perhaps this is $\mathscr{B}$ itself, or perhaps $\mathscr{B}$ assigns something to a sentence letter $s_{n+i}$ which prevents it from satisfying $\Delta$.)
+
+
+Define a series of \lone-structures as follows: \begin{itemize}
+      \item $\mathscr{A}_{0}$ is some arbitrarily chosen structure.
+      \item If (i) $\mathscr{B}$ agrees with $\mathscr{A}_{n}$ on $\mathbf{S}_{n}$ and (ii) $\mathscr{B}$ assigns $T$ to $s_{n+1}$ and (iii) $\mathscr{B}$ is $(n+1)$-acceptable, then let $\mathscr{A}_{n+1}$ be $\mathscr{B}$; otherwise let $\mathscr{A}_{n+1}$ be any structure which agrees with $\mathscr{A}_{n}$ on $\mathbf{S}_{n}$ and which assigns $F$ to $s_{n+1}$.
+    \end{itemize} 
+    
+  \paragraph{Each $\mathscr{A}_{n}$ is $n$-acceptable}  
+    
+We now prove by induction on $n$ that each $\mathscr{A}_{n}$ is $n$-acceptable (i.e, $\mathscr{A}_{0}$ is $0$-acceptable, $\mathscr{A}_{1}$ is $1$-acceptable, and so on). 
+
+Obviously $\mathscr{A}_{0}$ is $0$-acceptable; to be $0$-acceptable is for each finite subset of $\Gamma$ to agree with $\mathscr{A}_{0}$ on the set of sentence letters in $\mathbf{S}_{0}$; since the latter is the empty set, \emph{any} finite subset of $\Gamma$ agrees with $\mathscr{A}_{0}$ on that set.
+
+For the induction step, suppose there is some $\mathscr{A}_{n}$ which is $n$-acceptable, but $\mathscr{A}_{n+1}$ is not. Since by definition of the $\mathscr{A}_{i}$s, if there was any $(n+1)$-acceptable structure which agrees with $\mathscr{A}_{n}$ on $\mathbf{S}_{n}$ and which assigned $T$ to $s_{n+1}$, $\mathscr{A}_{n+1}$ would be an example of such a structure. So $\mathscr{A}_{n+1}$ must assign $F$ to $s_{n+1}$. But from the induction hypothesis that $\mathscr{A}_{n+1}$ is not $n$-acceptable, some finite set $\Delta\subset \Gamma$ is not satisfied by any structure which agrees with $\mathscr{A}_{n+1}$ on $\mathbf{S}_{n+1}$. So $\Delta$ cannot be satisfied by \emph{any} structure which agrees with $\mathscr{A}_{n}$ on $\mathbf{S}_{n}$ (since it can't be satisfied by a variant of $\mathscr{A}_{n}$ which assigns $T$ to $s_{n+1}$, or one that assigns $F$, and they are the only options), contrary to the assumption that $\mathscr{A}_{n}$ is $n$-acceptable. So $\mathscr{A}_{n+1}$ must in fact be $(n+1)$-acceptable.
+
+
+\paragraph{Compactness Again}
+
+Let $\mathscr{A}$ be a structure such that, for all $i$, $\val{s_{i}}{A}=\val{s_{i}}{A_{i}}$ (that is, for each $i$, $\mathscr{A}$ agrees with the $i$-th structure $\mathscr{A}_{i}$ on the value it assigns to the $i$-th sentence letter $s_{i}$). 
+
+Suppose $\mathscr{A}$ isn't a model for $\Gamma$. Then there is a $\phi \in \Gamma$ such that $\val{\phi}{A}=F$. Let $s_{k}$ be the highest numbered sentence letter occurring in $\phi$. Then $\mathscr{A}_{k}$ must make $\phi$ true, since $\{\phi\}$ is a finite subset of $\Gamma$ and $\mathscr{A}_{k}$ is $k$-acceptable. But then every structure which agrees with $\mathscr{A}_{k}$ on $\mathbf{S}_{k}$ will make $\phi$ true; and $\mathscr{A}$ is one such agreeing structure. Contradiction – $\mathscr{A}$ must satisfy $\Gamma$.
+
+But since $\Gamma$ was arbitrary, we've shown that if $\Gamma$ is finitely satisfiable, then $\Gamma$ is satisfiable. This is compactness.
+
+
+\section{Decidability}\label{decide}
 \paragraph{Decidability}
+
+
+
+
+
+***
+
+Since we can enumerate the sentences of \lone\ – being finite strings of a well-behaved alphabet – we can enumerate the members of any infinite set $\Gamma$ of \lone\ sentences. And we can thus enumerate the finite subsets of $\Gamma$, by \autoref{countu}. If $\Gamma$ is inconsistent, the truth of compactness for \lone\ entails that one of its finite subsets is inconsistent too. And so any purely mechanical test, which simply examines each of the finite subsets in whatever order they have been enumerated for inconsistency, is \emph{guaranteed} to finish in a finite time with the correct verdict if $\Gamma$ is inconsistent. So compactness also allows what might be called an \emph{effectively computable test} for inconsistency of any set of \lone\ sentences, if that set is in fact inconsistent – no false negatives. (Think about what the test for inconsistency is in the case of a finite set of sentences, remembering that a finite set of sentences involves only finitely many sentence letters.)
+
+
+***
+
+
+
 
 An \emph{effective procedure} for determining some query is an automatic and mechanical algorithm that terminates in a \emph{finite} time with a correct `yes' or `no' answer. 
 
@@ -395,7 +526,7 @@ $\Gamma$ not yet checked. So inconsistency is only positively decidable, and inf
 
 {\small
 
-\subsection*{Exercises}
+\subsection*{Exercises} \label{ex5}
 \addcontentsline{toc}{subsection}{Exercises}
 
 \begin{enumerate}
@@ -403,18 +534,15 @@ $\Gamma$ not yet checked. So inconsistency is only positively decidable, and inf
 \item \begin{enumerate}
 	
 	\item Show that if there are $n$ sentence letters in $S$, there are $2^{n}$ sentences of the form $\mathfrak{c}_{\mathscr{A}}$ defined in the proof of the \textsc{\lowercase{DNF}} theorem.
-\item Explain clearly why, in the proof of the \textsc{\lowercase{DNF}} theorem, the formula $\mathfrak{d}$ there constructed expresses the truth function $f$.
+\item Explain clearly why, in the proof of the \textsc{\lowercase{DNF}} theorem, the sentence $\mathfrak{d}$ there constructed expresses the truth function $f$.
 \end{enumerate}
-\item  Prove, by an argument analogous to the \textsc{\lowercase{DNF}} theorem, this claim: \begin{theorem}[\textsc{\lowercase{CNF}}] 	Every truth function is expressed by a formula in Conjunctive Normal Form.\end{theorem}
-\item Show that  all truth-functions which can be expressed using only $\to$ and $\wedge$ are positive. (Prove by induction on complexity of formulae.)
+\item  Prove, by an argument analogous to the \textsc{\lowercase{DNF}} theorem, this claim: \begin{theorem}[\textsc{\lowercase{CNF}}] 	Every truth function is expressed by a sentence in Conjunctive Normal Form.\end{theorem}
+\item Show that  all truth-functions which can be expressed using only $\to$ and $\wedge$ are positive. (Prove by induction on complexity of sentences.)
 
 \item The proof of theorem \ref{positive} was only sketched. Fill in these two crucial gaps.\begin{enumerate} 
 	\item Show that $\phi\vee \psi$ is logically equivalent to $(\psi \to \phi)\to \phi$;
-	\item Show (by induction on complexity of sentences, and using the above result) that each conjunct of a \textsc{\lowercase{CNF}} sentence will be equivalent to either (i) an arrow sentence \emph{without} negation, or (ii)  a conjunct  of the form $\neg \phi \vee \neg \psi$.
-		\item	 Show that a necessary and sufficient condition for a sentence $\phi$
-	 to be logically equivalent to a sentence involving just the truth functional connectives $\to$ and 
-	$\wedge$ is that the sentence has the value $T$ in any structure that assigns the
-		    value $T$ to each sentence letter in $\phi$. \end{enumerate}
+	\item Show (by induction on complexity of sentences, and using the above result) that each conjunct of a \textsc{\lowercase{CNF}} sentence will be equivalent to either (i) an arrow sentence \emph{without} negation, or (ii)  a conjunct  of the form $\bigvee_{i} \neg s_{i}$.
+		\item	 Show that a necessary and sufficient condition for a sentence $\phi$ to be logically equivalent to a sentence involving just the truth functional connectives $\to$ and $\wedge$ is that the sentence has the value $T$ in any structure that assigns the value $T$ to each sentence letter in $\phi$. \end{enumerate}
 
 \item \begin{enumerate}
 
@@ -439,15 +567,6 @@ $\Gamma$ not yet checked. So inconsistency is only positively decidable, and inf
 		\item Prove that if $\phi$ and $\psi$ are dualable, so too are $\neg\phi$, $(\phi\wedge\psi)$, and $(\phi\vee\psi)$.
 		\item Prove using this result that all sentences of $\mathcal{L}_{\neg,\wedge,\vee}$ are dualable.
 	\end{enumerate}
-	\item If $\phi$ is an \lone\ sentence, let $\phi^{\ddag}$ be the sentence that results from uniformly substituting in $\phi$ any subsentence of the form 
-	\begin{itemize} \item $(\psi \wedge \chi)$ by $(\psi \vee \chi)$;
-	\item $(\psi \vee \chi)$ by $(\psi \wedge \chi)$;
-	\item $(\psi \to \chi)$ by $\neg(\chi\to\psi)$; and
-	\item $(\psi\bicond\chi)$ by $\neg(\psi\bicond\chi)$.
-\end{itemize} \begin{enumerate}
-	\item Show that $\vDash \phi \bicond \psi$ iff $\vDash \phi^{\ddag} \bicond \psi^{\ddag}$.
-	\item Letting the dual operator $\star$ apply to all \lone\ connectives in the natural way, show that $\phi^{\ddag} \Dashv\vDash \phi^{\star}$. 
-\end{enumerate}
 \end{enumerate}
 
 	\item Let $\mathcal{L}_{\uparrow,\downarrow}$ be the language which has $\uparrow$ and $\downarrow$ as its only connectives. \begin{enumerate}
@@ -479,7 +598,7 @@ $\Gamma$ not yet checked. So inconsistency is only positively decidable, and inf
 	\item Let $\Gamma$ be a possibly infinite set of sentences of \lone\ such that $\Gamma \vDash$. Show that there is a finite disjunction, $\delta$, each disjunct of which is the negation of a sentence in $\Gamma$, and such that $\vDash \delta$.
 	\item Consider the following relation holding between sets of sentences: \begin{quote} Where $\Gamma$ and $\Delta$ are any sets of sentences,
 		$\Gamma \vDash^{\!\star} \Delta$ is correct iff every structure which satisfies \emph{every} $\gamma \in \Gamma$ is also one which satisfies \emph{at least one} $\delta \in \Delta$.
-	\end{quote}Show that if $\Gamma \vDash^{\!\star} \Delta$, there is a finite conjunction of \lone\ sentences in $\Gamma$, $$\Phi = (\phi_{1}\wedge \ldots \wedge \phi_{n}),$$ and a finite disjunction of \lone\ sentences in $\Delta$, $$\Psi = (\psi_{1} \vee \ldots\vee \psi_{n}),$$ such that $\Phi \vDash \Psi$. (You may assume the Compactness theorem.) 
+	\end{quote}Show that if $\Gamma \vDash^{\!\star} \Delta$ and neither is empty (though either or both may be infinite), there is a finite conjunction of \lone\ sentences in $\Gamma$, $$\Phi = (\phi_{1}\wedge \ldots \wedge \phi_{m}),$$ and a finite disjunction of \lone\ sentences in $\Delta$, $$\Psi = (\psi_{1} \vee \ldots\vee \psi_{n}),$$ such that $\Phi \vDash \Psi$. (You may assume the Compactness theorem.) 
 	\item A set of sentences of English is \emph{compossible} just in case it is possible for them all to be true together. An analogue for the compactness theorem in English would be: for every infinite set $E$ of English sentences not all compossible, there is a finite subset of $E$ whose members are not all compossible. \begin{enumerate}
 		\item Show that this analogue of compactness fails for English.
 		\item What does this show about translations from English into \lone?
@@ -488,7 +607,7 @@ $\Gamma$ not yet checked. So inconsistency is only positively decidable, and inf
 \item Intuitively, any effective procedure must be able to be written down by a finite string of sentences in some language – say, English. \begin{enumerate}
 	\item Give an argument that the set of effective procedures is countable.
 	\item Let a \emph{recipe} be any finite set of English sentences.
-		Consider the set $E$ of recipes. (It is obvious that the set of effective procedures in English which compute one-place functions whose domain is (a subset of) the natural numbers will be a subset of $E$.)  This set is countable; let $f_{n}$ be the function – if there is one – computed by the $n$-th recipe in $E$ under some enumeration of $E$. Define $$d(n)=\begin{cases}2 &\text{if $f_{n}(n)$ is defined and equal to $1$};\\
+		Consider the set $E$ of recipes. (It is obvious that the set of effective procedures in English which compute one-place functions whose domain is (a subset of) the natural numbers will be a subset of $E$.)  This set is countable; let $f_{n}$ be the function – if there is one – computed by the $n$-th recipe in $E$ under some enumeration of $E$. Define $$d(n)=\begin{cases}0 &\text{if $f_{n}(n)$ is defined and equal to $1$};\\
 	1 & \text{otherwise}	
 	\end{cases}$$ \begin{enumerate}
 		\item Show that there is no effective procedure for computing $d$.  
@@ -496,6 +615,7 @@ $\Gamma$ not yet checked. So inconsistency is only positively decidable, and inf
 			\end{enumerate} 
 \end{enumerate}
 
+Answers to selected exercises on page \pageref{ans5}.
 \end{enumerate}
 
 }
