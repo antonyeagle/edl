@@ -104,13 +104,15 @@ Suppose we have some sentence of our language $\mathcal{L}_{\bicond,\neg}$, whic
 
 So consider $¬(¬(P\bicond Q)\bicond R)$. We see that the sentence is a negated biconditional, so we apply the procedure to obtain $(¬¬(P \bicond Q) \bicond R)$. We apply the procedure to $¬(P\bicond Q)$ obtaining $(¬(¬P \bicond Q)\bicond R)$. Finally, we apply the procedure to $¬(¬P \bicond Q)$, obtaining $((¬¬P \bicond Q) \bicond R)$.
 
-
-
 \end{enumerate}
 
 \section*{Exercises for Chapter 5: page \pageref{ex5}} \label{ans5}
 
 \begin{enumerate}
+\item \begin{enumerate}\setcounter{enumii}{1}
+	\item 	$\val{\phi \wedge \psi}{A} = \max\left(\val{\phi}{A},\val{\psi}{A}\right) = \max\left(\val{\psi}{A},\val{\phi}{A}\right) = \val{\psi\wedge \phi}{A}$, by commutatively of `$\max$'. 
+	\item $\mathbf{k}$ is commutative and associative. For, e.g., $\mathbf{k}\left(\val{\phi}{A},\val{\psi}{A}\right) = \val{\phi \wedge \psi}{A} = \val{\psi \wedge \phi}{A} = \mathbf{k}\left(\val{\psi}{A},\val{\phi}{A}\right)$. Similarly, $\mathbf{k}(x,\mathbf{k}(y,z)) = \mathbf{k}(\mathbf{k}(x,y),z)$.
+\end{enumerate}\setcounter{enumi}{3}
 \item Our task is to construct a sentence in conjunctive normal form that expresses any arbitrary truth function. Suppose we are given an $n$-place truth function. Select $n$ sentence letters $\{s_{1},…,s_{n}\}$, and construct a sentence using them as follows. \begin{itemize}
 	\item If in some structure $\mathscr{A}$, $f(\val{s_{1}}{A},…,\val{s_{n}}{A}) = F$, call $\mathscr{A}$ an $f$-disagreeing structure. If $\mathscr{A}$ is an $f$-disagreeing structure, let $$S^{\mathscr{A}}_{i} = \begin{cases}
 		s_{i} &\text{if } \val{s_{i}}{A} = F\\	
@@ -181,9 +183,9 @@ So only the connectives which express $f_{\uparrow}$ and
 	\end{itemize}
 \end{enumerate}
 \item \begin{enumerate}
-	\item The set of effective procedures is roughly the set of finite recipes in English. Each such recipe is a finite sequence of characters drawn from a finite alphabet, and by the same argument as in the Key Lemma \ref{keylemma}, there are only countably many effective procedures.
+	\item The set of effective procedures is roughly the set of finite recipes in English. Each such recipe is a finite sequence of characters drawn from a finite alphabet, and by the same argument as in the Key Lemma \ref{keylemma}, there are only countably many effective procedures. We suppose they can be recursively enumerated because the set of finite sets of English sentences can be effectively generated – this follows from the fact that we can effectively generate finite subsets of $\mathbb{N}$.
 	\item \begin{enumerate}
-		\item If there were an effective procedure for computing $d$, it would be a member of $E$ – say it would be the $k$-th recipe under the relevant enumeration. But if $d$ is computed by the $k$-th recipe, then $d=f_{k}$. But $d(k) ≠ f_{k}(k)$, by construction of $d$. So $d$ cannot be computed by the $k$-th recipe. Since $k$ was arbitrary, $d$ cannot be computed by any effective recipe specifiable in English.
+		\item If there were an effective procedure for computing $d$, it would be a member of $E$ – say it would be the $k$-th recipe under the relevant enumeration of recipes. But if $d$ is computed by the $k$-th recipe, then $d=f_{k}$. But $d(k) ≠ f_{k}(k)$, by construction of $d$. So $d$ cannot be computed by the $k$-th recipe. Since $k$ was arbitrary, $d$ cannot be computed by any effective recipe specifiable in English.
 		\item Suppose there were an effective procedure for sorting recipes into those which are \emph{good} (compute a function in a finite time) and those which are \emph{garbage} (not computing a function, not halting in a finite time.) This procedure determines a function $g(i) = \begin{cases}
 			1 &\text{ iff the $i$-th recipe in $E$ is good;}\\
 			0 &\text{ otherwise}.
@@ -197,6 +199,8 @@ If this function $g$ is effectively computable, then $d$ is effectively computab
             If f_n(n) ≠ 1, then set d(n) = 1.
 \end{verbatim} 
 If $g$ is a good test for effective procedures, every function in this little flowchat is calculate by an effective procedure, so for each $n$, we determine the value of $d(n)$ in a finite time. So $d$ is effectively computable. But the previous exercise just showed that $d$ is not effectively computable, hence $g$ is not effectively computable.
+
+This shows that the set of effective procedures is recursively enumerable but not recursive.
 
 	\end{enumerate}
 \end{enumerate}

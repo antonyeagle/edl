@@ -394,7 +394,7 @@ Informally, a base for a valuation is a set of values $V$, a set of truth-functi
 
 
 \begin{enumerate}
-	\item Show that $\Gamma \vDash \phi$ iff $\Gamma \cup \{\neg \phi\} \vDash$.
+	\item Show the \emph{reductio} rule: that $\Gamma \vDash$ iff  for every $\gamma \in \Gamma$, $\Gamma\setminus\{\gamma\} \vDash ¬\gamma$. (Hint: \autoref{entuns}.)
 
 	\item State what features the truth table for $\Gamma \cup \{\phi,\psi\}$ will possess when \begin{enumerate}
 		\item $\Gamma$ entails $\phi$;
@@ -428,11 +428,19 @@ it has a substitution instance $\phi',\psi' \vDash \chi'$, in which
 $\phi'$ and $\psi'$ are tautologies and $\chi'$ is
 inconsistent. (Note: by `substitution instance' in the question, you are to understand a sequent that results from one \emph{or more} uniform substitutions of sentence letters. It follows from General Substitution [Theorem \ref{generalsub}] that successive chains of uniform substitutions never allow one to transform a correct sequent to an incorrect one.)
 
-\item  Show that if there are $n$ sentence letters in $\Gamma$, the truth table for $\Gamma$ has $2^{n}$ lines.
+\item  Show that if $\Gamma$ contains $n$ sentence letters, its truth table has $2^{n}$ rows.
 
 \item Suppose $\phi$ and $\psi$ contain the same sentence letters. Prove that $\phi$ and $\psi$ are logically equivalent iff they express the same truth function.
 
 \item Consider the deprived language which has the same syntactic formation rules and semantics as $\mathcal{L}_{1}$, but only contains the connectives $\neg$ and $\bicond$. Show that, in this language, every sentence is logically equivalent to a sentence in which no occurrence of $\neg$ has $\bicond$ in its scope.
+
+
+
+\item \begin{enumerate}
+	\item Show the \emph{basic principle for disjunction} \citep[§2.5]{bosintlo}: $$\Gamma, \phi\vee\psi \vDash  \text{ iff } \Gamma,\phi \vDash \text{ and } \Gamma,\psi \vDash.$$
+	\item Show that the basic principle for disjunction implies that $\phi \vDash \phi \vee \psi$ and $\psi \vDash \phi \vee \psi$.
+	\item Show that the basic principle for disjunction implies that  if (i) $\Gamma, \phi \vDash  \chi$ and (ii) $\Delta, \psi \vDash \chi$ then (iii) $\Gamma,\Delta, \phi \vee \psi \vDash \chi$.
+\end{enumerate}
 \end{enumerate}
 
 Answers to selected exercises on page \pageref{ans4}.

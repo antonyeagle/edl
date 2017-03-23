@@ -437,91 +437,79 @@ But since $\Gamma$ was arbitrary, we've shown that if $\Gamma$ is finitely satis
 
 
 \section{Decidability}\label{decide}
-\paragraph{Decidability}
-
-
-
-
-
-***
-
-Since we can enumerate the sentences of \lone\ – being finite strings of a well-behaved alphabet – we can enumerate the members of any infinite set $\Gamma$ of \lone\ sentences. And we can thus enumerate the finite subsets of $\Gamma$, by \autoref{countu}. If $\Gamma$ is inconsistent, the truth of compactness for \lone\ entails that one of its finite subsets is inconsistent too. And so any purely mechanical test, which simply examines each of the finite subsets in whatever order they have been enumerated for inconsistency, is \emph{guaranteed} to finish in a finite time with the correct verdict if $\Gamma$ is inconsistent. So compactness also allows what might be called an \emph{effectively computable test} for inconsistency of any set of \lone\ sentences, if that set is in fact inconsistent – no false negatives. (Think about what the test for inconsistency is in the case of a finite set of sentences, remembering that a finite set of sentences involves only finitely many sentence letters.)
-
-
-***
-
-
-
+\paragraph{Effective Procedures}
 
 An \emph{effective procedure} for determining some query is an automatic and mechanical algorithm that terminates in a \emph{finite} time with a correct `yes' or `no' answer. 
 
 A property is \emph{decidable} iff there is an effective procedure which tests for it.
 
-\begin{theorem}[Decidability of Finite Validity]
-	If $\Gamma$ is a finite set of sentences of \lone, then it is decidable whether $\Gamma \vDash$.
-\end{theorem}
 
-This has the immediate consequence that it is decidable whether $\Gamma\vDash\phi$ (check whether $\Gamma,\neg\phi\vDash$), and thus that \emph{validity is decidable}.
 
-(The notion of an effective procedure is introduced informally, but it can be made precise by investigating \emph{Turing machines} and  \emph{recursive functions} – see \citet[chs.\ 1--8]{bbjcomlo}.)
+\paragraph{Turing Machines and Turing's Thesis} The notion of an effective procedure has only been introduced informally here, but it can be made precise in a number of different ways \citep[chs.\ 1–8]{bbjcomlo}. In the 1930s, Turing introduced the notion of a \emph{Turing machine}, which is in effect an extremely simplified computer \citep{turoncon}. The simplicity of Turing machines establishes that anything they can do really is computable by an effective procedure. What they primarily do is compute functions: when given a argument as input, a well-designed Turing machine will give a certain value as output, and the totality of all such input-output pairs will be a function.
+
+\emph{Turing's thesis} is the claim that any effectively computable function can be calculated by some Turing machine. This \emph{prima facie} remarkable claim cannot be proved purely mathematically: it is a philosophical claim about the pre-theoretical notion of `effectively computable'. But some evidence in its favour can be provided. First we might note that the class of functions calculable by Turing machines is the same class of functions calculable by another independent attempt to characterise the notion of an effective procedure, Church's theory of \emph{recursive functions}, also developed in the 1930s. That these two quite different ways to make the informal notion of computability precise end up coinciding is some evidence for the success of both in capturing some robust notion. Second, no one has developed any example of a Turing-uncomputable function that is, intuitively, represented by an effective procedure. That a philosophical claim has survived 80 years of attempts to provide counterexamples is some evidence in its favour!
+
 
 \paragraph{Finite Decidability Using Truth Tables}
+\begin{theorem}[Decidability of Finite Validity]\label{findec}
+	If $\Gamma$ is a finite set of sentences of \lone, then it is decidable whether $\Gamma \vDash$.
+	\begin{proof}
+Suppose $\Gamma$ is a finite set of \lone\ sentences. Each $\gamma\in\Gamma$ is only finitely long, so there are $n$ sentence letters occurring in $\Gamma$, for some finite $n$. The following describes an effective procedure that can be followed to determine whether $\Gamma$ is unsatisfiable. \begin{quote}
+	Construct a truth-table with $2^{n}$ lines such that each line corresponds to some structure assigning truth values to each sentence letter in $\Gamma$; this can be done mechanically in a finite time. For each $\gamma \in \Gamma$, determine its truth value in each row; this can be done mechanically in a finite time for each $\gamma$ in each row, and there are finitely many rows, so the truth value of each $\gamma$ in every class of structures that agree on sentence letters in $\Gamma$ can be determined mechanically in a finite time. Since $\Gamma$ is finite, we can determine the truth value of each sentence in $\Gamma$ in every structure in a finite time. 
 
-Let $\Gamma$ be a finite set of \lone\ sentences. Each $\gamma\in\Gamma$ is only finitely long, so there are $n$ sentence letters occurring in $\Gamma$, for some finite $n$.
-
-Construct a truth-table with $2^{n}$ lines such that each line corresponds to some structure assigning truth values to each sentence letter in $\Gamma$; this can be done mechanically in a finite time. For each $\gamma \in \Gamma$, determine its truth value in each row; this can be done mechanically in a finite time for each $\gamma$ in each row, and there are finitely many rows, so the truth value of each $\gamma$ in every structure can be determined mechanically in a finite time. Since $\Gamma$ is finite, we can determine the truth value of each sentence in $\Gamma$ in every structure in a finite time. 
-
-Check each row of the truth table to see if all sentences in $\Gamma$ have been assigned $T$: If they all have, in some row, then stop, and answer `No' to the query, `Is $\Gamma\vDash$?'. If no row has all $\gamma\in\Gamma$ assigned $T$, then answer `Yes'. There are only finitely many rows, so this final check can be done in a finite time. All steps can be finitely mechanised, and there are finitely many steps: inconsistency is decidable.
-
-\paragraph{Positive Infinite Decidability}
-
-A query is \emph{positively decidable} iff an effective procedure will terminate and correctly answer `Yes' in a finite time. A query is \emph{negatively decidable} iff an effective procedure will terminate and correctly answer `No' in a finite time. It is decidable iff it is both positively and negatively decidable.
-
-\begin{theorem}[Positive Decidability of Inconsistency]
-If $\Gamma$ is an infinite set of sentences of \lone, then if $\Gamma\vDash$, there is an effective procedure that will demonstrate that; but there is no effective procedure that will
-decide if arbitrary $\Gamma$ is consistent.\end{theorem}
-
-We first show a lemma.
-\paragraph{An Effective Procedure Generates Finite Subsets of $\mathbb{N}$}
-
-\begin{lemma}
-	For every finite subset of the natural numbers $\mathbb{N}$, there is an effective procedure which produces all and only members of that set. \begin{proof}
-		{ \textbf{Proof sketch}: Begin by
-		announcing $1$. Then proceed inductively: if $n$ is the highest
-		number announced so far, list every set which contains only
-		numbers $\leqslant n$.
-		Since at any point we will only have announced finitely many
-		numbers, there are only finitely many such sets, so this is
-		finitely achievable. Once this is complete, proceed to announce
-		$n+1$. It's clear that any
-		finite set of natural numbers will be generated at some finite
-		time from the beginning of this series – since each such set has a 
-		largest member $n$, it will be listed before $n+1$ is announced.}
+	Check each row of the truth table to see if all sentences in $\Gamma$ have been assigned $T$: If they all have, in some row, then stop, and answer `No' to the query, `Is $\Gamma\vDash$?'. If no row has all $\gamma\in\Gamma$ assigned $T$, then answer `Yes'. There are only finitely many rows, so this final check can be done in a finite time. All steps can be finitely mechanised, and there are finitely many steps: inconsistency is decidable.
+		\end{quote}
 	\end{proof}
-\end{lemma}
+\end{theorem}
 
-\paragraph{Proof of Positive Infinite Decidability}
+This has the immediate consequence that it is decidable whether $\Gamma\vDash\phi$ (just check whether $\Gamma,\neg\phi\vDash$ by \autoref{entuns}), and thus that \emph{validity is decidable}.
 
+\begin{definition}[Recursivity]
+	A set $N \subseteq \mathbb{N}$ is \emph{recursive} iff there is an effective procedure such that, given an arbitrary number $n \in \mathbb{N}$, tells us whether $n\in N$ or $n\notin N$ in a finite time. 
+\end{definition} A recursive set has an associated decision procedure that sorts every candidate number into members and non-members. Example: the set of prime numbers is recursive. (Given a number $n$, successively try to divide $n$ by all numbers between 2 and $n/2$. This task is finite: if you succeed in finding a divisor, $n$ isn't prime, and if you don't, it is prime. Either way, you find out in a finite time.)
+
+
+Because of the relationship between \lone\ sentences and numbers established by the code in Lemma \autoref{keylemma}, we can by courtesy extend the notion of a recursive set of sets of \lone\ sentences in the obvious way: a set of \lone\ sentences is recursive iff there is an effectively procedure which decides whether an arbitrary \lone\ sentence is a member of it or not. \autoref{findec} shows that the set of \lone\ contradictions is recursive. Any \lone\ sentence is equivalent to a conjunction, by the \textsc{cnf} theorem. An contradiction is thus equivalent to some contradictory conjunction $\gamma_{1}\wedge…\wedge \gamma_{n}$, where each $\gamma_{i}$ is a disjunction of literals. But a conjunction $\gamma_{1}\wedge…\wedge \gamma_{n}$, is a contradiction iff the finite set $\{\gamma_{1},…, \gamma_{n}\}$ is unsatisfiable. Since whether a finite set is unsatisfiable is decidable, and whether two finite sentences are logically equivalent is also decidable (exercise), for any sentence it is decidable whether it is a contradiction or not. So the set of contradictions is recursive. A similar argument shows that the set of all \lone\ tautologies is recursive.  
+
+
+
+
+\paragraph{Recursive Enumerability} A query is \emph{positively decidable} iff an effective procedure will terminate and correctly answer `Yes' in a finite time. A query is \emph{negatively decidable} iff an effective procedure will terminate and correctly answer `No' in a finite time. It is decidable iff it is both positively and negatively decidable.
+
+\begin{definition}[Recursive Enumerability]
+	A set $S$ is \emph{recursively enumerable} iff there is an effective procedure that successively lists all and only the members of $S$. (More formally, if $S$ is the range of a computable function whose domain is a subset of $\mathbb{N}$ – this is just like the definition of a enumeration in Definition \ref{enumer} except that now we require the enumeration function to be computable.)
+\end{definition} If $S$ is infinite, this procedure will never halt. Nevertheless, if $S$ is recursively enumerable, every member of $S$ will eventually be listed after some finite time from the beginning of the procedure. 
+
+\paragraph{Recursive and Recursively Enumerable} All recursive sets are recursively enumerable. (At stage $n$; apply the procedure to check whether $n\in N$ or not; if yes, print `$n$'; if no, print nothing; then apply the same procedure to $n+1$. Begin at $n=1$, and this will successively enumerate the members of $N$.)
+
+But not all recursively enumerable sets are recursive. If $N$ is recursively enumerable, whether $n\in N$ is positively decidable: for we just have to set the $N$-enumerating procedure in motion, watch its output, and if $n$ comes up, we stop the procedure and announce that $n\in N$. But if $n\notin N$, we will fruitlessly watch the output of the $N$-enumerating procedure forever, never sure whether the next output will be $n$ or not. (In reality, it will never come up, but we don't know that.)
+
+For a concrete example, consider the set of \emph{prime gaps}, where a prime gap is a number $n$ such that it is the difference between successive primes $n = p_{i+1}-p_{i}$. This set is not recursive – given an arbitrary number $n$ that is not a prime gap, no effective procedure will determine that. We can effectively generate primes, and once we have generated them, we can check their gaps – so if $n$ is a prime gap, we'll eventually discover that after only a finite time. But until we generate all the infinitely many prime numbers, we cannot survey the whole and see that our unluckily chosen number number isn't among the prime gaps.
+
+We can extend the notion of recursive enumerability to sentences of \lone\ too, and finite sets of sentences of \lone. Lemma \ref{keylemma} gives us a representation of \lone\ sentences as numbers; we can then use that same coding to represent finite sequences of numbers as numbers too. Hence we may encode a finite set of \lone\ sentences by a number; and we may then say that a set of \lone\ sentences, or a set of sets of \lone\ sentences, is recursively enumerable if the corresponding sets of code numbers are recursively enumerable.
+
+
+
+\paragraph{Positive Decidability of Unsatisfiability}  It is not possible to effectively determine the members of every set of \lone\ sentences. For the number of effective procedures is countable; but the number of infinite sets of \lone\ sentences is uncountable (being a powerset of the countable set of all \lone\ sentences).  So not every set $\Gamma$ can be effectively listed. But those whose members can be effectively listed – the \emph{recursively enumerable} sets – can also be effectively checked for unsatisfiability. 
+
+\begin{theorem}[Positive Decidability of Unsatisfiability]\label{posdecinc}
+If $\Gamma$ is a recursively enumerable set of \lone\ sentences, then if $\Gamma\vDash$, there is an effective procedure that will demonstrate its unsatisfiability.
 \begin{proof}
- 	 The set of sentences of \lone\ is enumerable, so
- $\Gamma = \{\gamma_{1},\ldots,\gamma_{n},\ldots\}$ where each $\gamma_{i}$ is
-assigned some natural number as an index. If $\Gamma \vDash$, then  
-by the Compactness theorem,
-there is a finite subset $\Delta \subseteq \Gamma$ such that $\Delta 
-\vDash$. 
+	Let the sentences in $\Gamma$ be enumerated $\gamma_{1},…,\gamma_{n},…$ by some recursive function that enumerates it.
 
-By the Lemma, we can effectively generate each finite subset
- $\Delta$  by
-generating the indices $i$ on $\gamma_{i}\in\Delta$, and since finite consistency is decidable (by Finite Decidability), if $\Delta$ is
-inconsistent that will be decided at some finite point. So if
-$\Gamma$ is inconsistent, this test will indicate that some finite
-subset is inconsistent after some finite time.
+	At each stage $i$, an initial subset $G_{i} = \{\gamma_{1},…,\gamma_{i}\}$ will have been listed by the enumeration procedure. Before moving on to produce $\gamma_{i+1}$, apply the procedure from Theorem \ref{findec} to $G_{i}$; if $G_{i}$ is unsatisfiable, then halt and say that $\Gamma$ is unsatisfiable. If $G_{i}$ is satisfiable, then move on to generate $\gamma_{i+1}$ and repeat the process.
 
-Yet if $\Gamma$ is consistent, no finite subset is inconsistent,
-and this procedure will continue indefinitely checking consistent 
-sets and showing that they are consistent. It never halts after a finite time,
-as there remain infinitely many other consistent finite subsets of
-$\Gamma$ not yet checked. So inconsistency is only positively decidable, and infinite consistency is undecidable.  \end{proof}
+If $\Gamma$ is unsatisfiable, then by Compactness there is some $j$ such that $G_{j}$ is finite and unsatisfiable.  Any finite unsatisfiable subset of $\Gamma$ will have its members in some finite initial subset of $\Gamma$. (Obviously $G_{k}$ for $k>j$ will also be unsatisfiable.) So if $\Gamma$ is unsatisfiable, this process will eventually detect that by coming across some finite initial subset of $\Gamma$ which is unsatisfiable. 
+
+If $\Gamma$ is satisfiable, however, this procedure will never halt: it will keep checking larger and larger initial subsets of $\Gamma$ for unsatisfiability, never finding any of them to be unsatisfiable, but also never running out of new larger candidates to check.
+\end{proof}
+\end{theorem}
+
+This procedure is effective but resource inefficient – depending on the details of how $\Gamma$ is enumerated, a more optimised algorithm could be designed. But the limitation that it cannot check for satisfiability is not a practical limitation, but an in principle one. Thus whether a set is satisfiable is negatively decidable (if it is not, our procedure will tell us that), but not positively decidable (even if it is, our procedure and any similar procedure will not halt in its search for an unsatisfiable subset).
+
+
+
+
 
 
 {\small
@@ -530,7 +518,12 @@ $\Gamma$ not yet checked. So inconsistency is only positively decidable, and inf
 \addcontentsline{toc}{subsection}{Exercises}
 
 \begin{enumerate}
-\item Give, explicitly, the inductive definition of arbitrary disjunction.
+\item \begin{enumerate}
+	\item Show that $(\phi\wedge \psi)\wedge \chi)$ is logically equivalent to $\DashVDash (\phi\wedge(\psi\wedge \chi))$.
+	\item Show that $(\phi\wedge \psi)$ is logically equivalent to $(\psi \wedge \phi)$.
+	\item What significance do the foregoing results have for the truth-function that `$\wedge$' expresses?  
+\end{enumerate}
+
 \item \begin{enumerate}
 	
 	\item Show that if there are $n$ sentence letters in $S$, there are $2^{n}$ sentences of the form $\mathfrak{c}_{\mathscr{A}}$ defined in the proof of the \textsc{\lowercase{DNF}} theorem.
@@ -570,7 +563,7 @@ $\Gamma$ not yet checked. So inconsistency is only positively decidable, and inf
 \end{enumerate}
 
 	\item Let $\mathcal{L}_{\uparrow,\downarrow}$ be the language which has $\uparrow$ and $\downarrow$ as its only connectives. \begin{enumerate}
-		\item  For any $\phi$ in $\mathcal{L}_{\uparrow,\downarrow}$, and any structure $\mathscr{A}$, show that $\val{\phi}{A} = (\val{\phi^{\star}}{A^{\star}})^{\star}$.	
+		\item  For any $\phi$ in $\mathcal{L}_{\uparrow,\downarrow}$, and any structure $\mathscr{A}$, show that $\val{\phi}{A} = \mathbf{n}(\val{\phi^{\star}}{A^{\star}})$.	
 	 \item For any $\mathcal{L}_{\uparrow,\downarrow}$-sentence $\phi$, let $\phi^{\star}$ be the sentence which results from replacing every connective in $\phi$ by its dual, and let $\overline{\phi}$ be the result of substituting $(P_{i}\uparrow P_{i})$ for every sentence letter $P_{i}$ occurring in $\phi$.	
 	\begin{enumerate}
 		\item Prove that for every $\mathcal{L}_{\uparrow,\downarrow}$ sentence $\phi$, $\phi^{\star}$ is logically equivalent to $(\overline{\phi}\uparrow\overline{\phi})$.
@@ -613,6 +606,8 @@ $\Gamma$ not yet checked. So inconsistency is only positively decidable, and inf
 		\item Show that there is no effective procedure for computing $d$.  
 		\item Show that there is no effective procedure for deciding if a recipe is an effective procedure, and therefore that while the set of recipes $E$ can be effectively produced, some subsets of $E$ (in particular, the one corresponding to the set of effective procedures) cannot be effectively produced.
 			\end{enumerate} 
+
+\item Give an argument for the claim that there is an  effective procedure for determining whether two \lone\ sentences are logically equivalent.
 \end{enumerate}
 
 Answers to selected exercises on page \pageref{ans5}.
