@@ -65,6 +65,7 @@
 \renewenvironment{quotation}
   {\@oldquotation\begin{singlespace}}
   {\end{singlespace}\@oldendquotation}
+  % \renewcommand\@dotsep{10000}
 \makeatother
 
 \newcommand{\lone}{\ensuremath{\mathcal{L}_{1}}}
@@ -176,7 +177,7 @@ This book is made available under a Creative Commons license (CC BY-SA 4.0), whi
   
 
 \newpage\tableofcontents\markright{contents}
-\listoftables\listoffigures
+% \listoftables\listoffigures
 
 
 
@@ -280,10 +281,14 @@ Many chapters also contain a section of `Further Reading', which contains refere
 \end{table}
 
 \twocolumn
-\chapter{List of Definitions}\label{defns}
+\chapter*{List of Definitions}\addcontentsline{toc}{chapter}{List of Definitions}\label{defns}
 {\small  \listtheorems{definition}}
 
+{\small\addcontentsline{toc}{chapter}{List of Tables}\label{listtable}
+ \listoftables}
 
+{\small\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures}
 
 \newpage
 \markright{bibliography}
