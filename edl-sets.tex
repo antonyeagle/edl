@@ -10,7 +10,7 @@ A \emph{set} is a collection of objects. Like a collection, it is a single thing
 
 A set is not \emph{composed} of its members in any straightforward sense: it is not a whole with its members as parts. We can see this most easily in the case of a \emph{singleton} set, a set with just one member. Clearly $x \in \{x\}$; but since $x$ itself need not be a set, $x \notin x$. Since sets are individuated by their members, and since $\{x\}$ has a member that $x$ does not, $x\neq\{x\}$. So a set is not to be identified with the fusion of its members, even when that latter object exists.
 
-\paragraph{Axioms} The standard approach to set theory is to take this informal conception of a set as a collection, and set down \emph{axioms} that characterise the behaviour of sets. We've already seen one of the standard axioms of so-called Zermelo-Fraenkel set theory : the axiom of \emph{extensionality}: \begin{axiom}[Extensionality]
+\paragraph{Axioms} The standard approach to set theory is to take this informal conception of a set as a collection, and set down \emph{axioms} that characterise the behaviour of sets. We've already seen one of the standard axioms of so-called Zermelo-Fraenkel set theory: the axiom of \emph{extensionality}: \begin{axiom}[Extensionality]
   For any sets $X$ and $Y$, if for all objects $x$, $x\in X$ iff $x\in Y$, then $X=Y$.
 \end{axiom} I will below mention various axioms, the basic starting points of modern set theory, but we will largely proceed in an informal way. In particular, I will not be offering proofs from the axioms of all the set theoretic principles I state below.
 
@@ -154,7 +154,7 @@ Intuitively, a relation $R$ characterises the nature of the connections between 
 \begin{definition}[$n$-place Relation]
   $X$ is an $n$-place relation on $D$ iff it is any set of ordered $n$-tuples of members of $D$. An $n$-place relation is a subset of $\underbrace{D \times \ldots \times D}_{n}$.
 \end{definition}
-This identification of relations with sets is not necessarily a `metaphysical' hypothesis. Just as in the case of ordered pairs, we need not literally assert that relations are and always were sets. Rather, this is a model that can be used to represent some interesting features of relations. I say some more about the metaphysics of relations in \autoref{c8}.
+This identification of relations with sets is not necessarily a `metaphysical' hypothesis. Just as in the case of ordered pairs, we need not literally assert that relations are and always were sets. Rather, this is a model that can be used to represent some interesting features of relations. I say some more about the metaphysics of relations in \autoref{c:lequals}.
 
 
 \paragraph{Properties of Binary Relations} Binary relations have many interesting properties. We can often represent these properties \emph{graphically}, if the domain on which the relation is defined is finite. 
@@ -207,6 +207,17 @@ An equivalence relation divides up the domain into \emph{equivalence classes}, e
 The most obvious equivalence relation on a domain $D$ is the identity relation, the set of all pairs $\langle x, x\rangle$ such that $x\ in D$. It is reflexive by definition, and moreover symmetric and transitive; since there are \emph{never} arrows from any $x$ to any distinct $y$, it follows that every time there are such arrows, there are return arrows and shortcuts. (Notice that the identity relation is both symmetric and anti-symmetric.)
 
 Any relation on the empty set is also trivially an equivalence relation. While every empty relation is trivially symmetric and transitive, it will generally fail to be reflexive unless the domain is empty too.
+
+\paragraph{Seriality}
+Reflexivity guarantees that every thing in the domain bears the relation to at least one thing, and moreover that among those things is the object itself. If a relation satisfies the first condition, though perhaps without meeting the second, it is \emph{serial}:
+\begin{definition}[Serial]
+  A relation on $D$ is \emph{serial} iff for all $x\in D$, there is some $y\in D$ such that $\langle x,y\rangle\in R$. 
+\end{definition} Graphically, that means, that each vertex has an arrow emerging from it. A relation is \emph{non-serial} if at least one vertex has no arrow emerging from it. (The notion of an `\emph{aserial}' relation – one where no vertex bears the relation to anything – is trivial, since only the empty relation could be aserial.) It is obvious that a reflexive relation is serial. 
+\begin{theorem}
+A transitive, symmetric, and serial relation is reflexive (and hence is an equivalence relation).
+\begin{proof}
+  Suppose $R$ is transitive, symmetric, and serial on $D$. Pick an arbitrary member of $D$, $x$. By seriality, there is a $y\in D$ such that $\langle x,y\rangle\in R$. By symmetry, $\langle y,x\rangle\in R$. By transitivity, $\langle x,x\rangle\in R$. Since $x$ was arbitrary, $R$ is reflexive.\end{proof}
+\end{theorem}
 
 \paragraph{Connectedness}
 An equivalence relation divides up the domain into isolated groups of mutually interrelated elements. A connected relation, intuitively, is one where no item is isolated. But there are a number of things we could mean by this. First, we define a (directed) path: \begin{definition}[Path]
@@ -263,7 +274,7 @@ Given a relation $R$ on $D$, its \emph{complement} $R'$ on $D$ is defined to be 
 
 
 \paragraph{Orderings}
-\begin{definition}[Ordering]
+\begin{definition}[Ordering]\label{def:order}
   A relation $R$ on $D$ is a \begin{description}
     \item [Partial order] iff it is reflexive, transitive, and anti-symmetric (e.g., $\subseteq$ on a set of sets; see Figure \ref{fthree});
     \item [Strict Partial Order] iff it is transitive and asymmetric (i.e., $\subset$);
@@ -291,7 +302,7 @@ Suppose $R$ is a total order on $D$. If $\langle x,y\rangle\in R$, then we say $
 
 An element $x$ of $D$ is \emph{minimal} iff there is no distinct $y$ that precedes $x$. An element $x$ is \emph{least} if it precedes \emph{every distinct} $y \in D$. (Corresponding definitions can be given for maximality and greatest.)
 
-\begin{definition}[Well-ordering]
+\begin{definition}[Well-ordering]\label{def:wellord}
   $R$ is a well-ordering of $D$ iff it is a total order and every non-empty subset $d$ of $D$ has a least member under $R$.
 \end{definition} Example: $\leqslant$ is a well-ordering of the natural numbers $\mathbb{N}$. Here is another well-ordering of $\mathbb{N}$: \begin{equation}
   x \preccurlyeq y \quad\text{ iff }\quad \begin{cases}
@@ -311,7 +322,7 @@ Relations which have this special feature, where whenever $xRy$, then there is n
 \begin{definition}[Unary Function]
   If $R$ is a binary relation such that for any $x,y,z$, if $\langle x,y\rangle\in R$ then $\langle x,z\rangle\in R$ iff $y$ is identical to $z$, then $R$ is a unary (one-place) function. 
 \end{definition}
-We write $f_{R}(x) =y$ iff $\langle x,y\rangle\in R$. The notation `$f_{R}(x)$' is a noun phrase, typically corresponding to a definite description like `the capital city of $x$'. We say $x$ is the \emph{argument} given to $f$, and $y$ the \emph{value} of $f$ given that argument.  The fact that, for a given argument, a function has a unique value, justifies our talking of `\emph{the} value of the function for a given argument', and justifies the link to natural language definite descriptions as corresponding to a function with an argument – see the discussion of definite descriptions in \autoref{c9}. 
+We write $f_{R}(x) =y$ iff $\langle x,y\rangle\in R$. The notation `$f_{R}(x)$' is a noun phrase, typically corresponding to a definite description like `the capital city of $x$'. We say $x$ is the \emph{argument} given to $f$, and $y$ the \emph{value} of $f$ given that argument.  The fact that, for a given argument, a function has a unique value, justifies our talking of `\emph{the} value of the function for a given argument', and justifies the link to natural language definite descriptions as corresponding to a function with an argument – see the discussion of definite descriptions in \autoref{c:edr}. 
 
 The notion of a function can be generalised to an arbitrary $n$-place relation, which will give rise potentially to an $n-1$-place function.
 \begin{definition}[Function]

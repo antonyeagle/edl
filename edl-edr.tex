@@ -1,108 +1,5 @@
 %!TEX root = edl.tex
 
-\section{Conditionals}
-
-\paragraph{`If $\phi$, $\psi$' and $\to$}
-So far we have rendered the English conditional construction `If $\phi$, $\psi$' using the \emph{material conditional} $\to$. You may be worried, as others have worried before you, that this is not an accurate rendering. For, you may think, it is implausible that `If $\phi$, $\psi$' is true whenever $\psi$ is true. Consider: 
-\begin{quote}
-	\begin{exe}
-	\ex The Tigers  will not lose every game this season;
-	\ex The Tigers will make it to the finals;
-	\ex Therefore: If the Tigers lose every game this season, they will make it to the finals.
- \end{exe}
-\end{quote}
-If `if $\phi$, $\psi$' is $\phi \to \psi$, this argument should be valid (it is an instance of the valid form $\phi,\psi \vDash \neg\phi \to \psi$). But this argument does not strike us as valid. 
-
-\paragraph{Can we do better in our logic?}
-The first question we should address is: is there a better option in \lone? And it seems that there is not. Suppose that `If $\phi$, $\psi$' is expressed by some truth function $f(|\phi|,|\psi|)$. One thing is definitely true; if $|\phi|=T$ and $|\psi|=F$, we want $f(|\phi|,|\psi|)=F$. This leaves us with 8 possible two-place truth-functions. Another thing we want is \emph{asymmetry}: there exists at least one structure $\mathscr{A}$ where $f(|\phi|_{\mathscr{A}},|\psi|_{\mathscr{A}})\neq f(|\psi|_{\mathscr{A}},|\phi|_{\mathscr{A}})$. This rules out four further functions (it rules out all those where $f(F,T)=F$), leaving us with four. Since we've just suggested in our discussion of the boxed argument above that it is undesirable for the truth of a conditional to follow from the truth of the consequent or the falsity of the antecedent, it would surely be even worse if the conditional were \emph{equivalent} to the consequent or the negation of the antecedent. This rules out two of our remaining truth functions, leaving us with just two: $\to$ and a function $g$ (expressed by $\neg(\psi\to\phi)$). But $g(T,T)=F$, hardly what we want from a conditional. So the only truth-function which satisfies minimal conditions necessary to count as a conditional is $\to$.
-
-\paragraph{Meaning as characterised by derivation rules}
-Of course, this is not a strong argument – that $\to$ is better than other candidates is no argument that $\to$ is itself adequate! But we can offer better considerations. Given that our derivation system for \lone\ is sound and complete, there is a sense in which those rules – collectively – govern or fix the meaning of the connectives. No other rules are necessary to ensure the right things are provable, the things which correspond exactly to the meaning of the connectives.
-
-Things may not be much different in natural languages. Of course we don't have soundness and completeness proofs, because we have neither a fully spelled out semantics nor a formal derivation system for natural language. But we do have characteristic patterns of inference for the connectives of English. Some of these patterns of inference look remarkably like those for the formal connectives of \lone, notably the rules governing `and'. (This is some motivation behind the nomenclature of `natural deduction' – it is natural in the sense that it formalises intuitively fundamental characteristic patterns of inference for the corresponding operators.)
-
-Whatever else we might want to say about the English conditional connective `if $\phi$, $\psi$', it seems \emph{prima facie} it should obey these rules: \begin{description}
-	\item [\emph{Modus Ponens}]  If you have established $\phi$, and you have established  `if $\phi$, $\psi$', then you can on that basis establish $\psi$.
-	\item [Conditional Proof] If $\psi$ can be established, conditional on the assumption that $\phi$, then you can establish `if $\phi$, $\psi$' without need of that assumption. 
-\end{description}
-It is obvious that something which didn't obey these rules would be quite unlike a conditional. A conditional helps us neatly summarise reasoning from assumptions, store it, and then use it when those assumptions come true – conditional proof captures the first part, and \emph{modus ponens} the last.
-But if, as seems very plausible, these two rules capture the English conditional, then we can offer an argument that the English conditional is $\to$. More precisely, the argument is that ‘If $\phi$, $\psi$’ is true iff $\phi \to \psi$ is:  \begin{quote}
-	\emph{Only If}: Suppose that if $\phi$, $\psi$. Assume $\phi$. By \emph{modus ponens}, $\psi$. By $\to$Intro, $\phi\to\psi$, discharging the assumption.
-
-\emph{If}: Suppose that $\phi \to \psi$. This is equivalent to $\neg \phi \vee \psi$. Assume $\phi$. By disjunctive syllogism, $\psi$. By conditional proof, it follows that if $\phi$, $\psi$, without need of the assumption.
-\end{quote}
-
-`Disjunctive syllogism' is the rule that from $\phi \vee \psi$ and $\neg \phi$ one can infer $\psi$. (A problem asks you to show that this is valid derived rule in the system \lone; it is obviously a good rule for the English `or'.) 
-
-\paragraph{Replying to the apparent counterexamples – Grice}
-If this argument works, we're wrong to think that the cases where $\to$ doesn't seem to behave like `If\ldots then' are genuine counterexamples. But we need to say something about those cases.
-
-The explanation offered is that, even though these sentences are true, they \emph{conversationally implicate} something false, and that is what we are responding to. The notion of conversational implicature was introduced by Grice, who noted that many utterance seem to communicate more than what is strictly said, and gave a series of principles that he argued govern what is communicated by an utterance, based on what strictly it means \citep{grilogco}. One classic example is this: `some philosophers have beards'. An utterance of this sentence conversationally implicates that not all philosophers have beards, and that is what something most people will assume the speaker to be committed to in their utterance. Yet this is not a consequence of the utterance: `some philosophers have beards; in fact, all of them do!' can perfectly well be true, and is no contradiction. 
-
-\paragraph{The Maxim of Quantity}
-The principle Grice invokes to explain this implicature is his `Maxim of Quantity' – simply put, this is the principle that cooperative speakers be as informative as they can be. A hearer, without good reason to think otherwise, will assume that a speaker is being cooperative, and hence that when the speaker utters a claim, it is also the most informative claim the speaker is in a position to responsibly utter. One measure of informativeness is this: If $\phi$ entails $\psi$, then $\phi$ is at least as informative than $\psi$ (for it carries the information that $\psi$, and perhaps additional information too if $\psi$ does not entail $\phi$). Since `All philosophers have beards' entails `some philosophers have beards', someone who utters the latter utters something less informative than they could utter, if in fact they thought that all philosophers have beards. Since they are cooperative and did not utter the stronger claim, therefore, the hearer infers that the speaker did not believe the stronger claim. So the hearer now knows that the speaker must believe that some but not all philosophers have beards, and the speaker therefore communicates that not all philosophers have beards to the hearer.
-
-\paragraph{Applying Quantity to conditionals}
-  
-The material conditional is equivalent to a disjunction $\neg \phi \vee \psi$. Any disjunct of a disjunction entails the disjunction, so contains more information. So an utterance of a disjunction implicates that neither disjunct is believed by the speaker. As Thomson put it, \begin{quote}
-	In saying ‘if $p$ then $q$’ a speaker will say something which is in general anyway true or false. But by the act of making the statement he will do other things, too. He will encourage us to think that he has some or other reason for thinking that if $p$ then $q$ and that his reasons are not such as to allow him to assert not-$p$ nor such as to allow him to assert $q$. \citep[67–8]{thomson}
-\end{quote}So if it is apparent that the speaker \emph{does} believe either disjunct – either through being committed to the consequent, or rejecting the antecedent, of the relevant material conditional – we should be struck by the fact that the speaker has communicated an apparent contradiction. 
-
-
-In the case of the Tigers, the speaker who utters both the premises and conclusion of this argument communicates that they believe the consequent, and also utters the conditional which conversationally implicates that the speaker does not believe the consequent. So the hearer has a contradiction communicated to them – little wonder, then, that these sentences sound so bad! But – and this is the crucial part – nothing in this explanation of the badness of the conditional is \emph{semantic}. Nothing in this explanation undermines the idea that the truth conditions of the English conditional construction are the same as those for the material conditional. This is all to do with what we standardly take ourselves to be able to infer from an utterance of a sentence with those semantics, and what goes wrong here is that inference, not the semantics.
-
-\paragraph{Trickier Cases}
-
-All is not smooth sailing for the material conditional account of `If $\phi$, $\psi$'. I mention two trickier cases: \begin{enumerate}
-	\item There seem to be cases where conditional proof goes wrong – most noticeably, in the case of assumptions made that explicitly contradict other things we believe. This is especially apparent in so called \emph{counterfactual} conditionals – those (at least at first glance) that involve conditional reasoning about circumstances that do not obtain. So consider the (apparently true) counterfactual `If Univ had never existed, Exeter would have been the third oldest college'. The conditional proof rationale for this is: if we can derive the consequent from the assumption that Univ never existed and other things, then we can derive the conditional from those other things alone. Yet since Univ's existence is known to us, adding that assumption to our prior beliefs gives an inconsistent set of assumptions, from which any consequent whatever follows. But `If Univ had never existed, Catz would have been the third oldest college' is clearly false, though it should be derivable on exactly the same grounds. What we need to do, apparently, is modify which of our prior beliefs can be retained when reasoning from this contrary-to-fact assumption.
-
-	 Many philosophers are agreed, however, that such cases should be treated by analysing the `if' involved in counterfactuals as distinct from the `if' of the so-called \emph{indicative} conditionals we've been dealing with so far – if that suggestion is adopted, we may retain a material conditional analysis of indicative `if' while giving an alternative treatment of counterfactual `if'. The classic early account of counterfactual `if' is \citet{lewcount}.
-\item There seem to be cases where the Gricean explanation should make a conditional sound bad, but in which it does not. Consider: `You won't fail EDL. Even if you do, you will pass on the re-sit.' The first sentence of this little speech is a denial of the antecedent of the following conditional, so the conditional should sound bad. But it sounds fine. The word `even' may be held responsible; but it is now up to the Gricean to explain how it interferes with the ordinary Gricean mechanisms.
-\end{enumerate}
-
-\paragraph{The Gibbard Argument}
-
-\begin{theorem}[Gibbard]
-Any conditional operator $\Rightarrow$ which satisfies these three conditions is equivalent to the material conditional \citep{gibbard}\label{gibb}:
-\begin{description}
-	\item[Import-Export] $\phi \Rightarrow (\psi \Rightarrow \chi)$ and $(\phi\wedge \psi)\Rightarrow \chi$ are logically equivalent.
-\item[Lower] $\phi \Rightarrow \psi$ entails $\phi \to \psi$ (i.e., the conditional entails the material conditional).
-\item[Upper] $\phi \vDash \psi$ entails $\phi \Rightarrow \psi$ (i.e., entailment entails the conditional)
-\end{description}
-\begin{proof}
-	Left for exercise.
-\end{proof}
-\end{theorem}
-
-The relevance of the theorem is that the English conditional `if' does seem to satisfy Upper, Lower, and Import-Export. The only mildly controversial one is apparently the latter, but support for it can be found by considering cases in which the application of Import-Export seems unproblematic. Consider this pair, which seem to express the same claim:
-\begin{exe}
-	\ex  \begin{xlist}
-		\ex If you drink one more can of beer then if I drink one more can of beer then we’ll be completely out of beer.
-	\ex If you drink one more can of beer and I drink one more can of beer then we’ll be completely out of beer. \citep[88]{kratzer}
-	\end{xlist}
-\end{exe}
-
-\paragraph{The Trickiest Case}
-
-
-Here's another problem case: \begin{quote}
-	Opinion polls taken just before the 1980 election showed the Republican Ronald Reagan decisively ahead of the Democrat Jimmy Carter, with the other Republican in the race, John Anderson, a distant third.  \citep{mcgee}
-\end{quote} There are only two Republicans in the race, so this is trivially true: \begin{exe}
-	\ex If a Republican wins and it's not Reagan, then it's Anderson who wins.\label{imp}
-\end{exe} (\ref{imp}) is a conditional with a conjunctive antecedent; if Import-Export is valid for the English `if', then we can derive \begin{exe}
-	\ex If a Republican wins the election, then if it’s not Reagan who wins it will be Anderson.\label{exp}
-\end{exe}
-And since the polls overwhelmingly favour Reagan, it is almost certain he will win, and so almost certain that the antecedent of this conditional (\ref{exp}) - i.e., `A Republican will win the election' – is true. It was certainly widely believed by people at the time that a Republican would win, and it turned out to be true in the end.
-
-Assuming that if someone believes a conditional, and believes the antecedent of that conditional, they can validly reason (using \emph{modus ponens}) to the consequent, this follows: \begin{exe}
-	\ex If it's not Reagan who wins, it will be Anderson.\label{false}
-\end{exe}
-But this is false: Anderson was a distant third in the polls, and the most likely alternative to Reagan was Carter. 
-
-
-What has gone wrong? We've derived, from claims we believe to be true ((\ref{imp}) and that a Republican will win), using Import-Export and \emph{modus ponens}, a claim we believe to be false: \ref{false}. The defender of the material conditional account of `if' cannot object to either of these rules, since both Import-Export and \emph{modus ponens} are provably correct derivation rules for the material conditional. So they have to argue that the apparently false conclusion is in fact true; or else deny either the trivial truth (\ref{imp}), or deny that it is acceptable to reason from the highly probable claim – that in fact turned out to be true, just as the polls indicated – that a Republican would win the election. None of these options looks particularly appealing, and most philosophers and linguists have concluded that the material conditional account of `if' is thereby refuted. However, there has been no consensus about what to offer in its place. 
-
-
 
 
 \section{Entailment}
@@ -124,6 +21,8 @@ But, some have objected, these are terrible inferences – we should never concl
 	\ex $\psi$ \hfill  Disjunctive syllogism, 2, 3
 \end{exe}
 \end{quote}
+`Disjunctive syllogism' is the rule that from $\phi \vee \psi$ and $\neg \phi$ one can infer $\psi$. (A problem asks you to show that this is valid derived rule in the system \lone; it is obviously a good rule for the English `or'.) 
+
 This argument seems to show that, even ordinarily, this form of apparently irrelevant argument is valid. And who could object to disjunction introduction or disjunctive syllogism, which seem like about the most basic things one can safely say about disjunction.
 
 \paragraph{The relevantist response – reject Disjunctive Syllogism} The relevantist has a response to this argument – reject disjunctive syllogism. For, they say, it goes wrong in precisely this circumstance. The inference works normally because, given a true disjunction with one false disjunct, we can infer to the truth of the other disjunct \emph{without} checking to see whether it is true. (Disjunctive syllogism was called `the dog' by its Stoic inventors, because `even a dog uses this form of inference when it comes to a fork in the road, sniffs down one branch, and not finding the scent there immediately takes off down the other branch, without stopping to sniff' \citep[99--100]{burphilo}.) But in this case, $\phi$  is also an assumption – so the fact that $\phi \vee \psi$ has a disjunct whose denial is an assumption doesn't entail $\psi$. If there are cases where we can have inconsistent assumptions, like this, we should expect disjunctive syllogism to go wrong.
@@ -150,7 +49,7 @@ We begin in this section with a discussion of \emph{designation} in both languag
 Constants in \ltwo\ directly refer, because the meaning (semantic value) of $a$ in $\mathscr{A}$ is $\val{a}{A}$, which is just an item in the domain of $\mathscr{A}$.
 
 
-This is to be contrasted with any thesis of \emph{indirect} reference, according to which the semantic value of a denoting expression is something other than the referent. The primary example here are definite descriptions; if Russell's account (recall chapter \ref{c8}) is correct, for example,  the meaning of a description is somehow to be extracted from a complex quantified sentence; the referent (if any) is determined by the meaning, but is not the meaning. This can clearly be seen if we accept Russell's treatment of ‘The present king of France is bald’, where the sentence is meaningful even though the definite description fails to denote anything. Given that the meaning of the sentence is determined by the meanings of its constituents, the definite description noun phrase must have a meaning, even though it lacks a referent, and hence cannot be a directly referential expression.
+This is to be contrasted with any thesis of \emph{indirect} reference, according to which the semantic value of a denoting expression is something other than the referent. The primary example here are definite descriptions; if Russell's account (recall chapter \ref{c:lequals}) is correct, for example,  the meaning of a description is somehow to be extracted from a complex quantified sentence; the referent (if any) is determined by the meaning, but is not the meaning. This can clearly be seen if we accept Russell's treatment of ‘The present king of France is bald’, where the sentence is meaningful even though the definite description fails to denote anything. Given that the meaning of the sentence is determined by the meanings of its constituents, the definite description noun phrase must have a meaning, even though it lacks a referent, and hence cannot be a directly referential expression.
 
 
 
@@ -208,7 +107,7 @@ Many names are simply introduced by descriptions; and certainly what most of us 
 \end{exe}
 It is fairly clear that in the context `Lois Lane believes that Superman is $x$', one cannot straightforwardly substitute co-referring expressions into $x$ and get a true sentence. Such \emph{opaque contexts} – those which do not permit substitution \emph{salva veritate} – are a problem for the direct reference theory, of course, but also for other theories that think the objects of belief are propositions concerning the entities one has the belief about. 
 
-Obviously \ltwo\ lacks opaque contexts, as theorems about substitution of co-referring constants proved in Chapter \ref{c6} show. This is an expressive weakness of \ltwo\ compared with English.
+Obviously \ltwo\ lacks opaque contexts, as theorems about substitution of co-referring constants proved in Chapter \ref{c:l2} show. This is an expressive weakness of \ltwo\ compared with English.
 
 
 
@@ -249,14 +148,14 @@ A full treatment of these nouns cannot be carried out in \ltwo; constants referr
 
 \section{More on Relations}
  
- \paragraph{Expressing Properties of Binary Relations in \ltwo$_{=}$}
+ \paragraph{Expressing Properties of Binary Relations in \ltwo}
  
-We talked about the properties of binary relations, modelled as sets, back in \autoref{c2}.
+We talked about the properties of binary relations, modelled as sets, back in \autoref{c:sets}.
 
  We can use formulae of \ltwo\ to express various properties of relations on an entire domain. For example \begin{description}
- 	\item [Reflexivity] A relation $R$ is reflexive on $D_{\mathscr{A}}$ iff $R = \val{P^{2}}{A}$ and\\ $\val{\forall x P^{2}xx}{A}=T$. 
-\item [Transitivity] A relation $R$ is transitive on $D_{\mathscr{A}}$ iff $R = \val{P^{2}}{A}$ and $$\val{\forall x \forall y \forall z (P^{2}xy \wedge P^{2}yz) \to P^{2}(xz)}{A}=T.$$ 
-\item [Symmetry] A relation $R$ is symmetric on $D_{\mathscr{A}}$ iff $R = \val{P^{2}}{A}$ and\\ $\val{\forall x \forall y  (P^{2}xy \to P^{2}yz}{A}=T$. 
+ 	\item [Reflexivity] A relation $R$ is reflexive on $D_{\mathscr{A}}$ if $R = \val{P^{2}}{A}$ and\\ $\val{\forall x P^{2}xx}{A}=T$. 
+\item [Transitivity] A relation $R$ is transitive on $D_{\mathscr{A}}$ if $R = \val{P^{2}}{A}$ and $$\val{\forall x \forall y \forall z (P^{2}xy \wedge P^{2}yz) \to P^{2}(xz)}{A}=T.$$ 
+\item [Symmetry] A relation $R$ is symmetric on $D_{\mathscr{A}}$ if $R = \val{P^{2}}{A}$ and\\ $\val{\forall x \forall y  (P^{2}xy \to P^{2}yz}{A}=T$. 
  \end{description}
 
 \paragraph{Relations in English and \ltwo: Intension and Extension}
@@ -280,7 +179,7 @@ Despite these problems, the case against English having a similar semantics for 
 \addcontentsline{toc}{subsection}{Further Reading}
 
 
-\citet{bevpospa} and \citet{burphilo}, cited in the last chapter, provide useful material on relevant and conditional logics. On the topic of the English indicative conditional, a good guide is \citet{edgington}. In addition to the work of Grice and Thomson cited above, \citet{sep-implicature} is a useful source on conversational pragmatics. \citet{stalnaker} gives an account of the English conditional which invalidates Import-Export; \citet{mcgee} argues that in fact the English `if' doesn't satisfy \emph{modus ponens}. Edgington and \citet{kratzer} discuss more exotic accounts.
+
 
  The best defence of dialethism is \citet{priinco}; the application of relevant logic to inconsistent data sets is \citet{belusefov}.  
 
@@ -301,18 +200,6 @@ A wonderful book on names and description is \citet{krinamne}. A modern classic:
 	\item
 		 In our system each acceptable rule of inference has a corresponding correct semantic sequent (for example, the sequent $\phi, (\phi \to \psi) \vDash \psi$ corresponds to  \emph{modus ponens}). Consider now this rule of inference in English: if $\phi$ is a truth of logic, then `Necessarily, $\phi$' is too.  Is this rule intuitively correct? Is the corresponding sequent `$\phi \vDash_{\text{English}} \text{Necessarily } \phi$' intuitively correct?
 		\end{enumerate}
-\item Give the proof of Gibbard's theorem (Theorem \ref{gibb}). (\emph{Hint:} begin with the fact that all instances of this schema for disjunctive syllogism are valid: $((¬\phi \vee \psi)\wedge\phi)\vDash\psi$.)
-		\item \begin {enumerate} \item John argues that, since $\phi$ and $\psi$ together entail (in English)
-		$\psi$, if follows that $\psi$ entails `if $\phi$, $\psi$'. Evaluate John's argument.
-
-		\item Mary claims that `if $\phi$, $\psi$' entails `if $\neg \psi$, $\neg
-		\phi$'. Evaluate Mary's claim.
-		\item Show how it would be possible to use John's conclusion and
-		Mary's claim to argue that `$\phi \to \psi$' entails `if $\phi$,
-		$\psi$'.
-		\item Give an argument that `if $\phi$,$\psi$' is a truth-functional connective in English. Do you see any difficulties with your argument?
-
-		\end{enumerate}	
 
 
 \item Say that $\phi \vDash \psi$ is a \emph{perfect} sequent iff it is correct, and $\phi$ is satisfiable, and	$\psi$ is not a tautology. Say that a sequent is \emph{perfectible} iff it is a substitution instance of a perfect sequent. \begin{enumerate}

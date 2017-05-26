@@ -69,7 +69,7 @@ So in the sentence $((P\wedge Q) \vee R)$, the scope of $\wedge$ is $(P \wedge Q
 
 
 
-\paragraph{Syntax} The foregoing suffices to specify the syntax of our language \lone. The language contains an alphabet, which includes a set of sentence letters, and a set of connectives, and some other punctuation. And it contains a \emph{syntax}, that is, a set of rules specifying which strings constructed from the alphabet are well-formed sentences. A language contains a syntax, but to complete our specification of the language we will also need to talk about the meanings of sentences, or its \emph{semantics}; we look at the semantics of \lone\ in chapter \ref{c3a}.
+\paragraph{Syntax} The foregoing suffices to specify the syntax of our language \lone. The language contains an alphabet, which includes a set of sentence letters, and a set of connectives, and some other punctuation. And it contains a \emph{syntax}, that is, a set of rules specifying which strings constructed from the alphabet are well-formed sentences. A language contains a syntax, but to complete our specification of the language we will also need to talk about the meanings of sentences, or its \emph{semantics}; we look at the semantics of \lone\ in chapter \ref{c:l1semantics}.
 
 \paragraph{Abbreviatory Conventions} When writing sentences of \lone, we will often from now on drop parentheses in accordance with the following conventions \citep[\S2.3]{hallogma}. Note these are only conventional abbreviations: they form no part of the official syntax, but are just for our own convenience. \begin{enumerate}
 	\item The \emph{outermost} pair of parentheses of a sentence may be dropped; that is, we may write `$P \vee Q$' in place of the official `$(P \vee Q)$'.
@@ -101,7 +101,7 @@ Informally, what Theorem \ref{prefix} shows is that no sentence of \lone\ is an 
 \section{Proof By Induction on Complexity}
 
 An important sort of inductive argument is \emph{induction on the complexity of sentences}.
-\begin{definition}[Complexity]
+\begin{definition}[Complexity] \label{defcompl}
 	The complexity of a sentence of \lone\ is the sum of the arities of the connectives occurring in it. (E.g., $\neg P$ has complexity 1, $\neg\neg(P \to Q)$ has complexity 4, etc.)
 \end{definition}
 The complexity of a sentence letter is 0. Since one cannot guarantee that a sentence has two constituents of equal complexity, we must use the strong principle of induction if one wants to induce on complexity. (Also because the complexity of $\phi \oplus \psi$, where $\oplus$ is some binary connective, is the complexity of $\phi$, plus the complexity of $\psi$, plus 2.) 

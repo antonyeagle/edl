@@ -1,6 +1,6 @@
 %!TEX root = edl.tex
 
-\section*{Exercises for Chapter 1: page \pageref{ex1}} \label{ans1}
+\section*{Exercises for Chapter \ref{c:induct}: page \pageref{ex1}} \label{ans1}
 
 {\small
 \begin{enumerate}
@@ -23,7 +23,7 @@ Not necessarily. Consider the case of vagueness. Suppose Alice is borderline tal
 But what about the sentence `Alice is tall or not-(Alice is tall)'? No matter where we draw the boundary for `tall' – so long as we do it the same way in each disjunct – Alice will fall on one side or the other. So that sentence is definite: no matter how we make the vague expression precise, it doesn't change the truth value. So the whole sentence is definite. In fact, every instance of LEM is definitely true according to the supervaluationist. So while `$P$ or not-$P$' is always true, that doesn't entail – says the supervaluationist – that either $P$ is true or `not-$P$' is true. So the supervaluationist, at least, wants to resist the argument from LEM to Bivalence.
 \end{enumerate}
 
-\section*{Exercises for Chapter 2: page \pageref{ex2}} \label{ans2}
+\section*{Exercises for Chapter \ref{c:sets}: page \pageref{ex2}} \label{ans2}
 
 \begin{enumerate}
 	\item \begin{enumerate}
@@ -52,13 +52,13 @@ But what about the sentence `Alice is tall or not-(Alice is tall)'? No matter wh
 			\item The successor function which maps each number to its immediate successor (i.e., $\mathsf{succ}(x) = x+1$) is into $\mathbb{N}$ but not onto, since there is no $n$ such that $\mathsf{succ}(n) = 0$ but $0 \in \mathbb{N}$.
 			\item The identity function from natural numbers into integers $\mathbb{Z} = \{…,-3,-2,-1,0,1,2,3…\}$ is one-one, since each number is mapped to itself and no other number. But it is not a bijection, because there is no natural number $n$ such that $n = -1$.
 			\item Any function which is not one-one has no inverse. So consider the squaring function on integers, $\mathsf{sq}(x) = x^{2}$ for any $x\in\mathbb{Z}$. Since $\mathsf{sq}(2)=\mathsf{sq}(-2)=4$, the relation which is the inverse of $\mathsf{sq}$ contains the pairs $\langle 4,2\rangle$ and $\langle 4,-2\rangle$, and so is not a function.
-			\item An argument which is its own inverse is such that $f(f(x)) = f^{-1}(f(x)) = x$. Identity is its own inverse. A more interesting case is negation $\mathsf{n}$, discussed in chapter \autoref{c3a}. $\mathsf{n}=\{\langle T,F\rangle,\langle F,T\rangle\}$; swap the order of each pair, and we get the same set back. Another example is the function \textsf{rotate 180˚} on the domain of compass directions: apply the function twice, and we get the original argument back again. 
+			\item An argument which is its own inverse is such that $f(f(x)) = f^{-1}(f(x)) = x$. Identity is its own inverse. A more interesting case is negation $\mathsf{n}$, discussed in chapter \autoref{c:l1semantics}. $\mathsf{n}=\{\langle T,F\rangle,\langle F,T\rangle\}$; swap the order of each pair, and we get the same set back. Another example is the function \textsf{rotate 180˚} on the domain of compass directions: apply the function twice, and we get the original argument back again. 
 		\end{enumerate}
 		\item The union of two functions is itself a function iff the constituent functions are not defined on any argument(s) in common. Since both constituent functions are relations, their union is a relation too (though perhaps on a different – larger – domain); and that relation meets the condition for being a function iff any $a$ which is in the domain of one constituent function and in the domain of the other is such that both functions assign to $a$ that same value.   
 	\end{enumerate}
 \end{enumerate}
 
-\section*{Exercises for Chapter 3: page \pageref{ex3}} \label{ans3}
+\section*{Exercises for Chapter \ref{c:l1syntax}: page \pageref{ex3}} \label{ans3}
 
 \begin{enumerate}
 	\item Answer: \begin{quote}
@@ -75,7 +75,7 @@ So there couldn't be any such sentence $\phi$.
 		
 	\end{enumerate}
 
-\section*{Exercises for Chapter 4: page \pageref{ex4}} \label{ans4}
+\section*{Exercises for Chapter \ref{c:l1semantics}: page \pageref{ex4}} \label{ans4}
 
 \begin{enumerate}
 \item $\Gamma \vDash \phi$ iff every \lone-structure $\mathscr{A}$ in which each member of $\Gamma$ is true is also one in which $\phi$ is true; iff every \lone-structure $\mathscr{A}$ in which each member of $\Gamma$ is true is also one in which $\neg\phi$ is false; iff every \lone-structure $\mathscr{A}$ is one in which at least one member of $\Gamma \cup \{\neg\phi\}$ is false; iff $\Gamma\cup\{\neg\phi\}$ is unsatisfiable.
@@ -106,7 +106,7 @@ So consider $¬(¬(P\bicond Q)\bicond R)$. We see that the sentence is a negated
 
 \end{enumerate}
 
-\section*{Exercises for Chapter 5: page \pageref{ex5}} \label{ans5}
+\section*{Exercises for Chapter \ref{c:l1meta}: page \pageref{ex5}} \label{ans5}
 
 \begin{enumerate}
 \item \begin{enumerate}\setcounter{enumii}{1}
@@ -186,10 +186,10 @@ So only the connectives which express $f_{\uparrow}$ and
 	\item The set of effective procedures is roughly the set of finite recipes in English. Each such recipe is a finite sequence of characters drawn from a finite alphabet, and by the same argument as in the Key Lemma \ref{keylemma}, there are only countably many effective procedures. We suppose they can be recursively enumerated because the set of finite sets of English sentences can be effectively generated – this follows from the fact that we can effectively generate finite subsets of $\mathbb{N}$.
 	\item \begin{enumerate}
 		\item If there were an effective procedure for computing $d$, it would be a member of $E$ – say it would be the $k$-th recipe under the relevant enumeration of recipes. But if $d$ is computed by the $k$-th recipe, then $d=f_{k}$. But $d(k) ≠ f_{k}(k)$, by construction of $d$. So $d$ cannot be computed by the $k$-th recipe. Since $k$ was arbitrary, $d$ cannot be computed by any effective recipe specifiable in English.
-		\item Suppose there were an effective procedure for sorting recipes into those which are \emph{good} (compute a function in a finite time) and those which are \emph{garbage} (not computing a function, not halting in a finite time.) This procedure determines a function $g(i) = \begin{cases}
+		\item Suppose there were an effective procedure for sorting recipes into those which are \emph{good} (compute a function in a finite time) and those which are \emph{garbage} (not computing a function, not halting in a finite time.) This procedure would determine a function: $$g(i) = \begin{cases}
 			1 &\text{ iff the $i$-th recipe in $E$ is good;}\\
 			0 &\text{ otherwise}.
-		\end{cases}$ 
+		\end{cases}$$
 
 If this function $g$ is effectively computable, then $d$ is effectively computable. The recipe for computing each $d(n)$ is this: \begin{verbatim}
     On given input n, compute g(n) 
@@ -204,6 +204,123 @@ This shows that the set of effective procedures is recursively enumerable but no
 
 	\end{enumerate}
 \end{enumerate}
+\end{enumerate}
+
+}
+
+\section*{Exercises for Chapter \ref{c:l1tabl}: page \pageref{ex6}} \label{ans6}
+
+{\small
+\begin{enumerate}
+\item ~{\leaf{$P$\\ $\mathbf{\otimes}$}\leaf{$Q$\\ $\mathbf{\otimes}$}\branch{2}{$P\vee Q$}\branch{1}{$¬¬(P\vee Q$\\ $¬P$\\ $¬Q$}\qobitree
+}
+
+\item Any finished tableau generated by $\{\neg\phi\}$ is closed, because that is what $\vdash\phi$ means. Consider a tableau $\mathsf{T}$ generated by $\neg(\psi\to\phi)$. We apply the negated conditional rule, adding $\psi$ and $\neg\phi$ below the root node. Then we extend the resulting tableau by adding the subsequent contents of every branch on some finished tableau generated by $\{\neg\phi\}$ to every branch stemming from $¬\phi$ on $\mathsf{T}$. So $\mathsf{T}$ is closed (it may not be finished, if there are tableau rules to apply to $\psi$; but it doesn't matter, since adding more sentences cannot unclose a closed branch). So $\vdash\psi\to\phi$.
+\item \begin{enumerate}
+	\item ~
+	 {\leaf{$P$\\ $¬(P \vee P)$\\ $¬P$\\ $¬P$\\ $\mathbf{\otimes}$} \leaf{$P$\\ $\mathbf{\otimes}$}\leaf{$P$\\ $\mathbf{\otimes}$}\branch{2}{$¬P$\\$P \vee P$}\branch{2}{$¬(P \bicond (P \vee P))$ }\leaf{$¬P$\\ $\mathbf{\otimes}$}\leaf{$¬P$\\ $\mathbf{\otimes}$}\branch{2}{$P$\\$¬(P \wedge P)$} \leaf{$¬P$\\ $(P \wedge P)$\\ $P$\\ $P$\\ $\mathbf{\otimes}$}\branch{2}{$¬(P \bicond(P \wedge P))$}\branch{2}{$¬((P\bicond (P\vee P))\wedge(P\bicond (P\wedge P)))$}	\qobitree}
+ \setcounter{enumii}{4}
+	\item ~ {\leaf{$¬P$\\$\mathbf{\otimes}$}\leaf{$Q$\\$\mathbf{\otimes}$}\branch{2}{$P$}\leaf{$R$\\$\mathbf{\otimes}$}\branch{2}{$P \to Q$\\ $¬((P \vee R) \to (Q \vee R))$\\ $P\vee R$\\ $¬(Q \vee R)$\\ $¬Q$\\ $¬R$}\branch{1}{$¬((P\to Q) \to ((P \vee R) \to (Q \vee R)))$}
+	\qobitree}
+\end{enumerate}
+\item A tableau is generated by taking the members of some set in a sequence. Since sets are identified by their members, $\Gamma\cup\{\phi, \phi, ¬\psi\} = \Gamma\cup\{\phi,¬\psi\}$ and $\Gamma\cup\{\phi,\psi,¬\chi\}=\Gamma\cup\{\psi,\phi,¬\chi\}$. So whatever tableau is generated by one of these sets under one representation is also generated by the other under the other representation. So these first two structural rules for tableau derivations follow just from the fact that we begin with a generating set. 
+
+In the case of showing that if $\Gamma\vdash \phi$ then $\Gamma, \psi\vdash \phi$, recall Definition \ref{tablderv}. Suppose $\Gamma\vdash \phi$ because for some finite subset $\Sigma$ of $\Gamma$, $\Sigma\cup\{¬\phi\}$ generates a closed tableau. But $\Sigma\cup\{¬\phi\}\subset \Gamma\cup\{¬\psi\}\cup\{¬\phi\}$; so the very same derivation will show that $\Gamma, \psi\vdash \phi$. \setcounter{enumi}{5}
+
+\end{enumerate}
+
+\section*{Exercises for Chapter \ref{c:tablmeta}: page \pageref{ex6a}} \label{ans6a}
+
+{\small
+\begin{enumerate}
+\item 
+\item \begin{enumerate}
+	\item The truth function $\mathbf{nor}$. Here is the informal argument. In any tableaux system, for each connective, there is a rule for that connective, and a rule for the negated connective. The left displayed rule clearly concerns the connective $\odot$; so perhaps the right displayed rule concern its `negation'? If so, given that right-hand rule is of the form $\chi\odot\chi$, \emph{that} must be how to express negation in this system. So the left-hand rule now says: from $\phi\odot\psi$, conclude both that $\phi$ is false and $\psi $ is false; so $\phi\odot\psi$ is sufficient for neither of $\phi$ or $\psi$ to be true. The right-hand rule says: from the falsity of $\phi\odot\psi$, conclude that either $\phi$ or $\psi$ is true. From both rules together, therefore, we know that both $\phi$ and $\psi$ being false is necessary and sufficient for $\phi\odot\psi$ to be true, i.e., that $\odot$ expresses the truth function $\mathbf{nor}(x,y) = 1$ iff $x=0$ and $y=0$. 
+
+\item If both $\phi$ and $\phi\odot\phi$ occur on a branch.
+\end{enumerate}
+\end{enumerate}
+
+}
+
+\section*{Exercises for Chapter \ref{c:l1nd}: page \pageref{ex6b}} \label{ans6b}
+
+{\small
+\begin{enumerate}
+\item f
+\end{enumerate}
+
+}
+
+\section*{Exercises for Chapter \ref{c:ndmeta}: page \pageref{ex6ab}} \label{ans6ab}
+
+{\small
+\begin{enumerate}
+\item f
+\end{enumerate}
+
+}
+
+\section*{Exercises for Chapter \ref{c:l2}: page \pageref{ex7}} \label{ans7}
+
+{\small
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item By Definition \ref{ltwosats}, $\valsa{\exists\upsilon\phi} = T$ iff $\vals{\phi}{A}{\beta}=T$ for at least one variable assignment $\beta$ over $\mathscr{A}$ differing from $\alpha$ \emph{at most} in its assignment to $\upsilon$, iff  $\vals{¬\phi}{A}{\beta}=F$ iff $\vals{¬\phi}{A}{\beta}≠T$ iff $\valsa{\forall\upsilon\neg\phi}≠T$ (since $\beta$ is a variable assignment differing from $\alpha$ at most in what it assigns to $\upsilon$), iff $\valsa{\neg\forall \upsilon¬ \phi}=T$.
+\setcounter{enumi}{6}
+\item If $\Gamma,\phi[\tau/\upsilon]\vDash \psi$, then every \ltwo-structure in which all of $\Gamma$ and $\phi[\tau/\upsilon]$ are satisfied is also a structure in which $\psi$ is satisfied. 
+
+Suppose there is an \ltwo-structure $\mathscr{A}$ in which all members of $\Gamma$ are satisfied, and $\exists \upsilon \phi$ is satisfied, but $\psi$ is not. Then there is a variable assignment $\alpha$ such that $\valsa{\phi}=T$. There exists an altered structure $\mathscr{A}'$ such that $\vals{\tau}{A'}{\alpha}=\alpha(\tau)$ – i.e., it assigns to $\tau$ what $\alpha$ assigns to $\upsilon$ in $\mathscr{A}$. Since $\valsa{\phi}=T$, $\val{\phi[\tau/\upsilon]}{A'}{\alpha}=T$.  Suppose $\Gamma$ is also satisfied in $\mathscr{A}'$ (if it is not, choose another altered structure in which it is: if there is none, then $\Gamma \cup \{\exists \upsilon \phi\}$ must be unsatisfiable, and the desired conclusion follows trivially). But then $\mathscr{A}'$ must make $\psi$ true by hypothesis. On the other hand, since $\mathscr{A}'$ differs from $\mathscr{A}$ only in what it assigns to $\tau$, and $\tau$ doesn't occur in $\psi$, $\psi$ must also be false in $\mathscr{A}'$ since we've assumed it is false in $\mathscr{A}$. Contradiction: so $\Gamma, \exists \upsilon\phi \vDash \psi$.
+
+
+\setcounter{enumi}{9}
+\item Consider any \ltwo-structure $\mathscr{A}$ which makes $\forall \xi (\phi\bicond \psi)$ true under some arbitrary variable assignment $\alpha$. $\mathscr{A}$ is such that $\vals{\phi\bicond \psi}{A}{\beta} = T$ for any variable assignments $\beta$ differing from $\alpha$ at most in what they assign to $\xi$. 
+
+Suppose $\valsa{\forall \xi\phi} ≠ \valsa{\forall \xi\psi}$. Then for one such variable assignment $\beta$ differing from $\alpha$ at most in what it assigns to $\xi$, $\vals{\phi}{A}{\beta}≠\vals{\psi}{A}{\beta}$. But since $\vals{\phi\bicond \psi}{A}{\beta} = T$, $\vals{\phi}{A}{\beta}=\vals{\psi}{A}{\beta}$. Contradiction; so $\valsa{\forall \xi\phi} = \valsa{\forall \xi\psi}$, and hence $\valsa{\forall \xi \phi \bicond \forall \xi \psi}=T$.
+
+\setcounter{enumi}{14}
+\item An uncountable domain has too many members to be named; that was the problem for substitutional quantification. But since all of our formula are finite, no open formula of \ltwo\ ever has more than finitely many variables needed to be assigned values by any one variable assignment. So whenever we need to consider whether a sentence is true, we only need to consider variable assignments which temporarily assign names to finitely many members of the uncountable domain.
+
+But we have enough variable assignments so that any object which can be discussed even indirectly can be temporarily named. So consider the problem case $\forall x (\text{Integer}(x))$ evaluated in a structure $\mathscr{A}$ with domain of the reals $\mathbb{R}$ and an interpretation which assigns to every constant an integer. This quantified sentence  is nevertheless false, since there is a variable assignment $\alpha$ on that structure which assigns to $x$ some non-integer value, and $\valsa{\text{Integer}(x)}=F$.
+
+
+
+\end{enumerate}
+
+}
+
+\section*{Exercises for Chapter \ref{c:l2nd}: page \pageref{ex8}} \label{ans8}
+
+{\small
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item 2
+\setcounter{enumi}{6}
+\item 7
+\setcounter{enumi}{9}
+\item 10
+\setcounter{enumi}{14}
+\item 15
+
+
+\end{enumerate}
+
+}
+
+\section*{Exercises for Chapter \ref{c:lequals}: page \pageref{ex9}} \label{ans9}
+
+{\small
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item 2
+\setcounter{enumi}{6}
+\item 7
+\setcounter{enumi}{9}
+\item 10
+\setcounter{enumi}{14}
+\item 15
+
+
 \end{enumerate}
 
 }

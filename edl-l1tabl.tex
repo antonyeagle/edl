@@ -1,0 +1,410 @@
+%!TEX root = edl.tex
+
+\newcommand{\answer}[1]{}
+
+\section{Derivations} % (fold)
+\label{sec:derivations}
+
+The key notion in logic is, as we've said earlier (\autoref{sec:satisf}), \emph{consequence}: the notion of some sentences following from another. So far, we've understood consequence in terms of \emph{entailment}, so that $\phi$ is a consequence of $\Gamma$ just in case every structure in which all the sentences in $\Gamma$ are true (in which $\Gamma$ is satisfied), is also a structure in which $\phi$ is true.
+
+\paragraph{Consequence as a Semantic Notion} There is, however, something a bit strange about understanding consequence solely in this way. On this account, what underlies whether some sentences have a certain consequence $\phi$ are facts about the class of structures in which those sentences are true, in particular, whether that class is a subset of some further class which corresponds to the class of structures in which $\phi$ is true. Rather than reasoning from $\Gamma$ to $\phi$, we reason about the structures in which $\Gamma$ and $\phi$ are true. And this seems to be a detour. Compare these two English arguments:
+
+{\centering
+\begin{tabular}{p{5cm}p{5cm}}
+{	\begin{exe}
+		\ex\label{one} If it's raining, I won't ride my bike.
+		\ex \label{two} It's raining.
+		\ex \label{three} Therefore, I won't ride my bike.
+	\end{exe} }
+&
+{	\begin{exe}
+		\exp{one} ‘If it's raining, I won't ride my bike’ is true.
+		\exp{two} ‘It's raining’ is true.
+		\exp{three} Therefore, ‘I won't ride my bike’ is true.
+	\end{exe}	}
+\end{tabular}}
+
+The second argument does the same job as the first, when supplemented with this principle: For any sentence $S$, \begin{exe}
+	\exi{(T-schema)} $\ulcorner S\urcorner$ is true iff $S$.
+\end{exe} But it is needlessly complex, detouring through the metalanguage when the first object-language only argument does the same job. English is its own metalanguage, so the detour isn't so noticeable. But in \lone, where the metalanguage is English, and therefore quite distinct from \lone\ itself, the results can be striking. The standard technique for evaluating an argument in \lone\ – truth tables – produces results that require a great deal more to understand them than is required to understand \lone. \lone\ is a very simple language, which cannot express much. To understand a truth table, however, one has to understand the notion of truth; of a structure; of a sentence having a truth value in a structure; and all the set theoretic and mathematical background to these notions. This shows already that the \emph{activities} of deriving \eqref{three} and deriving (\ref{three}$'$) may be quite different, needing different conceptual resources. Young children, for example, might well be able to run through the object language reasoning without being able to reason in the metalanguage.
+
+\paragraph{Formal Argument} The goodness of the object language argument \eqref{one}–\eqref{three} doesn't consist in anything more than the fact that its first premise is a conditional, the antecedent of which is the second premise and the consequent of which is the conclusion. We don't need to know anything more than this fact about the structure of the argument, and the rules governing conditional implication, to establish that this object language argument is good. The rule governing conditional implication in question is this: \begin{exe}
+	\exi{(\emph{Modus Ponens})} If claims \cquote{\phi}\ and \cquote{\text{If }\phi\text{ then }\psi} occur in the course of an argument, you may subsequently derive \cquote{\psi}.
+\end{exe}
+You don't need to know what $\phi$ or $\psi$ mean to obey this rule – you don't even need to know what `if — then —' means. You just need to be able to follow the rule. Maybe it is purely formal features of argumentation like this that allow young children to follow and produce chains of reasoning in ignorance of semantic notions. Of course, in cases like the above the metalanguage argument complements the object language argument, by showing the formal argument to have a legitimate form, one where the premises really do entail the conclusion. So it is not as if the metalanguage argument is otiose. What it does seem to be is unduly complex for carrying out an inferential task that one might more directly deploy the object language argument to accomplish. At present, we have no choice, since we have no tools for reasoning directly between \lone\ sentences rather than detouring via the semantics. So perhaps we ought to remedy that lack.
+
+\paragraph{Philosophical Considerations} Some have thought that it is philosophically preferable to develop systems of formal argumentation in a language, rather than having to always evaluate those arguments using its semantics. Some have been motivated by scepticism about truth – perhaps motivated by the Liar paradox (`This sentence is not true'). The technical notion of \emph{satisfaction in an \lone-structure} which is at the heart of semantics for \lone\ doesn't seem to be susceptible to the same sort of paradox, not least because we cannot formulate self-referential sentences in \lone. But some have thought that if \lone\ is to be a paradigm for evaluating natural language arguments, then we ought to avoid beginning with semantic notions in formal languages to avoid being forced to begin with semantic notions when we turn to natural language. 
+
+Other considerations in favour of developing methods of object language formal argument come from thinking about effective computation. One nice feature of formal arguments like \emph{modus ponens} is that it is fairly clear that they are effectively implementable. It might not be easy to program a computer to evaluate whether every model in which $P\to Q$ and $P$ are true is also one in which $Q$ is true. But it is easy to program a computer to add $Q$ to a body of claims if $P$ and $P \to Q$ are already among those claims. Machines are good at performing mechanical syntactic manipulations, and rather worse at evaluating expressions for their meaning. Since it is desirable to be able to carry out formal reasoning in \lone\ effectively, we need to develop techniques that a `mere' computer might be able to use.
+
+Some even hold out the hope that these formal inference rules might be all there is to intelligent behaviour. A system following a complicated enough set of formal rules might produce outputs indistinguishable from the intelligent behaviour produced by creatures like us. Not only would this hold out the promise of `artificial intelligence', it might lead to a dissolution of philosophical puzzles about our own conscious reasoning behaviour. Maybe for all we know, we are just complicated formal rule following systems.
+
+Finally – more mundane, but perhaps most significant historically – it is often the case that the development of formal languages runs ahead of their semantics. We might begin by trying to translate some fragment of natural language into a formal language, introducing some bits of formal language to represent certain natural language expressions. We might characterise the behaviour of those formal language constructions by some rules, hoping thereby to capture some significant part of the natural language expressions with which we began. We can use these rules to construct certain arguments, which may mirror in their structure intuitively acceptable natural language arguments. This might give us some confidence that we've captured something interesting in the natural language. But we don't have anything yet that looks like a full theory of meaning for this language – we don't have enough to construct a relation of entailment, for example. But this wouldn't prevent us from going on and developing various rival formal systems to capture various aspects of natural language. We might have some informal understanding of those languages in virtue of the fact that they were constructed to mimic natural language. But we might not be confident that every formal argument that our system endorses corresponds to a real entailment, nor confident that our system can capture every real entailment. The case of sentential logic is not typical here. Rather more typical is the case of modal logic – the logic of `necessarily' and `possibly'. In this case various inequivalent and rival systems of formal argument were set up as early as the 1930s, but the semantics for those languages which allowed a precise account of modal entailment did not come along until the 1960s. It would have been absurd to suggest that people shouldn't have been investigating the formal structure of modal arguments for those 30 years. The informal gloss on their syntax was enough for people to pursue interesting formal results in their system, even if a complete semantics is nevertheless the ideal. 
+
+\paragraph{Derivations}
+
+A \emph{derivation} will be a certain structured collection of \lone\ sentences, and a \emph{derivation system} will be a collection of rules that dictate how to create a derivation.  (Many texts use the word `proof' for what I am calling derivations, and the branch of logic known as `proof theory' is in fact the mathematical theory of formal derivations.) 
+
+We will use derivations to implement argument in \lone\ directly, without needing to appeal to semantic notions like truth and satisfaction. However, a good derivation system for \lone\ will correspond to its semantics, in the sense that every acceptable derivation of $\phi$ from $\Gamma$ will correspond to an entailment of $\phi$ by $\Gamma$; and every entailment will correspond to an acceptable derivation. Proving that the derivation systems we consider are adequate to the semantics for \lone\ in this sense is the main task of \autoref{c:tablmeta} and \autoref{c:ndmeta}.
+
+There are many derivation systems, giving rise to many different kinds of derivation. In this book, we look at two in detail: \emph{truth trees} or \emph{tableaux}, in the present chapter; and \emph{natural deduction} in \autoref{c:l1nd}. We will also briefly consider a third derivation system in \autoref{c:ndmeta}, an \emph{axiomatic} system.
+
+\section{Trees}
+
+Before introducing our derivation system, let me introduce the idea of a tree. Informally, a tree is a collection of nodes, organised into branches, and all stemming from a single root node. We are only going to be concerned here with trees whose nodes are \lone\ sentences. I begin by defining an \lone-branch: \begin{definition}[\lone-Branch]\label{lonebranch}
+	An \lone-\emph{branch} is a finite ordered sequence of \lone\ sentences.
+\end{definition}
+An \lone-tree will be made up of \lone-branches. Ordinarily, we assume that branches begin at the point of divergence from the parent branch or trunk. But \lone-branches will not: they continue all the way to the root. \begin{definition}[\lone-Tree]\label{l1tree}
+	An \lone-\emph{tree} $\mathbf{T}$ is a set of \lone-branches such that there is some sequence of \lone\ sentences $\langle \phi_{1},…,\phi_{n}\rangle$ that is the initial subsequence of every branch $B \in \mathbf{T}$. (This common initial subsequence is called the \emph{trunk}, and the initial node common to all branches is called the \emph{root}.)
+\end{definition} 
+\lone-branches on \lone-trees thus overlap one another, by having initial subsequences in common. Two \lone-branches \emph{diverge} at a position $i$ if they share an initial sequence up to position $i$, but differ at position $i$ at least. Because two \lone-branches are identical iff they have the same sentences in the same positions, there cannot be an \lone-tree which diverges and has the same sentences on each branch after the divergence.
+
+
+\paragraph{Drawing \lone-Trees} Where two \lone-branches overlap, we do not need to represent the sentences in the overlap twice, so when we draw an \lone-tree, we will draw any sentences (including the root node) on which all \lone-branches overlap first, then when there is a divergence between \lone-branches we will split the \lone-tree, drawing then that subset of \lone-branches which agree on one path of the divergence, and then that subset of \lone-branches which agrees on the other path, and repeat until we have drawn all the nodes of the \lone-branches. (Assuming the \lone-tree is finite, every \lone-branch terminates in a final node, known as a \emph{leaf}.) An \lone-tree meeting this definition and represented as suggested is pictured in \autoref{fig:tree}. 
+\begin{figure}[t]
+\centering
+	 \leaf{$P\wedge Q$\\ $R$}
+		\leaf{$\neg R$}
+		\leaf{$¬(P\wedge Q)$}
+	\branch{2}{$P \vee Q$}
+ \branch{2}{$P$\\ $Q$}
+\qobitree
+\quad \begin{tabular}{l}
+~ \\
+~ \\
+ $B_{1} = \langle P, Q, P\wedge Q, R\rangle$;\\
+ $B_{2} = \langle P, Q, P\vee Q, ¬R\rangle$;\\
+ $B_{3} = \langle P, Q, P\vee Q, ¬(P\wedge Q)\rangle$.
+\end{tabular}
+
+
+   \caption{An \lone-tree and its associated \lone-branches}
+    \label{fig:tree}
+\end{figure}
+
+
+It is useful to note that the \lone-tree pictured contains another \lone-tree as a proper part. For the \lone-branches $C_{1} = \langle P\vee Q, ¬R\rangle$ and $C_{2} = \langle P\vee Q, ¬(P\wedge Q)\rangle$ together meet the definition of an \lone-tree with root node $P \vee Q$. We may formally define this notion. \begin{definition}[Occurs Within] \label{def:occurswithin}
+An \lone-tree $\mathbf{T}$ \emph{occurs within} an \lone-tree $\mathbf{U}$ iff there exists some finite sequence $\sigma$ such that (i) prefixing every \lone-branch in $\mathbf{T}$ with $\sigma$ yields an \lone-branch in $\mathbf{U}$, and (ii) every \lone-branch in $\mathbf{U}$ which begins with $\sigma$ is the result of prefixing some \lone-branch in $\mathbf{T}$ with $\sigma$.\footnote{Alternatively, for each sequence $\sigma_{i}$, let $\Sigma_{i}$ be the subset of $\mathbf{U}$ containing all \lone-branches begininng with $\sigma_{i}$. $\mathbf{T}$ occurs within $\mathbf{U}$ iff there exists some $\sigma_{j}$ such that $\mathbf{T}$ consists of all final subsequences of \lone-branches occuring in $\Sigma_{j}$ obtained by removing the initial subsequence $\sigma_{j}$.}
+\end{definition} 
+
+
+\paragraph{Trees and Trees} The more general definition of a tree is  set-theoretic: 
+\begin{definition}[General Tree]\label{tree}
+	A tree $\mathbf{T}$ is a pair $\langle N, \preceq\rangle$ where $N$ is a set of items (`nodes'), and $\preceq$ is a partial order on $N$, such that (i) there is a \emph{root node} $r \in N$ such that for all $n\in N$, $r \preceq n$, and (ii) for each $n \in N$, the set $\{x \in N: x \preceq n\}$ is well-ordered by $\preceq$ (recall Definition \ref{def:wellord}). 
+\end{definition} The nodes in this definition are otherwise featureless indices, individuated entirely by their place in the tree structure. In \lone-trees, a given sentence can occur more than once on a branch, but a node cannot occur more than once in any tree. So if we want to show that \lone-trees from Definition \ref{l1tree} are trees in the sense of Definition \ref{tree}, we will have to come up with some way of associating \lone\ sentences with nodes. The simplest way is to \emph{label} the tree. A labelled tree is a tree together with a total function $f$ from $N$ into the set of \lone\ sentences, which assigns to each node a sentence as label. The function is into, so a given sentence might label more than one node.
+
+\begin{theorem}[\lone-trees are labelled trees]
+	Each \lone-tree corresponds to a labelled tree. \begin{proof}
+		We want to show that, if we have an \lone-tree $\mathbf{T}$, there is a corresponding tree $\mathbf{T}'$. So we need to show (1) that there is an appropriate set of nodes; (2) there is a partial order; (3) there is a root node; (4) the branches are well-ordered; and (5) there is a labelling function. \begin{enumerate}
+			\item If $X$ is a sequence $\langle x_{1},…,x_{n},…\rangle$, define an \emph{index set} $X_{n}$ as follows: $X_{n} = \{\langle x_{i},i\rangle: x_{i} \in X\}$. This transforms an ordered sequence of items into an unordered set of item, position pairs.
+
+			Recalling that an \lone-branch is just a sequence of \lone\ sentences, and an \lone-tree is just a set of \lone-branches, there will be an index set for each \lone-branch in $\mathbf{T}$. The union of all index sets for \lone-branches in our \lone-tree $\mathbf{T}$ will be the set $N$ of nodes for our desired tree $\mathbf{T}'$. Each $\langle$sentence, index$\rangle$ pair occuring on some branch is included. Because sets with the same members are identical, and when branches overlap they have the same sentences at the same position, then we do not have redundancy: though every \lone-branch shares the root node, the pair $\langle \rho,1\rangle$ will be added to the union of all index sets `several times', but of course we end up with just one member of the set for that shared node. Since we have said nothing about what the set of nodes is to consist in, it is perfectly acceptable for this complex set of pairs to be the set of nodes for $\mathbf{T}'$.
+			\item We need to define the partial order $\preceq$ on $N$. Since each member of $N$ is of the form $\langle \phi,i\rangle$, it suffices to define it on pairs of this form. We will say that $\langle \phi,i\rangle \preceq \langle \psi,n\rangle$ iff there is an \lone-branch on $\mathbf{T}$ that includes $\phi$ at position $i$ and $\psi$ at position $j$, and $i≤j$. So defined, $\preceq$ is a partial order (Definition \ref{def:order}): it is transitive (since if $x\preceq y$ and $y\preceq z$, then all of $x,y,z$ fall on the same \lone-branch, and the transitivity of $≤$ ensures that $x\preceq z$); it is reflexive (since $≤$ is reflexive; and it is antisymmetric (since if $x\preceq y$ and $y\preceq x$, then $x$ and $y$ fall on the same \lone-branch and $i≤j$ and $j≤i$, which entails that $i=j$, and since there is only one sentence at each position in a branch, $x=y$).
+			\item Since every \lone-branch on $\mathbf{T}$ shares a common initial subsequence, each begins with some sentence $\phi$. So $\langle \phi,1\rangle$ is the root node of $\mathbf{T}'$.
+			\item Recall that a well-ordering is a total order on a set such that every non-empty subset has a least member – there are no infinite descending chains. We need to show that $\preceq$, as defined, when restricted to sets of the form $\{x \in N: x \preceq n\}$ for some $n\in N$, is a well-ordering. Since $x\preceq y$ only if $x$ and $y$ fall on the same \lone-branch, the sets of this form are index sets of initial subsequences of \lone-branches. Restricted to these intial subsequences, $\preceq$ is total because $≤$ is total; and since the initial subsequences are sequences, they can be mapped one-one onto subsets of $\mathbb{N}$, and the least number principle then entails that $≤$ is a well-ordering on these initial subsequences, so that $\preceq$ is a well-ordering on the corresponding index sets.
+			\item The labelling function is: $f(\langle \phi,i\rangle) = \phi$. This simply labels a node with its first element, which is the sentence from the original \lone-tree.			
+		\end{enumerate}
+	\end{proof}
+\end{theorem}
+Having shown that our definition of an \lone-tree generates a tree in the more general set-theoretic sense, I will from now on often  drop the qualification `\lone-tree' and simply talk of `trees'. When it matters for the detail of some argument, I will keep the distinction intact. 
+
+\section{Tableaux}
+
+We now turn to our promised derivation system. I will informally outline the basic idea, before giving a formal definition. The next section will give some worked examples.
+
+The idea of tableau is to show that we can give a mechanical and automatic test of unsatisfiability of a set of sentences for a language – a test that can be applied even if we are in total ignorance of the intended semantic interpretation of the language. That will also be a test for validity of an associated argument, by \autoref{entuns}. So tableaux is a formal representation in the object language of the proof technique of \emph{reductio}. 
+
+An ordinary \emph{reductio} involves some judgement about how to pursue the contradiction required to show the falsity of the \emph{reductio} assumption. In a formal derivation, we don't want to have to involve judgement, since judgement will depend on understanding the contents of the materials on which we are operating. The key observation is this: when some \lone\ sentences are unsatisfiable, that is because there is no consistent way of assigning $T$ and $F$ to the sentence letters involved in those sentences to generate a structure in which each of the initial sentences is true. So if we can mechanically extract from a set of sentences its consequences for literals, we can then mechanically check whether there is a structure which makes all the unnegated literals true and negated literals false. If there is not, that must be because a sentence letter and its negation are both consequences of assuming the original set to be satisfiable.
+
+\paragraph{Tableaux Formally Defined} That is the guiding idea. Here is the formal definition implementing it.
+\begin{definition}[Tableaux]\label{def:tableau}
+	A \emph{tableau} (plural \emph{tableaux}) is an \lone-tree $\mathbf{T}$ such that every sentence $\phi$ on a node of $\mathbf{T}$ and any \lone-branch $B \in \mathbf{T}$ meets one of the following conditions: \begin{enumerate}
+		\item $\phi$ is a member of an initial subsequence of every \lone-branch in $\mathbf{T}$; or
+		\item $B$ has of one of these forms: \begin{enumerate}
+			\item $\langle \rho,…, ¬¬\phi, …, \phi,…\rangle$;
+			\item $\langle \rho,…, (\phi\wedge \psi), …, \phi,\psi,…\rangle$;
+			\item $\langle \rho, …, ¬(\phi\vee \psi), …, ¬\phi,¬\psi,…\rangle$;
+			\item $\langle \rho, …, ¬(\phi\to \psi), …, \phi,¬\psi,…\rangle$; or
+		\end{enumerate} 
+		\item Any pair of \lone-branches $B_{1},B_{2}$ which share an initial subsequence $\Sigma = \langle \rho, …, \delta, …\rangle$ on which some sentence $\delta$ appears, have one of these forms (remember that `$\conc$' is the concatentation operator on sequences): \begin{enumerate}
+			\item $B_{1} =  \Sigma \conc \langle\phi,…\rangle$, $B_{2} = \Sigma \conc \langle\psi,…\rangle$, and $\delta=(\phi\vee\psi)$;
+			\item $B_{1} =  \Sigma \conc \langle ¬\phi,…\rangle$, $B_{2} = \Sigma \conc \langle ¬\psi,…\rangle$, and $\delta=¬(\phi\wedge\psi)$;
+			\item $B_{1} =  \Sigma \conc \langle ¬\phi,…\rangle$, $B_{2} = \Sigma \conc \langle\psi,…\rangle$, and $\delta=(\phi\to\psi)$;
+			\item $B_{1} =  \Sigma \conc \langle\phi,\psi…\rangle$, $B_{2} = \Sigma \conc \langle ¬\phi,¬\psi,…\rangle$, and $\delta=(\phi\bicond\psi)$;
+			\item $B_{1} =  \Sigma \conc \langle\phi,¬\psi,…\rangle$, $B_{2} = \Sigma \conc \langle ¬\phi,\psi,…\rangle$, and $\delta=¬(\phi\bicond\psi)$.
+		\end{enumerate}
+	\end{enumerate}
+\end{definition}
+
+
+\begin{definition}[Generation of a tableau] \label{def:gentabl}
+	A set of sentences $\Gamma$ \emph{generates} an \lone-tableau $\mathbf{T}$ iff there is some sequence $S$ such that each $\gamma\in \Gamma$ occurs once in $S$, no sentence not in $\Gamma$ occurs in $S$, and $S$ is a common initial subsequence of every \lone-branch on $\mathbf{T}$. 
+\end{definition}
+The same set of sentences can generate many tableaux, by taking the members of the set in different sequence, and applying the tableaux rules in different order. (See the two tableaux pictured in Figure \ref{figdoublegen}, both generated by $\{(P\wedge Q),(¬P\vee ¬Q)\}$.) And the same tableau can be generated by more than one set of sentences. Consider this one-branched tableaux: $\{\langle (P\wedge Q), P, Q \rangle\}$. It could have been generated from $\{(P \wedge Q)\}$ in accordance with the conjunction rules; or by $\{(P\wedge Q), P, Q\}$ in accordance with the condition on initial subsequences. 
+
+\paragraph{Pictorial Representation of Tableaux} This precise definition is a bit hard to grasp, admittedly. It may be easier if we consider the tree structure pictorially. Then Definition \ref{def:tableau} amounts to saying: If we have an finite set of sentences $\Gamma$, then construct an \lone-tree generated by $\Gamma$ such that every node on every branch subsequent to the shared trunk has been inscribed in accordance with the tableau rules pictured in \autoref{fig:stableaux}. You may read these rules as follows (in accordance with Definition \ref{def:tableau}): \begin{itemize}
+	\item The \emph{list} rules in Figures \ref{sf:and}, \ref{sf:ndsj}, \ref{sf:nc} and \ref{sf:dn} say: if a sentence of the form at the top of the rule occurs somewhere on a branch, then the sentence(s) at the bottom of the rule occur lower on the branch;
+	\item The \emph{branch} rules (all other rules in \autoref{fig:stableaux}) say: if a sentence of the form at the top of the rule occurs somewhere on on two branches which share an initial subsequence, then the sentence(s) on the left at the bottom of the rule are the first sentence(s) on one branch after that shared initial subsequence, and the sentence(s) on the right are the first sentence(s) on the other branch after that shared initial subsequence.
+\end{itemize}
+
+\begin{figure}
+    \centering
+\subfloat[Conjunction\label{sf:and}]{\leaf{$\phi$\\
+$\psi$}\branch{1}{$\qquad\qquad\phi \wedge \psi\qquad\qquad$\\ $\vdots$}\qobitree}\qquad
+\subfloat[Negated Conjunction\label{sf:nand}]{\leaf{$\neg \phi$}\leaf{$\neg \psi$}
+\branch{2}{$\qquad\qquad\neg(\phi \wedge\psi)\qquad\qquad$\\ $\vdots$}\qobitree}\\
+\subfloat[Disjunction\label{sf:di}]{\leaf{$\;\phi\;$}\leaf{$\;\psi\;$}
+\branch{2}{$\qquad\qquad\phi \vee \psi\qquad\qquad$\\ $\vdots$}\qobitree}\qquad
+\subfloat[Negated disjunction\label{sf:ndsj}]{\leaf{$\neg \phi$\\$\neg
+\psi$}\branch{1}{$\qquad\qquad\neg(\phi \vee \psi)\qquad\qquad$\\ $\vdots$}\qobitree}\\
+\subfloat[Conditional\label{sf:cond}]{\leaf{$\neg
+\phi$}\leaf{$\psi$}\branch{2}{$\qquad\qquad\phi \to \psi\qquad\qquad$\\ $\vdots$}\qobitree
+}\qquad
+\subfloat[Negated Conditional\label{sf:nc}]{\leaf{$\phi$\\ $\neg
+\psi$}\branch{1}{$\qquad\qquad \neg (\phi \to \psi)\qquad\qquad$\\ $\vdots$}\qobitree
+}\\
+\subfloat[Biconditional]{\leaf{$\phi$\\$\psi$}\leaf{$\neg
+\phi$\\$\neg\psi$}\branch{2}{$\qquad\qquad\phi \bicond
+\psi\qquad\qquad$\\ $\vdots$}\qobitree}\qquad
+\subfloat[Negated Biconditional]{\leaf{$\phi$\\$\neg\psi$}\leaf{$\neg
+\phi$\\$\psi$}\branch{2}{$\qquad\qquad\neg(\phi \bicond
+\psi)\qquad\qquad$\\ $\vdots$}\qobitree}\\
+\subfloat[Double
+Negation\label{sf:dn}]{\leaf{$\phi$}\branch{1}{$\qquad\qquad\neg\neg\phi\qquad\qquad$\\ $\vdots$}\qobitree}
+  \caption{Sentential Tableau Rules \label{fig:stableaux}}
+\end{figure}
+
+Here's the idea. Suppose we begin with the set $\{P\wedge Q,Q \to R, ¬R\}$. Inscribe this set in a sequence $S = \langle P\wedge Q,Q \to R, ¬R\rangle$ – this is not the only way to do it, but it doesn't matter which way. The construction can be seen in \autoref{fig:tabcon}. We begin by inscribing the initial generating sequence in \ref{tabconi}. We apply the conjunction rule from Figure \ref{sf:and} in \ref{tabconii}, and then apply the conditional rule from Figure \ref{sf:cond} in \ref{tabconiii}.
+
+\begin{figure}
+    \centering
+\subfloat[The generating sequence…\label{tabconi}]{\leaf{$\qquad P\wedge Q\qquad$\\ $Q \to (P \wedge R)$ \\ $¬(P \wedge R)$}\qobitree}\qquad
+\subfloat[…applying the conjunction rule… \label{tabconii}]{\leaf{$P$\\$Q$}
+\branch{1}{$\qquad P\wedge Q\qquad$\\ $Q \to (P \wedge R)$ \\ $¬(P \wedge R)$}\qobitree}\qquad
+\subfloat[…appling the conditional rule… \label{tabconiii}]{\leaf{$¬Q$}\leaf{$(P \wedge R)$}
+\branch{2}{$P$\\$Q$} \branch{1}{$\qquad P\wedge Q\qquad$\\ $Q \to (P \wedge R)$ \\ $¬(P \wedge R)$}\qobitree}
+  \caption{Steps to constructing a Tableau \label{fig:tabcon}}
+\end{figure}
+
+\paragraph{Finished Tableaux} The tableau in \autoref{fig:tabcon} satisfies Definition \ref{def:tableau}. But there is more we could do – for we could apply the negated conditional rule to $¬(P \wedge R)$. When there is more that we could do to extend a tableau, we will say that the tableau is \emph{unfinished}. Let us make this precise. \begin{definition}[Pruning Tips]
+	A branch $B$ results from \emph{pruning} a branch $B'$ iff $B$ is a (proper or improper) initial subsequence of $B'$. If $B' = B \conc T$, we say that $T$ is the \emph{tip} of $B'$ with respect to $B$.
+\end{definition}
+\begin{definition}[Extends]
+	A tableau $\mathbf{T}'$ \emph{extends} $\mathbf{T}$ iff $\mathbf{T}$ is a tableau and it results from pruning every branch in $\mathbf{T}'$.
+\end{definition} Alternatively, a tableau extends another iff it results from that tableau by some number of applications of the tableau rules to some or all of its branches.
+\begin{definition}[Finished]
+	A tableau $\mathbf{T}$ is \emph{finished} iff any branch $B'$ on any tableau $\mathbf{T}'$ that extends $B$ on $\mathbf{T}$ is such that the tip of $B'$ with respect to $B$ contains only sentences which are already on $B$. 
+\end{definition} A tableau is finished not when we run out of rules to apply – we never will, since we can apply them repeatedly and keep extending any branch – but rather when once we start repeating ourselves with the application of the tableau rules. We see that repetition when any extension of a tableau, which comes by adding new sequences as the tips of old branches, ends up with those tips containing only sentences already appearing on the old branches.
+
+
+
+\section{Closure and Order}
+\begin{definition}[Closed]
+	A branch on a finished tableau is \emph{closed} if there is a sentence $\phi$ such that both $\phi$ and $¬\phi$ occur on that branch; otherwise it is \emph{open}. A tableau is closed iff every branch in it is closed.
+\end{definition}
+Some people prefer to define a closed branch more strictly as one on which a \emph{sentence letter} and its negation both appear; it is a fairly immediate though tedious consequence of the tableau rules that a finished tableau will be closed in the stricter sense iff it is closed in our sense, because if $\phi$ and $¬ \phi$ occur on a branch, eventually a sentence letter from $\phi$ and its negation will also occur on an extension of that branch, and so will already occur on a finished branch. (The converse is trivial since sentence letters are sentences.)
+
+
+\paragraph{Order in Tableaux}
+
+We saw earlier that one and the same set can generate different tableaux, by taking the members of that set in different orders or applying the list and branch rules in different orders. An example is pictured in Figure \ref{figdoublegen}.  Does this ever matter? In particular: is there any case where one finished tableaux generated by $\Gamma$ is closed, but another is not? It turns out the answer is \emph{no}.
+
+Compare the two tableau in Figure \ref{figdoublegen}. \begin{figure}
+	\centering
+	\subfloat[List then branch.\label{fig:ltb}]{\leaf{$¬P$}\leaf{$¬Q$}\branch{2}{($P\wedge Q$)\\ ($¬P\vee ¬Q$)\\ $P$\\ $Q$}\qobitree}\qquad\quad
+	\subfloat[Branch then list.\label{fig:btl}]{\leaf{$¬P$\\ $P$ \\ $Q$}\leaf{$¬Q$\\ $P$\\ $Q$}\branch{2}{($P\wedge Q$)\\ ($¬P\vee ¬Q$)}\qobitree}
+	\caption{Two Tableaux Generated by the Same Set \label{figdoublegen}}
+\end{figure} They differ in which order the list and branch rules are applied. So the branches (which are just sequences coincident on their initial subsequence) differ in the order of what is on them. But the set of sentences on each branch is the same, no matter in what order the rules are applied: in both tableaux, there is a branch with the members $\{P \wedge Q, \neg(P \wedge Q), P, Q, \neg P\}$ and a branch with the members $\{P \wedge Q, \neg(P \wedge Q), P, Q, \neg Q\}$. This is entirely general.
+
+\begin{lemma}[Order and Branch Membership]\label{obm}
+	Each finished tableau generated by a finite set\, $\Gamma$ has the same number of branches; and for each branch on any finished tableau generated by\, $\Gamma$, there is a branch on every other finished tableau generated by\, $\Gamma$ with the same members though in a possibly different order.
+	\begin{proof}
+	 	(Sketch.) A sentence gets to be on a branch of a tableau either by being a member of the generating set $\Gamma$, or by resulting from an application of a rule to an earlier sentence on the branch. If it is a member of the generating set, it is a member of every branch of every finished tableau generated by $\Gamma$, though it may come in a different position.
+
+
+
+Say that $\Gamma_{i+1}$ is a \emph{tableau development} of a finite set $\Gamma_{i}$ iff it contains $\Gamma_{i}$ as a subset, and either (i) for some sentence in $\Gamma_{i}$ to which a tableau list rule applies, $\Gamma_{i+1}$ results from adding both listed sentences to $\Gamma_{i}$, or (ii) for some sentence in $\Gamma_{i}$ to which a tableau branch rule applies, $\Gamma_{i+1}$ results from adding just one of the branched sentences to $\Gamma_{i}$. $\Gamma'$ is a \emph{finished development} of $\Gamma$ iff it is the last member of a sequence of sets beginning with $\Gamma$, each a development of its predecessor, such that any development of $\Gamma'$ is $\Gamma'$ itself. It is crucial to note that two sequences of developments can terminate in the same finished development.
+
+There is a one-one correspondence between finished branches on a tableau generated by $\Gamma$ and developments of $\Gamma$. This is immediate by construction. For each sentence on each branch comes from a previous `stage' of construction of the branch by the tableau rules, and each stage corresponds to a development of the previous stage, and so each finished branch corresponds to a finished development of the initial subsequence common to all branches (the generating set). Since any tableau generated by $\Gamma$ has branches in one-one correspondence with the finished developments of $\Gamma$, each such tableau has the same number of branches. 
+
+And each branch on such a tableau has a corresponding branch on any other such tableau, the one corresponding to the same development. If there were some branch $B$ on some finished tableau $\mathbf{T}$generated by $\Gamma$ that shared membership with no branch on $\mathbf{T}'$, then that branch would have as its members a finished development of $\Gamma$ that was not present as a branch of $\mathbf{T}'$. Without loss of generality, there is some member of $B$ that doesn't appear on any branch on $\mathbf{T}'$. But where did that sentence come from? Not from the generating set; and not from anything that results from an application of the rules to the generating set, since the branches are finished. But there is no other way for a sentence to get into a development, or onto the corresponding branch; so there is no such sentence. 
+	 \end{proof} 
+\end{lemma}
+
+Since the property of being open (or closed) depends only on the members of the branch, and not on their order, rearranging the order on the branches preserves openness (and closedness). So if one tableau varies from another just in the order to which the rules have been applied to sentences on branches, then the first is closed iff the second is closed. \begin{theorem}[Order Irrelevant]\label{thmorder}
+	If any finished tableau generated by\, $\Gamma$ closes, every finished tableau generated by\, $\Gamma$ closes.
+\begin{proof}
+	The tableau rules are just a way of generating developments of the generating set and conveniently representing them in tree form. What matters for openness are the developments, and since we get the same developments on any finished tableau generated by $\Gamma$, by Lemma \ref{obm}, then any finished tableau generated by $\Gamma$ contains an open branch for any open development of $\Gamma$, and a closed branch for any closed development of $\Gamma$. So if $\mathbf{T}$ is closed, that is because every development of $\Gamma$ closes, so any tableau $\mathbf{T}'$ generated by $\Gamma$ is also closed.
+\end{proof}\end{theorem} 
+ So really, order doesn't matter: mechanically applying the rules to $\Sigma$ in any order you wish, to produce a finished tableau, will generate a closed tableau if \emph{any} tableau generated by $\Sigma$ closes. That's not to say that it doesn't matter in some sense. The tree representation of tableaux permits us to write just once any initial subsequence shared by two or more branches, and only account for the subsequent divergences by branching. If we apply list rules first where possible, then branch rules, we extend those shared initial subsequences before divergence, and thus extend the number of sentences we need to write just once. This can be readily seen in \autoref{figdoublegen}, in which \autoref{fig:ltb} contains 6 sentence tokens, while \autoref{fig:btl} contains 8. But the underlying sequences are two 5-membered sequences, each corresponding to the one of the two finished developments of $\{(P\wedge Q),(P \vee Q)\}$. 
+
+\section{Tableaux Derivations}
+
+
+
+We are now in a position to describe our derivations. \begin{definition}[Tableau Derivation]\label{tablderv}
+	A \emph{tableau derivation} of $\phi$ from $\Gamma$ is any finished closed tableau generated by $\Sigma \cup \{¬\phi\}$, where $\Sigma$ is a finite subset of $\Gamma$. 
+
+	We say that $\phi$ is \emph{derivable} from $\Gamma$, written $\Gamma \vdash \phi$, iff there is a tableau derivation of $\phi$ from $\Gamma$. We write $\Gamma \nvdash \phi$ to express that there is no tableau derivation of $\phi$ from $\Gamma$.
+\end{definition}
+ This is a purely formal and syntactic analogue of the notion of entailment – hence the notation which is reminiscent of the turnstile we use for entailment. 
+Likewise there are syntactic analogues of tautologies and (un)satisifable sets. \begin{definition}[Theoremhood]
+	We say that $\phi$ is a \emph{theorem} of the tableau derivation system iff there is a finished closed tableau generated by $\{¬\phi\}$, and we write this $\vdash \phi$.
+\end{definition}
+
+\begin{definition}[Syntactic Consistency]\label{defcontab}
+	We say that a set of \lone\ sentences $\Gamma$ is \emph{syntactically inconsistent} iff there is a finished closed tableau generated by some finite set $\Sigma \subseteq \Gamma$, which we write $\Gamma \vdash$. A set of sentences is \emph{syntactically consistent} iff it is not inconsistent, i.e., if every finished tableau generated by a finite subset of $\Gamma$ contains at least one open branch.
+\end{definition}
+
+These definitions are formulated to allow $\phi$ to be derivable from an infinite set $\Gamma$ iff there is a tableau derivation of $\phi$ from \emph{some} finite subset of $\Gamma$. This is as it must be, since our tableau are made of \lone-branches, each of which is finite (Definition \ref{lonebranch}), and so the generating set must be finite. But this means that there may be more than one derivation of $\phi$ from $\Gamma$, each making use of different finite subsets of $\Gamma\cup\{¬\phi\}$. Indeed, note that the definition doesn't require that we make use of all members of $\Gamma$ in the generating set of a tableau derivation even when $\Gamma$ is finite.
+
+\paragraph{The Nature of These Definitions} In a sense, these definitions don't need any further explanation. This tells you the rules for manipulating a set of \lone\ sentences in such a way as to construct a successful derivation. What \emph{justifies} our adopting these rules? Nothing, as yet: we can treat them as \emph{purely formal}, like the rules of chess. The rules of chess tell you what things are permissible at each stage of the game. So too, the tableau rules tell you which \lone-trees are tableaux, given the rules governing what has to be on the branches of a tableau. When the tableau is finished, like when a game of chess is finished, one can look back and consider the aesthetics of the resulting tree or game. But there isn't much more that can be said by way of justification for why one constructed it in that way, other than that in chess one aims to finish in a winning position, and in the ‘game’ of tableaux, one aims to produce a finished tableau.\footnote{In chess, unlike tableaux, playing one permissible move often precludes playing other permissible moves, and the game finishes before every permissible move has been played. In tableaux, there is only one permissible move at each node, and a finished tableau is such that every node which could have a rule apply to it, has had that rule applied to it. So the aesthetic interest in tableaux is restricted to the order one considers the nodes, but that isn't a huge amount of artistic freedom.}
+
+
+In another sense, of course, we want our derivations to have certain properties, and we've used some suggestive notation. We \emph{want} every inconsistent set to be unsatisfiable; and we want every successful derivation to correspond to an entailment. So we hope that $\Gamma \vdash \phi$ iff $\Gamma \vDash \phi$. We don't yet know if our hopes are to be granted; perhaps we made a mistake in formulating our derivation system. In \autoref{c:l1nd}, when we prove \emph{soundness} and \emph{completeness} for this derivation system, we'll see that our notation wasn't presumptuous: it is the case that whenever $\Gamma$ entails $\phi$, $\phi$ is also derivable from $\Gamma$, and \emph{vice versa}.
+
+
+\paragraph{Multiple Derivations} Consider the generating set $\{¬¬(P\vee Q),¬P,¬Q\}$\label{tabl6ex}. Construction of the corresponding closed tableau is straightforward (left for exercise). Recalling Definition \ref{tablderv}, we need to figure out how to decompose this generating set into a set of premises and a singleton set of the negated conclusion. There are three ways to do this: \begin{enumerate}
+	\item $\{¬¬(P\vee Q),¬P,¬Q\} = \{¬¬(P \vee Q), ¬P\} \cup \{¬Q\}$, so that $¬¬(P\vee Q), ¬P \vdash Q$;
+	\item $\{¬¬(P\vee Q),¬P,¬Q\} = \{¬¬(P \vee Q), ¬Q\} \cup \{¬P\}$, so that $¬¬(P\vee Q), ¬Q \vdash P$;
+	\item $\{¬¬(P\vee Q),¬P,¬Q\} = \{¬P, ¬Q\} \cup \{¬¬(P \vee Q)\}$, so that $¬P, ¬Q \vdash ¬(P \vee Q)$.
+\end{enumerate} All three derivations correspond to the same tableau. The tableau `doesn't care' which are the premises and conclusions: it simply tests a set of claims for syntactic inconsistency. 
+
+
+
+\section{Tableaux in practice}
+
+The official definition of a tableau (Definition \ref{def:tableau}) is `static': it says that an already finished tree is a tableau iff it meets certain conditions. But the pictorial presentation of the rules suggests a dynamic route to the construction of tableaux. We begin with a finite generating set $\Sigma$. We enumerate $\Sigma$ in some order – it doesn't matter which, as we just saw (\autoref{thmorder})  – and then successively apply the tableau rules in some order to create a finished tableau. In this section, I will discuss some heuristics for the construction of tableaux. The metatheory of tableaux does not depend on these heuristics, nor on the various decorations on tableaux that I describe in this section. But if you are ever tasked with producing some examples of tableaux to demonstrate various claims about tableau derivability, these heuristics may be useful.
+
+\paragraph{Heuristics in the Construction of Tableaux} 
+
+Begin by inscribing the members of your generating set, given the enumeration you have made of it – $\sigma_{1},…$. Inscribe $\sigma_{1}$ as the root node, and then each $\sigma_{i}$ successively below it, all on the trunk with no branching. 
+
+If all the members of $\Sigma$ were literals – either sentence letters or negated sentence letters – we're done: no tableau rules apply, and this is already a finished and boring tableau. But this is a rare case. Suppose then that our tableau starts out unfinished.
+
+We will bring it closer to being finished by applying a tableaux rule to some $\phi$ on the tableau. This involves adding, to the bottom of \emph{each} unfinished branch on which $\phi$ appears, either a sentence $\psi$ that is a constituent of $\phi$, or the negation of $\psi$. If the rule applied is a list rule, we will add perhaps one but typically two sentences to the bottom of each branch; if the rule applied is a branch rule, we will create new branches by adding two nodes at the bottom of each branch on which $\phi$ appears and inscribing the appropriate sentences, one in each node. 
+
+Once we've applied a rule to a sentence, and added the relevant sentences, we're done with that sentence. We can informally indicate that we're done with a sentence by drawing a box around it.\footnote{This is the convention adopted by \citet{bevpospa}. Others use check marks to indicate that a sentence at a node has been `dealt with' \citep{jefforlos}.} But these boxes – as well as the signs to indicate a closed branch – are useful scaffolding for the construction of a tableau by a person, not part of the official definition. We can then return to apply the tableau rules to a sentence at a node not previously dealt with.
+
+We know already that this process finishes after a finite time, even carried out completely mechanically. But we ought not be completely mechanical. We should apply list rules before branch rules to save unnecessarily early divergence of branches. If you can see that a sentence on your branch has a constituent that would cause a branch on which it appears to close, you may as well apply the rule to it and close the branch. The branch may not be finished, but since an unfinished closed branch stays closed even if finished, you do not need to write out all the further nodes of a closed branch – if what you care about is tableau derivations, rather than the construction of finished tableaux for their own sake.  
+
+
+\paragraph{A Worked Example} I illustrate this procedure, for an example generating set, in Figure~\ref{fig:21}. Begin by writing down the generating set $\{P\wedge Q,¬¬(¬P \vee ¬Q)\}$, and take the first sentence of that tableau under this enumeration, $P \wedge Q$. It is a conjunction; by the rules for conjunctions, we know that if this sentence occurs on the tableau, both conjuncts can be inscribed, extending the branch, as in \autoref{fig:21}\subref{fig:conj}. Next we turn to $\neg \neg(\neg P \vee \neg Q)$; we see by the rules for negation, a double negation permits the inscription of the enclosed sentence without the two negation signs. So we inscribe $\neg P \vee \neg Q$, and box the original sentence, as in \autoref{fig:21}\subref{fig:dn}.
+
+ Now we come to something different. The rules for disjunction are branching rules: they don't tell us to inscribe new sentences on the same branch, but to inscribe one sentence on one branch, and another sentence on another: one for each disjunct, as in \autoref{fig:21}\subref{fig:disj}.
+
+
+
+\begin{figure}[t]
+    \centering
+   \subfloat[Setting out the set to generate a
+   tableau.\label{fig:count}]%
+   {\leaf{}\branch{1}{$P\wedge  Q$\\$\:\qquad\neg\neg(\neg P \vee \neg  Q)\qquad\:$}
+   \qobitree}\qquad
+   \subfloat[First step: conjunction.\label{fig:conj}]{\leaf{$P$\\$Q$}\branch{1}{$ \boxed{P \wedge  Q}$\\ $\qquad\neg\neg(\neg P \vee \neg  Q)\qquad$}\qobitree}\\
+   \subfloat[Dealing with double negation.\label{fig:dn}]%
+   {\leaf{$P$\\$ Q$\\$\neg P \vee \neg  Q$}\branch{1}{$\boxed{P \wedge  Q}$\\ 
+   $\qquad\boxed{\neg\neg(\neg P \vee \neg  Q)}\qquad$}{}\qobitree}\qquad
+   \subfloat[Dealing with disjunction.\label{fig:disj}]%
+{\leaf{$\neg P$}\leaf{$\neg  Q$}\branch{2}{$P$\\$ Q$\\ $\boxed{\neg P \vee \neg  Q}$}\branch{1}{$\boxed{P \wedge  Q}$\\
+$\qquad\boxed{\neg\neg(\neg P \vee \neg 
+     Q)}\qquad$}
+\qobitree}
+
+    \caption{Steps in the construction of a tableau. \label{fig:21}}
+\end{figure}
+
+ Having applied the branching rule and created two branches on this tableau, we can break the sentences in the tableau down no further: we have the smallest (possibly negated) constituents of the sentences in question. So this tableau is finished – anything else licensed by the tableau rules would simply repeat something occuring in an earlier node. We see, now, if the tableau is closed. And we can see that every  branch – which runs all the way from the root to the leaf node – is in fact closed. We mark this, unofficially, by inscribing $\mathbf{\otimes}$ beneath the terminal leaf node of each closed branch in \autoref{fig:oct}\subref{fig:close}. (Again, this is decoration; really, a branch is closed iff a sentence and its negation both occur, whether we write the $\mathbf{\otimes}$ or not.) Since the tableau is finished and closed, this is a tableau derivation of $¬(¬P \vee ¬Q)$ from $(P \wedge Q)$ – a tableau derivation of one of the De Morgan equivalences (\autoref{demorg}).
+
+ Compare the result to the tableau from \autoref{fig:oct}\subref{fig:sampt}; here, the right-most branch is open, and no unboxed sentences occur earlier on the branch that would license anything new to potentially close it. So this tableau is finished and open; it is not a derivation of $¬Q$ from $(P \to Q) \to P$, and because any tableau generated by that set will have the same properties as this one, there is no such derivation: $(P \to Q) \to P \nvdash ¬Q$.\footnote{In fact, we can read off from the open branches a structure - the one where all sentence letters occuring on the branch are assigned $T$ and all negated sentence letters are assigned $F$ – where the premise is true and the conclusion false. So when $P$ and $Q$ are both true, the conclusion is false, but the premise true. This fact will be of significance in the next chapter when we prove completeness.}  
+
+\begin{figure}
+    \centering
+\subfloat[Closing the tableau from \autoref{fig:21}.\label{fig:close}]{\leaf{$\neg P$\\$\mathbf{\otimes}$}\leaf{$\neg Q$\\$\mathbf{\otimes}$}\branch{2}{$P$\\$Q$\\ $\boxed{\neg P \vee \neg
+    Q}$}\branch{1}{$\boxed{P \wedge Q}$\\ \qquad$\boxed{\neg\neg(\neg P \vee \neg Q)}$\qquad~}\qobitree}\qquad
+    \subfloat[An open tableau.\label{fig:sampt}]{\leaf{$\boxed{\neg(P \to Q)}$ \\ $P$ \\ $\neg   Q$\\ $\mathbf{\otimes}$}\leaf{$P$}\branch{2}{$Q$}\branch{1}{$\qquad\boxed{(P\to Q) \to P}\qquad$\\$\boxed{\neg \neg Q}$}
+   \qobitree}
+    \caption{Open and closed tableaux. \label{fig:oct}}
+ 
+\end{figure}
+
+\paragraph{Schematic Tableaux} Consider the  schematic tableau (schematic, because it involves variables over sentences $\phi$, $\psi$, etc., rather than particular sentences $P$, $Q$, etc.) pictured in Figure~\ref{fig:trans}. This demonstrates that $\phi \to \psi, \psi \to \chi \vdash \phi \to \chi$, for any $\phi,\psi,\chi$. So any tableau derivation involving sentences of this form – any uniform substitution of \lone\ sentences for these variables into this tableau – will also be closed, and the corresponding derivation exists. Note that I don't bother to add new sentences below the occurrence of $\chi$ on the rightmost branch even though strictly speaking our mechanical tableau construction procedure requires it: that branch is closed, so every extension of it would remain closed, as adding new sentences to an inconsistent set cannot render it consistent. This is even more sensible if the sentence $\phi$ is itself subject to tableau rules – the schematic tableau shows we never need to apply any rules to $\phi$, even if some apply, to determine whether the corresponding derivation exists.
+
+\begin{figure}[t]
+	\centering 
+	{
+	\leaf{$\neg \phi$\\$\otimes$}\leaf{$\psi$\\$\otimes$}\branch{2}{$\neg \psi$}\leaf{$\chi$\\$\otimes$}\branch{2}{$\phi$\\$\neg \chi$}\branch{1}{$\phi\to \psi$\\$\psi\to \chi$\\$\neg(\phi\to \chi)$}
+\qobitree	}\caption{Tableaux for $\phi \to \psi, \psi \to \chi \vdash \phi \to \chi$. \label{fig:trans}}
+\end{figure}
+
+
+
+
+\paragraph{Two Further  Examples}
+\begin{enumerate} \item Consider the generating set $\{P \to (R \wedge Q_{1}), (Q_{1}
+\vee P_{1}) \to \neg Q, ¬¬(P \wedge Q)$. The tableau is
+shown in \autoref{fig:ex12}\subref{fig:ex1}. This tableau is closed; hence there is a derivation corresponding to our original generating set: $P \to (R \wedge Q_{1}), (Q_{1}
+\vee P_{1}) \to \neg Q, \vdash \neg (P \wedge Q)$ .
+\item Consider the argument $(P \wedge \neg Q) \to P_{1}; 
+\neg Q \vee \neg R;$ therefore $\neg (P \wedge Q_{1})$. The tableau is
+pictured in \autoref{fig:ex12}\subref{fig:ex2}. As is readily seen, this tableau is open; there is no successful derivation corresponding to this argument. \end{enumerate}
+
+\begin{figure}
+    \centering
+     \subfloat[Example 1.\label{fig:ex1}]{\leaf{$\neg P$\\$\otimes$}\leaf{$\neg(Q_{1} \vee P_{1})$\\$\neg Q_{1}$\\$\neg P_{1}$\\$\mathbf{\otimes}$}\leaf{$\neg
+     Q$\\$\mathbf{\otimes}$}\branch{2}{$R \wedge Q_{1}$\\$R$\\$Q_{1}$}\branch{2}{$P \wedge
+     Q$\\$P$\\$Q$}\branch{1}{$P \to (R \wedge Q_{1})$\\ $(Q_{1}
+     \vee P_{1}) \to \neg Q$\\$\neg \neg(P \wedge Q)$}\qobitree}
+    \qquad\qquad
+    \subfloat[Example 2. \label{fig:ex2}]{\leaf{$\neg P$\\$\mathbf{\otimes}$}\leaf{$\neg\neg Q$\\$\mathbf{\otimes}$}\branch{2}{$\neg(P 
+    \wedge \neg Q)$}\leaf{$P_{1}$}\branch{2}{$\neg Q$\\$P$\\$Q_{1}$}\leaf{$\neg
+    P$\\$\mathbf{\otimes}$}\leaf{$\neg\neg Q$\\$Q$}\branch{2}{$\neg(P \wedge \neg
+    Q)$}\leaf{$P_{1}$}\branch{2}{$\neg R$\\$P$\\$Q_{1}$}\branch{2}{$P \wedge Q_{1}$}\branch{1}{$(P \wedge \neg Q) \to
+    P_{1}$\\$\neg Q \vee \neg R$\\$\neg\neg(P \wedge Q_{1})$}\qobitree}
+    \caption{Tableaux for our further examples. \label{fig:ex12}}
+\end{figure}
+
+
+
+
+{\small
+
+\subsection*{Further Reading}
+\addcontentsline{toc}{subsection}{Further Reading}
+
+Tableaux were introduced in roughly the form discussed here by \citet{smullyan}. Other texts which use various forms of tableaux for sentential logic are \citealt[ch. 4]{bevpospa}, \citealt{priintncl} and \citealt{smith}.
+
+\subsection*{Exercises} \label{ex6}
+\addcontentsline{toc}{subsection}{Exercises}
+
+\begin{enumerate}
+\item Construct a tableau for the generating set $\{¬¬(P\vee Q),¬P,¬Q\}$, mentioned on page \pageref{tabl6ex}.
+ \item Prove that if $\vdash \phi$, then for any $\psi$, $\vdash \psi\to\phi$.
+
+	\item Provide  tableaux derivations demonstrating the following: \begin{enumerate}
+		\item $\vdash ((P \bicond (P \vee P)) \wedge (P \bicond (P \wedge P)))$;
+		% \item $\vdash ((P \vee Q) \bicond (Q \vee P))$;
+		\item $\vdash ((P\bicond Q) \bicond ((P\to Q) \wedge (\neg Q \vee P)))$;
+		\item $\vdash ((P \to Q) \bicond ((P \wedge \neg Q) \to (P \wedge \neg P)))$;
+		\item $\vdash (((P \to Q) \wedge \neg Q) \to \neg P)$;
+		\item $\vdash ((P \to Q) \to ((P \vee R) \to (Q \vee R)))$.
+	\end{enumerate}
+	\item Show, without making use of the soundness and completeness theorems, that the following features hold of the tableaux derivation system: 
+	\begin{itemize}
+	\item If $\Gamma, \phi, \phi \vdash
+	\psi$, then $\Gamma, \phi \vdash
+	\psi$.
+	
+	\item If $\Gamma, \phi, \psi \vdash
+	\chi$, then $\Gamma, \psi, \phi \vdash
+	\chi$.
+	
+	\item If $\Gamma \vdash \phi$, then  $\Gamma, \psi \vdash \phi$.
+	
+\end{itemize}
+
+ \end{enumerate}
+
+
+Answers to selected exercises on page \pageref{ans6}.
+}

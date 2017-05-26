@@ -1,6 +1,6 @@
 %!TEX program = xelatex
 %&encoding=UTF-8 Unicode
-\documentclass[openany,leqno,11pt]{book}
+\documentclass[openany,leqno,10pt]{book}
 \usepackage{latexsym}
 \usepackage{textcomp}
 \usepackage{amsmath}
@@ -27,6 +27,9 @@
  	\bibpunct[:~]{(}{)}{;}{a}{,}{;~}
 \usepackage[norule,bottom,multiple,splitrule,flushmargin]{footmisc}
 \usepackage{prooftree}
+\usepackage{qtree}
+\usepackage{subfig}
+\captionsetup[subfloat]{position=bottom,nearskip=6pt,farskip=6pt,captionskip=6pt}
 \usepackage[all]{xy}
 \usepackage{phonetic}
 \usepackage{metalogo}
@@ -71,6 +74,8 @@
 \newcommand{\lone}{\ensuremath{\mathcal{L}_{1}}}
 \newcommand{\ltwo}{\ensuremath{\mathcal{L}_{2}}}
 \newcommand{\lequ}{\ensuremath{\mathcal{L}_{=}}}
+\newcommand{\sml}{\ensuremath{\mathcal{SML}}}
+
 \newcommand{\val}[2]{\ensuremath{\left\llbracket #1\right\rrbracket_{\mathscr{#2}}}}
 \newcommand{\vals}[3]{\ensuremath{\left\llbracket#1\right\rrbracket^{#3}_{\mathscr{#2}}}}
 \newcommand{\valsa}[1]{\vals{#1}{A}{\alpha}}
@@ -195,8 +200,20 @@ Thinking about this for a second, though, we need some reassurance that the form
 
 Answering such questions involves drawing a distinction between the \emph{object language}, the one we are talking about, and the \emph{metalanguage}, the language we are using to talk about the object language. For this book, the object languages are various more-or-less orthodox languages of classical logic: a sentential language \lone,\footnote{This is sometimes called the language of \emph{propositional logic}, but as I take propositions to be the meanings of sentences, and logic to be the study of consequence relations between meaningful sentences, I wish to avoid the terminology of `propositional logic' as potentially misleading.} a predicate language \ltwo, and a predicate language with identity \lequ. And the metalanguage is the mathematically enriched version of English we use to talk about formal languages. 
 
-\paragraph{The Structure of this Book} I begin, in chapters \ref{c1} and \ref{c2}, by outlining some mathematical tools – specifically, some elementary \emph{set theory}, including the theory of functions – that will help us study and understand the formal languages which are our subject. In chapters \ref{c3} and \ref{c3a}, we'll briefly review the syntax and semantics of classical sentential logic. Then we'll start proving some results in metatheory. We'll prove some small but still interesting results about the truth-functions, and about the intimate connections between conjunction (‘$\wedge$’), disjunction (‘$\vee$’), and negation (‘$¬$’). In chapter \ref{c4}, we'll prove our first `big' result: the so-called \emph{compactness} theorem for sentential logic. We'll take a break from metatheory in chapter \ref{c5}, to introduce and talk about \emph{formal derivations} in sentential logic, and introduce a particular kind of natural deduction derivation system. Then we'll prove two central results connecting derivability with validity: the \emph{soundness} and \emph{completeness} theorems for sentential logic. I also mention issues of computational implementation, in particular, the \emph{decidability} of sentential logic.
-In chapter \ref{c6}, we'll review \emph{predicate} logic and (in chapter \ref{c7}) its natural deduction derivation system, and we'll prove soundness for standard predicate logic. I sketch the proof of completeness, and briefly consider issues of decidability. In chapter \ref{c8}, issues about predicate logic with identity are discussed, including the soundness of the natural deduction system we construct, and issues about numerical quantification and compactness are discussed. In the final chapter \ref{c9}, we turn from metatheory to issues about the relation between logical languages and natural languages, particularly focussing on issues about conditionals, entailment, designation and the theory of relations.
+\paragraph{The Structure of this Book} This book is divided into several parts.
+
+I begin, in \autoref{p:prelim} (chapters \ref{c:induct} and \ref{c:sets}), by outlining some mathematical tools – some elementary \emph{set theory}, including the theory of relations and  functions, as well as some remarks on the nature of mathematical proof – that will help us study and understand the formal languages which are our subject. 
+
+In \autoref{p:l1}, I turn to sentential logic. In chapters \ref{c:l1syntax} and \ref{c:l1semantics}, I briefly review the syntax and semantics of classical sentential logic. Then we'll start proving some results in metatheory. We'll prove some small but still interesting results about the truth-functions, and about the intimate connections between conjunction (‘$\wedge$’), disjunction (‘$\vee$’), and negation (‘$¬$’). In chapter \ref{c:l1meta}, we'll prove our first `big' result: the so-called \emph{compactness} theorem for sentential logic. I also mention issues of computational implementation, in particular, the \emph{decidability} of sentential logic. 
+
+We'll take a break from semantics-led approaches in \autoref{p:l1deriv} (chapters \ref{c:l1tabl}–\ref{c:ndmeta}), to introduce and talk about \emph{formal derivations} in sentential logic, and introduce two kinds of derivation system: first tableaux, then natural deduction. We'll prove two central results connecting derivability with validity: the \emph{soundness} and \emph{completeness} theorems for sentential logic. We prove them for each of our derivation systems. 
+
+\autoref{p:l2} turns to a review of \emph{predicate} logic and (in chapters \ref{c:l2tabl} and \ref{c:l2nd}) some of its derivation systems, and we'll prove soundness for standard predicate logic. I sketch proofs of completeness, and briefly consider issues of decidability. In chapter \ref{c:lequals}, issues about predicate logic with identity are discussed, including the soundness of the derivation systems we construct, and issues about numerical quantification and compactness are discussed. 
+
+In the final part (\ref{p:beyond}), we turn to issues beyond classical logic, particularly picking up on some of the philosophical issues raised in earlier parts. 
+% modal and temporal logic
+% many-valued and relevance logic
+The focus in chapters \ref{c:cond} and \ref{c:edr} is on the relation between logical languages and natural languages, particularly focussing on issues about conditionals, entailment, designation and the theory of relations.
 
 \paragraph{Exercises and Further Reading} This book also includes exercises, contained in a section entitled `Exercises' at the end of each chapter. These exercises are mostly review and consolidation of the material in the chapter, but some are intended to extend and stretch a student's knowledge of the material. Solutions to selected exercises – some rather more detailed than others – are provided in \autoref{exans}.
 
@@ -206,49 +223,73 @@ Many chapters also contain a section of `Further Reading', which contains refere
 
 \paragraph{Some Other Useful Readings} The languages and derivation systems used in this book are those developed in \citep{hallogma} and . While the present book is self-contained, it may be helpful to review the material in Halbach's book as a useful adjunct. Other useful sources of related material, that I drew on in a number of places in this book, are \citet{bevpospa,bosintlo,bbjcomlo,priintncl} and \citet{sidlfp}.  
 
-\newpage
+\part{Mathematical Preliminaries} \label{p:prelim}
 
-\chapter[Mathematical Induction and Proof]{Mathematical Induction and The Notion of Proof}\label{c1}
- \input{edl-1.tex}
+
+
+\chapter[Mathematical Induction and Proof]{Mathematical Induction and The Notion of Proof}\label{c:induct} % c1
+ \input{edl-induct.tex}
 
 	\newpage
-	\chapter{Set Theory}\label{c2}
-	 \input{edl-2.tex}
+	\chapter{Set Theory}\label{c:sets} % c2
+	 \input{edl-sets.tex}
 		\newpage
-		
-\chapter{The Syntax of \texorpdfstring{$\mathcal{L}_{1}$}{L1}}\label{c3}
-\input{edl-3.tex}	
+
+\part{Sentential Logic: Language and Meaning} \label{p:l1}
+
+\chapter{The Syntax of \texorpdfstring{$\mathcal{L}_{1}$}{L1}}\label{c:l1syntax} % c3
+\input{edl-l1syntax.tex}	
 \newpage
 
-\chapter{The Semantics of \texorpdfstring{$\mathcal{L}_{1}$}{L1}}\label{c3a}
-\input{edl-4.tex}  
+\chapter{The Semantics of \texorpdfstring{$\mathcal{L}_{1}$}{L1}}\label{c:l1semantics} % c3a
+\input{edl-l1semantics.tex}  
 \newpage
 
-\chapter{Metatheory of \texorpdfstring{$\mathcal{L}_{1}$}{L1}}\label{c4}
- \input{edl-5.tex}
+\chapter{Metatheory of \texorpdfstring{$\mathcal{L}_{1}$}{L1}}\label{c:l1meta} % c4
+ \input{edl-l1meta.tex}
+
+\part{Sentential Logic: Derivations} \label{p:l1deriv}
+
+\chapter[Tableau Derivations in \texorpdfstring{$\mathcal{L}_{1}$}{L1}]{Tableau Derivations in \texorpdfstring{$\mathcal{L}_{1}$}{L1}}\label{c:l1tabl} % c5
+  \input{edl-l1tabl.tex}
+
+\chapter[Tableau Metatheory]{Tableau Metatheory: Soundness and Completeness}\label{c:tablmeta} % c5a
+  \input{edl-tablmeta.tex}
+
+\chapter[Natural Deduction in \texorpdfstring{$\mathcal{L}_{1}$}{L1}]{Natural Deduction Derivations in \texorpdfstring{$\mathcal{L}_{1}$}{L1}; Soundness and Completeness}\label{c:l1nd} % c5b
+  \input{edl-l1nd.tex}
+
+\chapter[Natural Deduction Metatheory]{Natural Deduction Metatheory: Soundness and Completeness}\label{c:ndmeta} % c5ab
+ \input{edl-ndmeta.tex}
+
+\part{Predicate Logic} \label{p:l2}
+
+
+\chapter{The Syntax and Semantics of \texorpdfstring{$\mathcal{L}_{2}$}{L2}}\label{c:l2} % c6
+ \input{edl-l2.tex}
 
 \newpage
 
-\chapter[Natural Deduction in \texorpdfstring{\lone}{L1}]{Natural Deduction Proofs in \texorpdfstring{$\mathcal{L}_{1}$}{L1}; Soundness and Completeness}\label{c5}
-  \input{edl-6.tex}
+\chapter[Tableaux for \texorpdfstring{$\mathcal{L}_{2}$}{L2}]{Tableaux for \texorpdfstring{\ltwo}{L2}; Soundness}\label{c:l2tabl} % c7
+% \input{edl-l2tabl.tex}
 
-\newpage
+\chapter[Natural Deduction in \texorpdfstring{$\mathcal{L}_{2}$}{L2}]{Natural Deduction Derivations in \texorpdfstring{\ltwo}{L2}; Soundness}\label{c:l2nd} % c7
+ \input{edl-l2nd.tex}
 
-\chapter{The Syntax and Semantics of \texorpdfstring{$\mathcal{L}_{2}$}{L2}}\label{c6}
- \input{edl-7.tex}
-
-\newpage
-
-\chapter[Natural Deduction in \texorpdfstring{\ltwo}{L2}]{Natural Deduction Proofs in \texorpdfstring{\ltwo}{L2}; Soundness}\label{c7}
- \input{edl-8.tex}
-
-\chapter{Syntax, Semantics, and Proofs in \texorpdfstring{$\mathcal{L}_{=}$}{L=}}\label{c8}
- \input{edl-9.tex}
+\chapter{Syntax, Semantics, and Derivations in \texorpdfstring{$\mathcal{L}_{=}$}{L=}}\label{c:lequals} % c8
+ \input{edl-lequals.tex}
 
 
-\newpage
-\chapter[Logic and Natural Language]{Logic and Natural Language: Conditionals, Entailment, Designators, and Relations}\label{c9}
-\input{edl-10.tex}
+\part{Beyond Classical Logic} \label{p:beyond}
+
+\chapter{Modal and Temporal Logic} \label{c:modal}
+% \input{edl-modal.tex}
+
+\chapter{Logic and Natural Language Conditionals}\label{c:cond} % c9
+ \input{edl-cond.tex}
+
+\chapter[Entailment, Designators, and Relations]{Logic and Natural Language: Entailment, Designators, and Relations}\label{c:edr} % c9
+\input{edl-edr.tex}
 
 
 \appendix
@@ -506,6 +547,13 @@ Russell, Bertrand (1956), \enquote{On Denoting}. In \emph{Logic and
 
 \bibitem[{Sider(2010)}]{sidlfp}
 Sider, Theodore (2010), \emph{Logic for Philosophy}. Oxford: Oxford University Press.
+
+\bibitem[Smith(2012)]{smith} 
+Smith, Nicholas~J~J (2012), \emph{Logic: The Laws of Truth}. Princeton: Princeton University Press.
+
+
+\bibitem[{Smullyan(1968)}]{smullyan}
+Smullyan, Raymond~M (1968), \emph{First-Order Logic}. New York: Springer-Verlag.
 
 \bibitem[{Stalnaker(1975)}]{stalnaker}
 Stalnaker, Robert~C (1975), \enquote{Indicative Conditionals}. \emph{Philosophia}, vol.~: pp.~269–86.
