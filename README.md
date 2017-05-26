@@ -16,4 +16,4 @@ I get no errors, but some font warnings, using TeXLive 2015.
 
 ***
 
-This version is **in progress**. Chapters 1–2 have been fully revised as of March 2017. Later chapters are scheduled for revision during the first half of 2017. 
+This version is **in progress**. Chapters 1–6 have been fully revised as of May 2017. Later chapters are scheduled for creation or revision during the first half of 2017, though some of the material on modal logic and many-valued logic, newly introduced, will likely not be finalised for some time. 
