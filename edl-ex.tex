@@ -343,3 +343,49 @@ But we have enough variable assignments so that any object which can be discusse
 % \end{enumerate}
 
 % }
+
+\section*{Exercises for Chapter \ref{c:cond}: page \pageref{ex:cond}} \label{ans:cond}
+
+{\small
+ \begin{enumerate}
+\item Each instance of the form $((\phi \to \psi)\wedge\phi)\vDash\psi$ is a valid entailment. By Upper, $((\phi \to \psi)\wedge\phi)\Rightarrow\psi$. By Import-Export, $(\phi\to\psi)\Rightarrow(\phi\Rightarrow\psi)$. By Lower, $(\phi\to\psi)\to(\phi\Rightarrow\psi)$. Assume $\phi\to\psi$; by \emph{modus ponens} for $\to$, we may conclude $\phi\Rightarrow\psi$. The converse direction is immediate from Lower. So $\phi\to\psi$ is equivalent to $\phi\Rightarrow\psi$.
+\item \begin{enumerate}
+	\item John is using an informal analogue of the deduction theorem: that $\phi,\psi\vDash\psi$ suffices for $\psi\vDash\text{If }\phi, \psi$. This perhaps doesn't seem plausible when $\phi$ is arbitrary, though the general form seems defensible enough: when both $\phi$ and $\psi$ are actually used in the derivation of some conclusion $\chi$, then $\psi$ alone suffices for `If $\phi$, $\chi$'.
+	\item This is contraposition, which looks very plausible for the English indicative (though see below). For if $\phi$'s truth leads to $\psi$'s truth, as the conditional appears to represent, then if $\psi$ were false, it can't still be that $\phi$ is true – otherwise $\psi$ would be false and also true.
+	\item Suppose $\phi\to\psi$. This is equivalent to $\neg\phi\vee\psi$. If $\psi$, then by John's argument, `if $\phi$, $\psi$'. If $\neg\phi$, then by John's argument, `If $\neg\psi$, $¬\phi$', so by Mary's argument, `If $\phi$, $\psi$'. So on each disjunct, `If $\phi$, $\psi$' follows. So $\phi\to\psi$ entails `If $\phi$, $\psi$'.
+	\item As long as `If $\phi$, $\psi$' entails $\phi\to\psi$, we have logical equivalence and hence `if' is the material conditional. But both contraposition and the deduction theorem may not be in the end correct for the English indicative.
+\end{enumerate}
+\item \begin{enumerate}
+	\item Consider any \lone\ structure $\mathscr{A}$ in which $\phi\to\psi$ is true. Either $\phi$ is false in $\mathscr{A}$ or $\psi$ is true; iff either $\neg\psi$ is false in $\mathscr{A}$ or $\neg\phi$ is true; iff $\neg\neg\psi$ is true in $\mathscr{A}$ or $\neg\phi$ is true; iff $\neg\neg\psi\vee\neg\phi$ is true in $\mathscr{A}$; iff $\neg\psi\to\neg\phi$ is true in $\mathscr{A}$.
+	\item Examples that seem to show contraposition failing for the counterfactual exist. Here are a couple: \begin{exe}
+\ex		\begin{xlist}
+			\ex If Michael Jordan had been short, he wouldn't have been really short. \label{cfacta1} ($S\, \Box\!\!\rightarrow ¬RS$)
+			\ex So, If Michael Jordan had been really short, he wouldn't have been short. \label{cfacta2} ($RS\, \Box\!\!\rightarrow ¬S$)
+		\end{xlist}
+	\end{exe}
+	 Intuitively, \eqref{cfacta1} is true but \eqref{cfacta2} false. Here's another example. Suppose I have chronic back pain, leaving me housebound.
+	\begin{exe}
+		\ex \begin{xlist}
+			\ex If I'd been able to leave the house, I would (still) have had a bad back. \label{cfactb1}
+			\ex So, If I hadn't had a bad back, I wouldn't have been able to leave the house. \label{cfactb2}
+		\end{xlist}
+	\end{exe}
+Intuitively, \eqref{cfactb1} might be true – if I'd been able to leave the house, it would have been because I'd improved just enough to do so, not been totally cured. But then \eqref{cfactb2} is false: I would easily have been able to leave the house then!
+
+It is easy to draw similarity spheres which represent these situations in Lewis' semantics. They have to have the closest $A$-world be a $C$-world, but the closest $¬C$-world \emph{still} be an $A$-world.
+\item Suppose $\Box(\phi\to\psi)$ holds at $w$, but $v(w,\Box(¬\psi\to ¬\phi))=F$. Then there is an accessible world $w'$ such that $v(w',¬\psi\to ¬\phi)=F$, so $v(w',¬\psi)=T$ and $v(w',¬\phi)=F$, so that $v(w',\psi)=F$ and $v(w',\phi)=T$. But then $v(w',\phi\to\psi)=F$, hence $v(w,\Box(\phi\to\psi))=F$, contradiction. So there is no such $w$; contraposition for the strict conditional is valid in any logic extending $\mathscr{L}_{\mathsf{K}}$.
+\end{enumerate}
+\item \begin{enumerate}
+	\item In any $\mathscr{L}_{1}$-structure $\mathscr{A}$, for any sentences $\phi,\psi$ either $|\phi|_{\mathscr{A}} = |\psi|_{\mathscr{A}}$ or $|\phi|_{\mathscr{A}} = |¬\psi|_{\mathscr{A}}$. If the former, $|\phi\to\psi|_{\mathscr{A}} = T$. If the latter, $|\phi\to ¬\psi|_{\mathscr{A}} = T$. So in any $\mathscr{A}$, $|(\phi\to\psi)\vee(\phi\to ¬\psi)|_{\mathscr{A}} = T$.
+	\item Consider an $\mathscr{L}_{\mathsf{K}}$ model with domain $\{w,w'\}$, such that $v(w,\phi)=v(w',\phi)=T$, $v(w,\psi)=F$, $v(w',\psi)=T$. Then $v(w,\phi\to\psi)=F$, $v(w',\phi\to ¬\psi)=F$. Assume $w\mathscr{R}w$ and $w\mathscr{R}w'$; then $v(w,\Box(\phi\to\psi))=F$ and $v(w,\Box(\phi\to ¬\psi))=F$.
+	\item Lewis' example is: `if Bizet and Verdi had been compatriots, they would have both been French'. He thinks: this is false. It is true that both would have been French, or both Italian – the closest world where they share a nationality is one where only one of them has to change their actual nationality. In the similarity semantics, the set of closest worlds where Bizet and Verdi are compatriots has at least two members. Indeed, the violation of this condition is the formal analogue of CEM: if there is a unique closest $A$-world, then since either $C$ or $¬C$ is true at it, either $A\, \Box\!\!\rightarrow C$ or $A\, \Box\!\!\rightarrow ¬C$ is true actually.
+	\item This is tough to answer. But it may only appear plausible because we consider too few cases. Consider this: I have a fair coin in my pocket, which I never toss. I say: `Had I tossed this coin, it would have landed heads'. This seems false: part of what it is to be a fair coin is that there is no determinate fact of the matter about what would happen if I toss it. You wish to deny what I say. But you do not deny it by asserting this equally false counterfactual: `Had you tossed the coin, it would not have landed heads'. You rather should say: `It isn't the case that had you tossed the coin, it would have landed heads'.
+	
+	While asserting $A \Rightarrow ¬C$ suffices to deny $A\Rightarrow C$, it is not equivalent to the negation of that conditional, in general. It is more plausible to equate $¬(A \Rightarrow C)$ with $(A \Rightarrow ¬C)$ in the case of the indicative. There we are considering just one world – actuality – and what must be true of it under the supposition that $A$. Since just one of $C, ¬C$ is true of actuality, one is true under that supposition, which would give us CEM. But the counterfactual invites us to consider alternatives to actuality, and there may be more than one such alternative to be considered which can allow for violations of CEM.
+\end{enumerate}
+\item It certainly seems good for both at first glance. Note immediately that since the counterfactual satisfies both Upper and Lower, if the counterfactual satisfied Import-Export, then by Gibbard's theorem the counterfactual would be the material conditional. So there must be violations of Import-Export in Lewis' semantics. Consider: $(\phi\wedge \psi)\,\Box\!\!\to ¬\phi$ is always false (at least when there is some $\phi\wedge \psi$ world). But we can construct a model where $\phi\, \Box\!\!\to (\psi\,\Box\!\!\to¬\phi)$ is true. ('If I had picked your pocket, then if you had been watching me the whole time, I wouldn't have picked your pocket' - sounds a bit awkward but can see a reading on which it might be true.)
+
+The indicative is more interesting, since people have used Import-Export to provide counterexamples to \emph{modus ponens}. Recall McGee's election example  from \autoref{c:cond}. The counterexample to \emph{modus ponens} is supposed to arise because we think the antecedent of the conditional ('a Republican wins!') is likely true, and yet the embedded conditional consequent likely false. Yet the larger conditional itself seems true – because it follows from the  true conditional \ref{imp} by Import-Export. We seem to have a choice: accept `if that creature has lungs, it's a lungfish'; reject Import-Export; or reject \emph{modus ponens}. Many have found rejecting Import-Export, and thus rejecting the nested conditional, the most palatable way out. The material conditional approach accepts the conclusion; Stalnaker's semantics for indicatives invalidates Import-Export.
+
+\end{enumerate}
+}

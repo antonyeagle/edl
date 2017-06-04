@@ -128,7 +128,7 @@ Assuming that if someone believes a conditional, and believes the antecedent of 
 But this is false: Anderson was a distant third in the polls, and the most likely alternative to Reagan was Carter. 
 
 
-What has gone wrong? We've derived, from claims we believe to be true ((\ref{imp}) and that a Republican will win), using Import-Export and \emph{modus ponens}, a claim we believe to be false: \ref{false}. The defender of the material conditional account of `if' cannot object to either of these rules, since both Import-Export and \emph{modus ponens} are provably correct derivation rules for the material conditional. So they have to argue that the apparently false conclusion is in fact true; or else deny either the trivial truth (\ref{imp}), or deny that it is acceptable to reason from the highly probable claim – that in fact turned out to be true, just as the polls indicated – that a Republican would win the election. None of these options looks particularly appealing, and most philosophers and linguists have concluded that the material conditional account of `if' is thereby refuted. However, there has been no consensus about what to offer in its place. 
+What has gone wrong? We've derived, from claims we believe to be true – (\ref{imp}) and that a Republican will win – using Import-Export and \emph{modus ponens}, a claim we believe to be false: \eqref{false}. The defender of the material conditional account of `if' cannot object to either of these rules, since both Import-Export and \emph{modus ponens} are provably correct derivation rules for the material conditional. So they have to argue that the apparently false conclusion is in fact true; or else deny either the trivial truth (\ref{imp}), or deny that it is acceptable to reason from the highly probable claim – that in fact turned out to be true, just as the polls indicated – that a Republican would win the election. None of these options looks particularly appealing, and most philosophers and linguists have concluded that the material conditional account of `if' is thereby refuted. However, there has been no consensus about what to offer in its place. 
 
 
 
@@ -144,30 +144,36 @@ What has gone wrong? We've derived, from claims we believe to be true ((\ref{imp
 
 
 
-\subsection*{Exercises}
+\subsection*{Exercises}\label{ex:cond}
 \addcontentsline{toc}{subsection}{Exercises}
 
 
 \begin{enumerate}
-	
-
-\item Give the proof of Gibbard's theorem (Theorem \ref{gibb}). (\emph{Hint:} begin with the fact that all instances of this schema for disjunctive syllogism are valid: $((¬\phi \vee \psi)\wedge\phi)\vDash\psi$.)
-	\item \begin {enumerate} \item John argues that, since $\phi$ and $\psi$ together entail (in English)
-	$\psi$, if follows that $\psi$ entails `if $\phi$, $\psi$'. Evaluate John's argument.
-
-		\item Mary claims that `if $\phi$, $\psi$' entails `if $\neg \psi$, $\neg
-		\phi$'. Evaluate Mary's claim.
-		\item Show how it would be possible to use John's conclusion and
-		Mary's claim to argue that `$\phi \to \psi$' entails `if $\phi$,
-		$\psi$'.
-		\item Give an argument that `if $\phi$,$\psi$' is a truth-functional connective in English. Do you see any difficulties with your argument?
-
-		\end{enumerate}	
-
-
-
-
+\item Give a proof of Gibbard's theorem. (\emph{Hint:} begin with the fact that all instances of \emph{modus ponens}  for the material conditional are valid: $((\phi \to \psi)\wedge\phi)\vDash\psi$; and then argue from the assumption that $\phi\to\psi$ to the conclusion that if $\phi$, $\psi$.)
+\item \begin{enumerate}
+	\item John argues that, since $\phi$ and $\psi$ together entail (in English) $\psi$, if follows that $\psi$ entails `if $\phi$, $\psi$'. Evaluate John's argument.
+	\item Mary claims that `if $\phi$, $\psi$' entails `if $\neg \psi$, $\neg\phi$'. Evaluate Mary's claim.
+	\item Show how it would be possible to use John's conclusion and Mary's claim to argue that $\phi \to \psi$ entails `if $\phi$, $\psi$'.
+	\item Using the foregoing, give an argument that `if $\phi$, $\psi$' is a truth-functional connective in English. Do you see any difficulties with your argument?
 \end{enumerate}
+\item Contraposition names this schema, for an arbitrary conditional `$\Rightarrow$': $\phi\Rightarrow\psi \vDash ¬\psi\Rightarrow ¬\phi$.
+\begin{enumerate}
+	\item Show that contraposition holds when $\Rightarrow$ represents the material conditional.
+	\item Does contraposition fail when $\Rightarrow$ represents the counterfactual conditional? Why/why not?
+	\item Does contraposition fail when $\Rightarrow$ represents the \emph{strict conditional}, $\Box(\phi \to \psi)$? Why/why not? (You may assume any logic for $\Box$ at least as strong as $\mathscr{L}_{\mathsf{K}}$.)
+\end{enumerate}
+\item Conditional excluded middle (CEM) is the principle that, for an arbitrary conditional `$\Rightarrow$', and for any $\phi, \psi$, the following is always true: $\phi\Rightarrow\psi \vee \phi\Rightarrow ¬\psi$. \begin{enumerate}
+	\item Show that CEM holds for the material conditional.
+	\item Show that CEM fails for the strict conditional.
+	\item Does CEM hold for the counterfactual conditional (consider Lewis' Verdi/Bizet example)?
+	\item If CEM is false, why is the most natural way to reject a conditional $\phi\Rightarrow\psi$ to say, `No, if $\phi$ then in fact it is/would have been that $¬\psi$'?
+\end{enumerate}
+\item Does Import/Export hold for the counterfactual? Does it hold for the indicative?
+\end{enumerate}
+
+Answers to selected exercises on page \pageref{ans:cond}.
+
+
 
 }
 

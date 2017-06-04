@@ -280,13 +280,13 @@ In the previous chapter we showed that any finite set of \lone\ sentences genera
 But, just as earlier (\autoref{posdecinc}), the question of inconsistency is positively decidable: if a recursively enumerable set of sentences is inconsistent, we can describe an effective procedure demonstrating that. The procedure is to begin with our enumeration of $\Gamma$, $\gamma_{1},…$. At stage $i$, take the set $\Gamma_{i} = \{ \gamma_{1},…,\gamma_{i}\}$ to be the generating sequence for a tableau $\mathbf{T}_{\gamma_{i}}$; apply the procedure described above to check whether $\Gamma_{i}$ is inconsistent. If it is, terminate with the message that $\Gamma$ is inconsistent. If not, move on to stage $i+1$. It can readily be seen that this procedure will not terminate if $\Gamma$ is consistent: the search for inconsistency will continue, constructing larger and larger open tableaux at each stage.
 
 
-% \section{Alternate Tableau Systems}
+\section{Alternate Tableau Systems}
 
 % labelled tableaux make semantics clear
 
-% Consider these two rules: \begin{center}
-% 	{\leaf{$\neg\phi\vee\neg\psi$}\branch{1}{$\neg(\phi\wedge\psi)$}\qobitree} \qquad {\leaf{$\neg\phi\wedge\neg\psi$}\branch{1}{$\neg(\phi\vee\psi)$}\qobitree}
-% \end{center}
+Consider these two rules: \begin{center}
+	{\leaf{$\neg\phi\vee\neg\psi$}\branch{1}{$\neg(\phi\wedge\psi)$}\qobitree} \qquad {\leaf{$\neg\phi\wedge\neg\psi$}\branch{1}{$\neg(\phi\vee\psi)$}\qobitree}
+\end{center}
 
 % Let us note firstly, that these proposed rules can be derived in our existing system. That is demonstrated by these two schematic tableau proofs:
 % \begin{center}
