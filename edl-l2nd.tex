@@ -12,7 +12,7 @@ Thus the introduction of a proof technique, to enable the derivation of some \lt
 \paragraph{Natural Deduction}
 
 The rules for the natural deduction system $ND_{2}$ include all of those from the original system $ND$. As \ltwo\ includes all of \lone, everything provable in $ND$ is also provable in $ND_{2}$. But we include new rules to cover the quantifiers, laid out in Table \ref{tfive}. Throughout, let $\phi[\tau/\upsilon]$ be the result of replacing \emph{free} occurrences of variable $\upsilon$ in $\phi$ by a constant $\tau$.
-\begin{table}\label{tfive}
+\begin{table}
  	\centering
 	\begin{tabular}{ccp{4cm}}
 	\begin{prooftree}
@@ -28,7 +28,7 @@ The rules for the natural deduction system $ND_{2}$ include all of those from th
 	\[ [\phi[\tau/\upsilon]] \leadsto \psi\]
 	\[  \leadsto \exists \upsilon\phi\] \justifies \psi \using{\exists\text{Elim}} 
 \end{prooftree} &{\footnotesize Provided $\tau$ doesn't occur in $\exists\upsilon\phi$, in $\psi$, or in any undischarged assumption other than $\phi[\tau/\upsilon]$ in the proof of $\psi$.}
-	\end{tabular} \caption{New Natural Deduction Rules for \ltwo}
+	\end{tabular} \caption{New Natural Deduction Rules for \ltwo \label{tfive}}
  \end{table}
 
 \paragraph{Some Elementary Theorems About $ND_{2}$}

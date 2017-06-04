@@ -1,7 +1,5 @@
 %!TEX root = edl.tex
 
-\newcommand{\answer}[1]{}
-
 \section{Derivations} % (fold)
 \label{sec:derivations}
 
@@ -51,7 +49,7 @@ There are many derivation systems, giving rise to many different kinds of deriva
 
 \section{Trees}
 
-Before introducing our derivation system, let me introduce the idea of a tree. Informally, a tree is a collection of nodes, organised into branches, and all stemming from a single root node. We are only going to be concerned here with trees whose nodes are \lone\ sentences. I begin by defining an \lone-branch: \begin{definition}[\lone-Branch]\label{lonebranch}
+Before introducing our derivation system, let me introduce the idea of a tree. Informally, a tree is a collection of nodes, organised into branches, and all stemming from a single root node. (I give the precise definition, and show that our trees are indeed trees, in \autoref{c:tablmeta}.) We are only going to be concerned here with trees whose nodes are \lone\ sentences. I begin by defining an \lone-branch: \begin{definition}[\lone-Branch]\label{lonebranch}
 	An \lone-\emph{branch} is a finite ordered sequence of \lone\ sentences.
 \end{definition}
 An \lone-tree will be made up of \lone-branches. Ordinarily, we assume that branches begin at the point of divergence from the parent branch or trunk. But \lone-branches will not: they continue all the way to the root. \begin{definition}[\lone-Tree]\label{l1tree}
@@ -87,26 +85,7 @@ It is useful to note that the \lone-tree pictured contains another \lone-tree as
 An \lone-tree $\mathbf{T}$ \emph{occurs within} an \lone-tree $\mathbf{U}$ iff there exists some finite sequence $\sigma$ such that (i) prefixing every \lone-branch in $\mathbf{T}$ with $\sigma$ yields an \lone-branch in $\mathbf{U}$, and (ii) every \lone-branch in $\mathbf{U}$ which begins with $\sigma$ is the result of prefixing some \lone-branch in $\mathbf{T}$ with $\sigma$.\footnote{Alternatively, for each sequence $\sigma_{i}$, let $\Sigma_{i}$ be the subset of $\mathbf{U}$ containing all \lone-branches begininng with $\sigma_{i}$. $\mathbf{T}$ occurs within $\mathbf{U}$ iff there exists some $\sigma_{j}$ such that $\mathbf{T}$ consists of all final subsequences of \lone-branches occuring in $\Sigma_{j}$ obtained by removing the initial subsequence $\sigma_{j}$.}
 \end{definition} 
 
-
-\paragraph{Trees and Trees} The more general definition of a tree is  set-theoretic: 
-\begin{definition}[General Tree]\label{tree}
-	A tree $\mathbf{T}$ is a pair $\langle N, \preceq\rangle$ where $N$ is a set of items (`nodes'), and $\preceq$ is a partial order on $N$, such that (i) there is a \emph{root node} $r \in N$ such that for all $n\in N$, $r \preceq n$, and (ii) for each $n \in N$, the set $\{x \in N: x \preceq n\}$ is well-ordered by $\preceq$ (recall Definition \ref{def:wellord}). 
-\end{definition} The nodes in this definition are otherwise featureless indices, individuated entirely by their place in the tree structure. In \lone-trees, a given sentence can occur more than once on a branch, but a node cannot occur more than once in any tree. So if we want to show that \lone-trees from Definition \ref{l1tree} are trees in the sense of Definition \ref{tree}, we will have to come up with some way of associating \lone\ sentences with nodes. The simplest way is to \emph{label} the tree. A labelled tree is a tree together with a total function $f$ from $N$ into the set of \lone\ sentences, which assigns to each node a sentence as label. The function is into, so a given sentence might label more than one node.
-
-\begin{theorem}[\lone-trees are labelled trees]
-	Each \lone-tree corresponds to a labelled tree. \begin{proof}
-		We want to show that, if we have an \lone-tree $\mathbf{T}$, there is a corresponding tree $\mathbf{T}'$. So we need to show (1) that there is an appropriate set of nodes; (2) there is a partial order; (3) there is a root node; (4) the branches are well-ordered; and (5) there is a labelling function. \begin{enumerate}
-			\item If $X$ is a sequence $\langle x_{1},…,x_{n},…\rangle$, define an \emph{index set} $X_{n}$ as follows: $X_{n} = \{\langle x_{i},i\rangle: x_{i} \in X\}$. This transforms an ordered sequence of items into an unordered set of item, position pairs.
-
-			Recalling that an \lone-branch is just a sequence of \lone\ sentences, and an \lone-tree is just a set of \lone-branches, there will be an index set for each \lone-branch in $\mathbf{T}$. The union of all index sets for \lone-branches in our \lone-tree $\mathbf{T}$ will be the set $N$ of nodes for our desired tree $\mathbf{T}'$. Each $\langle$sentence, index$\rangle$ pair occuring on some branch is included. Because sets with the same members are identical, and when branches overlap they have the same sentences at the same position, then we do not have redundancy: though every \lone-branch shares the root node, the pair $\langle \rho,1\rangle$ will be added to the union of all index sets `several times', but of course we end up with just one member of the set for that shared node. Since we have said nothing about what the set of nodes is to consist in, it is perfectly acceptable for this complex set of pairs to be the set of nodes for $\mathbf{T}'$.
-			\item We need to define the partial order $\preceq$ on $N$. Since each member of $N$ is of the form $\langle \phi,i\rangle$, it suffices to define it on pairs of this form. We will say that $\langle \phi,i\rangle \preceq \langle \psi,n\rangle$ iff there is an \lone-branch on $\mathbf{T}$ that includes $\phi$ at position $i$ and $\psi$ at position $j$, and $i≤j$. So defined, $\preceq$ is a partial order (Definition \ref{def:order}): it is transitive (since if $x\preceq y$ and $y\preceq z$, then all of $x,y,z$ fall on the same \lone-branch, and the transitivity of $≤$ ensures that $x\preceq z$); it is reflexive (since $≤$ is reflexive; and it is antisymmetric (since if $x\preceq y$ and $y\preceq x$, then $x$ and $y$ fall on the same \lone-branch and $i≤j$ and $j≤i$, which entails that $i=j$, and since there is only one sentence at each position in a branch, $x=y$).
-			\item Since every \lone-branch on $\mathbf{T}$ shares a common initial subsequence, each begins with some sentence $\phi$. So $\langle \phi,1\rangle$ is the root node of $\mathbf{T}'$.
-			\item Recall that a well-ordering is a total order on a set such that every non-empty subset has a least member – there are no infinite descending chains. We need to show that $\preceq$, as defined, when restricted to sets of the form $\{x \in N: x \preceq n\}$ for some $n\in N$, is a well-ordering. Since $x\preceq y$ only if $x$ and $y$ fall on the same \lone-branch, the sets of this form are index sets of initial subsequences of \lone-branches. Restricted to these intial subsequences, $\preceq$ is total because $≤$ is total; and since the initial subsequences are sequences, they can be mapped one-one onto subsets of $\mathbb{N}$, and the least number principle then entails that $≤$ is a well-ordering on these initial subsequences, so that $\preceq$ is a well-ordering on the corresponding index sets.
-			\item The labelling function is: $f(\langle \phi,i\rangle) = \phi$. This simply labels a node with its first element, which is the sentence from the original \lone-tree.			
-		\end{enumerate}
-	\end{proof}
-\end{theorem}
-Having shown that our definition of an \lone-tree generates a tree in the more general set-theoretic sense, I will from now on often  drop the qualification `\lone-tree' and simply talk of `trees'. When it matters for the detail of some argument, I will keep the distinction intact. 
+I will from now on often  drop the qualification `\lone-tree' and simply talk of `trees'. When it matters for the detail of some argument, I will keep the terminological distinction intact. 
 
 \section{Tableaux}
 
@@ -138,7 +117,7 @@ An ordinary \emph{reductio} involves some judgement about how to pursue the cont
 
 
 \begin{definition}[Generation of a tableau] \label{def:gentabl}
-	A set of sentences $\Gamma$ \emph{generates} an \lone-tableau $\mathbf{T}$ iff there is some sequence $S$ such that each $\gamma\in \Gamma$ occurs once in $S$, no sentence not in $\Gamma$ occurs in $S$, and $S$ is a common initial subsequence of every \lone-branch on $\mathbf{T}$. 
+	A finite set of sentences $\Gamma$ \emph{generates} an \lone-tableau $\mathbf{T}$ iff there is some sequence $S$ such that each $\gamma\in \Gamma$ occurs once in $S$, no sentence not in $\Gamma$ occurs in $S$, and $S$ is a common initial subsequence of every \lone-branch on $\mathbf{T}$ (i.e., is the trunk). 
 \end{definition}
 The same set of sentences can generate many tableaux, by taking the members of the set in different sequence, and applying the tableaux rules in different order. (See the two tableaux pictured in Figure \ref{figdoublegen}, both generated by $\{(P\wedge Q),(¬P\vee ¬Q)\}$.) And the same tableau can be generated by more than one set of sentences. Consider this one-branched tableaux: $\{\langle (P\wedge Q), P, Q \rangle\}$. It could have been generated from $\{(P \wedge Q)\}$ in accordance with the conjunction rules; or by $\{(P\wedge Q), P, Q\}$ in accordance with the condition on initial subsequences. 
 
@@ -174,7 +153,7 @@ Negation\label{sf:dn}]{\leaf{$\phi$}\branch{1}{$\qquad\qquad\neg\neg\phi\qquad\q
   \caption{Sentential Tableau Rules \label{fig:stableaux}}
 \end{figure}
 
-Here's the idea. Suppose we begin with the set $\{P\wedge Q,Q \to R, ¬R\}$. Inscribe this set in a sequence $S = \langle P\wedge Q,Q \to R, ¬R\rangle$ – this is not the only way to do it, but it doesn't matter which way. The construction can be seen in \autoref{fig:tabcon}. We begin by inscribing the initial generating sequence in \ref{tabconi}. We apply the conjunction rule from Figure \ref{sf:and} in \ref{tabconii}, and then apply the conditional rule from Figure \ref{sf:cond} in \ref{tabconiii}.
+Here's the idea. Suppose we begin with the set $\{P\wedge Q,Q \to R, ¬(P\wedge R\}$. Inscribe this set in a sequence $S = \langle P\wedge Q,Q \to R, ¬(P\wedge R)\rangle$ – this is not the only way to do it, but it doesn't matter which way. The construction can be seen in \autoref{fig:tabcon}. We begin by inscribing the initial generating sequence in \ref{tabconi}. We apply the conjunction rule from Figure \ref{sf:and} in \ref{tabconii}, and then apply the conditional rule from Figure \ref{sf:cond} in \ref{tabconiii}.
 
 \begin{figure}
     \centering
@@ -196,7 +175,25 @@ Here's the idea. Suppose we begin with the set $\{P\wedge Q,Q \to R, ¬R\}$. Ins
 	A tableau $\mathbf{T}$ is \emph{finished} iff any branch $B'$ on any tableau $\mathbf{T}'$ that extends $B$ on $\mathbf{T}$ is such that the tip of $B'$ with respect to $B$ contains only sentences which are already on $B$. 
 \end{definition} A tableau is finished not when we run out of rules to apply – we never will, since we can apply them repeatedly and keep extending any branch – but rather when once we start repeating ourselves with the application of the tableau rules. We see that repetition when any extension of a tableau, which comes by adding new sequences as the tips of old branches, ends up with those tips containing only sentences already appearing on the old branches.
 
+\paragraph{Can Tableaux be Finished?} We should reassure ourselves that tableaux can be finished – after all, it is a requirement on tableaux that they consist of finite branches, and we don't (yet) have a proof that we can reach the stage of repeating ourselves finitely far from the initial subsequence. So let us reassure ourselves in this respect. 
 
+\begin{lemma}[Tableau Rules are Complexity-Decreasing]\label{rulescomplex}
+If a tableau rule can be applied to a sentence $\phi$, any sentences on the tableau licensed by that rule are of lower complexity than $\phi$. \begin{proof}
+	Recall that the complexity of a sentence is the sum of the arities of the connectives occuring within it (Definition \ref{defcompl}). We can see by direct inspection that the tableau rules all involve a decrease in complexity. I show a couple of representative cases, letting $comp(\phi)$ stand for the complexity of $\phi$: \begin{itemize}
+		\item If $\phi = ¬¬ \psi$, then $comp(\phi)=comp(¬ \psi)+1=comp(\psi)+2$, and so the complexity of the sentence licensed by the double negation rule is less than the complexity of the double negation to which it is applied.
+		\item If $\phi= \psi\to \chi$, then $comp(\phi) = comp(\psi)+comp(\chi)+2$. The conditional rule licenses $\chi$ on one branch, which has complexity $comp(\chi)<comp(\psi)+comp(\chi)+2$; and licenses $¬ \psi$ on the other branch, which has complexity $comp(\psi)+1$. Even if $\chi$ is a sentence letter with complexity zero,  $comp(¬\psi) = comp(\psi)+1 < comp(\psi)+ 2 \leqslant comp(\psi)+comp(\chi)+2 = comp(\phi)$.
+		\item If  If $\phi= ¬(\psi\wedge \chi)$, then $comp(\phi) = comp(\psi\wedge \chi)+1 = comp(\psi)+comp(\chi)+3$. The negated rule licenses $¬\chi$ on one branch and $¬ \psi$ on the other. But $comp(¬ \chi) = comp(\chi)+1 < comp(\chi)+3 \leqslant comp(\psi)+comp(\chi)+3 = comp(\phi)$. Parallel reasoning shows that $comp(¬ \psi)<comp(\phi)$.
+	\end{itemize}
+\end{proof}
+\end{lemma}
+
+We can now show that each finished tableau can be finite and hence a tableau – roughly because each tableau is generated by a finite generating set, in which each member has finite complexity, and the rules produce finitely many more sentences of lower complexity. 
+\begin{theorem}[Finitude of Tableaux]\label{fintab}
+	The smallest tableau generated by a finite set\, $\Gamma$ is finite. \begin{proof} (Sketch.)
+		Suppose we begin with a finite generating set $\Gamma$, so that every branch in the finished tableau begins with $\langle \gamma_{1},…,\gamma_{n}\rangle$. Every sentence on every branch subsequent to this initial subsequence will be the result of finitely many applications of the tableau rules to some $\gamma_{i}$ and its further consequences. (Because the tableau is the smallest finished tableau, we do not ever apply the rules to any sentence on a branch more than once.)  But each tableau rule results in extending some branch by only finitely many sentences of strictly lower complexity than the sentence to which it is applied, by Lemma \ref{rulescomplex}. Since every \lone\ sentence is of finite complexity, beginning with some $\gamma_{i}$ ends up yielding sentence letter(s) or negated sentence letter(s) after finitely many applications of the tableau rules, having produced only finitely many intermediate sentences of decreasing complexity along the way. And at that point we cannot apply the tableau rules any further without repetition, since they do not permit us to extend a branch by applying a rule to a literal. After we have exhaustively applied every tableau rule possible to each sentences in $\Gamma$ and the resulting sentences, we will have produced only finitely many sentences, only finitely many times, before we run out of sentences to which we have not already applied the rules. So any finished branch beginning with $\Gamma$ is finite. By König's Lemma (proved in the next chapter – \autoref{konig}), an infinite tableau must have an infinite branch, so any tableau with only finite branches must be itself finite. 
+	\end{proof}
+\end{theorem}
+Accordingly, we can be sure that mechanical application of the tableau rules to a finite generating set will yield a finished finite tree which meets the conditions for being a finished tableau.
 
 \section{Closure and Order}
 \begin{definition}[Closed]
@@ -372,14 +369,15 @@ pictured in \autoref{fig:ex12}\subref{fig:ex2}. As is readily seen, this tableau
 \subsection*{Further Reading}
 \addcontentsline{toc}{subsection}{Further Reading}
 
-Tableaux were introduced in roughly the form discussed here by \citet{smullyan}. Other texts which use various forms of tableaux for sentential logic are \citealt[ch. 4]{bevpospa}, \citealt{priintncl} and \citealt{smith}.
+Tableaux were introduced in roughly the form discussed here by \citet{smullyan}. Other texts which use various forms of tableaux for sentential logic are \citealt{bevpospa,bosintlo,hodges,jefforlos,priintncl} and \citealt{smith}.
 
-\subsection*{Exercises} \label{ex6}
+
+
+\subsection*{Exercises} \label{ex:l1tabl}
 \addcontentsline{toc}{subsection}{Exercises}
 
 \begin{enumerate}
 \item Construct a tableau for the generating set $\{¬¬(P\vee Q),¬P,¬Q\}$, mentioned on page \pageref{tabl6ex}.
- \item Prove that if $\vdash \phi$, then for any $\psi$, $\vdash \psi\to\phi$.
 
 	\item Provide  tableaux derivations demonstrating the following: \begin{enumerate}
 		\item $\vdash ((P \bicond (P \vee P)) \wedge (P \bicond (P \wedge P)))$;
@@ -389,22 +387,23 @@ Tableaux were introduced in roughly the form discussed here by \citet{smullyan}.
 		\item $\vdash (((P \to Q) \wedge \neg Q) \to \neg P)$;
 		\item $\vdash ((P \to Q) \to ((P \vee R) \to (Q \vee R)))$.
 	\end{enumerate}
-	\item Show, without making use of the soundness and completeness theorems, that the following features hold of the tableaux derivation system: 
-	\begin{itemize}
-	\item If $\Gamma, \phi, \phi \vdash
-	\psi$, then $\Gamma, \phi \vdash
-	\psi$.
-	
-	\item If $\Gamma, \phi, \psi \vdash
-	\chi$, then $\Gamma, \psi, \phi \vdash
-	\chi$.
-	
-	\item If $\Gamma \vdash \phi$, then  $\Gamma, \psi \vdash \phi$.
-	
-\end{itemize}
+\item Provide  tableaux derivations demonstrating the following: \begin{enumerate}
+\item $P \vee (Q \wedge R) \vdash (P \vee Q) \wedge (P \vee R)$;
+\item $(P\wedge Q) \vee (P \wedge R) \vdash P\wedge(Q\vee R)$;
+\item $P \vdash (Q \bicond ¬Q) \to ¬P$;
+\item $(P \to Q) \to Q \vdash P \vee Q$;
+\item $P\bicond Q \vdash ¬(P\wedge Q) \to (¬P \wedge ¬Q)$.
+\end{enumerate}
+\item Construct finished open tableaux demonstrating the following; \begin{enumerate}
+	\item $((P \wedge R) \to Q) \nvdash R \wedge (P\to Q)$;
+	\item $(P \vee Q), P \nvdash ¬Q$;
+	\item $(P \bicond Q), (R \to P) \bicond (Q \to R)$.
+\end{enumerate}
+\item Show the remaining cases in the proof of Lemma \ref{rulescomplex}.
+ \item Prove that if $\vdash \phi$, then for any $\psi$, $\vdash \psi\to\phi$.
 
  \end{enumerate}
 
 
-Answers to selected exercises on page \pageref{ans6}.
+Answers to selected exercises on page \pageref{ans:l1tabl}.
 }

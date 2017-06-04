@@ -333,7 +333,7 @@ This is not merely a theoretical worry. Consider this argument in English: \begi
 	An interpreted language $\mathcal{L}$ is said to be \emph{compact} iff any unsatisfiable infinite set of sentences of $\mathcal{L}$ has a finite unsatisfiable subset. Contrapositively: if every finite subset of some $\Gamma$ is satisfiable, then $\Gamma$ is satisfiable.
 \end{definition} Since $\Gamma$ entails $\phi$ iff $\Gamma \cup \{¬\phi\}$ is unsatisfiable, English is \emph{not} a compact language. The union of all the premises stating that there are at least $n$ things together with the claim that there are only finitely many things is unsatisfiable, yet any finite subset of that set must contain at most finitely many of the premises, and no such finite subset of the premises will be unsatisfiable by itself, or unsatisfiable with the claim that there are at most finitely many things.
 
-\paragraph{Compactness for \lone} Is \lone\ compact? This question can be answered in a number of ways. In this chapter, we show directly, just by consideration of the semantics of \lone, that \lone\ is in fact compact. In the next chapter, after we consider a derivation system for \lone, we can use the adequacy of that system to provide another more indirect proof of compactness for \lone\ (p.\ \pageref{compagain}).
+\paragraph{Compactness for \lone} Is \lone\ compact? This question can be answered in a number of ways. In this chapter, we show directly, just by consideration of the semantics of \lone, that \lone\ is in fact compact. In \autoref{c:tablmeta}, after we consider a derivation system for \lone, we can use the adequacy of that system to provide another more proof of compactness for \lone (Corollary \ref{comptabl}).
 
 Compactness for \lone\ has the immediate consequence that if $\Gamma\vDash\phi$, then there is some finite set of premises $\Gamma'$ such that $\Gamma'\vDash\phi$; every valid argument in \lone\ with infinitely many premises has a corresponding valid argument with only finitely many premises. As suggested above in connection with the interpolation theorem, compactness is of interest in part because of the computational tractability of compact languages. We allow, for mathematical reasons, infinite sets of sentences to entail things. But we never \emph{need} an infinite set of sentences to formulate an argument: any conclusion expressible in \lone\ that is validly entailed by infinitely many premises formulated in \lone\ is also validly entailed by some finite subset of those premises. We will return to this topic below when we discuss \emph{decidability} (p.\ \pageref{decide}).
 
@@ -514,7 +514,7 @@ This procedure is effective but resource inefficient – depending on the detail
 
 {\small
 
-\subsection*{Exercises} \label{ex5}
+\subsection*{Exercises} \label{ex:l1meta}
 \addcontentsline{toc}{subsection}{Exercises}
 
 \begin{enumerate}
@@ -610,7 +610,7 @@ This procedure is effective but resource inefficient – depending on the detail
 \item Give an argument for the claim that there is an  effective procedure for determining whether two \lone\ sentences are logically equivalent.
 \end{enumerate}
 
-Answers to selected exercises on page \pageref{ans5}.
+Answers to selected exercises on page \pageref{ans:l1meta}.
 \end{enumerate}
 
 }

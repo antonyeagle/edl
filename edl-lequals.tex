@@ -46,7 +46,7 @@ For any $\phi$ in which at most $\upsilon$ occurs free, $\vDash \forall \upsilon
 \paragraph{Proofs in \lequ}
 
 To obtain a natural deduction system for \lequ, $ND_{=}$, we \emph{add} to the rules of $ND_{2}$ the rules in Table \ref{tsix}, keeping all other rules. 
-\begin{table}\label{tsix}\begin{center}
+\begin{table}\begin{center}
 	\begin{tabular}{cc}
 	\begin{prooftree}
 		[\tau=\tau]\justifies \vdots \using \text{=Intro} 
@@ -55,7 +55,7 @@ To obtain a natural deduction system for \lequ, $ND_{=}$, we \emph{add} to the r
 	\end{prooftree}	& \begin{prooftree}
 			\[ \leadsto \phi[\tau/\upsilon]\] \[\leadsto \kappa=\tau\] \justifies \phi[\kappa/\upsilon] \using \text{=Elim-l}
 		\end{prooftree}	
-	\end{tabular} \end{center}	\caption{New Natural Deduction Rules for \lequ}
+	\end{tabular} \end{center}	\caption{New Natural Deduction Rules for \lequ \label{tsix}}
 \end{table}
 In =Elim-l and =Elim-r, $\phi$ is a formula in which at most $\upsilon$ occurs free. 
 
@@ -313,7 +313,7 @@ On modal, temporal, etc., logics, a good treatment is by \citet{bevpospa}; a ver
 
 
 
-\subsection*{Exercises}\label{ex9}
+\subsection*{Exercises}\label{ex:lequals}
 \addcontentsline{toc}{subsection}{Exercises}
 
 
@@ -385,7 +385,7 @@ On modal, temporal, etc., logics, a good treatment is by \citet{bevpospa}; a ver
  \end{enumerate}
 
 
-Answers to selected exercises on page \pageref{ans9}.
+Answers to selected exercises on page \pageref{ans:lequals}.
 }
 
 

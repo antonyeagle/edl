@@ -276,53 +276,6 @@ See also \citet[ch. 5--6]{bosintlo}; he gives a direct proof of the completeness
 
 
 \begin{enumerate}
-	\item \begin{enumerate}
-\item Devise introduction and elimination rules for a natural deduction system for the language $\mathcal{L}_{\uparrow}$ with the Sheffer Stroke as its only connective, being sure to fully justify your answer. How many such rules do we need?
-	\item Suppose in a system of natural deduction $ND$ for \lone\ we replaced the $\neg$Elim rule by the following, \emph{ex falso quodlibet}: \begin{equation*}
-		\begin{prooftree}
-			\psi \qquad \neg\psi \justifies \phi \using \text{EFQ}
-		\end{prooftree}
-	\end{equation*}
-\begin{enumerate}
-	\item Is the resulting system $ND'$ equivalent (in terms of what can be proved) to the original system? (Justify your answer; it is somewhat difficult to prove conclusively, but give some reasons for your view.)
-	\item What happens if we, in addition, replace $\neg$Intro by the following rule, \emph{tertium non datur}, yielding the system $ND''$? \begin{equation*}
-		\begin{prooftree}
-			\[[\phi] \leadsto \psi\] \[[\neg\phi] \leadsto \psi\] \justifies \psi \using\text{TND}
-		\end{prooftree}
-	\end{equation*}
-\end{enumerate}	
-\item Consider the natural deduction system $ND_{\to,\vee}$ for the language $\mathcal{L}_{\to,\vee}$ in which the only connectives are $\to,\vee$. Suppose we introduce to the language the zero-place sentential constant $\bot$, and add the following rules to the proof system, yielding $ND_{\to,\vee,\bot}$: \begin{equation*}
-	\begin{prooftree}
-		\bot \justifies \phi \using\bot
-	\end{prooftree}\qquad
-	\begin{prooftree}
-		\[[\phi \to \bot] \leadsto \bot\]
-		\justifies \phi \using \text{C}
-	\end{prooftree}
-\end{equation*}\begin{enumerate}
-	\item Give a natural translation between $\mathcal{L_{\to,\vee,\bot}}$  and $\mathcal{L}_{\to,\vee,\neg}$.
-	\item Using that translation, can you show that the proof system $ND_{\to,\vee,\bot}$ just introduced is equivalent to the natural deduction system $ND_{\to,\vee,\neg}$ involving just Halbach's rules for $\to$, $\vee$ and $\neg$?
-	\end{enumerate}
-\item A mystery connective $\oplus$ has the following introduction and elimination rules: 
-
-\begin{equation*}
-	\begin{prooftree}
-		\phi\oplus\psi \justifies \psi \using\oplus\text{Elim}
-	\end{prooftree}\qquad \begin{prooftree}
-		\phi \justifies \phi\oplus\psi \using\oplus\text{Intro}
-	\end{prooftree}
-\end{equation*}
-
-\begin{enumerate}
-	\item Show that no system containing a connective defined by these rules is sound. 
-	\item What limits should be placed on the ability of introduction and elimination rules to define or characterise the inferential role of a connective in light on this result? (This question invites discussion, not a definitive answer. You may wish to consult \citet{prirunint}.)
-	\end{enumerate}
-	\item  Relatedly to 1.(d).ii: \label{fouronee}\begin{enumerate}
-		\item Check, by means of truth tables, that $(((P\to Q)\to P)\to P)$ is a tautology.	
-		\item Give a natural deduction proof of $(((P\to Q)\to P)\to P)$.
-		\item Every valid argument involving only sentences containing $\wedge$ as their only connective can be proved valid using just the rules $\wedge$Intro and $\wedge$Elim. In that sense, $\wedge$ is completely characterised by its introduction and elimination rules. What do the previous results show about $\to$ in this connection?
-\end{enumerate}
-\end{enumerate}
 \item Using the model soundness proof for the restricted natural deduction system $ND_{\neg,\to}$, show, by analysing proofs constructed using the remaining rules of the full Halbach system $ND$, that the system $ND$ is sound.
 \item The Completeness proof for $\mathcal{L}_{\neg,\to}$ relied on various lemmas concerning the behaviour of maximal consistent sets with regard to  the connectives $\neg$ and $\to$. Show that \begin{enumerate}
 	\item analogous lemmas hold for $\wedge$, $\vee$ and $\bicond$.
@@ -346,11 +299,8 @@ See also \citet[ch. 5--6]{bosintlo}; he gives a direct proof of the completeness
 	\item Show that if $\Gamma,\phi\lvdash\psi$ and $\Gamma,\phi\lvdash\neg\psi$, then $\Gamma\lvdash \neg\phi$.
 	\item Show that if $\Gamma,\neg\phi\lvdash\psi$ and $\Gamma,\neg\phi\lvdash\neg\psi$, then $\Gamma\lvdash \phi$. (Equivalently, show that if $\Gamma\lvdash\neg\neg\phi$, then $\Gamma\lvdash\phi$.)
 \end{enumerate} 
-\item A fellow student argues as follows: \begin{quotation}
-	If the Natural Deduction system introduced by Halbach is complete, then whenever $\Gamma \vDash \phi$, there is a proof that shows $\Gamma \vdash \phi$. But proofs are finite; so if $\Gamma$ is infinite, there is no proof that $\Gamma \vdash \phi$ – so the system is not complete!
-\end{quotation} How should you respond?
-\item Prove the omitted case (where the complex sentence is a conjunction) in the proof of Theorem \ref{redcompl}.
-\item Show  that, in the system which involves the normal rules for $\wedge$ and $\to$, and has $\bot_{\mathsf{C}}$ as its only other rule, if $\Pi$ is a proof in the system $DP$ that $\Gamma \vdash_{DP}\phi$, then there exists a proof of that sequent, $\Pi^{\dag}$, in which the result of any application of $\bot_{\mathsf{C}}$ is atomic.
+
+
 \end{enumerate}
 
 
